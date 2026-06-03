@@ -1,26 +1,380 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+
+  /* Flowstack brand tokens */
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-surface: var(--surface);
+  --color-surface-hi: var(--surface-hi);
+  --color-border-line: var(--border-line);
+  --color-border-hi: var(--border-hi);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-mute: var(--ink-mute);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-cyan: var(--cyan);
+  --color-cyan-soft: var(--cyan-soft);
+  --color-success: var(--success);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent-line: var(--violet);
+  --color-draw: var(--draw);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* ── Flowstack blueprint palette ──
+     Cyanotype navy ground, drawn in pale ink. Brand names kept for
+     compatibility: --violet is repurposed as the ACCENT, --cyan as the
+     DRAW (pale ink) color, so existing utility classes recolor for free. */
+  --bg:           #0B1430;
+  --bg-elev:      #0E1A3C;
+  --surface:      #0E1A3C;
+  --surface-hi:   #15234C;
+  --border-line:  #21366B;
+  --border-hi:    #2F4A8F;
+  --ink:          #EAF0FF;
+  --ink-dim:      #B2C2E6;
+  --ink-mute:     #8496C2;
+  --violet:       #5FB6FF;
+  --violet-soft:  #8FCAFF;
+  --cyan:         #CFE0FF;
+  --cyan-soft:    #EAF1FF;
+  --success:      #5FE0B0;
+  --warn:         #FFC56B;
+  --danger:       #FF7A8C;
+
+  /* blueprint drawing primitives */
+  --line:         rgba(126, 170, 255, 0.09);
+  --line-strong:  rgba(126, 170, 255, 0.17);
+  --draw:         var(--cyan);
+
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface-hi);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface);
+  --muted-foreground: var(--ink-dim);
+  --accent: var(--surface-hi);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger);
+  --border: var(--border-line);
+  --input: var(--border-hi);
+  --ring: var(--violet);
+  --chart-1: var(--violet);
+  --chart-2: var(--cyan);
+  --chart-3: var(--success);
+  --chart-4: var(--warn);
+  --chart-5: var(--danger);
+  --radius: 0;
+  --sidebar: var(--bg-elev);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: var(--ink);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border-line);
+  --sidebar-ring: var(--violet);
+}
+
+.dark {
+  /* Re-derive shadcn tokens under .dark from the brand tokens above so any
+     shadcn primitive keying off .dark still picks up the blueprint palette. */
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface-hi);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface);
+  --muted-foreground: var(--ink-dim);
+  --accent: var(--surface-hi);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger);
+  --border: var(--border-line);
+  --input: var(--border-hi);
+  --ring: var(--violet);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-bg text-ink;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    /* Blueprint graph paper: fine 32px grid + heavier 160px major grid,
+       fixed so the whole site reads as one sheet underneath the content. */
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px),
+      linear-gradient(var(--line-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-strong) 1px, transparent 1px);
+    background-size:
+      32px 32px,
+      32px 32px,
+      160px 160px,
+      160px 160px;
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: var(--violet);
+    color: var(--bg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Blueprint panel: crisp translucent fill over the grid, hairline border.
+     (Was a frosted-glass panel; kept the class name so sections recolor.) */
+  .glass {
+    background: color-mix(in oklab, var(--bg-elev) 78%, transparent);
+    border: 1px solid var(--border-line);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  .glass-strong {
+    background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
+    border: 1px solid var(--border-hi);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* "Gradient" text → solid accent ink (blueprint has no gradients). */
+  .text-gradient {
+    color: var(--violet);
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+
+  /* Solid hard-edged accent button (was the brand gradient sweep). */
+  .btn-grad {
+    background: var(--violet);
+    color: var(--bg);
+    border: 1px solid var(--violet);
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+  .btn-grad:hover {
+    background: var(--draw);
+    border-color: var(--draw);
+  }
+
+  /* Outlined "drawn" button — ghost variant of the node language. */
+  .btn-draw {
+    background: transparent;
+    color: var(--draw);
+    border: 1px solid var(--draw);
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-draw:hover {
+    background: var(--draw);
+    color: var(--bg);
+  }
+
+  /* ── Blueprint motif utilities (use these to draw the schematic) ── */
+
+  /* Node box: an outlined component in the flow, monospace-labelled. */
+  .bp-node {
+    border: 1px solid var(--draw);
+    background: color-mix(in oklab, var(--bg-elev) 90%, transparent);
+    font-family: var(--font-mono);
+  }
+  /* Small hollow square marker — a connection point on the diagram. */
+  .bp-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--violet);
+    background: transparent;
+  }
+  /* Mono annotation / sheet reference label. */
+  .bp-ref {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet);
+  }
+  .bp-annot {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+  }
+
+  /* Animated dashed connector wire with an arrowhead. Set width via utility. */
+  .bp-wire {
+    position: relative;
+    height: 2px;
+    color: var(--violet);
+    background-image: linear-gradient(90deg, currentColor 55%, transparent 55%);
+    background-size: 11px 2px;
+    animation: bp-march 0.9s linear infinite;
+  }
+  .bp-wire::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 7px solid var(--violet);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+  @keyframes bp-march {
+    to {
+      background-position: 11px 0;
+    }
+  }
+
+  /* Vertical connector wire with a downward arrowhead (stacked nodes). */
+  .bp-wire-v {
+    position: relative;
+    width: 2px;
+    color: var(--violet);
+    background-image: linear-gradient(180deg, currentColor 55%, transparent 55%);
+    background-size: 2px 11px;
+    animation: bp-march-v 0.9s linear infinite;
+  }
+  .bp-wire-v::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 7px solid var(--violet);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  @keyframes bp-march-v {
+    to {
+      background-position: 0 11px;
+    }
+  }
+
+  /* Dimension line: a measured span with end ticks (annotation device). */
+  .bp-dim {
+    position: relative;
+    height: 1px;
+    background: var(--line-strong);
+  }
+  .bp-dim::before,
+  .bp-dim::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 1px;
+    height: 7px;
+    background: var(--line-strong);
+  }
+  .bp-dim::before {
+    left: 0;
+  }
+  .bp-dim::after {
+    right: 0;
+  }
+
+  /* Diagonal hatch fill — for emphasis blocks / "cut" regions. */
+  .bp-hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      var(--line-strong) 6px,
+      var(--line-strong) 7px
+    );
+  }
+
+  /* Hairline grid background (component-local; body already has the sheet). */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .bg-grid-fade {
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  }
 }
+
+/* Marquee for the logo ticker */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Pulse glow for status dots */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50%      { opacity: 0.85; box-shadow: 0 0 10px 1px currentColor; }
+}
+.pulse-glow { animation: pulse-glow 2.4s ease-in-out infinite; }
