@@ -18,14 +18,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flowstack — Stop paying humans to do robot work",
+  title: "Flowstack — AI agents for your team, live in 60 seconds",
   description:
-    "Custom automation studio. We diagnose the leaks in your operation, then ship the systems that quietly run the boring parts of your business.",
+    "Pre-built AI agents for sales, support, lead-qualification and onboarding — provisioned on your stack with leads streaming into a real-time dashboard. Trial free; bring us in for custom builds when off-the-shelf isn't enough.",
   metadataBase: new URL("https://flowstack.example"),
   openGraph: {
-    title: "Flowstack — Stop paying humans to do robot work",
+    title: "Flowstack — AI agents for your team, live in 60 seconds",
     description:
-      "30-min audit. Written diagnosis. Yours to keep — even if you never hire us.",
+      "Pick a role. We provision the agent. Trial it free; hire the custom-build studio when you outgrow the off-the-shelf flow.",
     type: "website",
   },
 };

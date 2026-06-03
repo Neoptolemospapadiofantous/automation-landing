@@ -8,10 +8,10 @@ import { LiveStat } from "@/components/live-stat";
  * to /api/stats/stream (SSE) so updates land within ~5 s of any
  * dashboard change, without polling.
  *
- * Renders nothing if EVERY count is below the 10-bucket — better to hide
- * the section entirely than to show an empty grid that screams "no
- * traction". Once the platform crosses the lowest bucket the section
- * appears naturally.
+ * Cells whose count is below the display threshold render a muted "—"
+ * instead of disappearing. Whole-section hide was confusing on an early-
+ * stage platform; muted-dash cells read as "instrument calibrating" and
+ * automatically light up once the underlying count crosses the bucket.
  */
 export async function LiveOutcomes() {
   const stats = await getPlatformStats();
@@ -22,24 +22,6 @@ export async function LiveOutcomes() {
     { field: "messages_handled", l: "conversational turns handled", c: "success" },
     { field: "agents_active", l: "agents running right now", c: "warn" },
   ];
-
-  // Drop cells whose bucket is null — we never want to render "0 operators"
-  // or a blank cell. Once the underlying count crosses the 10-bucket the
-  // cell joins the strip automatically.
-  const visible = items.filter((i) => stats.display[i.field] !== null);
-
-  if (visible.length === 0) return null;
-
-  // Grid spans 2 cols on mobile, up to 4 on desktop. Tailwind's JIT can't
-  // see interpolated class names, so map fully-spelled-out classes by
-  // visible-cell count (1-4). Anything beyond 4 stays at 4-wide and wraps.
-  const colsClass =
-    {
-      1: "md:grid-cols-1",
-      2: "md:grid-cols-2",
-      3: "md:grid-cols-3",
-      4: "md:grid-cols-4",
-    }[Math.min(visible.length, 4) as 1 | 2 | 3 | 4] ?? "md:grid-cols-4";
 
   return (
     <section id="live" className="relative py-20">
@@ -54,10 +36,8 @@ export async function LiveOutcomes() {
           <p className="bp-annot">{"// LIVE — STREAMS VIA SSE"}</p>
         </div>
 
-        <div
-          className={`border-border-line divide-border-line grid grid-cols-2 ${colsClass} divide-x divide-y overflow-hidden border-x border-b md:divide-y-0`}
-        >
-          {visible.map((m, i) => {
+        <div className="border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b md:grid-cols-4 md:divide-y-0">
+          {items.map((m, i) => {
             const tint = tintMap[m.c];
             const ref = `R-1${i + 1}`;
             return (
@@ -77,6 +57,11 @@ export async function LiveOutcomes() {
                   <LiveStat
                     initial={stats.display[m.field]}
                     field={m.field}
+                    fallback={
+                      <span className="text-ink-mute/60" aria-hidden>
+                        —
+                      </span>
+                    }
                   />
                 </div>
                 <div className="flex flex-col gap-2">

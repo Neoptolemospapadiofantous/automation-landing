@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { CountField } from "@/lib/stats";
 
 type Props = {
@@ -12,6 +12,12 @@ type Props = {
   initial: string | null;
   /** Which display.* field to track. */
   field: CountField;
+  /**
+   * Rendered when the live value is null (count below the bucket). Default
+   * is null (renders nothing). Pass an em-dash or other placeholder so the
+   * cell stays visible while the underlying count is still calibrating.
+   */
+  fallback?: ReactNode;
 };
 
 /**
@@ -22,12 +28,8 @@ type Props = {
  * network errors with built-in backoff — we only close it on unmount.
  * If the JSON ever fails to parse (server hiccup, partial frame) we
  * keep the last good value instead of blank-rendering trust signals.
- *
- * Renders nothing (null) when the bucket itself is null — mirroring
- * the server-side behaviour where counts below the lowest 10-bucket
- * are hidden rather than shown as "0".
  */
-export function LiveStat({ initial, field }: Props) {
+export function LiveStat({ initial, field, fallback = null }: Props) {
   const [value, setValue] = useState<string | null>(initial);
 
   useEffect(() => {
@@ -50,5 +52,5 @@ export function LiveStat({ initial, field }: Props) {
     return () => es.close();
   }, [field]);
 
-  return value === null ? null : <>{value}</>;
+  return <>{value === null ? fallback : value}</>;
 }
