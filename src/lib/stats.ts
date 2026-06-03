@@ -8,6 +8,14 @@
  * are conservative but plausible so a failed fetch isn't visually obvious.
  */
 
+/** Keys of the aggregate counts that have a bucketed display label. */
+export type CountField =
+  | "teams_count"
+  | "agents_active"
+  | "leads_total"
+  | "leads_qualified"
+  | "messages_handled";
+
 export type PlatformStats = {
   // Editable (operator-curated via `php artisan platform:set`)
   founder_slots_remaining: number;
@@ -15,12 +23,21 @@ export type PlatformStats = {
   next_cohort_label: string;
   featured_proof: string | null;
 
-  // Computed (live aggregate counts)
+  // Computed (live aggregate counts, raw)
   teams_count: number;
   agents_active: number;
   leads_total: number;
   leads_qualified: number;
   messages_handled: number;
+
+  /**
+   * Bucketed marketing-friendly labels for each count. Server returns
+   * null for counts below the lowest 10-bucket so the landing site can
+   * hide the field instead of broadcasting a small real number.
+   * Render `display.*` on the marketing site; raw counts above are for
+   * callers that need exact values.
+   */
+  display: Record<CountField, string | null>;
 
   generated_at: string;
 };
@@ -35,24 +52,51 @@ const FALLBACK: PlatformStats = {
   leads_total: 0,
   leads_qualified: 0,
   messages_handled: 0,
+  display: {
+    teams_count: null,
+    agents_active: null,
+    leads_total: null,
+    leads_qualified: null,
+    messages_handled: null,
+  },
   generated_at: new Date(0).toISOString(),
 };
 
 const REVALIDATE_SECONDS = 300;
 
+function statsUrl(): string {
+  const base = process.env.DASHBOARD_API_URL ?? "http://localhost:8000";
+  return `${base.replace(/\/$/, "")}/api/public/stats`;
+}
+
 /**
- * Server-side fetch. `next: { revalidate: 300 }` opts into Next 16 ISR —
- * the first request after each 5-min window hits the dashboard, all
- * others serve the cached payload. Errors swallow to the FALLBACK so a
- * dashboard outage doesn't take the marketing site down.
+ * Server-side fetch with Next 16 ISR (5 min). Use for the initial
+ * server render — first paint hits cache, dashboard sees ~1 request
+ * per 5 min regardless of visitor count. Errors swallow to FALLBACK.
  */
 export async function getPlatformStats(): Promise<PlatformStats> {
-  const base = process.env.DASHBOARD_API_URL ?? "http://localhost:8000";
-  const url = `${base.replace(/\/$/, "")}/api/public/stats`;
-
   try {
-    const res = await fetch(url, {
+    const res = await fetch(statsUrl(), {
       next: { revalidate: REVALIDATE_SECONDS },
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) return FALLBACK;
+    const data = (await res.json()) as PlatformStats;
+    return { ...FALLBACK, ...data };
+  } catch {
+    return FALLBACK;
+  }
+}
+
+/**
+ * Fresh fetch that bypasses the ISR cache. Used by the SSE broadcaster
+ * poll loop, which wants the latest dashboard state every ~5 s rather
+ * than the 5-min cached copy. Falls back to FALLBACK on error.
+ */
+export async function fetchPlatformStatsFresh(): Promise<PlatformStats> {
+  try {
+    const res = await fetch(statsUrl(), {
+      cache: "no-store",
       headers: { Accept: "application/json" },
     });
     if (!res.ok) return FALLBACK;
