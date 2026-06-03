@@ -1,17 +1,49 @@
+import { registerUrl } from "./dashboard";
+
 export const brand = {
   name: "Flowstack",
-  tagline: "Custom automation studio for operators who'd rather ship than scale headcount.",
+  tagline:
+    "AI agents for sales, support, lead-qual and onboarding — and bespoke automation when off-the-shelf isn't enough.",
 };
 
 export const nav = {
   links: [
-    { href: "/problems", label: "Problems we fix" },
-    { href: "/how-it-works", label: "How it works" },
-    { href: "/services", label: "What we build" },
-    { href: "/outcomes", label: "Outcomes" },
+    { href: "/audit", label: "Custom build" },
     { href: "/pricing", label: "Pricing" },
   ],
 };
+
+/**
+ * Pre-built agent roles offered on signup. Each card on the homepage
+ * "agent roles" picker links to the dashboard's /register flow; role
+ * selection itself happens inside the onboarding wizard. Order = priority.
+ */
+export const agentRoles = [
+  {
+    ref: "ROLE-01",
+    name: "Lead qualification",
+    desc: "Greets every inbound visit, qualifies on ICP fit, and hands only the warm conversations to your sales team — with full transcript.",
+    available: true,
+  },
+  {
+    ref: "ROLE-02",
+    name: "Sales",
+    desc: "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar.",
+    available: true,
+  },
+  {
+    ref: "ROLE-03",
+    name: "Customer support",
+    desc: "First-line answers from your knowledge base, escalates only when a human is actually needed. Trained on your tone, not generic.",
+    available: true,
+  },
+  {
+    ref: "ROLE-04",
+    name: "Onboarding",
+    desc: "Walks new customers through setup, provisions accounts, and routes the rest to CSM. From signup to first value, hands-off.",
+    available: true,
+  },
+] as const;
 
 export const problems = [
   {
@@ -299,50 +331,51 @@ export const caseStudies = [
 /* ---------- Pricing tiers (Pricing page) ---------- */
 export const pricingTiers = [
   {
-    name: "Audit",
+    name: "Trial",
     price: "Free",
-    cadence: "30-min call + 48h report",
+    cadence: "14 days · no card",
     tint: "cyan",
-    tagline: "Find out where the money is leaking.",
+    tagline: "One agent live in 60 seconds. Full feature set.",
     features: [
-      "Live process review",
-      "Top-5 leak diagnosis, scored",
-      "Written report — yours to keep",
-      "No obligation, no pitch",
+      "1 agent, any role",
+      "200 conversation credits",
+      "Real-time leads dashboard",
+      "Knowledge-base upload",
+      "No credit card required",
     ],
-    cta: { href: "/audit", label: "Book the audit" },
+    cta: { href: registerUrl(), label: "Start free trial" },
     featured: false,
   },
   {
-    name: "Project",
-    price: "from €6k",
-    cadence: "fixed scope · ~1 week",
+    name: "Operator",
+    price: "from €49/mo",
+    cadence: "billed monthly · cancel anytime",
     tint: "violet",
-    tagline: "We diagnose, build, and hand it over.",
+    tagline: "For teams running an agent in production.",
     features: [
-      "Top 3 automations shipped",
-      "Built on your stack, your accounts",
-      "Runbooks + team training",
-      "30-day support channel",
-      "No retainer, no lock-in",
+      "Everything in Trial",
+      "Up to 3 agents",
+      "2,000 conversation credits / month",
+      "Top-up credits anytime",
+      "Email support · 24h response",
     ],
-    cta: { href: "/audit", label: "Start with an audit" },
+    cta: { href: registerUrl(), label: "Start free trial" },
     featured: true,
   },
   {
-    name: "Operator",
-    price: "€2.5k/mo",
-    cadence: "optional · cancel anytime",
+    name: "Custom build",
+    price: "from €6k",
+    cadence: "fixed-scope project · ~1 week",
     tint: "success",
-    tagline: "For teams who want us on call.",
+    tagline: "When the off-the-shelf agent isn't enough.",
     features: [
-      "Everything in Project",
-      "Monthly automation sprint",
-      "Priority fixes & monitoring",
-      "Quarterly ops review",
-      "Month-to-month, cancel anytime",
+      "Bespoke Voiceflow flows on your stack",
+      "Custom integrations (CRM, telephony, internal tools)",
+      "Trained on your knowledge base + voice",
+      "Runbooks + handover",
+      "Optional ongoing operator retainer",
     ],
-    cta: { href: "/audit", label: "Talk to us" },
+    cta: { href: "/audit", label: "Book the audit" },
     featured: false,
   },
 ] as const;

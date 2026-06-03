@@ -1,14 +1,12 @@
 import Link from "next/link";
+import { registerUrl } from "@/lib/dashboard";
 
 export function FinalCTA() {
-  const title = "Stop paying humans to do robot work.";
+  const title = "Start the agent. Custom build optional.";
   const subtitle =
-    "30-minute audit. Written diagnosis. Yours to keep — even if you never hire us.";
-  const primary = { href: "/audit", label: "Book the audit →" };
-  const secondary = {
-    href: "mailto:hello@flowstack.example",
-    label: "Email us instead",
-  };
+    "60 seconds to a live agent, 14 days free, no card. Bring us in for bespoke work when — or if — you outgrow it.";
+  const primary = { href: registerUrl(), label: "Start free trial →" };
+  const secondary = { href: "/audit", label: "Talk about custom" };
 
   return (
     <section className="relative py-24">
@@ -17,19 +15,19 @@ export function FinalCTA() {
           {/* corner registration ticks */}
           <span
             aria-hidden
-            className="pointer-events-none absolute -left-px -top-px h-4 w-4 border-l border-t border-violet"
+            className="border-violet pointer-events-none absolute -left-px -top-px h-4 w-4 border-l border-t"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute -right-px -top-px h-4 w-4 border-r border-t border-violet"
+            className="border-violet pointer-events-none absolute -right-px -top-px h-4 w-4 border-r border-t"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b border-l border-violet"
+            className="border-violet pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b border-l"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b border-r border-violet"
+            className="border-violet pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b border-r"
           />
 
           {/* sheet reference, top-left */}
@@ -69,19 +67,19 @@ export function FinalCTA() {
           {/* title-block strip: bordered mono key/value cells */}
           <div className="mt-14 grid grid-cols-2 border-t border-border-line font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
-              <span className="text-ink-mute">Format</span>
-              <span className="text-draw">30 MIN CALL</span>
+              <span className="text-ink-mute">Trial</span>
+              <span className="text-draw">14 DAYS · NO CARD</span>
             </div>
             <div className="flex flex-col gap-1 border-b border-border-line px-4 py-3 sm:border-b-0 sm:border-r">
-              <span className="text-ink-mute">Output</span>
-              <span className="text-draw">WRITTEN DIAGNOSIS</span>
+              <span className="text-ink-mute">Setup</span>
+              <span className="text-draw">~60 SECONDS</span>
             </div>
             <div className="flex flex-col gap-1 border-r border-border-line px-4 py-3">
-              <span className="text-ink-mute">Cost</span>
-              <span className="text-draw">$0</span>
+              <span className="text-ink-mute">Custom build</span>
+              <span className="text-draw">FROM €6K</span>
             </div>
             <div className="flex flex-col gap-1 px-4 py-3">
-              <span className="text-ink-mute">Commitment</span>
+              <span className="text-ink-mute">Lock-in</span>
               <span className="text-violet">NONE</span>
             </div>
           </div>

@@ -3,9 +3,9 @@ import { PageHero } from "@/components/page-hero";
 import { AuditForm } from "@/components/sections/audit-form";
 
 export const metadata: Metadata = {
-  title: "Book a free audit — Flowstack",
+  title: "Custom build — Flowstack",
   description:
-    "30-minute call, written diagnosis in 48 hours. Yours to keep, even if you never hire us. No credit card, no pitch.",
+    "When the off-the-shelf agent isn't enough. Book a free 30-minute audit; we come back inside 48 hours with a written scope for the bespoke build.",
 };
 
 const expect = [
@@ -13,19 +13,19 @@ const expect = [
     step: "01",
     tint: "cyan",
     title: "30-minute call",
-    body: "We ask where the manual work lives. You talk, we map. No slides, no pitch deck.",
+    body: "You walk us through what the off-the-shelf agent can't do — the integration, the flow, the edge case. No slides on our side.",
   },
   {
     step: "02",
     tint: "violet",
-    title: "We diagnose",
-    body: "Within 48 hours you get a written report scoring your top 5 leaks by hours saved and difficulty.",
+    title: "Written scope in 48h",
+    body: "We come back with a fixed-scope build proposal: what we'll ship, on which integrations, in how long, for how much. Yours to keep.",
   },
   {
     step: "03",
     tint: "success",
     title: "You decide",
-    body: "Hire us, take the report to someone else, or do it yourself. The document is yours either way.",
+    body: "Hire us for the build, take the scope to someone else, or do it yourself. The document is yours either way — no follow-up sales emails.",
   },
 ] as const;
 
@@ -39,16 +39,18 @@ export default function AuditPage() {
   return (
     <>
       <PageHero
-        eyebrow="Free — 30 min — no pitch"
-        eyebrowTint="success"
+        eyebrow="Custom build"
+        eyebrowTint="violet"
         title={
           <>
-            Book your free{" "}
-            <span className="text-gradient">automation audit.</span>
+            For teams whose needs outrun{" "}
+            <span className="text-gradient">the off-the-shelf agent.</span>
           </>
         }
-        lead="Tell us where the bleeding is. We come back inside 48 hours with a written diagnosis of your top 5 leaks — hours saved and difficulty scored."
-        ctas={[{ href: "#audit", label: "Jump to the form →", variant: "primary" }]}
+        lead="The trial chat covers most cases. When it doesn't — custom Voiceflow flows, bespoke integrations, your own LLM, internal tooling on top — Flowstack ships it. One week, fixed scope, you own the code."
+        ctas={[
+          { href: "#audit", label: "Jump to the form →", variant: "primary" },
+        ]}
       />
 
       {/* What to expect */}
@@ -56,7 +58,7 @@ export default function AuditPage() {
         <div className="mx-auto max-w-[1280px] px-6">
           <ol className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {expect.map((e) => (
-              <li key={e.step} className="glass rounded-3xl p-8">
+              <li key={e.step} className="glass p-8">
                 <span
                   className={`font-mono text-[13px] tracking-[0.18em] ${tintText[e.tint]}`}
                 >
