@@ -179,24 +179,24 @@ export const testimonials = [
 
 export const faqItems = [
   {
-    q: "How is this different from hiring an agency on retainer?",
-    a: "We're not. We scope a finite project, ship, hand it over, and leave. If something breaks, we fix it. If something new comes up, you decide whether to bring us back. No monthly minimums.",
+    q: "What does the agent actually do?",
+    a: "It greets every visitor, qualifies them via the role you picked (sales, support, lead-qual, onboarding), captures the lead, and pushes it into a real-time dashboard. You see every conversation and every transcript — without anyone watching a queue.",
   },
   {
-    q: "What tools do you use? Will I be locked in?",
-    a: "We build on your stack — n8n, Zapier, Make, custom code, depending on what fits. Everything we ship lives in your accounts, with your credentials. We don't run anything on our infra you can't see.",
+    q: "How is the trial limited?",
+    a: "1 agent · 200 conversation credits · 14 days · no credit card. Every feature is on — knowledge-base upload, transcript review, lead routing, integrations. When credits or the trial expire you pick a plan or walk away with your data.",
   },
   {
-    q: "How fast can we start?",
-    a: "Audit kicks off within 3 business days of the call. Most projects ship within a week of kickoff.",
+    q: "Can I bring my own Voiceflow account, or do I have to use yours?",
+    a: "Either. Managed: we provision a Voiceflow project under our workspace, one click — fastest path to live. BYOK: paste your own Voiceflow API key + project ID and we wire the agent to it. Credentials are encrypted at rest and never leave your account.",
   },
   {
-    q: "What if the audit shows nothing worth automating?",
-    a: "Then we tell you that and we don't take the project. It happens. Roughly 1 in 8 audits end this way. You still keep the report.",
+    q: "When do I need a custom build instead of the off-the-shelf agent?",
+    a: "When you need bespoke flows, integrations we don't ship by default (an internal CRM, a custom auth gateway, niche telephony, a different LLM), or your own UI on top of the chat. The trial covers the standardisable 80%; we build the rest — one week, fixed scope, you keep the code.",
   },
   {
-    q: "Do you sign NDAs?",
-    a: "Yes, before any audit work. Standard mutual NDA. We're SOC-2 aware though not certified — we can walk through our security posture on the call.",
+    q: "Are you an agency? Will I be locked in?",
+    a: "We're a SaaS first, custom-build studio second — not a retainer agency. The product is yours to trial and cancel anytime. Custom builds are fixed-scope and you keep the code; if you outgrow us you walk with everything we shipped. No monthly minimums on either side.",
   },
 ] as const;
 

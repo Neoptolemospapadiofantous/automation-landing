@@ -1,13 +1,43 @@
 import { Logo } from "./logo";
 
-const cols = [
-  { h: "Product", l: ["Audit", "Case studies", "Pricing", "Outcomes"] },
-  { h: "Company", l: ["About", "Manifesto", "Careers", "Press"] },
+type FooterLink = { label: string; href: string };
+const cols: { h: string; l: FooterLink[] }[] = [
+  {
+    h: "Product",
+    l: [
+      { label: "Agent roles", href: "/#agents" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Custom build", href: "/audit" },
+      { label: "Status", href: "#" },
+    ],
+  },
+  {
+    h: "Company",
+    l: [
+      { label: "About", href: "#" },
+      { label: "Manifesto", href: "#" },
+      { label: "Careers", href: "#" },
+      { label: "Press", href: "#" },
+    ],
+  },
   {
     h: "Resources",
-    l: ["Playbooks", "Newsletter", "Slack community", "Status"],
+    l: [
+      { label: "Docs", href: "#" },
+      { label: "Changelog", href: "#" },
+      { label: "Newsletter", href: "#" },
+      { label: "Community", href: "#" },
+    ],
   },
-  { h: "Legal", l: ["Privacy", "Terms", "Security", "DPA"] },
+  {
+    h: "Legal",
+    l: [
+      { label: "Privacy", href: "#" },
+      { label: "Terms", href: "#" },
+      { label: "Security", href: "#" },
+      { label: "DPA", href: "#" },
+    ],
+  },
 ];
 
 const titleBlock = [
@@ -56,11 +86,12 @@ export function SiteFooter() {
           <div className="max-w-[320px]">
             <Logo />
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              Custom automation studio for operators who&apos;d rather ship
-              than scale headcount.
+              AI agents for sales, support, lead-qual and onboarding. Plus
+              a bespoke automation studio for when off-the-shelf isn&apos;t
+              enough.
             </p>
             <p className="bp-annot mt-5">
-              {"// diagnose the leaks, then ship the systems"}
+              {"// pick a role · paste your knowledge · watch leads land"}
             </p>
           </div>
 
@@ -77,12 +108,12 @@ export function SiteFooter() {
                 </h4>
                 <ul className="space-y-3">
                   {c.l.map((item) => (
-                    <li key={item}>
+                    <li key={item.label}>
                       <a
-                        href="#"
+                        href={item.href}
                         className="text-ink-dim hover:text-ink font-mono text-[13px] tracking-[0.04em] transition-colors"
                       >
-                        {item}
+                        {item.label}
                       </a>
                     </li>
                   ))}

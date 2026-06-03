@@ -24,17 +24,17 @@ export function AuditForm() {
       />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="text-ink-mute mb-10 flex items-center justify-between font-mono text-[11px] tracking-[0.22em] uppercase">
-          <span className="bp-ref">SHEET 04 / INTAKE</span>
-          <span aria-hidden>FIG. 4 — DIAGNOSTIC REQUEST</span>
+          <span className="bp-ref">SHEET 04 / CUSTOM-BUILD INTAKE</span>
+          <span aria-hidden>FIG. 4 — SCOPE REQUEST</span>
         </div>
 
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
             <Eyebrow tint="success">Free — 30 min — no pitch</Eyebrow>
             <h2 className="mt-6 text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl">
-              Book the audit.
+              Book the call.
               <br />
-              <span className="text-gradient">Keep the report</span> either way.
+              <span className="text-gradient">Keep the scope</span> either way.
             </h2>
 
             {/* dimension line under the headline */}
@@ -49,15 +49,15 @@ export function AuditForm() {
             </div>
 
             <p className="text-ink-dim mt-6 max-w-[55ch] text-lg leading-[1.65]">
-              Tell us where the bleeding is. We&apos;ll come back inside 48 hours
-              with a written diagnosis of the top 5 leaks — hours saved and
-              difficulty scored.
+              Tell us what the off-the-shelf agent doesn&apos;t cover.
+              We come back inside 48 hours with a written, fixed-scope
+              proposal — what we&apos;ll build, in how long, for how much.
             </p>
 
             <ul className="mt-10 space-y-4">
               {[
-                "Written audit document — yours to keep",
-                "Live walkthrough of fixes (no slides)",
+                "Written scope document — yours to keep",
+                "Live walkthrough of the build (no slides)",
                 "No retainer. No NDA gating. No upsell.",
               ].map((line) => (
                 <li key={line} className="flex items-center gap-3">
@@ -93,7 +93,7 @@ export function AuditForm() {
             </div>
 
             <h3 className="text-ink text-[22px] font-semibold tracking-[-0.02em]">
-              Tell us where it hurts.
+              Tell us what to build.
             </h3>
             <p className="bp-annot mt-2">
               {"// all fields required unless noted"}
@@ -120,14 +120,14 @@ export function AuditForm() {
                 htmlFor="leak"
                 className="text-ink-mute font-mono text-[11px] tracking-[0.18em] uppercase"
               >
-                Where&apos;s the leak? (the more specific, the better)
+                What does the off-the-shelf agent not do? (the more specific, the better)
               </Label>
               <Textarea
                 id="leak"
                 name="leak"
                 required
                 rows={4}
-                placeholder="We're losing leads in the gap between Webflow and HubSpot. Replies take 1–2 days. Sales team manually enriches every record."
+                placeholder="We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and trigger a Pipedrive workflow when deal value > $X."
                 className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[13px]"
               />
             </div>
@@ -158,7 +158,7 @@ export function AuditForm() {
             )}
 
             <p className="text-ink-mute mt-5 text-center font-mono text-[11px] tracking-[0.06em]">
-              We never share your details. No newsletter — just the audit.
+              We never share your details. No newsletter — just the scope.
             </p>
           </form>
         </div>

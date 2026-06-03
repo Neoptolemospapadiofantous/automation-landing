@@ -19,11 +19,11 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Priced like a project.{" "}
-            <span className="text-gradient">Not a hostage situation.</span>
+            Free to trial. Paid when it works.{" "}
+            <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="The audit is free. Projects are fixed-scope. The retainer is optional and cancellable any month. You always own what we ship."
+        lead="One agent free for 14 days, no card. Paid plans scale with conversation credits as traffic grows. Custom builds when off-the-shelf can't cut it — fixed scope, you keep the code."
       />
 
       {/* Pricing tiers */}
