@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Services } from "@/components/sections/services";
-import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/section-heading";
 import { integrations } from "@/lib/content";
 
@@ -63,10 +62,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Tell us what's eating your week."
-        subtitle="Book a free audit and we'll point at the three things worth automating first."
-      />
     </>
   );
 }

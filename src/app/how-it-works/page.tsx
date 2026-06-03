@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { HowItWorks } from "@/components/sections/how-it-works";
-import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/section-heading";
 import { processDeliverables, tintMap, type Tint } from "@/lib/content";
 
@@ -72,10 +71,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Day one starts with a free audit."
-        subtitle="Book the 30-minute call. If there's nothing worth automating, we'll tell you — and you keep the report."
-      />
     </>
   );
 }

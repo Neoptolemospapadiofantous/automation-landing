@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { FAQ } from "@/components/sections/faq";
-import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/section-heading";
 import { pricingTiers, tintMap, type Tint } from "@/lib/content";
 
@@ -107,11 +106,6 @@ export default function PricingPage() {
         </div>
       </section>
       <FAQ hideHeading />
-
-      <CTASection
-        title="Start free. Decide later."
-        subtitle="The audit costs nothing and the report is yours regardless. Worst case, you learn exactly where your hours go."
-      />
     </>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Outcomes } from "@/components/sections/outcomes";
 import { LiveOutcomes } from "@/components/sections/live-outcomes";
-import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/section-heading";
 import { caseStudies, tintMap, type Tint } from "@/lib/content";
 
@@ -81,10 +80,6 @@ export default function OutcomesPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Your before-and-after starts here."
-        subtitle="Book a free audit and we'll estimate the hours and headcount you'd get back."
-      />
     </>
   );
 }

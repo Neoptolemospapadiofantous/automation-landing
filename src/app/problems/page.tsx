@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Problems } from "@/components/sections/problems";
-import { CTASection } from "@/components/sections/cta-section";
 import { costStats, tintMap, type Tint } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -53,11 +52,6 @@ export default function ProblemsPage() {
       </section>
 
       <Problems />
-
-      <CTASection
-        title="Let's find out where you're bleeding."
-        subtitle="A free 30-minute audit returns a scored list of your top 5 leaks — in writing, in 48 hours."
-      />
     </>
   );
 }
