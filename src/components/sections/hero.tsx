@@ -29,7 +29,7 @@ export function Hero() {
               Pick a role — sales, support, lead qualification, onboarding —
               and we provision a chatbot trained on your knowledge, wired to
               your stack, with leads streaming into a real-time dashboard.
-              Trial it free; bring us in for custom builds when you outgrow it.
+              $19/mo to start; bring us in for custom builds when you outgrow it.
             </p>
 
             {/* Manifesto — the opinion */}
@@ -46,7 +46,7 @@ export function Hero() {
                 href={registerUrl()}
                 className="btn-grad inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
               >
-                Start free trial →
+                Try it for $19 →
               </Link>
               <Link
                 href="/pricing"

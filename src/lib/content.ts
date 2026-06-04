@@ -78,8 +78,8 @@ export const faqItems = [
     a: "It greets every visitor, qualifies them via the role you picked (sales, support, lead-qual, onboarding), captures the lead, and pushes it into a real-time dashboard. You see every conversation and every transcript — without anyone watching a queue.",
   },
   {
-    q: "How is the trial limited?",
-    a: "1 agent · 200 conversation credits · 14 days · no credit card. Every feature is on — knowledge-base upload, transcript review, lead routing, integrations. When credits or the trial expire you pick a plan or walk away with your data.",
+    q: "What's in the Starter plan?",
+    a: "$19/mo · 1 agent · 1,000 conversation credits · cancel anytime, no lock-in. Every feature is on — knowledge-base upload, transcript review, lead routing, integrations. Need more headroom? Buy a top-up pack or upgrade to Operator; either way nothing about your setup changes.",
   },
   {
     q: "Can I bring my own Voiceflow account, or do I have to use yours?",

@@ -4,8 +4,8 @@ import { registerUrl } from "@/lib/dashboard";
 export function FinalCTA() {
   const title = "Start the agent. Custom build optional.";
   const subtitle =
-    "60 seconds to a live agent, 14 days free, no card. Bring us in for bespoke work when — or if — you outgrow it.";
-  const primary = { href: registerUrl(), label: "Start free trial →" };
+    "60 seconds to a live agent, $19/mo, cancel anytime. Bring us in for bespoke work when — or if — you outgrow it.";
+  const primary = { href: registerUrl(), label: "Try it for $19 →" };
   const secondary = { href: "/audit", label: "Talk about custom" };
 
   return (
@@ -67,8 +67,8 @@ export function FinalCTA() {
           {/* title-block strip: bordered mono key/value cells */}
           <div className="mt-14 grid grid-cols-2 border-t border-border-line font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
-              <span className="text-ink-mute">Trial</span>
-              <span className="text-draw">14 DAYS · NO CARD</span>
+              <span className="text-ink-mute">Starter</span>
+              <span className="text-draw">$19/MO · CANCEL ANYTIME</span>
             </div>
             <div className="flex flex-col gap-1 border-b border-border-line px-4 py-3 sm:border-b-0 sm:border-r">
               <span className="text-ink-mute">Setup</span>
@@ -76,7 +76,7 @@ export function FinalCTA() {
             </div>
             <div className="flex flex-col gap-1 border-r border-border-line px-4 py-3">
               <span className="text-ink-mute">Custom build</span>
-              <span className="text-draw">FROM €6K</span>
+              <span className="text-draw">FROM $6K</span>
             </div>
             <div className="flex flex-col gap-1 px-4 py-3">
               <span className="text-ink-mute">Lock-in</span>
