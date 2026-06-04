@@ -82,8 +82,8 @@ export const faqItems = [
     a: "$19/mo · 1 agent · 1,000 conversation credits · cancel anytime, no lock-in. Every feature is on — knowledge-base upload, transcript review, lead routing, integrations. Need more headroom? Buy a top-up pack or upgrade to Operator; either way nothing about your setup changes.",
   },
   {
-    q: "Can I bring my own Voiceflow account, or do I have to use yours?",
-    a: "Either. Managed: we provision a Voiceflow project under our workspace, one click — fastest path to live. BYOK: paste your own Voiceflow API key + project ID and we wire the agent to it. Credentials are encrypted at rest and never leave your account.",
+    q: "Do I need a Voiceflow account?",
+    a: "No. We provision and manage the Voiceflow project for you on every plan — one click, no account to create, no keys to paste. Credentials live encrypted in your isolated tenant and never reach your browser. If your compliance team requires you to run Voiceflow under your own workspace, that's a Custom-build conversation.",
   },
   {
     q: "When do I need a custom build instead of the off-the-shelf agent?",
