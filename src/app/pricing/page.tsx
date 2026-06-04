@@ -8,7 +8,7 @@ import { pricingTiers, tintMap, type Tint } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Pricing — Flowstack",
   description:
-    "Free audit. Fixed-scope projects from €6k. Optional month-to-month operator retainer. No lock-in, ever.",
+    "Start with one agent for $19/mo. Scale to five for $79/mo. Custom builds from $6k — n8n operations + integrations on your stack. No lock-in, ever.",
 };
 
 export default function PricingPage() {
@@ -19,11 +19,11 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Free to trial. Paid when it works.{" "}
+            Try it for $19. Scale when it works.{" "}
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent free for 14 days, no card. Paid plans scale with conversation credits as traffic grows. Custom builds when off-the-shelf can't cut it — fixed scope, you keep the code."
+        lead="One agent for $19/mo to try the product. Five agents for $79/mo when you're running it in production. Custom builds with n8n operations and integrations on your stack — fixed scope, you keep the code."
       />
 
       {/* Pricing tiers */}
