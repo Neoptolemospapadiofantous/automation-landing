@@ -1,0 +1,15 @@
+<svg width="680" height="220" viewBox="0 0 680 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowstack mark, wide">
+  <title>Flowstack — wide mark (wires + node + arrow), white on transparent</title>
+  <!-- input wire -->
+  <path d="M0 110 H120" stroke="#FFFFFF" stroke-width="15"/>
+  <!-- node frame -->
+  <rect x="135" y="47.5" width="410" height="125" stroke="#FFFFFF" stroke-width="15" fill="none"/>
+  <!-- active core (filled) -->
+  <rect x="205" y="85" width="50" height="50" fill="#FFFFFF"/>
+  <!-- queued indicator (hollow) -->
+  <rect x="375" y="85" width="50" height="50" stroke="#FFFFFF" stroke-width="10" fill="none"/>
+  <!-- output wire -->
+  <path d="M545 110 H660" stroke="#FFFFFF" stroke-width="15"/>
+  <!-- arrowhead -->
+  <path d="M635 75 L680 110 L635 145" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+</svg>

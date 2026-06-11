@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowstack mark">
+  <title>Flowstack — square mark, white on solid black</title>
+  <!-- solid black background — the brand-default profile picture -->
+  <rect width="512" height="512" fill="#000000"/>
+  <!-- node frame -->
+  <rect x="56" y="128" width="400" height="256" stroke="#FFFFFF" stroke-width="20" fill="none"/>
+  <!-- active core (filled) -->
+  <rect x="112" y="216" width="80" height="80" fill="#FFFFFF"/>
+  <!-- queued indicator (hollow) -->
+  <rect x="320" y="216" width="80" height="80" stroke="#FFFFFF" stroke-width="16" fill="none"/>
+</svg>
