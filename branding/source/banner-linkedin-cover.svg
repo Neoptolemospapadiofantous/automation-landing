@@ -1,0 +1,41 @@
+<svg width="1128" height="191" viewBox="0 0 1128 191" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowstack LinkedIn company cover">
+  <title>Flowstack — LinkedIn company cover, 1128×191</title>
+  <rect width="1128" height="191" fill="#000000"/>
+
+  <!-- grid background -->
+  <g stroke="rgba(255,255,255,0.10)" stroke-width="1">
+    <line x1="160" y1="0" x2="160" y2="191"/>
+    <line x1="320" y1="0" x2="320" y2="191"/>
+    <line x1="640" y1="0" x2="640" y2="191"/>
+    <line x1="960" y1="0" x2="960" y2="191"/>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#FFFFFF" stroke-width="2" fill="none">
+    <path d="M24 36 L24 24 L36 24"/>
+    <path d="M1092 24 L1104 24 L1104 36"/>
+    <path d="M24 155 L24 167 L36 167"/>
+    <path d="M1092 167 L1104 167 L1104 155"/>
+  </g>
+
+  <!-- wide mark, scaled into the left portion -->
+  <g transform="translate(60 50) scale(0.42)">
+    <path d="M0 110 H120" stroke="#FFFFFF" stroke-width="15"/>
+    <rect x="135" y="47.5" width="410" height="125" stroke="#FFFFFF" stroke-width="15" fill="none"/>
+    <rect x="205" y="85" width="50" height="50" fill="#FFFFFF"/>
+    <rect x="375" y="85" width="50" height="50" stroke="#FFFFFF" stroke-width="10" fill="none"/>
+    <path d="M545 110 H660" stroke="#FFFFFF" stroke-width="15"/>
+    <path d="M635 75 L680 110 L635 145" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  </g>
+
+  <!-- tagline right of mark -->
+  <g font-family="sans-serif" font-weight="600" fill="#FFFFFF">
+    <text x="430" y="92" font-size="28" letter-spacing="-0.5">AI agents for your team.</text>
+    <text x="430" y="124" font-size="28" letter-spacing="-0.5" fill="#B8B8B8">Live in 60 seconds.</text>
+  </g>
+
+  <!-- baseline -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="11" letter-spacing="3" fill="#6B6B6B">
+    <text x="430" y="158">FLOWSTACK / AUTOMATION  ·  REV A  ·  SCALE 1:1</text>
+  </g>
+</svg>
