@@ -2,11 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Schematic node copy. Generic labels only — no third-party service
+ * names so we don't imply integrations we haven't shipped.
+ */
 const NODES = [
-  { label: "TRIGGER", title: "New form submission", sub: "Webflow · /audit" },
-  { label: "ENRICH", title: "Pull company data", sub: "Apollo + Clearbit" },
-  { label: "ROUTE", title: "Score & assign", sub: "ICP fit ≥ 0.7" },
-  { label: "ACT", title: "Book + Slack ping", sub: "Cal.com · #sales" },
+  { label: "TRIGGER", title: "New inbound message", sub: "any channel" },
+  { label: "ENRICH",  title: "Qualify on your ICP", sub: "context-aware" },
+  { label: "ROUTE",   title: "Score & assign",      sub: "right person" },
+  { label: "ACT",     title: "Notify + book",       sub: "in your stack" },
 ] as const;
 
 export function HeroSchematic() {
@@ -31,6 +35,14 @@ export function HeroSchematic() {
       <span className="border-accent-line absolute -bottom-px -left-px h-3 w-3 border-b border-l" />
       <span className="border-accent-line absolute -bottom-px -right-px h-3 w-3 border-b border-r" />
 
+      {/* status stamp — floating outside the top-right corner */}
+      <span
+        aria-hidden
+        className="ins-stamp pointer-events-none absolute -right-3 -top-4 z-10 hidden sm:inline-block"
+      >
+        Live
+      </span>
+
       {/* filename / status bar */}
       <div className="border-border-line flex items-center gap-3 border-b px-5 py-3.5 font-mono text-[11px] tracking-[0.18em] uppercase">
         <span className="bp-ref">FIG. 1</span>
@@ -39,7 +51,7 @@ export function HeroSchematic() {
         </span>
         <span className="text-success ml-auto inline-flex items-center gap-2">
           <span className="bg-success pulse-glow inline-block h-1.5 w-1.5 rounded-full" />
-          LIVE · 47s avg
+          DEMO
         </span>
       </div>
 
@@ -75,7 +87,7 @@ export function HeroSchematic() {
                 >
                   <span
                     className={`bp-dot shrink-0 transition-colors ${
-                      isLit ? "border-violet bg-violet/30" : ""
+                      isLit ? "border-ink bg-ink/15" : ""
                     }`}
                   />
                   <span className="min-w-0 flex-1">
@@ -113,47 +125,16 @@ export function HeroSchematic() {
         </ol>
       </div>
 
-      {/* readout strip */}
+      {/* readout strip — describes what the schematic shows, no
+          fabricated runtime numbers (latency, scores, region tags). */}
       <div className="border-border-line text-ink-mute grid grid-cols-1 border-t font-mono text-[10.5px] tracking-[0.06em] sm:grid-cols-2">
         <span className="border-border-line px-5 py-3 sm:border-r">
-          last run · 11ms · score:0.82
+          schematic · agent role: lead qualification
         </span>
         <span className="text-success px-5 py-3 sm:text-right">
-          ✓ routed → #sales-emea
+          configurable per workflow
         </span>
       </div>
     </div>
-  );
-}
-
-export function HoursCounter({ target = 48217 }: { target?: number }) {
-  const [n, setN] = useState(0);
-
-  useEffect(() => {
-    let raf = 0;
-    const dur = 1400;
-    const t0 = performance.now();
-    const ease = (p: number) => 1 - Math.pow(1 - p, 3);
-    const tick = (t: number) => {
-      const p = Math.min(1, (t - t0) / dur);
-      setN(Math.round(target * ease(p)));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    let live: ReturnType<typeof setInterval>;
-    const startLive = setTimeout(() => {
-      live = setInterval(() => setN((v) => v + 1), 1100);
-    }, dur + 200);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(startLive);
-      if (live) clearInterval(live);
-    };
-  }, [target]);
-
-  return (
-    <span className="text-violet tabular-nums">{n.toLocaleString("en-US")}</span>
   );
 }

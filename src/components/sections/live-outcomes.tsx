@@ -1,6 +1,8 @@
-import { getPlatformStats, type CountField } from "@/lib/stats";
+import { getPlatformStats, relativeTime, type CountField } from "@/lib/stats";
 import { tintMap, type Tint } from "@/lib/content";
 import { LiveStat } from "@/components/live-stat";
+import { LiveRelativeTime } from "@/components/live-relative-time";
+import { SectionWatermark } from "@/components/section-watermark";
 
 /**
  * Live counts strip — async server component for first paint (SEO-correct
@@ -12,19 +14,30 @@ import { LiveStat } from "@/components/live-stat";
  * instead of disappearing. Whole-section hide was confusing on an early-
  * stage platform; muted-dash cells read as "instrument calibrating" and
  * automatically light up once the underlying count crosses the bucket.
+ *
+ * Six cells laid out as a 2x3 (mobile) / 3x2 (tablet) / 6x1 (desktop)
+ * grid. Top row covers cumulative platform stats (operators, qualified,
+ * conversational turns); bottom row covers right-now signals (active,
+ * last 24h, hours given back). A separate <LiveRelativeTime> recency
+ * line sits below the grid pulling `last_activity_at`.
  */
 export async function LiveOutcomes() {
   const stats = await getPlatformStats();
 
   const items: { field: CountField; l: string; c: Tint }[] = [
-    { field: "teams_count", l: "operators on the platform", c: "violet" },
+    { field: "teams_count", l: "teams on the platform", c: "violet" },
     { field: "leads_qualified", l: "leads qualified by AI agents", c: "cyan" },
-    { field: "messages_handled", l: "conversational turns handled", c: "success" },
+    { field: "messages_handled", l: "conversations handled", c: "success" },
     { field: "agents_active", l: "agents running right now", c: "warn" },
+    { field: "messages_last_24h", l: "messages in the last 24h", c: "violet" },
+    { field: "time_saved_hours", l: "hours given back to teams", c: "cyan" },
   ];
 
+  const initialRecency = relativeTime(stats.last_activity_at);
+
   return (
-    <section id="live" className="relative py-20">
+    <section id="live" className="relative isolate overflow-hidden py-20">
+      <SectionWatermark text="LIVE" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-1">
@@ -36,10 +49,10 @@ export async function LiveOutcomes() {
           <p className="bp-annot">{"// LIVE — STREAMS VIA SSE"}</p>
         </div>
 
-        <div className="border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b md:grid-cols-4 md:divide-y-0">
+        <div className="border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b sm:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
           {items.map((m, i) => {
             const tint = tintMap[m.c];
-            const ref = `R-1${i + 1}`;
+            const ref = `R-1${(i + 1).toString().padStart(2, "0")}`;
             return (
               <figure
                 key={m.field}
@@ -52,7 +65,7 @@ export async function LiveOutcomes() {
                   {ref}
                 </span>
                 <div
-                  className={`text-5xl font-semibold tracking-[-0.04em] sm:text-6xl ${tint.text}`}
+                  className={`text-4xl font-semibold tracking-[-0.04em] sm:text-5xl ${tint.text}`}
                 >
                   <LiveStat
                     initial={stats.display[m.field]}
@@ -75,6 +88,20 @@ export async function LiveOutcomes() {
             );
           })}
         </div>
+
+        {/* Recency callout — distinct from the count cells because it's a
+            timestamp, not an aggregate. Hides itself when no qualified
+            leads exist yet (renders nothing rather than "never"). */}
+        {initialRecency ? (
+          <p className="text-ink-dim mt-6 flex items-center justify-end gap-2 font-mono text-[11px] uppercase tracking-[0.18em]">
+            <span
+              className="pulse-glow inline-block h-1.5 w-1.5 rounded-full bg-ink"
+              aria-hidden
+            />
+            Last qualified lead{" "}
+            <LiveRelativeTime initial={initialRecency} field="last_activity_at" />
+          </p>
+        ) : null}
       </div>
     </section>
   );

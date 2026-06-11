@@ -4,6 +4,11 @@ import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BlueprintChrome } from "@/components/blueprint-chrome";
+import { LiveStatsProvider } from "@/components/live-stats-provider";
+import { AnnouncementBar } from "@/components/announcement-bar";
+import { CookieConsent } from "@/components/cookie-consent";
+import { Analytics } from "@/components/analytics";
+import { SITE_URL, BRAND } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -17,16 +22,73 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
+const DESCRIPTION =
+  "Pre-built AI agents for sales, support, lead qualification and onboarding — with every conversation streaming into a real-time dashboard. Starter $99/mo, cancel anytime. Custom builds wire the agent into your existing stack when you're ready — scoped per project.";
+
 export const metadata: Metadata = {
-  title: "Flowstack — AI agents for your team, live in 60 seconds",
-  description:
-    "Pre-built AI agents for sales, support, lead-qualification and onboarding — provisioned on your stack with leads streaming into a real-time dashboard. Starter $19/mo, cancel anytime. Custom builds when off-the-shelf isn't enough.",
-  metadataBase: new URL("https://flowstack.example"),
+  metadataBase: new URL(SITE_URL),
+  title: {
+    // Per-page metadata can pass a string to use the template, or a
+    // string-with-the-brand-already-attached to override entirely.
+    default: TITLE_DEFAULT,
+    template: `%s — ${BRAND.name}`,
+  },
+  description: DESCRIPTION,
+  applicationName: BRAND.name,
+  authors: [{ name: BRAND.legalName }],
+  creator: BRAND.legalName,
+  publisher: BRAND.legalName,
+  keywords: [
+    "AI agent",
+    "AI agents",
+    "chatbot",
+    "lead qualification",
+    "customer support AI",
+    "sales chatbot",
+    "onboarding automation",
+    "automation studio",
+    "Flowstack",
+  ],
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Flowstack — AI agents for your team, live in 60 seconds",
-    description:
-      "Pick a role. We provision the agent — $19/mo to start, scale when it works. Hire the custom-build studio when you outgrow the off-the-shelf flow.",
     type: "website",
+    siteName: BRAND.name,
+    locale: BRAND.locale,
+    url: SITE_URL,
+    title: TITLE_DEFAULT,
+    description: DESCRIPTION,
+    // The image referenced here is supplied by `src/app/opengraph-image.tsx`
+    // — Next generates the route and the metadata entry automatically.
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: BRAND.twitter,
+    creator: BRAND.twitter,
+    title: TITLE_DEFAULT,
+    description: DESCRIPTION,
+  },
+  // Verification placeholders — populate when the search-console
+  // properties exist. Leaving the keys present makes it obvious where
+  // they go.
+  verification: {
+    // google: "TBC",
+    // yandex: "TBC",
+    // me: "mailto:" + BRAND.contact.privacy,
   },
 };
 
@@ -40,10 +102,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-bg text-ink min-h-full flex flex-col overflow-x-hidden">
-        <BlueprintChrome />
-        <SiteNav />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <LiveStatsProvider>
+          <BlueprintChrome />
+          <AnnouncementBar />
+          <SiteNav />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+          <CookieConsent />
+          <Analytics />
+        </LiveStatsProvider>
       </body>
     </html>
   );

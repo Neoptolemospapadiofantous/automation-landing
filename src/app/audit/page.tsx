@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Custom build — Flowstack",
   description:
     "When the off-the-shelf agent isn't enough. Book a free 30-minute audit; we come back inside 48 hours with a written scope for the bespoke build.",
+  alternates: { canonical: "/audit" },
+  openGraph: {
+    title: "Custom build — Flowstack",
+    url: "/audit",
+    description:
+      "Free 30-minute audit. Written scope inside 48 hours. Fixed-scope build, you keep the code.",
+  },
 };
 
 const expect = [
@@ -29,12 +36,6 @@ const expect = [
   },
 ] as const;
 
-const tintText: Record<string, string> = {
-  cyan: "text-cyan",
-  violet: "text-violet",
-  success: "text-success",
-};
-
 export default function AuditPage() {
   return (
     <>
@@ -43,28 +44,33 @@ export default function AuditPage() {
         eyebrowTint="violet"
         title={
           <>
-            For teams whose needs outrun{" "}
+            For teams whose stack outruns{" "}
             <span className="text-gradient">the off-the-shelf agent.</span>
           </>
         }
-        lead="The trial chat covers most cases. When it doesn't — custom Voiceflow flows, bespoke integrations, your own LLM, internal tooling on top — Flowstack ships it. One week, fixed scope, you own the code."
+        lead="The trial gives you the agent itself — chat, knowledge base, transcripts, lead routing. The custom build is where bespoke flows, custom integrations and any internal tooling get wired up. Fixed scope, you own the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}
       />
 
-      {/* What to expect */}
+      {/* What to expect — hairline-bordered grid, large mono step number
+          as the differentiator (per-step tint collapses in mono). */}
       <section className="relative pb-8">
         <div className="mx-auto max-w-[1280px] px-6">
-          <ol className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <ol className="grid grid-cols-1 border-t border-l border-border-line md:grid-cols-3">
             {expect.map((e) => (
-              <li key={e.step} className="glass p-8">
-                <span
-                  className={`font-mono text-[13px] tracking-[0.18em] ${tintText[e.tint]}`}
-                >
-                  {e.step}
-                </span>
-                <h3 className="text-ink mt-4 text-xl font-semibold tracking-[-0.02em]">
+              <li
+                key={e.step}
+                className="bg-surface/40 relative border-r border-b border-border-line p-8"
+              >
+                <div className="flex items-baseline gap-4">
+                  <span className="text-ink font-mono text-5xl font-semibold leading-none tracking-[-0.04em]">
+                    {e.step}
+                  </span>
+                  <span className="bp-dim flex-1" aria-hidden />
+                </div>
+                <h3 className="text-ink mt-5 text-xl font-semibold tracking-[-0.02em]">
                   {e.title}
                 </h3>
                 <p className="text-ink-dim mt-3 text-[14.5px] leading-[1.55]">

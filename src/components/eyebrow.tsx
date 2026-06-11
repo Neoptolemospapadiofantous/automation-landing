@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import type { Tint } from "@/lib/content";
 
-// Map each tint onto a blueprint ink color. The accent (electric blue) is
-// reserved for `violet`; `cyan` reads as drawn pale ink; success/warn/danger
-// stay as genuine status colors. Each entry colors both the .bp-dot marker
-// (via border on the hollow square) and the mono label text.
+// Tint names are kept for API compatibility — the underlying tokens
+// (--violet, --draw, --success, ...) all resolve to white in the current
+// mono palette, so every variant renders as white-on-black. Re-introduce
+// per-tint color by editing those tokens in globals.css.
 const tintInk: Record<Tint, { dot: string; label: string }> = {
   violet: { dot: "border-violet", label: "text-violet" },
   cyan: { dot: "border-draw", label: "text-draw" },

@@ -72,31 +72,31 @@
 }
 
 :root {
-  /* ── Flowstack blueprint palette ──
-     Cyanotype navy ground, drawn in pale ink. Brand names kept for
-     compatibility: --violet is repurposed as the ACCENT, --cyan as the
-     DRAW (pale ink) color, so existing utility classes recolor for free. */
-  --bg:           #0B1430;
-  --bg-elev:      #0E1A3C;
-  --surface:      #0E1A3C;
-  --surface-hi:   #15234C;
-  --border-line:  #21366B;
-  --border-hi:    #2F4A8F;
-  --ink:          #EAF0FF;
-  --ink-dim:      #B2C2E6;
-  --ink-mute:     #8496C2;
-  --violet:       #5FB6FF;
-  --violet-soft:  #8FCAFF;
-  --cyan:         #CFE0FF;
-  --cyan-soft:    #EAF1FF;
-  --success:      #5FE0B0;
-  --warn:         #FFC56B;
-  --danger:       #FF7A8C;
+  /* ── Pure mono palette ──
+     Black ground, white ink. Brand-token names kept for compatibility:
+     --violet (accent) and --cyan (draw) both resolve to white, so every
+     existing utility class recolors for free into the editorial mono. */
+  --bg:           #000000;
+  --bg-elev:      #0A0A0A;
+  --surface:      #0A0A0A;
+  --surface-hi:   #141414;
+  --border-line:  #1F1F1F;
+  --border-hi:    #2E2E2E;
+  --ink:          #FFFFFF;
+  --ink-dim:      #B8B8B8;
+  --ink-mute:     #6B6B6B;
+  --violet:       #FFFFFF;
+  --violet-soft:  #E5E5E5;
+  --cyan:         #FFFFFF;
+  --cyan-soft:    #E5E5E5;
+  --success:      #FFFFFF;
+  --warn:         #B8B8B8;
+  --danger:       #FFFFFF;
 
-  /* blueprint drawing primitives */
-  --line:         rgba(126, 170, 255, 0.09);
-  --line-strong:  rgba(126, 170, 255, 0.17);
-  --draw:         var(--cyan);
+  /* mono drawing primitives */
+  --line:         rgba(255, 255, 255, 0.06);
+  --line-strong:  rgba(255, 255, 255, 0.14);
+  --draw:         var(--ink);
 
   --background: var(--bg);
   --foreground: var(--ink);
@@ -167,22 +167,18 @@
     @apply bg-bg text-ink;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
-    /* Blueprint graph paper: fine 32px grid + heavier 160px major grid,
-       fixed so the whole site reads as one sheet underneath the content. */
+    /* Editorial sheet: a single quiet 160px major grid, no fine grid —
+       the mono palette already carries the page; less ink underneath. */
     background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px),
       linear-gradient(var(--line-strong) 1px, transparent 1px),
       linear-gradient(90deg, var(--line-strong) 1px, transparent 1px);
     background-size:
-      32px 32px,
-      32px 32px,
       160px 160px,
       160px 160px;
     background-attachment: fixed;
   }
   ::selection {
-    background: var(--violet);
+    background: var(--ink);
     color: var(--bg);
   }
 }
@@ -211,30 +207,31 @@
     background-clip: border-box;
   }
 
-  /* Solid hard-edged accent button (was the brand gradient sweep). */
+  /* Solid hard-edged accent button — white block on black. */
   .btn-grad {
-    background: var(--violet);
+    background: var(--ink);
     color: var(--bg);
-    border: 1px solid var(--violet);
+    border: 1px solid var(--ink);
     font-family: var(--font-mono);
     letter-spacing: 0.06em;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
   .btn-grad:hover {
-    background: var(--draw);
-    border-color: var(--draw);
+    background: var(--ink-dim);
+    border-color: var(--ink-dim);
   }
 
-  /* Outlined "drawn" button — ghost variant of the node language. */
+  /* Outlined "drawn" button — ghost variant. */
   .btn-draw {
     background: transparent;
-    color: var(--draw);
-    border: 1px solid var(--draw);
+    color: var(--ink);
+    border: 1px solid var(--ink);
     font-family: var(--font-mono);
     letter-spacing: 0.06em;
     transition: background 0.15s, color 0.15s;
   }
   .btn-draw:hover {
-    background: var(--draw);
+    background: var(--ink);
     color: var(--bg);
   }
 
@@ -352,6 +349,76 @@
     );
   }
 
+  /* Status stamp — rotated outlined mono label (APPROVED, LIVE, REV A,
+     DRAFT). Reads like a rubber stamp impressed on a drawing sheet.
+     Use on a decorative span/div; set a tint via text-color.
+
+       <span class="ins-stamp">APPROVED</span>
+   */
+  .ins-stamp {
+    display: inline-block;
+    padding: 0.4rem 0.65rem;
+    border: 1.5px solid currentColor;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1;
+    transform: rotate(-6deg);
+    color: var(--ink-dim);
+    background: transparent;
+    position: relative;
+  }
+  .ins-stamp::before,
+  .ins-stamp::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    right: 0.4rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+  }
+  .ins-stamp::before { top: 2px; }
+  .ins-stamp::after  { bottom: 2px; }
+
+  /* Long-form legal prose. Default mono everywhere punishes long reads,
+     so legal pages opt into sans body via this class. Set on the body
+     wrapper inside each <LegalDoc /> section. */
+  .legal-prose p + p          { margin-top: 1rem; }
+  .legal-prose ul             { margin: 1rem 0; padding-left: 1.25rem; list-style: none; }
+  .legal-prose ul li          { position: relative; padding-left: 0.85rem; margin: 0.4rem 0; }
+  .legal-prose ul li::before  {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 6px;
+    height: 1px;
+    background: var(--ink-mute);
+  }
+  .legal-prose strong         { color: var(--ink); font-weight: 600; }
+  .legal-prose a              { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .legal-prose a:hover        { color: var(--ink-dim); }
+  .legal-prose code           {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--ink);
+    background: var(--surface-hi);
+    padding: 0.05em 0.35em;
+  }
+  /* TBC marker for placeholders awaiting company-specific facts */
+  .legal-prose .tbc {
+    font-family: var(--font-mono);
+    font-size: 0.8125em;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    border: 1px dashed var(--border-hi);
+    padding: 0.05em 0.4em;
+    text-transform: uppercase;
+  }
+
   /* Hairline grid background (component-local; body already has the sheet). */
   .bg-grid {
     background-image:
@@ -378,3 +445,93 @@
   50%      { opacity: 0.85; box-shadow: 0 0 10px 1px currentColor; }
 }
 .pulse-glow { animation: pulse-glow 2.4s ease-in-out infinite; }
+
+/* ── Announcement-bar effects ── */
+
+/* Entry: slide down from the top of the viewport on first paint. */
+@keyframes ann-enter {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.ann-enter {
+  animation: ann-enter 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Marching-ants bottom edge — dashed border that flows left to right,
+   echoes the bp-wire motif used in the schematic. The dash uses the
+   parent text color so it inverts with the bar. */
+@keyframes ann-rail-march {
+  to { background-position: 14px 0; }
+}
+.ann-rail {
+  position: relative;
+}
+.ann-rail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background-image: linear-gradient(
+    90deg,
+    currentColor 55%,
+    transparent 55%
+  );
+  background-size: 14px 2px;
+  animation: ann-rail-march 1.2s linear infinite;
+  pointer-events: none;
+}
+
+/* Slow shimmer sweep across the bar — like polished metal catching
+   light. Travels every ~7s, very low opacity so it never competes
+   with the actual copy. */
+@keyframes ann-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(450%); }
+}
+.ann-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.ann-shimmer > .ann-shimmer-bar {
+  position: absolute;
+  inset: 0;
+  width: 25%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent 100%
+  );
+  animation: ann-shimmer 7s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Idle arrow nudge — subtle breathing motion, 2.4s rhythm, paused on
+   hover so the hover translate can take over without conflict. */
+@keyframes ann-arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(3px); }
+}
+.ann-arrow {
+  animation: ann-arrow-nudge 2.4s ease-in-out infinite;
+}
+.group:hover .ann-arrow {
+  animation-play-state: paused;
+  transform: translateX(5px);
+}
+
+/* Respect user motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  .ann-enter,
+  .ann-rail::after,
+  .ann-shimmer > .ann-shimmer-bar,
+  .ann-arrow,
+  .group:hover .ann-arrow {
+    animation: none;
+    transform: none;
+  }
+  .ann-rail::after { background-image: none; background: currentColor; }
+}

@@ -3,12 +3,19 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { FAQ } from "@/components/sections/faq";
 import { SectionHeading } from "@/components/section-heading";
-import { pricingTiers, tintMap, type Tint } from "@/lib/content";
+import { pricingTiers } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Pricing — Flowstack",
   description:
-    "Start with one agent for $19/mo. Scale to five for $79/mo. Custom builds from $6k — n8n operations + integrations on your stack. No lock-in, ever.",
+    "Start with one agent for $99/mo. Scale to five for $399/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing — Flowstack",
+    url: "/pricing",
+    description:
+      "Start with one agent for $99/mo. Scale to five for $399/mo. Custom builds scoped per project.",
+  },
 };
 
 export default function PricingPage() {
@@ -19,35 +26,50 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Try it for $19. Scale when it works.{" "}
+            Try it for $99. Scale when it works.{" "}
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent for $19/mo to try the product. Five agents for $79/mo when you're running it in production. Custom builds with n8n operations and integrations on your stack — fixed scope, you keep the code."
+        lead="One agent for $99/mo to try the product. Five agents for $399/mo when you're running it in production. Custom builds with bespoke integrations on your stack — fixed scope, you keep the code."
       />
 
-      {/* Pricing tiers */}
+      {/* Pricing tiers — hairline-bordered cards in the editorial mono
+          language. Featured tier gets a white top accent + corner ticks
+          (the ring-violet emphasis no longer reads in mono). */}
       <section className="relative pb-12">
         <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {pricingTiers.map((tier) => {
-              const t = tintMap[tier.tint as Tint];
+          <div className="grid grid-cols-1 gap-0 border-t border-l border-border-line lg:grid-cols-3">
+            {pricingTiers.map((tier, i) => {
+              const ref = `TIER-0${i + 1}`;
               return (
                 <div
                   key={tier.name}
-                  className={`glass relative flex flex-col rounded-3xl p-8 ${
-                    tier.featured ? "ring-1 ring-violet/40" : ""
+                  className={`relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 ${
+                    tier.featured ? "border-t-2 border-t-ink lg:-mt-px" : ""
                   }`}
                 >
                   {tier.featured && (
-                    <span className="bg-violet/15 border-violet/40 text-violet absolute right-6 top-6 rounded-full border px-2.5 py-1 font-mono text-[10px] tracking-[0.18em]">
-                      MOST PICKED
-                    </span>
+                    <>
+                      <span
+                        aria-hidden
+                        className="absolute -left-px -top-px h-3 w-3 border-l border-t border-ink"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute -right-px -top-px h-3 w-3 border-r border-t border-ink"
+                      />
+                      <span className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.22em] text-ink">
+                        MOST PICKED
+                      </span>
+                    </>
                   )}
-                  <h3 className={`text-sm font-semibold tracking-wide ${t.text}`}>
+
+                  <span className="bp-ref text-ink-mute">{ref}</span>
+                  <h3 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
                     {tier.name}
                   </h3>
-                  <div className="mt-4 flex items-baseline gap-2">
+
+                  <div className="mt-5 flex items-baseline gap-2">
                     <span className="text-ink text-4xl font-semibold tracking-[-0.03em]">
                       {tier.price}
                     </span>
@@ -55,7 +77,10 @@ export default function PricingPage() {
                   <p className="text-ink-mute mt-1 text-[13px]">
                     {tier.cadence}
                   </p>
-                  <p className="text-ink-dim mt-4 text-[15px] leading-[1.5]">
+
+                  <div className="bp-dim mt-5 w-full" aria-hidden />
+
+                  <p className="text-ink-dim mt-5 text-[15px] leading-[1.5]">
                     {tier.tagline}
                   </p>
 
@@ -63,10 +88,9 @@ export default function PricingPage() {
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <span
-                          className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold ${t.bg} ${t.border} ${t.text}`}
-                        >
-                          ✓
-                        </span>
+                          aria-hidden
+                          className="bp-dot mt-2 shrink-0"
+                        />
                         <span className="text-ink text-[14.5px] leading-[1.45]">
                           {f}
                         </span>
@@ -76,10 +100,8 @@ export default function PricingPage() {
 
                   <Link
                     href={tier.cta.href}
-                    className={`mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-[15px] font-semibold transition ${
-                      tier.featured
-                        ? "btn-grad"
-                        : "glass text-ink hover:bg-surface-hi/60"
+                    className={`mt-8 inline-flex w-full items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase ${
+                      tier.featured ? "btn-grad" : "btn-draw"
                     }`}
                   >
                     {tier.cta.label}
@@ -89,9 +111,8 @@ export default function PricingPage() {
             })}
           </div>
 
-          <p className="text-ink-mute mt-8 text-center text-[13px]">
-            All projects: built on your stack · code &amp; credentials handed
-            over · no monthly minimums.
+          <p className="bp-annot mt-8 text-center">
+            {"// all projects: built on your stack · code & credentials handed over · no monthly minimums"}
           </p>
         </div>
       </section>

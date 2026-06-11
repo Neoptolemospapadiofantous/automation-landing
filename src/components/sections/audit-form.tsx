@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { Eyebrow } from "../eyebrow";
 import { Input } from "@/components/ui/input";
@@ -112,7 +113,7 @@ export function AuditForm() {
               <Field
                 name="company"
                 label="Company & role"
-                placeholder="e.g. Pendola — Head of Ops"
+                placeholder="e.g. Acme Corp — Director of Operations"
               />
             </div>
             <div className="mt-5">
@@ -127,15 +128,45 @@ export function AuditForm() {
                 name="leak"
                 required
                 rows={4}
-                placeholder="We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and trigger a Pipedrive workflow when deal value > $X."
+                placeholder="We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and notify the assigned rep when deal value > $X."
                 className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[13px]"
               />
+            </div>
+
+            {/* Privacy notice + explicit consent — sits ABOVE the submit
+                button so it can't be missed. Required to enable submit. */}
+            <div className="border-border-line bg-bg-elev/40 mt-7 border p-4">
+              <label
+                htmlFor="consent"
+                className="text-ink-dim flex cursor-pointer items-start gap-3 font-mono text-[12px] leading-[1.55] tracking-[0.02em]"
+              >
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  className="border-border-hi bg-bg accent-ink mt-0.5 h-4 w-4 shrink-0 cursor-pointer appearance-none border checked:bg-ink"
+                />
+                <span>
+                  I agree that Flowstack may store the details above to
+                  reply to this inquiry and scope the engagement, per
+                  the{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-ink underline-offset-4 hover:underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                  . We&apos;ll delete the record if you don&apos;t
+                  become a customer.
+                </span>
+              </label>
             </div>
 
             <button
               type="submit"
               disabled={pending}
-              className="btn-grad mt-7 inline-flex h-13 w-full items-center justify-center rounded-none px-6 py-4 text-[13px] tracking-[0.06em] uppercase transition disabled:cursor-not-allowed disabled:opacity-70"
+              className="btn-grad mt-5 inline-flex h-13 w-full items-center justify-center rounded-none px-6 py-4 text-[13px] tracking-[0.06em] uppercase transition disabled:cursor-not-allowed disabled:opacity-70"
             >
               {pending
                 ? "Sending…"
@@ -146,19 +177,35 @@ export function AuditForm() {
 
             {state.message && (
               <p
-                className={`mt-3 flex items-center justify-center gap-2 text-center font-mono text-[12px] tracking-[0.06em] ${state.ok ? "text-success" : "text-danger"}`}
+                className="text-ink mt-3 flex items-center justify-center gap-2 text-center font-mono text-[12px] tracking-[0.06em]"
                 role="status"
               >
                 <span
-                  className={`pulse-glow inline-block h-1.5 w-1.5 rounded-full ${state.ok ? "bg-success" : "bg-danger"}`}
                   aria-hidden
-                />
-                {state.message}
+                  className={`inline-flex h-4 w-4 items-center justify-center border text-[10px] leading-none ${
+                    state.ok
+                      ? "border-ink text-ink"
+                      : "border-ink-mute text-ink-mute"
+                  }`}
+                >
+                  {state.ok ? "✓" : "✕"}
+                </span>
+                <span
+                  className={`font-bold tracking-[0.18em] ${
+                    state.ok ? "text-ink" : "text-ink-mute"
+                  }`}
+                >
+                  {state.ok ? "OK" : "ERR"}
+                </span>
+                <span aria-hidden className="text-ink-mute">·</span>
+                <span className={state.ok ? "text-ink" : "text-ink-dim"}>
+                  {state.message}
+                </span>
               </p>
             )}
 
             <p className="text-ink-mute mt-5 text-center font-mono text-[11px] tracking-[0.06em]">
-              We never share your details. No newsletter — just the scope.
+              No newsletter — just the scope.
             </p>
           </form>
         </div>

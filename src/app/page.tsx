@@ -1,20 +1,20 @@
 import { Hero } from "@/components/sections/hero";
-import { LogoTicker } from "@/components/sections/logo-ticker";
+import { LinesOfBusiness } from "@/components/sections/lines-of-business";
 import { Overview } from "@/components/sections/overview";
 import { LiveOutcomes } from "@/components/sections/live-outcomes";
-import { Testimonials } from "@/components/sections/testimonials";
 import { FounderSlots } from "@/components/sections/founder-slots";
 import { CustomBuild } from "@/components/sections/custom-build";
 import { FinalCTA } from "@/components/sections/final-cta";
+import { HomepageJsonLd } from "@/components/jsonld";
 
 export default function Home() {
   return (
     <>
+      <HomepageJsonLd />
       <Hero />
-      <LogoTicker />
+      <LinesOfBusiness />
       <Overview />
       <LiveOutcomes />
-      <Testimonials />
       {/* Scarcity callout above the final CTA. Async server component —
           reads founder_slots_remaining from the dashboard's public stats
           endpoint and renders nothing if the cohort is full. */}

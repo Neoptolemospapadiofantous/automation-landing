@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SectionWatermark } from "@/components/section-watermark";
 
 /**
  * Upsell band on the homepage: positions the bespoke automation
@@ -8,7 +9,8 @@ import Link from "next/link";
  */
 export function CustomBuild() {
   return (
-    <section className="relative py-20">
+    <section className="relative isolate overflow-hidden py-20">
+      <SectionWatermark text="CUSTOM" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-hi relative grid grid-cols-1 gap-10 border p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* corner registration ticks */}
@@ -32,22 +34,22 @@ export function CustomBuild() {
           <div className="max-w-[60ch]">
             <span className="bp-ref">FIG. 02 / when off-the-shelf hits a wall</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Need an agent we don&apos;t ship yet?
+              Need an integration we don&apos;t ship yet?
               <br />
               <span className="text-gradient">We&apos;ll build it.</span>
             </h2>
             <p className="text-ink-dim mt-5 leading-[1.6]">
-              The trial is the same chat product every team gets — yours,
-              customised within the bounds we offer. When you need bespoke
-              flows, custom integrations, a different LLM, or your own
-              tooling on top, that&apos;s where Flowstack&apos;s automation
-              studio comes in. One week, fixed scope, you keep the code.
+              The trial gives you the agent itself — chat, knowledge base,
+              transcripts, lead routing. The studio gives you the rest —
+              custom integrations, bespoke flows, your own LLM, your own UI
+              on top, and anything we don&apos;t ship by default. Fixed
+              scope, you keep the code.
             </p>
 
             <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Bespoke Voiceflow flows on your stack
+                Bespoke flows on your stack
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />

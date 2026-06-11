@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { agentRoles } from "@/lib/content";
 import { registerUrl } from "@/lib/dashboard";
+import { SectionWatermark } from "@/components/section-watermark";
 
 /**
  * Agent role picker — the "drawing index" pattern applied to product
@@ -13,7 +14,11 @@ export function Overview() {
   const href = registerUrl();
 
   return (
-    <section id="agents" className="relative py-24 sm:py-28">
+    <section
+      id="agents"
+      className="relative isolate overflow-hidden py-24 sm:py-28"
+    >
+      <SectionWatermark text="ROLE" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>

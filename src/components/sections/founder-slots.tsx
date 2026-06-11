@@ -27,7 +27,7 @@ export async function FounderSlots() {
     : 0;
 
   return (
-    <div className="border-border-line bg-bg-panel/60 mx-auto mt-8 max-w-[640px] border p-5 backdrop-blur">
+    <div className="border-border-line bg-bg-elev/60 mx-auto mt-8 max-w-[640px] border p-5 backdrop-blur">
       <div className="flex items-baseline justify-between gap-4">
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute">
           Founder cohort

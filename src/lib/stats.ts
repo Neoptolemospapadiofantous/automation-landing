@@ -14,7 +14,9 @@ export type CountField =
   | "agents_active"
   | "leads_total"
   | "leads_qualified"
-  | "messages_handled";
+  | "messages_handled"
+  | "messages_last_24h"
+  | "time_saved_hours";
 
 export type PlatformStats = {
   // Editable (operator-curated via `php artisan platform:set`)
@@ -29,6 +31,15 @@ export type PlatformStats = {
   leads_total: number;
   leads_qualified: number;
   messages_handled: number;
+  messages_last_24h: number;
+  time_saved_hours: number;
+
+  /**
+   * Recency signal — ISO timestamp of the most recent qualified lead.
+   * Rendered as relative time ("4 min ago") on the landing site so the
+   * page reads as alive. Null when no qualified leads exist yet.
+   */
+  last_activity_at: string | null;
 
   /**
    * Bucketed marketing-friendly labels for each count. Server returns
@@ -52,12 +63,17 @@ const FALLBACK: PlatformStats = {
   leads_total: 0,
   leads_qualified: 0,
   messages_handled: 0,
+  messages_last_24h: 0,
+  time_saved_hours: 0,
+  last_activity_at: null,
   display: {
     teams_count: null,
     agents_active: null,
     leads_total: null,
     leads_qualified: null,
     messages_handled: null,
+    messages_last_24h: null,
+    time_saved_hours: null,
   },
   generated_at: new Date(0).toISOString(),
 };
@@ -121,4 +137,19 @@ export function formatStat(n: number): string {
   }
   const m = n / 1_000_000;
   return `${m.toFixed(m >= 10 ? 0 : 1)}M`;
+}
+
+/**
+ * Relative time renderer for `last_activity_at`. Stays string-only so the
+ * server render and the client tick read the same value without locale
+ * differences. Returns null when input is null so callers can hide the
+ * line instead of saying "never".
+ */
+export function relativeTime(iso: string | null): string | null {
+  if (!iso) return null;
+  const diffSec = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+  if (diffSec < 60) return "just now";
+  if (diffSec < 3600) return `${Math.floor(diffSec / 60)} min ago`;
+  if (diffSec < 86_400) return `${Math.floor(diffSec / 3600)} h ago`;
+  return `${Math.floor(diffSec / 86_400)} d ago`;
 }
