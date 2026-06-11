@@ -43,3 +43,8 @@ next-env.d.ts
 
 # local-only (n8n workflow exports etc.)
 /n8n/
+
+# User working files — drafts, exports, scratch flows. Not part of the
+# landing site. Keep out of source history.
+*.docx
+/n8n-flows/
