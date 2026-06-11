@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { NavLinks } from "./nav-links";
+import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 export function SiteNav() {
   return (
@@ -18,12 +19,18 @@ export function SiteNav() {
           </span>
         </div>
         <NavLinks />
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <Link
-            href="/audit"
-            className="btn-grad inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase"
+            href={loginUrl()}
+            className="text-ink-dim hover:text-ink hidden font-mono text-[11px] tracking-[0.18em] uppercase transition-colors sm:inline-flex"
           >
-            Book audit →
+            Login
+          </Link>
+          <Link
+            href={registerUrl()}
+            className="btn-grad inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em]"
+          >
+            Try it for $99 →
           </Link>
         </div>
       </div>

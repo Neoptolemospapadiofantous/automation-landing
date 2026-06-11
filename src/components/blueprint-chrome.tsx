@@ -2,14 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const ROWS = ["1", "2", "3", "4", "5", "6"];
-
 /**
- * Persistent drawing-sheet furniture rendered over the whole site:
- * a sheet border, a left coordinate ruler, a revision stamp, a live
- * scroll-position readout, and a cursor crosshair reticle. Decorative —
- * pointer-events-none, hidden on touch / small screens.
+ * Persistent drawing-sheet furniture rendered over the whole site: a
+ * sheet border, two margin rails (left + right) that read like the
+ * masthead/footer of a printed technical drawing, a revision stamp, a
+ * live scroll-position readout, and a cursor crosshair reticle.
+ * Decorative — pointer-events-none, hidden on touch / small screens.
  */
+const LEFT_RAIL =
+  "FORM FS-101  ·  LANDING  ·  REV 06/26  ·  FLOWSTACK  ·  PUBLIC SHEET";
+const RIGHT_RAIL =
+  "DRAWN 2026-06-08  ·  APPROVED  ·  SCALE 1:1  ·  PUBLIC REVISION";
 export function BlueprintChrome() {
   const vRef = useRef<HTMLDivElement>(null);
   const hRef = useRef<HTMLDivElement>(null);
@@ -89,13 +92,23 @@ export function BlueprintChrome() {
       <span className="border-draw/60 absolute bottom-3 left-3 h-4 w-4 border-b border-l" />
       <span className="border-draw/60 absolute bottom-3 right-3 h-4 w-4 border-b border-r" />
 
-      {/* left coordinate ruler */}
-      <div className="absolute bottom-3 left-3 top-3 hidden w-6 flex-col items-center justify-between py-10 lg:flex">
-        {ROWS.map((r) => (
-          <span key={r} className="bp-annot text-ink-mute/70 text-[9px]">
-            {r}
-          </span>
-        ))}
+      {/* left margin rail — reads top-to-bottom, like the masthead of a
+          printed form */}
+      <div className="absolute bottom-3 left-3 top-3 hidden w-6 items-center justify-center lg:flex">
+        <span
+          className="text-ink-mute/55 font-mono text-[10px] tracking-[0.32em] uppercase whitespace-nowrap [writing-mode:vertical-rl]"
+        >
+          {LEFT_RAIL}
+        </span>
+      </div>
+
+      {/* right margin rail — reads bottom-to-top, like the form footer */}
+      <div className="absolute bottom-3 right-3 top-3 hidden w-6 items-center justify-center lg:flex">
+        <span
+          className="text-ink-mute/55 font-mono text-[10px] tracking-[0.32em] uppercase whitespace-nowrap rotate-180 [writing-mode:vertical-rl]"
+        >
+          {RIGHT_RAIL}
+        </span>
       </div>
 
       {/* revision stamp */}
@@ -120,14 +133,14 @@ export function BlueprintChrome() {
       {/* cursor crosshair reticle */}
       <div
         ref={vRef}
-        className={`bg-violet/20 absolute left-0 top-0 h-full w-px transition-opacity duration-300 ${
+        className={`bg-ink/10 absolute left-0 top-0 h-full w-px transition-opacity duration-300 ${
           reticleOn ? "opacity-100" : "opacity-0"
         }`}
         style={{ transform: "translateX(-100px)" }}
       />
       <div
         ref={hRef}
-        className={`bg-violet/20 absolute left-0 top-0 h-px w-full transition-opacity duration-300 ${
+        className={`bg-ink/10 absolute left-0 top-0 h-px w-full transition-opacity duration-300 ${
           reticleOn ? "opacity-100" : "opacity-0"
         }`}
         style={{ transform: "translateY(-100px)" }}

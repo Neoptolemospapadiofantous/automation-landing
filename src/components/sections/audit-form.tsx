@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { Eyebrow } from "../eyebrow";
 import { Input } from "@/components/ui/input";
@@ -24,17 +25,17 @@ export function AuditForm() {
       />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="text-ink-mute mb-10 flex items-center justify-between font-mono text-[11px] tracking-[0.22em] uppercase">
-          <span className="bp-ref">SHEET 04 / INTAKE</span>
-          <span aria-hidden>FIG. 4 — DIAGNOSTIC REQUEST</span>
+          <span className="bp-ref">SHEET 04 / CUSTOM-BUILD INTAKE</span>
+          <span aria-hidden>FIG. 4 — SCOPE REQUEST</span>
         </div>
 
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
             <Eyebrow tint="success">Free — 30 min — no pitch</Eyebrow>
             <h2 className="mt-6 text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl">
-              Book the audit.
+              Book the call.
               <br />
-              <span className="text-gradient">Keep the report</span> either way.
+              <span className="text-gradient">Keep the scope</span> either way.
             </h2>
 
             {/* dimension line under the headline */}
@@ -49,15 +50,15 @@ export function AuditForm() {
             </div>
 
             <p className="text-ink-dim mt-6 max-w-[55ch] text-lg leading-[1.65]">
-              Tell us where the bleeding is. We&apos;ll come back inside 48 hours
-              with a written diagnosis of the top 5 leaks — hours saved and
-              difficulty scored.
+              Tell us what the off-the-shelf agent doesn&apos;t cover.
+              We come back inside 48 hours with a written, fixed-scope
+              proposal — what we&apos;ll build, in how long, for how much.
             </p>
 
             <ul className="mt-10 space-y-4">
               {[
-                "Written audit document — yours to keep",
-                "Live walkthrough of fixes (no slides)",
+                "Written scope document — yours to keep",
+                "Live walkthrough of the build (no slides)",
                 "No retainer. No NDA gating. No upsell.",
               ].map((line) => (
                 <li key={line} className="flex items-center gap-3">
@@ -93,7 +94,7 @@ export function AuditForm() {
             </div>
 
             <h3 className="text-ink text-[22px] font-semibold tracking-[-0.02em]">
-              Tell us where it hurts.
+              Tell us what to build.
             </h3>
             <p className="bp-annot mt-2">
               {"// all fields required unless noted"}
@@ -112,7 +113,7 @@ export function AuditForm() {
               <Field
                 name="company"
                 label="Company & role"
-                placeholder="e.g. Pendola — Head of Ops"
+                placeholder="e.g. Acme Corp — Director of Operations"
               />
             </div>
             <div className="mt-5">
@@ -120,22 +121,52 @@ export function AuditForm() {
                 htmlFor="leak"
                 className="text-ink-mute font-mono text-[11px] tracking-[0.18em] uppercase"
               >
-                Where&apos;s the leak? (the more specific, the better)
+                What does the off-the-shelf agent not do? (the more specific, the better)
               </Label>
               <Textarea
                 id="leak"
                 name="leak"
                 required
                 rows={4}
-                placeholder="We're losing leads in the gap between Webflow and HubSpot. Replies take 1–2 days. Sales team manually enriches every record."
+                placeholder="We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and notify the assigned rep when deal value > $X."
                 className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[13px]"
               />
+            </div>
+
+            {/* Privacy notice + explicit consent — sits ABOVE the submit
+                button so it can't be missed. Required to enable submit. */}
+            <div className="border-border-line bg-bg-elev/40 mt-7 border p-4">
+              <label
+                htmlFor="consent"
+                className="text-ink-dim flex cursor-pointer items-start gap-3 font-mono text-[12px] leading-[1.55] tracking-[0.02em]"
+              >
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  className="border-border-hi bg-bg accent-ink mt-0.5 h-4 w-4 shrink-0 cursor-pointer appearance-none border checked:bg-ink"
+                />
+                <span>
+                  I agree that Flowstack may store the details above to
+                  reply to this inquiry and scope the engagement, per
+                  the{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-ink underline-offset-4 hover:underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                  . We&apos;ll delete the record if you don&apos;t
+                  become a customer.
+                </span>
+              </label>
             </div>
 
             <button
               type="submit"
               disabled={pending}
-              className="btn-grad mt-7 inline-flex h-13 w-full items-center justify-center rounded-none px-6 py-4 text-[13px] tracking-[0.06em] uppercase transition disabled:cursor-not-allowed disabled:opacity-70"
+              className="btn-grad mt-5 inline-flex h-13 w-full items-center justify-center rounded-none px-6 py-4 text-[13px] tracking-[0.06em] uppercase transition disabled:cursor-not-allowed disabled:opacity-70"
             >
               {pending
                 ? "Sending…"
@@ -146,19 +177,35 @@ export function AuditForm() {
 
             {state.message && (
               <p
-                className={`mt-3 flex items-center justify-center gap-2 text-center font-mono text-[12px] tracking-[0.06em] ${state.ok ? "text-success" : "text-danger"}`}
+                className="text-ink mt-3 flex items-center justify-center gap-2 text-center font-mono text-[12px] tracking-[0.06em]"
                 role="status"
               >
                 <span
-                  className={`pulse-glow inline-block h-1.5 w-1.5 rounded-full ${state.ok ? "bg-success" : "bg-danger"}`}
                   aria-hidden
-                />
-                {state.message}
+                  className={`inline-flex h-4 w-4 items-center justify-center border text-[10px] leading-none ${
+                    state.ok
+                      ? "border-ink text-ink"
+                      : "border-ink-mute text-ink-mute"
+                  }`}
+                >
+                  {state.ok ? "✓" : "✕"}
+                </span>
+                <span
+                  className={`font-bold tracking-[0.18em] ${
+                    state.ok ? "text-ink" : "text-ink-mute"
+                  }`}
+                >
+                  {state.ok ? "OK" : "ERR"}
+                </span>
+                <span aria-hidden className="text-ink-mute">·</span>
+                <span className={state.ok ? "text-ink" : "text-ink-dim"}>
+                  {state.message}
+                </span>
               </p>
             )}
 
             <p className="text-ink-mute mt-5 text-center font-mono text-[11px] tracking-[0.06em]">
-              We never share your details. No newsletter — just the audit.
+              No newsletter — just the scope.
             </p>
           </form>
         </div>

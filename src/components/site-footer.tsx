@@ -1,13 +1,31 @@
 import { Logo } from "./logo";
 
-const cols = [
-  { h: "Product", l: ["Audit", "Case studies", "Pricing", "Outcomes"] },
-  { h: "Company", l: ["About", "Manifesto", "Careers", "Press"] },
+type FooterLink = { label: string; href: string };
+
+/**
+ * Footer columns. Every link here MUST resolve to a real page —
+ * dead "#" anchors used to be a habit and broke trust on the legal
+ * column especially. If a section doesn't have content yet, omit
+ * the link rather than promising it.
+ */
+const cols: { h: string; l: FooterLink[] }[] = [
   {
-    h: "Resources",
-    l: ["Playbooks", "Newsletter", "Slack community", "Status"],
+    h: "Product",
+    l: [
+      { label: "Agent roles", href: "/#agents" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Custom build", href: "/audit" },
+    ],
   },
-  { h: "Legal", l: ["Privacy", "Terms", "Security", "DPA"] },
+  {
+    h: "Legal",
+    l: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Security", href: "/security" },
+      { label: "DPA", href: "/dpa" },
+    ],
+  },
 ];
 
 const titleBlock = [
@@ -56,16 +74,17 @@ export function SiteFooter() {
           <div className="max-w-[320px]">
             <Logo />
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              Custom automation studio for operators who&apos;d rather ship
-              than scale headcount.
+              AI agents for sales, support, lead qualification and onboarding.
+              Plus a bespoke automation studio for when off-the-shelf
+              isn&apos;t enough.
             </p>
             <p className="bp-annot mt-5">
-              {"// diagnose the leaks, then ship the systems"}
+              {"// pick a role · paste your knowledge · watch leads land"}
             </p>
           </div>
 
           {/* Link columns — hairline-divided grid, shared 1px borders, no gaps */}
-          <div className="border-border-line grid grid-cols-2 border-t border-l md:grid-cols-4">
+          <div className="border-border-line grid grid-cols-1 border-t border-l sm:grid-cols-2">
             {cols.map((c) => (
               <div
                 key={c.h}
@@ -77,12 +96,12 @@ export function SiteFooter() {
                 </h4>
                 <ul className="space-y-3">
                   {c.l.map((item) => (
-                    <li key={item}>
+                    <li key={item.label}>
                       <a
-                        href="#"
+                        href={item.href}
                         className="text-ink-dim hover:text-ink font-mono text-[13px] tracking-[0.04em] transition-colors"
                       >
-                        {item}
+                        {item.label}
                       </a>
                     </li>
                   ))}
@@ -92,23 +111,20 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Footer baseline: copyright + social, divided by a hairline */}
+        {/* Footer baseline: copyright + privacy contact */}
         <div className="border-border-line mt-16 flex flex-col items-start justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
           <p className="bp-annot">
-            © 2026 Flowstack Studio · Built in Lisbon &amp; Athens
+            © 2026 Flowstack Studio · Built in Lisbon &amp; Athens · All
+            rights reserved
           </p>
-          <ul className="flex items-center gap-5">
-            {["LinkedIn", "X", "GitHub", "RSS"].map((s) => (
-              <li key={s}>
-                <a
-                  href="#"
-                  className="text-ink-dim hover:text-ink font-mono text-[11px] tracking-[0.18em] uppercase transition-colors"
-                >
-                  {s}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <p className="bp-annot">
+            <a
+              href="mailto:privacy@flowstack.example"
+              className="text-ink-dim hover:text-ink transition-colors"
+            >
+              privacy@flowstack.example
+            </a>
+          </p>
         </div>
       </div>
     </footer>
