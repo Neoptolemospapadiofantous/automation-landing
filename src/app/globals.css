@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "../../branding/tokens.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -72,32 +73,11 @@
 }
 
 :root {
-  /* ── Pure mono palette ──
-     Black ground, white ink. Brand-token names kept for compatibility:
-     --violet (accent) and --cyan (draw) both resolve to white, so every
-     existing utility class recolors for free into the editorial mono. */
-  --bg:           #000000;
-  --bg-elev:      #0A0A0A;
-  --surface:      #0A0A0A;
-  --surface-hi:   #141414;
-  --border-line:  #1F1F1F;
-  --border-hi:    #2E2E2E;
-  --ink:          #FFFFFF;
-  --ink-dim:      #B8B8B8;
-  --ink-mute:     #6B6B6B;
-  --violet:       #FFFFFF;
-  --violet-soft:  #E5E5E5;
-  --cyan:         #FFFFFF;
-  --cyan-soft:    #E5E5E5;
-  --success:      #FFFFFF;
-  --warn:         #B8B8B8;
-  --danger:       #FFFFFF;
-
-  /* mono drawing primitives */
-  --line:         rgba(255, 255, 255, 0.06);
-  --line-strong:  rgba(255, 255, 255, 0.14);
-  --draw:         var(--ink);
-
+  /* ── Brand palette ──
+     The mono brand tokens (--bg, --ink, --violet, … and --radius) live in
+     branding/tokens.css — canonical, imported above, and shared verbatim
+     with the dashboard repo. This block only derives the shadcn semantic
+     tokens from them. */
   --background: var(--bg);
   --foreground: var(--ink);
   --card: var(--surface);
@@ -121,7 +101,6 @@
   --chart-3: var(--success);
   --chart-4: var(--warn);
   --chart-5: var(--danger);
-  --radius: 0;
   --sidebar: var(--bg-elev);
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--violet);
@@ -167,15 +146,9 @@
     @apply bg-bg text-ink;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
-    /* Editorial sheet: a single quiet 160px major grid, no fine grid —
-       the mono palette already carries the page; less ink underneath. */
-    background-image:
-      linear-gradient(var(--line-strong) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-strong) 1px, transparent 1px);
-    background-size:
-      160px 160px,
-      160px 160px;
-    background-attachment: fixed;
+    /* The body is intentionally clean now — the editorial grid moved
+       into the footer (.bg-footer-grid). Section watermarks carry the
+       depth signal across the main scroll. */
   }
   ::selection {
     background: var(--ink);
@@ -417,6 +390,93 @@
     border: 1px dashed var(--border-hi);
     padding: 0.05em 0.4em;
     text-transform: uppercase;
+  }
+
+  /* Footer-only editorial grid — moved here from `body` so the main
+     scroll reads clean and the footer feels like the "title block"
+     under a printed sheet. Same 160px major grid the body used to
+     carry, plus a 32px fine grid for slightly more detail under the
+     denser footer copy. */
+  .bg-footer-grid {
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px),
+      linear-gradient(var(--line-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-strong) 1px, transparent 1px);
+    background-size:
+      32px 32px,
+      32px 32px,
+      160px 160px,
+      160px 160px;
+  }
+
+  /* ── Parallax layers ────────────────────────────────────────────────
+     All effects use native CSS scroll-driven animations
+     (animation-timeline: view()), supported in Chrome / Edge /
+     Firefox 122+ / Safari 16.4+. Unsupported browsers see the
+     original static state. prefers-reduced-motion silences everything.
+     ─────────────────────────────────────────────────────────────────── */
+
+  /* (1) Section watermarks — drifts opposite to scroll as the section
+        moves through the viewport. */
+  @keyframes watermark-parallax {
+    from { transform: translateY(60%) rotate(-8deg); }
+    to   { transform: translateY(-60%) rotate(-8deg); }
+  }
+  @supports (animation-timeline: view()) {
+    .watermark-parallax {
+      animation: watermark-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+      will-change: transform;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .watermark-parallax {
+      animation: none !important;
+      transform: rotate(-8deg);
+    }
+  }
+
+  /* (2) Hero schematic float — schematic lags behind page scroll, so
+        it appears to "linger" briefly as the hero exits. Subtle but
+        adds clear depth between foreground pitch + demo box. */
+  @keyframes hero-schematic-float {
+    from { transform: translateY(-8%); }
+    to   { transform: translateY(16%); }
+  }
+  @supports (animation-timeline: view()) {
+    .hero-schematic-parallax {
+      animation: hero-schematic-float linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+      will-change: transform;
+    }
+  }
+
+  /* (3) Hero headline fade — H1 fades from full opacity to 0 over the
+        second half of its scroll lifecycle, so the page transitions
+        cinematically into the next section. */
+  @keyframes hero-headline-fade {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-8%); }
+  }
+  @supports (animation-timeline: view()) {
+    .hero-headline-parallax {
+      animation: hero-headline-fade linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+      will-change: opacity, transform;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-schematic-parallax,
+    .hero-headline-parallax {
+      animation: none !important;
+      transform: none;
+      opacity: 1;
+    }
   }
 
   /* Hairline grid background (component-local; body already has the sheet). */
