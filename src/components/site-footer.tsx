@@ -1,4 +1,5 @@
 import { Logo } from "./logo";
+import { CookieSettingsLink } from "./cookie-settings-link";
 
 type FooterLink = { label: string; href: string };
 
@@ -111,20 +112,24 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Footer baseline: copyright + privacy contact */}
+        {/* Footer baseline: copyright + cookie-settings re-open + privacy contact */}
         <div className="border-border-line mt-16 flex flex-col items-start justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
           <p className="bp-annot">
-            © 2026 Flowstack Studio · Built in Lisbon &amp; Athens · All
-            rights reserved
+            © 2026 Flowstack Studio · Nicosia, Cyprus · All rights
+            reserved
           </p>
-          <p className="bp-annot">
+          <div className="bp-annot flex flex-col items-start gap-x-5 gap-y-2 sm:flex-row sm:items-center">
+            <CookieSettingsLink />
+            <span aria-hidden className="text-ink-mute hidden sm:inline">
+              ·
+            </span>
             <a
               href="mailto:privacy@flowstack.example"
               className="text-ink-dim hover:text-ink transition-colors"
             >
               privacy@flowstack.example
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>

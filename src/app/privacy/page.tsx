@@ -284,31 +284,104 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          We use two categories of cookies:
+          We use the cookies below on the surfaces shown. Where
+          consent is required (the marketing site&apos;s Google
+          Analytics), it is collected via the cookie banner using
+          Google Consent Mode v2 — <code>analytics_storage</code>{" "}
+          starts <code>denied</code> by default and only flips to{" "}
+          <code>granted</code> when you click Accept.
         </p>
-        <ul>
-          <li>
-            <strong>Strictly necessary</strong> — first-party cookies
-            required to run the page (session identifier on the agent
-            platform, the cookie that records your consent choice for
-            this banner). These are set without consent because the
-            site cannot function without them.
-          </li>
-          <li>
-            <strong>Analytics</strong> — Google Analytics 4 cookies
-            (`_ga`, `_ga_*`) used to measure how visitors find and use
-            the site so we can improve it. These are set{" "}
-            <strong>only after you click &quot;Accept&quot;</strong> on
-            the consent banner, in line with Google Consent Mode v2.
-            The analytics script is blocked from running until you
-            consent. IP addresses are anonymised at collection.
-          </li>
-        </ul>
+        <table className="legal-table">
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Surface</th>
+              <th>Type</th>
+              <th>Lifetime</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Laravel session + XSRF</td>
+              <td>Dashboard</td>
+              <td>Strictly necessary</td>
+              <td>Session</td>
+              <td>Login state, CSRF protection.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>fs_embed_&#123;slug&#125;</code>
+              </td>
+              <td>Embedded chat widget</td>
+              <td>Strictly necessary (functional)</td>
+              <td>30 days</td>
+              <td>
+                Keeps a visitor&apos;s conversation continuous across
+                page loads. No tracking, no advertising, not read
+                across sites.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>flowstack-consent</code>
+              </td>
+              <td>Marketing site</td>
+              <td>Strictly necessary</td>
+              <td>Persistent (localStorage)</td>
+              <td>
+                Stores your cookie choice so we don&apos;t re-ask. Not
+                analytics — it is how we <em>remember</em> your
+                analytics decision.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Google Analytics 4 (<code>_ga</code>,{" "}
+                <code>_ga_*</code>)
+              </td>
+              <td>Marketing site</td>
+              <td>
+                Analytics — <strong>consent required</strong>
+              </td>
+              <td>Up to 2 years</td>
+              <td>
+                Aggregate visitor statistics.{" "}
+                <strong>
+                  Set only after you click &quot;Accept&quot;
+                </strong>
+                . Until then GA4 runs in Google Consent Mode v2 with{" "}
+                <code>analytics_storage: denied</code> (no analytics
+                cookies, cookieless pings).
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <p>
-          We do not set advertising or third-party tracking cookies.
-          You can withdraw analytics consent at any time by clearing
-          the `flowstack-consent` value in your browser&apos;s storage
-          — the banner will re-appear on the next page load.
+          <strong>Two surfaces, two positions.</strong> The dashboard
+          and the embedded chat widget use only strictly-necessary
+          cookies, so no consent banner is required there — relying on
+          the strictly-necessary exemption in Part 14 of Cyprus{" "}
+          <a href="https://thecypruslawyer.com/cyprus-cookies-website-consent/">
+            Law 112(I)/2004
+          </a>{" "}
+          (ePrivacy).{" "}
+          <Tbc note="counsel to confirm the 30-day fs_embed widget cookie qualifies as strictly necessary/functional" />
+        </p>
+        <p>
+          The marketing site uses Google Analytics 4, which is{" "}
+          <em>not</em> strictly necessary, so it is gated behind a
+          prior-opt-in consent banner: GA4 loads with{" "}
+          <code>analytics_storage: denied</code> by default and flips
+          to <code>granted</code> only when you click Accept; Decline
+          is presented as prominently as Accept. We set <strong>no</strong>{" "}
+          advertising or cross-site tracking cookies on any surface.
+        </p>
+        <p>
+          <strong>Withdraw consent at any time.</strong> Use the{" "}
+          <em>Cookie settings</em> link in the footer to re-open the
+          banner and change your choice. Doing so updates the GA4
+          consent state immediately, without a page reload.
         </p>
       </>
     ),
