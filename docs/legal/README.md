@@ -1,12 +1,13 @@
-# Legal posture — operator's compass
+# Legal — operator's compass
 
-> One-page reference for what we claim publicly, where it lives in code,
-> what's been resolved, and what's still open. Pair with
-> [`counsel-handover.md`](./counsel-handover.md) for the briefing pack we
-> send the engaged lawyer.
+> Single entry-point for everything legal in this repo. Where the live
+> pages live, where the working drafts live, what we're allowed to
+> claim, what's settled, what's open. Pair with
+> [`../counsel-handover.md`](../counsel-handover.md) for the briefing
+> pack we send the engaged lawyer.
 
 **Status:** DRAFT pending Cyprus / EU counsel review
-**Updated:** 2026-06-12
+**Updated:** 2026-06-14
 **Owner:** [TBC]
 
 ---
@@ -19,16 +20,32 @@
 | Terms of Service | `/terms` → `src/app/terms/page.tsx` | Public, `noindex` until FINAL |
 | Security | `/security` → `src/app/security/page.tsx` | Public, `noindex` until FINAL |
 | DPA | `/dpa` → `src/app/dpa/page.tsx` | Public, `noindex` until FINAL |
-| **Cleaned-up master drafts** | `src/legal/*.md` | Operator-owned source of truth — feed into counsel review |
-| Honesty ledger | `src/legal/claims-vs-reality.md` | Strict gate on what we may claim |
-| Counsel briefing | `docs/counsel-handover.md` | What we send the engaged lawyer |
-| Outdated `.docx` masters | `src/legal/source/*.docx` | **Do not use directly** — they still describe the deleted Voiceflow architecture; redlines in `src/legal/docx-redlines.md` |
+| **Working drafts** | `docs/legal/*.md` (this folder) | Operator-owned source of truth — feed into counsel review |
+| Honesty ledger | [`claims-vs-reality.md`](./claims-vs-reality.md) | Strict gate on what we may claim |
+| Counsel briefing | [`../counsel-handover.md`](../counsel-handover.md) | What we send the engaged lawyer |
+| Engineering brief | [`ENGINEERING-BRIEF.md`](./ENGINEERING-BRIEF.md) | Coding-agent task list (in-flight on dashboard repo) |
+| Outdated `.docx` masters | `archive/source/*.docx` | **Do not use directly** — still describe the deleted Voiceflow architecture; redlines in [`archive/docx-redlines.md`](./archive/docx-redlines.md) |
+
+Cross-repo: the canonical legal masters also live in
+`automation_dashboard/docs/legal/`. This folder carries the
+landing-repo working copy that may drift slightly between counsel-
+review rounds; the dashboard copy is authoritative for the engineering
+brief and the claims-vs-reality ledger.
+
+### Live-page ↔ working-draft mapping
+
+| Live page | Working draft |
+|---|---|
+| `src/app/privacy/page.tsx` | [`privacy-policy.md`](./privacy-policy.md) |
+| `src/app/terms/page.tsx` | [`compliance-framework.md`](./compliance-framework.md) Schedule 2 + 2A |
+| `src/app/dpa/page.tsx` | [`compliance-framework.md`](./compliance-framework.md) Schedule 1 |
+| `src/app/security/page.tsx` | [`trust-page.md`](./trust-page.md) §7 |
 
 ---
 
 ## 2. The standing rule
 
-**Claim only what `src/legal/claims-vs-reality.md` marks ✅.**
+**Claim only what [`claims-vs-reality.md`](./claims-vs-reality.md) marks ✅.**
 
 The ledger is split three ways:
 
@@ -55,8 +72,8 @@ the ledger.
 ## 3. What's already decided
 
 These were open `[TBC]`s in the original scaffolds and are now closed
-across `/privacy`, `/terms`, `/security`, `/dpa` and
-`src/legal/*.md`:
+across `/privacy`, `/terms`, `/security`, `/dpa` and the working
+drafts here:
 
 - **Jurisdiction.** Nicosia, Cyprus. Cyprus
   [Commissioner for Personal Data Protection](https://www.dataprotection.gov.cy)
@@ -72,7 +89,7 @@ across `/privacy`, `/terms`, `/security`, `/dpa` and
   free tier trains on data and is contractually excluded),
   Stripe (payments), Pusher (real-time UI), AWS SES (email),
   Typesense (search — optional, currently off). Source of truth:
-  `src/legal/claims-vs-reality.md` §"sub-processor list".
+  [`claims-vs-reality.md`](./claims-vs-reality.md) §"sub-processor list".
 - **AI Act Article 50.** Implemented today, ahead of the
   2026-08-02 effective date. Disclosure is rendered at the interface
   layer, outside Client control, with a one-tap human-handoff
@@ -85,7 +102,7 @@ across `/privacy`, `/terms`, `/security`, `/dpa` and
   Act (Platform = provider) apply to every engagement. Sector
   regimes (DORA, IDD, healthcare, consumer protection) apply
   conditionally per Client and are addressed in
-  `src/legal/compliance-framework.md` Part B.
+  [`compliance-framework.md`](./compliance-framework.md) Part B.
 - **No-training commitments.** We do not use customer data or
   end-user conversations to train AI models — relying on provider
   commercial terms (verified for the paid tiers).
@@ -160,7 +177,7 @@ Per document, when counsel has signed off:
 - [ ] Commit with a message like
       `legal(privacy): publish FINAL after counsel review (Rev B)`.
 - [ ] Archive the counsel-redlined Google Doc as the source of truth
-      for that revision in `src/legal/`.
+      for that revision in this folder.
 
 Pages flip independently — no requirement to publish all four at
 once.
@@ -169,20 +186,18 @@ once.
 
 ## 7. Cross-references
 
-- **Source-of-truth drafts** — `src/legal/`
-  - [`README.md`](../src/legal/README.md) — folder map
-  - [`claims-vs-reality.md`](../src/legal/claims-vs-reality.md) — the
-    honesty ledger
-  - [`trust-page.md`](../src/legal/trust-page.md) — public-facing
-    summary draft
-  - [`privacy-policy.md`](../src/legal/privacy-policy.md) — controller-
-    role privacy draft (the operator's own customers, not their
-    end-users)
-  - [`compliance-framework.md`](../src/legal/compliance-framework.md)
-    — internal framework + DPA / ToS skeletons for business customers
-  - [`docx-redlines.md`](../src/legal/docx-redlines.md) — corrections
-    required for any further use of the legacy `.docx` masters
-- **Counsel briefing** — [`docs/counsel-handover.md`](./counsel-handover.md)
+- **Working drafts in this folder**
+  - [`claims-vs-reality.md`](./claims-vs-reality.md) — the honesty ledger
+  - [`trust-page.md`](./trust-page.md) — public-facing summary draft
+  - [`privacy-policy.md`](./privacy-policy.md) — controller-role
+    privacy draft (the operator's own customers, not their end-users)
+  - [`compliance-framework.md`](./compliance-framework.md) — internal
+    framework + DPA / ToS skeletons for business customers
+  - [`ENGINEERING-BRIEF.md`](./ENGINEERING-BRIEF.md) — in-flight
+    coding-agent task list (Tasks 3 & 4 on the dashboard repo)
+  - [`archive/docx-redlines.md`](./archive/docx-redlines.md) —
+    corrections that were applied to the legacy `.docx` masters
+- **Counsel briefing** — [`../counsel-handover.md`](../counsel-handover.md)
 - **Dashboard repo** — `~/automation_dashboard/docs/runtime-native.md`
   is the engine source-of-truth that the legal docs lean on.
   `runtime-native-l1` is the branch the claims-vs-reality ledger was

@@ -152,7 +152,7 @@ Each Google Doc will carry this header so counsel sees the same context:
 
 ## 5. The TBC inventory — every open question
 
-**Updated 2026-06-12** after the `src/legal/` clean drafts landed. Items
+**Updated 2026-06-12** after the `docs/legal/` clean drafts landed. Items
 that the new drafts already resolve are struck off; remaining open
 questions are grouped by category with source location in `[brackets]`.
 
@@ -168,13 +168,13 @@ questions are grouped by category with source location in `[brackets]`.
   must not be reintroduced.
 - **Sub-processor list.** Anthropic, OpenAI, Google (paid tier),
   Stripe, Pusher, AWS SES, Typesense (optional, currently off). Source
-  of truth: `src/legal/claims-vs-reality.md`. The remaining open item
+  of truth: `docs/legal/claims-vs-reality.md`. The remaining open item
   is verifying each provider's SCC vs DPF status at publication.
 - **AI Act Article 50 — implemented today**, ahead of the 2 August
   2026 effective date. Disclosure is rendered at the interface layer,
   outside Customer control, with a one-tap human-handoff request.
 - **Standing rule for claims**: claim only what
-  `src/legal/claims-vs-reality.md` marks ✅. Anything 🟡 must be
+  `docs/legal/claims-vs-reality.md` marks ✅. Anything 🟡 must be
   qualified; anything ❌ must not appear.
 
 ### 5.1 Corporate identity (still open)
@@ -214,7 +214,7 @@ questions are grouped by category with source location in `[brackets]`.
 - Confirm hosting provider + region (the only remaining unknown in the
   vendor stack) *[privacy §4, dpa §7, security §1]*
 - Stripe controller vs processor characterisation (per the
-  `src/legal/privacy-policy.md` note)
+  `docs/legal/privacy-policy.md` note)
 
 ### 5.6 Security baseline — limited by what's implemented
 - At-rest encryption — host-provided only today; full-stack encryption
@@ -242,7 +242,7 @@ Counsel: please call out anything missing from this list that the
 current multi-sector customer mix (predominantly EU + US businesses)
 requires. Sector regimes (DORA, IDD, sector-specific consumer law)
 apply conditionally per Customer and are documented in
-`src/legal/compliance-framework.md`.
+`docs/legal/compliance-framework.md`.
 
 ---
 
@@ -318,7 +318,7 @@ Repeat per document. The four documents can flip to FINAL independently — ther
 
 For clarity, these are NOT being requested from counsel in this round:
 
-- Drafting from scratch — the structure already exists; `src/legal/`
+- Drafting from scratch — the structure already exists; `docs/legal/`
   carries the cleaned multi-sector framing as the master.
 - Cookie banner copy — the marketing site uses a consent-gated GA4
   cookie banner; the dashboard sets only strictly-necessary cookies.
