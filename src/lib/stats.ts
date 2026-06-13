@@ -24,6 +24,15 @@ export type PlatformStats = {
   founder_slots_total: number;
   next_cohort_label: string;
   featured_proof: string | null;
+  /**
+   * ISO date (YYYY-MM-DD or full ISO timestamp, UTC) when the next
+   * founder cohort opens. Drives the announcement-bar countdown on
+   * the landing. Null if no cohort is currently scheduled — the
+   * announcement bar then renders the "open as of …" variant from
+   * the previous open value, or falls back to the build-time default.
+   * Operator sets via `php artisan platform:set next_cohort_open_at YYYY-MM-DD`.
+   */
+  next_cohort_open_at: string | null;
 
   // Computed (live aggregate counts, raw)
   teams_count: number;
@@ -58,6 +67,7 @@ const FALLBACK: PlatformStats = {
   founder_slots_total: 100,
   next_cohort_label: "Rolling intake",
   featured_proof: null,
+  next_cohort_open_at: null,
   teams_count: 0,
   agents_active: 0,
   leads_total: 0,

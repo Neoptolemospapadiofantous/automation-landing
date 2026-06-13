@@ -9,6 +9,7 @@ import { AnnouncementBar } from "@/components/announcement-bar";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
 import { SITE_URL, BRAND } from "@/lib/seo";
+import { getPlatformStats } from "@/lib/stats";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -92,9 +93,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // SSR the announcement bar with the dashboard's current open-date so
+  // first paint is correct + SEO-stable. The bar then subscribes to the
+  // SSE stream after hydration to flip on operator changes (`php artisan
+  // platform:set next_cohort_open_at YYYY-MM-DD`) without a page reload.
+  const stats = await getPlatformStats();
+
   return (
     <html
       lang="en"
@@ -109,7 +116,7 @@ export default function RootLayout({
               the persistent blueprint chrome (z-30) and below the
               cookie consent prompt (z-50). */}
           <div className="sticky top-0 z-40">
-            <AnnouncementBar />
+            <AnnouncementBar initialOpenAt={stats.next_cohort_open_at} />
             <SiteNav />
           </div>
           <main className="flex-1">{children}</main>
