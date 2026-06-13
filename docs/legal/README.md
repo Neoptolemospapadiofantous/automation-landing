@@ -20,10 +20,10 @@
 | Terms of Service | `/terms` → `src/app/terms/page.tsx` | Public, `noindex` until FINAL |
 | Security | `/security` → `src/app/security/page.tsx` | Public, `noindex` until FINAL |
 | DPA | `/dpa` → `src/app/dpa/page.tsx` | Public, `noindex` until FINAL |
-| **Working drafts** | `docs/legal/*.md` (this folder) | Operator-owned source of truth — feed into counsel review |
+| **Pending-counsel drafts** | `docs/legal/drafts/*.md` | Operator-owned source of truth — feed into counsel review |
 | Honesty ledger | [`claims-vs-reality.md`](./claims-vs-reality.md) | Strict gate on what we may claim |
 | Counsel briefing | [`../counsel-handover.md`](../counsel-handover.md) | What we send the engaged lawyer |
-| Engineering brief | [`ENGINEERING-BRIEF.md`](./ENGINEERING-BRIEF.md) | Coding-agent task list (in-flight on dashboard repo) |
+| Engineering brief | [`engineering-brief.md`](./engineering-brief.md) | Coding-agent task list (in-flight on dashboard repo) |
 | Outdated `.docx` masters | `archive/source/*.docx` | **Do not use directly** — still describe the deleted Voiceflow architecture; redlines in [`archive/docx-redlines.md`](./archive/docx-redlines.md) |
 
 Cross-repo: the canonical legal masters also live in
@@ -36,10 +36,35 @@ brief and the claims-vs-reality ledger.
 
 | Live page | Working draft |
 |---|---|
-| `src/app/privacy/page.tsx` | [`privacy-policy.md`](./privacy-policy.md) |
-| `src/app/terms/page.tsx` | [`compliance-framework.md`](./compliance-framework.md) Schedule 2 + 2A |
-| `src/app/dpa/page.tsx` | [`compliance-framework.md`](./compliance-framework.md) Schedule 1 |
-| `src/app/security/page.tsx` | [`trust-page.md`](./trust-page.md) §7 |
+| `src/app/privacy/page.tsx` | [`drafts/privacy-policy.md`](./drafts/privacy-policy.md) |
+| `src/app/terms/page.tsx` | [`drafts/framework.md`](./drafts/framework.md) Schedule 2 + 2A |
+| `src/app/dpa/page.tsx` | [`drafts/framework.md`](./drafts/framework.md) Schedule 1 |
+| `src/app/security/page.tsx` | [`drafts/trust-page.md`](./drafts/trust-page.md) §7 |
+
+### Folder layout — three states, three locations
+
+```
+docs/legal/
+├── README.md                  ← this compass (entry point)
+├── claims-vs-reality.md       ← operator tool — honesty ledger
+├── engineering-brief.md       ← operator tool — coding-agent brief
+├── drafts/                    ← pending counsel sign-off
+│   ├── privacy-policy.md
+│   ├── trust-page.md
+│   └── framework.md
+└── archive/                   ← historical, no longer actionable
+    ├── README.md
+    ├── docx-redlines.md
+    └── source/*.docx
+```
+
+- **Top level** — operator tools you reach for every time you change
+  the live pages.
+- **`drafts/`** — documents awaiting counsel sign-off. When a doc goes
+  FINAL, it stays here as the source of truth and the matching live
+  TSX page flips per §7.
+- **`archive/`** — applied, superseded, or no-longer-actionable
+  artefacts. Kept for the audit trail.
 
 ---
 
@@ -102,7 +127,7 @@ drafts here:
   Act (Platform = provider) apply to every engagement. Sector
   regimes (DORA, IDD, healthcare, consumer protection) apply
   conditionally per Client and are addressed in
-  [`compliance-framework.md`](./compliance-framework.md) Part B.
+  [`drafts/framework.md`](./drafts/framework.md) Part B.
 - **No-training commitments.** We do not use customer data or
   end-user conversations to train AI models — relying on provider
   commercial terms (verified for the paid tiers).
@@ -186,15 +211,19 @@ once.
 
 ## 7. Cross-references
 
-- **Working drafts in this folder**
+- **Operator tools** (top level)
   - [`claims-vs-reality.md`](./claims-vs-reality.md) — the honesty ledger
-  - [`trust-page.md`](./trust-page.md) — public-facing summary draft
-  - [`privacy-policy.md`](./privacy-policy.md) — controller-role
-    privacy draft (the operator's own customers, not their end-users)
-  - [`compliance-framework.md`](./compliance-framework.md) — internal
-    framework + DPA / ToS skeletons for business customers
-  - [`ENGINEERING-BRIEF.md`](./ENGINEERING-BRIEF.md) — in-flight
+  - [`engineering-brief.md`](./engineering-brief.md) — in-flight
     coding-agent task list (Tasks 3 & 4 on the dashboard repo)
+- **Pending counsel sign-off** (`drafts/`)
+  - [`drafts/trust-page.md`](./drafts/trust-page.md) — public-facing
+    summary draft
+  - [`drafts/privacy-policy.md`](./drafts/privacy-policy.md) —
+    controller-role privacy draft (the operator's own customers,
+    not their end-users)
+  - [`drafts/framework.md`](./drafts/framework.md) — internal
+    framework + DPA / ToS skeletons for business customers
+- **Historical** (`archive/`)
   - [`archive/docx-redlines.md`](./archive/docx-redlines.md) —
     corrections that were applied to the legacy `.docx` masters
 - **Counsel briefing** — [`../counsel-handover.md`](../counsel-handover.md)

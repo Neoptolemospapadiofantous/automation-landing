@@ -7,6 +7,16 @@
 > **Prepared:** 2026-06-13. **Status:** ready to implement the items
 > marked *Ship now*; the *Launch-gated* items must wait for the two gates
 > below.
+>
+> **Path convention.** This file lives in two repos; paths below are
+> dashboard-repo relative (`automation_dashboard/`) unless they
+> explicitly start with `src/app/` (the landing repo) or carry an
+> `automation-landing/` prefix. In the landing-repo working copy at
+> `docs/legal/`, the drafts moved into `drafts/`:
+> `compliance-framework.md → drafts/framework.md`,
+> `privacy-policy.md → drafts/privacy-policy.md`,
+> `trust-page.md → drafts/trust-page.md`. The dashboard-side
+> structure is unchanged.
 
 ---
 

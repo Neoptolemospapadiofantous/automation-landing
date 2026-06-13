@@ -214,7 +214,7 @@ questions are grouped by category with source location in `[brackets]`.
 - Confirm hosting provider + region (the only remaining unknown in the
   vendor stack) *[privacy §4, dpa §7, security §1]*
 - Stripe controller vs processor characterisation (per the
-  `docs/legal/privacy-policy.md` note)
+  `docs/legal/drafts/privacy-policy.md` note)
 
 ### 5.6 Security baseline — limited by what's implemented
 - At-rest encryption — host-provided only today; full-stack encryption
@@ -242,7 +242,7 @@ Counsel: please call out anything missing from this list that the
 current multi-sector customer mix (predominantly EU + US businesses)
 requires. Sector regimes (DORA, IDD, sector-specific consumer law)
 apply conditionally per Customer and are documented in
-`docs/legal/compliance-framework.md`.
+`docs/legal/drafts/framework.md`.
 
 ---
 
