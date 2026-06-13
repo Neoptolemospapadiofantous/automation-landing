@@ -38,7 +38,7 @@ const titleBlock = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-bg-elev relative mt-16">
+    <footer className="bg-footer-grid bg-bg-elev relative mt-16">
       {/* Corner registration ticks */}
       <span
         aria-hidden

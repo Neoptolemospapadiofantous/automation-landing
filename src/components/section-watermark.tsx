@@ -40,8 +40,8 @@ export function SectionWatermark({
       )}
     >
       <span
-        className="text-ink/[0.045] font-mono font-black uppercase whitespace-nowrap leading-none -rotate-[8deg] tracking-[0.05em]"
-        style={{ fontSize }}
+        className="watermark-parallax text-ink/[0.10] font-mono font-black uppercase whitespace-nowrap leading-none tracking-[0.05em]"
+        style={{ fontSize, transform: "rotate(-8deg)" }}
       >
         {text}
       </span>

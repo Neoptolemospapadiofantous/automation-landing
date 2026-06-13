@@ -40,6 +40,9 @@ export function AnnouncementBar() {
   const dateLabel = formatOpenDate();
 
   return (
+    // Stickiness is owned by the shared `<header>` wrapper in
+    // layout.tsx so this bar and the SiteNav stack as one chrome unit
+    // instead of competing for the same top-0 sticky slot.
     <div
       role="region"
       aria-label="Launch announcement"

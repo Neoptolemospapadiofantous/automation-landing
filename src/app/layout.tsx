@@ -104,8 +104,14 @@ export default function RootLayout({
       <body className="bg-bg text-ink min-h-full flex flex-col overflow-x-hidden">
         <LiveStatsProvider>
           <BlueprintChrome />
-          <AnnouncementBar />
-          <SiteNav />
+          {/* Sticky chrome — announcement bar stacks on top, site nav
+              sits underneath. Both move as one unit. z-40 sits above
+              the persistent blueprint chrome (z-30) and below the
+              cookie consent prompt (z-50). */}
+          <div className="sticky top-0 z-40">
+            <AnnouncementBar />
+            <SiteNav />
+          </div>
           <main className="flex-1">{children}</main>
           <SiteFooter />
           <CookieConsent />
