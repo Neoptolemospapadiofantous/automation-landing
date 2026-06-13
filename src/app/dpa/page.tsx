@@ -50,7 +50,12 @@ const sections: LegalSection[] = [
       <ul>
         <li>
           <strong>Subject matter</strong> — provision of the Flowstack
-          AI-agent platform to Controller.
+          AI-agent platform to Controller. The Platform operates its
+          own conversational runtime that calls large-language-model
+          providers (Anthropic by default; OpenAI; optionally Google
+          paid-tier) server-side through a single internal contract;
+          model providers act as sub-processors and never interact
+          with end-users directly.
         </li>
         <li>
           <strong>Nature and purpose</strong> — hosting, processing and
@@ -61,7 +66,7 @@ const sections: LegalSection[] = [
         <li>
           <strong>Duration</strong> — for the term of the underlying
           subscription or order form, plus the wind-down period for
-          return or deletion of data (see <a href="#section-11">§11</a>
+          return or deletion of data (see <a href="#section-12">§12</a>
           ).
         </li>
         <li>
@@ -71,10 +76,11 @@ const sections: LegalSection[] = [
         </li>
         <li>
           <strong>Categories of personal data</strong> — contact
-          identifiers (name, email), conversation content and
-          transcripts, lead data, usage metadata. No special-category
-          data is intended to be processed; if it is, Controller
-          warrants it has an appropriate lawful basis.
+          identifiers (name, email, phone, company), conversation
+          content and transcripts, lead capture data, usage metadata.
+          No special-category data is intended to be processed; if it
+          is, Controller warrants it has an appropriate lawful basis
+          (GDPR Art. 9), including explicit consent where required.
         </li>
       </ul>
     ),
@@ -129,47 +135,73 @@ const sections: LegalSection[] = [
         <p>
           Controller grants general authorisation for Processor to
           engage the sub-processors listed below, subject to the
-          notification right in this section:
+          notification right in this section. Transfer mechanism for
+          each provider is verified against the provider&apos;s current
+          DPA and Transfer Impact Assessment prior to publication of
+          this list.
         </p>
         <ul>
           <li>
+            <strong>Anthropic, PBC (United States)</strong> — LLM
+            inference (Claude tier). Conversation content. DPA on file.
+            Transfer mechanism:{" "}
+            <Tbc note="verify SCCs vs DPF status at publication" />.
+          </li>
+          <li>
+            <strong>OpenAI, LLC (United States)</strong> — LLM
+            inference (ChatGPT tier) and knowledge-base embeddings.
+            Conversation content and knowledge-base text. DPA on file.
+            Transfer mechanism:{" "}
+            <Tbc note="verify SCCs vs DPF status at publication" />.
+          </li>
+          <li>
+            <strong>Google LLC (United States)</strong> — LLM inference
+            (Gemini tier, optional). Paid tier only — the free tier
+            trains on data and is contractually excluded. Conversation
+            content. Transfer mechanism:{" "}
+            <Tbc note="verify SCCs vs DPF status at publication" />.
+          </li>
+          <li>
+            <strong>Stripe, Inc. (United States) / Stripe Payments
+            Europe Ltd (Ireland)</strong> — payment processing. Billing
+            identity; no conversation data. SCCs under Stripe DPA.
+          </li>
+          <li>
+            <strong>Pusher Ltd (United Kingdom / United States)</strong>{" "}
+            — real-time WebSocket delivery for the dashboard UI. Lead
+            identifiers and message snippets in broadcast payloads. EU
+            cluster available on request. Transfer mechanism:{" "}
+            <Tbc note="UK adequacy decision + SCCs as applicable" />.
+          </li>
+          <li>
+            <strong>Amazon Web Services, Inc.</strong> — transactional
+            email (SES). Email addresses and notification content.{" "}
+            <Tbc note="confirm SES region" />.
+          </li>
+          <li>
+            <strong>Typesense (optional, currently off)</strong> —
+            knowledge-base search. Message text only when enabled.
+            Database fallback in use today.
+          </li>
+          <li>
             <strong>Hosting / infrastructure</strong> —{" "}
-            <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Database</strong> — <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Transactional email</strong> —{" "}
-            <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Payments</strong> — <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Customer support tooling</strong> —{" "}
-            <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Analytics</strong> — Google Analytics 4 (Google
-            Ireland Limited, Dublin, with EU/US transfers under SCCs).
-            Loaded only after explicit visitor consent on
-            flowstack.com; not invoked for Customer Data inside the
-            agent platform itself.
-          </li>
-          <li>
-            <strong>LLM inference</strong> —{" "}
-            <Tbc note="provider, model class, region" />
+            <Tbc note="confirm provider + region before publication" />.
           </li>
         </ul>
+        <p>
+          The marketing site (flowstack.com) additionally uses Google
+          Analytics 4 (Google Ireland Limited) under explicit visitor
+          consent; this is outside Customer Data and is documented in
+          the <a href="/privacy">Privacy Policy §4</a>.
+        </p>
         <p>
           Processor will give Controller at least{" "}
           <Tbc note="N days, e.g. 30" /> notice of any addition or
           replacement, during which Controller may object on reasonable
-          data-protection grounds. Processor flows down the data-
-          protection obligations in this DPA to every sub-processor by
-          written contract and remains liable to Controller for
-          sub-processor performance.
+          data-protection grounds. Processor flows down the
+          data-protection obligations in this DPA to every
+          sub-processor by written contract and remains liable to
+          Controller for sub-processor performance.
         </p>
       </>
     ),
@@ -228,12 +260,18 @@ const sections: LegalSection[] = [
       <p>
         Where personal data is transferred outside the EEA to a country
         without an adequacy decision, the parties incorporate the
-        Standard Contractual Clauses (Module Two — Controller to
-        Processor) into this DPA by reference. Annex I, II and III to
-        the SCCs are populated by the corresponding sections of this
-        DPA and the <a href="/security">Security page</a>. Where the
-        UK GDPR applies, the UK International Data Transfer Addendum is
-        deemed appended.
+        Standard Contractual Clauses (Commission Implementing Decision
+        (EU) 2021/914, Module Two — Controller to Processor) into this
+        DPA by reference. Each transfer is supported by a Transfer
+        Impact Assessment per EDPB Recommendations 01/2020 and any
+        necessary supplementary measures. Annex I, II and III to the
+        SCCs are populated by the corresponding sections of this DPA
+        and the <a href="/security">Security page</a>. Where the UK
+        GDPR applies, the UK International Data Transfer Addendum is
+        deemed appended. The parties do not rely on the EU&ndash;US
+        Data Privacy Framework as the primary transfer mechanism unless
+        a specific sub-processor is verified as a current participant
+        at the time of the transfer.
       </p>
     ),
   },

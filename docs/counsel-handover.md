@@ -152,61 +152,97 @@ Each Google Doc will carry this header so counsel sees the same context:
 
 ## 5. The TBC inventory — every open question
 
-Grouped by category. Source location in `[brackets]`.
+**Updated 2026-06-12** after the `src/legal/` clean drafts landed. Items
+that the new drafts already resolve are struck off; remaining open
+questions are grouped by category with source location in `[brackets]`.
 
-### 5.1 Corporate identity
-- Legal entity name, registration number, registered office  *[privacy §1, terms §15]*
-- Confirmation of all contact email addresses  *[privacy §1, terms §15]*
-- Postal address for legal notices  *[terms §15]*
+### 5.0 What's already decided (no longer TBC)
+- **Jurisdiction: Cyprus.** Nicosia, Cyprus is the registered seat; the
+  Commissioner for Personal Data Protection (Law 125(I)/2018) is the
+  supervisory authority. Reflected in `/privacy §1, §7`, `/terms §13`,
+  `/security §7`.
+- **Engine: native runtime.** The platform operates its own
+  conversational runtime calling Anthropic (default), OpenAI, and
+  optionally Google (paid tier only). No third-party conversational
+  engine is involved. Voiceflow is **deleted from every document** and
+  must not be reintroduced.
+- **Sub-processor list.** Anthropic, OpenAI, Google (paid tier),
+  Stripe, Pusher, AWS SES, Typesense (optional, currently off). Source
+  of truth: `src/legal/claims-vs-reality.md`. The remaining open item
+  is verifying each provider's SCC vs DPF status at publication.
+- **AI Act Article 50 — implemented today**, ahead of the 2 August
+  2026 effective date. Disclosure is rendered at the interface layer,
+  outside Customer control, with a one-tap human-handoff request.
+- **Standing rule for claims**: claim only what
+  `src/legal/claims-vs-reality.md` marks ✅. Anything 🟡 must be
+  qualified; anything ❌ must not appear.
 
-### 5.2 Governing law and disputes
-- Country of governing law — Portugal / Greece / other  *[terms §13]*
-- Court of exclusive jurisdiction (city + country)  *[terms §13]*
-- Other primary jurisdictions to mention in supervisory-authority guidance  *[privacy §7]*
+### 5.1 Corporate identity (still open)
+- Legal entity full name, registration number, registered office in
+  Nicosia, Cyprus *[privacy §1, terms §15]*
+- Confirm contact email addresses (`privacy@`, `security@`, `legal@`)
+  *[privacy §1, terms §15]*
+- Postal address for legal notices *[terms §15]*
 
-### 5.3 Retention periods
-- Account-data retention post-termination — recommended N years  *[privacy §6]*
-- Inquiry-data retention — recommended N months (default 12)  *[privacy §6]*
-- Customer-content deletion window post-termination — recommended N days (default 30)  *[privacy §6, dpa §12]*
-- Server-log retention — recommended N days (default 30)  *[privacy §6]*
+### 5.2 Retention periods (still open)
+- Account-data retention post-termination — recommended N years
+  (must align with Cyprus statutory accounting period) *[privacy §6]*
+- Inquiry-data retention — recommended N months (default 12) *[privacy §6]*
+- Customer-content deletion window post-termination — recommended N
+  days (default 30) *[privacy §6, dpa §12]*
+- Server-log retention — recommended N days (default 30) *[privacy §6]*
 
-### 5.4 Notice windows
-- Price-change notice period — recommended N days (default 30)  *[terms §4]*
-- Policy-change notice period — recommended N days (default 30)  *[privacy §10, terms §14]*
-- Material-breach cure window — recommended N days (default 30)  *[terms §12]*
-- Personal-data breach notification window to Controller — recommended N hours (default 48)  *[dpa §9]*
-- Sub-processor change notice period — recommended N days (default 30)  *[dpa §7]*
+### 5.3 Notice windows (still open)
+- Price-change notice period — recommended N days (default 30) *[terms §4]*
+- Policy-change notice period — recommended N days (default 30)
+  *[privacy §10, terms §14]*
+- Material-breach cure window — recommended N days (default 30) *[terms §12]*
+- Personal-data breach notification window to Controller — recommended
+  N hours (default 48) *[dpa §9]*
+- Sub-processor change notice period — recommended N days (default 30)
+  *[dpa §7]*
 
-### 5.5 Commercial terms
-- Liability cap multiplier — default 12 months of fees paid  *[terms §10]*
-- Late-payment interest rate — default statutory  *[terms §4]*
-- Existence of public SLA / uptime page — confirm  *[terms §8]*
+### 5.4 Commercial terms (still open)
+- Liability cap multiplier — default 12 months of fees paid *[terms §10]*
+- Late-payment interest rate — default statutory *[terms §4]*
+- Existence of public SLA / uptime page — confirm *[terms §8]*
 
-### 5.6 Vendor stack — to populate the sub-processor list
-- Hosting / infrastructure provider + region  *[privacy §4, dpa §7, security §1]*
-- Database provider + region  *[dpa §7]*
-- Transactional email provider + region  *[privacy §4, dpa §7]*
-- Payment processor — likely Stripe, confirm  *[privacy §2, privacy §4, dpa §7]*
-- Customer-support tooling + region  *[privacy §4, dpa §7]*
-- Analytics provider — or `none — server logs only`  *[privacy §4, dpa §7]*
-- LLM inference provider + model class + region  *[dpa §7]*
+### 5.5 Sub-processor verification (still open)
+- Verify per-provider SCC vs DPF status at publication: Anthropic,
+  OpenAI, Google, Stripe, Pusher, AWS SES *[privacy §5, dpa §7, dpa §11]*
+- Confirm AWS SES region in use *[privacy §4, dpa §7]*
+- Confirm hosting provider + region (the only remaining unknown in the
+  vendor stack) *[privacy §4, dpa §7, security §1]*
+- Stripe controller vs processor characterisation (per the
+  `src/legal/privacy-policy.md` note)
 
-### 5.7 Security baseline
-- At-rest encryption confirmation: provider-managed AES-256, KMS-backed?  *[security §2]*
-- Secrets store: provider's secret manager or equivalent  *[security §2]*
-- Access-review cadence  *[security §3]*
-- Backup frequency and retention  *[security §4]*
-- Restore-test cadence  *[security §4]*
-- RPO / RTO targets  *[security §4]*
-- Base-image rebuild cadence  *[security §5]*
-- Penetration test cadence + last test date (or `not yet`)  *[security §5]*
+### 5.6 Security baseline — limited by what's implemented
+- At-rest encryption — host-provided only today; full-stack encryption
+  is post-launch *[security §2]*
+- OS / runtime base-image rebuild cadence — depends on hosting target
+  *[security §5]*
+- Penetration test — first one not yet booked; planned post-launch
+  *[security §5]*
+- Incident-response runbook — being drafted; do **not** claim a written
+  runbook is in force until it exists *[security §6]*
+- Backup frequency, retention, restore-test cadence, RPO/RTO targets —
+  all depend on hosting target *[security §4]*
+- Responsible-disclosure bounty programme — none today *[security §9]*
 
-### 5.8 Compliance scope
-- SOC 2 / ISO 27001 status — `in progress` / `not yet` / certification number  *[security §7]*
-- HIPAA / PCI-DSS scope — confirm whether in scope  *[security §7]*
-- Bug bounty programme — confirm whether one exists  *[security §9]*
+### 5.7 Compliance scope (already partly answered)
+- **GDPR** — Cyprus Commissioner for Personal Data Protection
+  (Law 125(I)/2018) confirmed as supervisory authority *[security §7]*
+- **EU AI Act** — Article 50 disclosure implemented today; product
+  excluded from every Annex III high-risk use case *[security §7]*
+- **SOC 2 / ISO 27001** — not held; targeted post-launch *[security §7]*
+- **HIPAA / PCI-DSS** — out of scope; Stripe handles card data;
+  agent platform does not process PHI *[security §7]*
 
-Counsel: please call out anything missing from this list that the current customer mix (predominantly EU + US businesses) requires.
+Counsel: please call out anything missing from this list that the
+current multi-sector customer mix (predominantly EU + US businesses)
+requires. Sector regimes (DORA, IDD, sector-specific consumer law)
+apply conditionally per Customer and are documented in
+`src/legal/compliance-framework.md`.
 
 ---
 
@@ -282,11 +318,15 @@ Repeat per document. The four documents can flip to FINAL independently — ther
 
 For clarity, these are NOT being requested from counsel in this round:
 
-- Drafting from scratch — the structure already exists.
-- Cookie banner copy — current setup doesn't set non-essential cookies, so no banner is required under ePrivacy. Flag this if your view differs.
-- Master Service Agreement template for the custom-build engagement — separate engagement, deferred to post-launch.
+- Drafting from scratch — the structure already exists; `src/legal/`
+  carries the cleaned multi-sector framing as the master.
+- Cookie banner copy — the marketing site uses a consent-gated GA4
+  cookie banner; the dashboard sets only strictly-necessary cookies.
+  Flag this if your view differs under ePrivacy / Cyprus implementing law.
+- Master Service Agreement template for the custom-build engagement —
+  separate engagement, deferred to post-launch.
 - Trademark advice on "Flowstack" — separate engagement.
-- Tax registration / VAT handling in Portugal / Greece — accountant scope, not counsel.
+- Tax registration / VAT handling in Cyprus — accountant scope, not counsel.
 
 If counsel sees scope creep into any of the above and recommends bundling, please flag in writing before doing the work so we can adjust the fee.
 

@@ -20,15 +20,20 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Flowstack Studio (&quot;Flowstack&quot;, &quot;we&quot;,
-          &quot;us&quot;) is the data controller for the personal data
-          processed in connection with this site (
-          <a href="https://flowstack.example">flowstack.example</a>) and
-          the Flowstack agent platform.
+          Flowstack Studio Ltd (&quot;Flowstack&quot;, &quot;we&quot;,
+          &quot;us&quot;) is a company established in Nicosia, Cyprus,
+          providing AI-powered assistant software to businesses across
+          many sectors. We are the data controller for the personal
+          data processed in connection with this site (
+          <a href="https://flowstack.example">flowstack.example</a>).
+          For personal data processed inside the Flowstack agent
+          platform on behalf of our business customers, we act as a
+          data processor and the customer is the controller — see the{" "}
+          <a href="/dpa">Data Processing Agreement</a>.
         </p>
         <p>
           Registered office:{" "}
-          <Tbc note="legal entity, registration number, address" />.
+          <Tbc note="legal name, registration number, address — Nicosia, Cyprus" />.
           Contact for privacy matters:{" "}
           <a href="mailto:privacy@flowstack.example">
             privacy@flowstack.example
@@ -106,9 +111,22 @@ const sections: LegalSection[] = [
           </li>
         </ul>
         <p>
-          We do not use personal data for automated decision-making with
-          legal or similarly significant effects on you, and we do not
-          sell personal data.
+          <strong>AI transparency (EU AI Act Article 50).</strong> Every
+          chat conversation in the agent begins with a platform-rendered
+          disclosure that you are interacting with an AI assistant and
+          can request a human at any time. The disclosure is enforced at
+          the interface layer and cannot be removed by the Client. The
+          AI Act's transparency obligations apply from 2 August 2026; we
+          implemented them ahead of that date.
+        </p>
+        <p>
+          We do not use personal data for automated decision-making
+          producing legal or similarly significant effects on you, we do
+          not sell personal data, and we do not use your data or your
+          visitors&apos; conversations to train AI models — our model
+          providers are bound by their commercial terms not to train on
+          API data (Google&apos;s free tier is contractually excluded
+          for that reason; we use the paid tier only).
         </p>
       </>
     ),
@@ -122,35 +140,51 @@ const sections: LegalSection[] = [
           We share personal data only with the processors and parties
           listed below, under written agreements that bind them to
           confidentiality and to processing on our documented
-          instructions:
+          instructions. The current authoritative list lives in{" "}
+          <a href="/dpa">DPA §7</a> and is reproduced here for visibility.
         </p>
         <ul>
           <li>
+            <strong>LLM inference</strong> — Anthropic (United States)
+            for the default Claude tier; OpenAI (United States) for the
+            ChatGPT tier and for knowledge-base embeddings; Google
+            (United States) for the optional Gemini tier (paid only —
+            the free tier trains on data and is contractually
+            excluded). Model providers process chat content; we never
+            send our visitors&apos; identifiers beyond what the chat
+            content itself contains.
+          </li>
+          <li>
+            <strong>Real-time UI events</strong> — Pusher (United
+            Kingdom / United States) for the dashboard&apos;s live
+            updates. EU cluster available.
+          </li>
+          <li>
+            <strong>Payments</strong> — Stripe (United States / Ireland).
+            Card details go directly to Stripe; we never see or store
+            card numbers.
+          </li>
+          <li>
+            <strong>Transactional email</strong> — Amazon Web Services
+            SES <Tbc note="confirm SES region in use" />.
+          </li>
+          <li>
+            <strong>Search (optional)</strong> — Typesense for
+            knowledge-base retrieval. Currently off; database fallback
+            in use.
+          </li>
+          <li>
             <strong>Hosting / infrastructure</strong>{" "}
-            <Tbc note="provider, region" />
+            <Tbc note="provider, region — confirm before publication" />.
           </li>
           <li>
-            <strong>Transactional email</strong>{" "}
-            <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Payments</strong> <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Customer support tooling</strong>{" "}
-            <Tbc note="provider, region" />
-          </li>
-          <li>
-            <strong>Analytics</strong> — Google Analytics 4 (Google
-            Ireland Limited, EU/US transfers under SCCs). Loaded only
+            <strong>Website analytics</strong> — Google Analytics 4
+            (Google Ireland Limited) on this marketing site only. Loaded
             after explicit visitor consent via the cookie banner; IP
-            anonymisation enabled.
+            anonymisation enabled. Not invoked inside the agent
+            platform.
           </li>
         </ul>
-        <p>
-          The current list of sub-processors lives in the{" "}
-          <a href="/dpa">Data Processing Agreement</a>.
-        </p>
       </>
     ),
   },
@@ -160,12 +194,14 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Where personal data is transferred outside the European
-          Economic Area, we rely on the European Commission&apos;s
-          Standard Contractual Clauses (SCCs, 2021/914) and, where
-          appropriate, supplementary measures as described in
-          EDPB Recommendations 01/2020. The receiving processors are
-          listed in <a href="/dpa">§7 of the DPA</a>.
+          Several sub-processors (notably the LLM providers and Stripe)
+          process data in the United States. Where personal data is
+          transferred outside the European Economic Area we rely on the
+          European Commission&apos;s Standard Contractual Clauses
+          (SCCs, 2021/914) together with a Transfer Impact Assessment
+          per EDPB Recommendations 01/2020, and any necessary
+          supplementary measures.{" "}
+          <Tbc note="verify per-provider SCC vs DPF status at publication — Anthropic, OpenAI, Google, Stripe, Pusher, AWS" />
         </p>
       </>
     ),
@@ -229,11 +265,15 @@ const sections: LegalSection[] = [
           To exercise any of these, email{" "}
           <a href="mailto:privacy@flowstack.example">
             privacy@flowstack.example
-          </a>
-          . You can also lodge a complaint with your local supervisory
-          authority — in Portugal, the{" "}
-          <a href="https://www.cnpd.pt">CNPD</a>;{" "}
-          <Tbc note="add any other primary jurisdictions" />.
+          </a>{" "}
+          — we respond within one month. You can also lodge a complaint
+          with the Cyprus{" "}
+          <a href="https://www.dataprotection.gov.cy">
+            Commissioner for Personal Data Protection
+          </a>{" "}
+          (the supervisory authority for our establishment under Cyprus
+          Law 125(I)/2018) or with the supervisory authority where you
+          are habitually resident.
         </p>
       </>
     ),
