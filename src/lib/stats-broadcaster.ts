@@ -44,6 +44,7 @@ function snapshotKey(s: PlatformStats): string {
       founder_slots_total: s.founder_slots_total,
       next_cohort_label: s.next_cohort_label,
       featured_proof: s.featured_proof,
+      next_cohort_open_at: s.next_cohort_open_at,
     },
   });
 }

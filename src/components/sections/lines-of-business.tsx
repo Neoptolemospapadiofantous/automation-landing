@@ -49,9 +49,9 @@ export function LinesOfBusiness() {
   return (
     <section
       aria-labelledby="channels-heading"
-      className="relative isolate overflow-hidden pt-2 pb-10"
+      className="relative isolate overflow-hidden py-20"
     >
-      <SectionWatermark text="CHANNELS" size="md" />
+      <SectionWatermark text="CHANNELS" size="sm" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line relative border">
           {/* corner registration ticks */}

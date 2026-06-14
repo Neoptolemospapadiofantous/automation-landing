@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { FAQ } from "@/components/sections/faq";
 import { SectionHeading } from "@/components/section-heading";
 import { pricingTiers } from "@/lib/content";
+import { vatLabel } from "@/lib/pricing-display";
 
 export const metadata: Metadata = {
   title: "Pricing — Flowstack",
@@ -73,6 +74,13 @@ export default function PricingPage() {
                     <span className="text-ink text-4xl font-semibold tracking-[-0.03em]">
                       {tier.price}
                     </span>
+                    {/* VAT label — only shown next to numeric prices.
+                        Custom tier ("Let's talk") has no number to qualify. */}
+                    {tier.price.startsWith("$") && (
+                      <span className="text-ink-mute font-mono text-[11px] uppercase tracking-[0.18em]">
+                        {vatLabel()}
+                      </span>
+                    )}
                   </div>
                   <p className="text-ink-mute mt-1 text-[13px]">
                     {tier.cadence}
@@ -113,6 +121,14 @@ export default function PricingPage() {
 
           <p className="bp-annot mt-8 text-center">
             {"// all projects: built on your stack · code & credentials handed over · no monthly minimums"}
+          </p>
+          {/* VAT disclosure — required for Cyprus / EU sellers under
+              CRD Art. 6 + Electronic Commerce Law 156(I)/2004. Wording
+              is driven by src/lib/pricing-display.ts so flipping the
+              VAT treatment is a one-config-change. */}
+          <p className="text-ink-mute mt-3 text-center font-mono text-[11px] uppercase tracking-[0.18em]">
+            All prices in USD · {vatLabel()} · final total shown at
+            checkout
           </p>
         </div>
       </section>

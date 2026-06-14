@@ -29,7 +29,7 @@ export function Hero() {
               FIG. 00 — your AI agent, ready in 60 seconds
             </span>
 
-            <h1 className="mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-[76px]">
+            <h1 className="hero-headline-parallax mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-[76px]">
               An AI agent for your team.{" "}
               <span className="text-gradient">Live in 60 seconds.</span>
             </h1>
@@ -87,8 +87,8 @@ export function Hero() {
             </dl>
           </div>
 
-          {/* Right column — the interactive schematic */}
-          <div className="lg:pl-2">
+          {/* Right column — the interactive schematic, parallax-floated */}
+          <div className="hero-schematic-parallax lg:pl-2">
             <HeroSchematic />
           </div>
         </div>

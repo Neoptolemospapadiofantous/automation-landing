@@ -16,39 +16,56 @@ const Tbc = ({ note }: { note: string }) => (
 const sections: LegalSection[] = [
   {
     ref: "§1",
-    title: "Hosting and infrastructure",
+    title: "Hosting and architecture",
     body: (
-      <p>
-        The platform runs on{" "}
-        <Tbc note="provider, region(s)" />, on a persistent Node host
-        (the live-stats pipeline requires a long-lived process — see the{" "}
-        <a href="/dpa">DPA</a> for sub-processor detail). Each customer
-        tenant is logically isolated; cross-tenant data access is
-        prevented at the application layer.
-      </p>
+      <>
+        <p>
+          The agent platform is a Laravel application that operates its
+          own conversational runtime, calling large-language-model
+          providers (Anthropic by default; OpenAI; optionally Google
+          paid-tier) server-side through a single internal contract.
+          Customers never reach a model provider directly; provider
+          API credentials are held platform-side only and are never
+          exposed in browsers, logs, or source control.
+        </p>
+        <p>
+          The marketing site (flowstack.com) runs on a persistent Node
+          host because the live-stats pipeline requires a long-lived
+          process for the SSE broadcaster singleton — see the{" "}
+          <a href="/dpa">DPA</a> for the full sub-processor list and the
+          deploy guide for the operational shape.{" "}
+          <Tbc note="confirm hosting provider + region(s)" />
+        </p>
+        <p>
+          Each customer team is logically isolated; cross-tenant data
+          access is prevented at the application layer and exercised by
+          test (team-scoped authorisation on every resource).
+        </p>
+      </>
     ),
   },
   {
     ref: "§2",
-    title: "Encryption",
+    title: "Encryption and credentials",
     body: (
       <>
         <ul>
           <li>
-            <strong>In transit</strong> — TLS 1.2+ on every public
-            endpoint; HSTS enforced on the marketing site and the agent
-            dashboard.
+            <strong>In transit</strong> — TLS on every public endpoint;
+            HSTS enforced on the marketing site and the agent dashboard.
           </li>
           <li>
-            <strong>At rest</strong> —{" "}
-            <Tbc note="confirm: provider-managed AES-256, KMS-backed?" />
-            .
+            <strong>At rest</strong> — provided by the hosting database
+            (provider-managed; we do not implement application-layer
+            encryption at this time).{" "}
+            <Tbc note="confirm host-provided encryption + key management once hosting target is finalised" />
           </li>
           <li>
-            <strong>Secrets</strong> — environment variables and API
-            credentials live in{" "}
-            <Tbc note="provider's secret manager or equivalent" /> and
-            are never logged or transmitted to the browser.
+            <strong>Credentials</strong> — provider API keys and
+            secrets are stored server-side only in the platform&apos;s
+            environment, never embedded in client-side code, log output,
+            source control, or transmitted to the browser. Customer
+            passwords are hashed with bcrypt.
           </li>
         </ul>
       </>
@@ -56,21 +73,30 @@ const sections: LegalSection[] = [
   },
   {
     ref: "§3",
-    title: "Access control",
+    title: "Application controls",
     body: (
       <ul>
         <li>
-          Production access is limited to a named on-call rotation. All
-          access is via SSO with mandatory MFA.
+          Team-scoped authorisation on every resource; cross-tenant
+          access prevented and exercised by automated test.
         </li>
         <li>
-          Principle of least privilege: production database credentials
-          are scoped per service.
+          Rate limiting on all public and abuse-prone endpoints,
+          including registration and password flows.
         </li>
         <li>
-          Access is reviewed{" "}
-          <Tbc note="cadence, e.g. quarterly" /> and revoked on role
-          change or departure.
+          CSRF protection on web forms (standard Laravel middleware,
+          covered by test).
+        </li>
+        <li>
+          Operational logs exclude message content — log redaction is
+          sentinel-proofed in test, so accidentally logging a
+          message body fails CI.
+        </li>
+        <li>
+          Per-customer usage metering with hard limits; agents suspend
+          on credit exhaustion. The billing ledger is append-only and
+          reconciled daily against live balances.
         </li>
       </ul>
     ),
@@ -91,20 +117,24 @@ const sections: LegalSection[] = [
   },
   {
     ref: "§5",
-    title: "Vulnerability management and patching",
+    title: "Vulnerability management",
     body: (
       <ul>
         <li>
-          Dependencies are scanned on every commit; critical findings
-          block merge.
+          Secret scanning on every commit (gitleaks in CI). Hard-fails
+          a push if a credential pattern lands in the repo.
+        </li>
+        <li>
+          Dependency CVE scanning daily (composer audit for PHP,
+          pnpm audit for JavaScript), plus a system health check every
+          six hours.
         </li>
         <li>
           OS and runtime base images are rebuilt{" "}
-          <Tbc note="cadence, e.g. weekly" />.
+          <Tbc note="cadence — confirm once hosting target is fixed" />.
         </li>
         <li>
-          External penetration test:{" "}
-          <Tbc note="cadence + last test date, or 'not yet'" />.
+          External penetration test: not yet — planned post-launch.
         </li>
       </ul>
     ),
@@ -114,33 +144,54 @@ const sections: LegalSection[] = [
     title: "Incident response",
     body: (
       <p>
-        On detection of a security incident affecting customer data,
-        we follow a written runbook: contain, eradicate, recover,
-        notify. Customers affected by a personal-data breach are
-        notified without undue delay and in any event within 72 hours
-        of confirmation, per GDPR Art. 33–34 and the{" "}
-        <a href="/dpa">DPA</a>.
+        Personal-data breaches are notified to affected Customers
+        without undue delay and in any event within 72 hours of
+        confirmation, per GDPR Articles 33–34 and the{" "}
+        <a href="/dpa">DPA</a>. A formal written incident-response
+        runbook is in development and will be referenced here once it
+        ships; we do not claim one is in force today.
       </p>
     ),
   },
   {
     ref: "§7",
-    title: "Compliance and certifications",
+    title: "Regulatory position",
     body: (
       <ul>
         <li>
-          <strong>GDPR</strong> — see the{" "}
-          <a href="/privacy">Privacy Policy</a> and{" "}
-          <a href="/dpa">DPA</a>.
+          <strong>GDPR (Regulation (EU) 2016/679)</strong> — Flowstack
+          acts as data processor on behalf of Customers (controllers).
+          See the <a href="/privacy">Privacy Policy</a> and{" "}
+          <a href="/dpa">DPA</a>. Supervisory authority: Cyprus{" "}
+          <a href="https://www.dataprotection.gov.cy">
+            Commissioner for Personal Data Protection
+          </a>{" "}
+          (Law 125(I)/2018).
         </li>
         <li>
-          <strong>SOC 2 / ISO 27001</strong> —{" "}
-          <Tbc note="status: 'in progress', 'not yet', or certification number" />
-          .
+          <strong>EU AI Act (Regulation (EU) 2024/1689)</strong> —
+          Flowstack acts as AI provider; Customers act as deployers.
+          The Article 50 end-user transparency obligation is
+          implemented today, ahead of the 2 August 2026 effective date:
+          every chat conversation begins with a platform-rendered
+          &quot;you are interacting with an AI&quot; disclosure that
+          cannot be removed by the Customer, with a one-tap human-
+          handoff request that notifies the Customer&apos;s team
+          immediately. The product is not deployed for any Annex III
+          high-risk use case (no recruitment screening, credit
+          scoring, insurance underwriting, education scoring, or
+          essential-services eligibility decisions); Customers warrant
+          the same in the Terms of Service.
         </li>
         <li>
-          <strong>HIPAA / PCI-DSS</strong> —{" "}
-          <Tbc note="confirm whether in scope" />.
+          <strong>SOC 2 / ISO 27001</strong> — not held today. Targeted
+          for post-launch evaluation; we do not claim certifications
+          that are not in force.
+        </li>
+        <li>
+          <strong>HIPAA / PCI-DSS</strong> — out of scope. Card data
+          flows directly to Stripe and is never seen by us; the agent
+          platform does not process protected health information.
         </li>
       </ul>
     ),

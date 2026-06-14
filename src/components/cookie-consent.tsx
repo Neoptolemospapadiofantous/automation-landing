@@ -20,6 +20,7 @@ import Link from "next/link";
 
 const STORAGE_KEY = "flowstack-consent";
 const EVENT_NAME = "flowstack-consent";
+const REOPEN_EVENT = "flowstack-consent-reopen";
 
 export type ConsentValue = "granted" | "denied";
 
@@ -34,6 +35,24 @@ function writeConsent(v: ConsentValue) {
   window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: v }));
 }
 
+/**
+ * Re-open the consent banner from anywhere on the page (e.g. the
+ * footer "Cookie settings" link). Clears the stored decision and
+ * immediately revokes any analytics consent so GA4 stops collecting
+ * the moment the user clicks the link — even before they confirm
+ * a new choice. Mandated by the Cyprus Commissioner: withdrawal must
+ * be as easy as giving consent.
+ */
+export function reopenConsent() {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(STORAGE_KEY);
+  // Tell the analytics layer to flip consent off until the user
+  // re-confirms via the banner.
+  window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: "denied" }));
+  // Tell the banner component to render again.
+  window.dispatchEvent(new CustomEvent(REOPEN_EVENT));
+}
+
 export function CookieConsent() {
   // null until we've checked localStorage post-hydration; this avoids
   // any SSR/CSR mismatch.
@@ -43,6 +62,12 @@ export function CookieConsent() {
 
   useEffect(() => {
     setDecision(readConsent());
+    // The footer "Cookie settings" link emits REOPEN_EVENT; reset our
+    // local decision so the banner re-mounts even after the visitor
+    // already chose once.
+    const onReopen = () => setDecision(null);
+    window.addEventListener(REOPEN_EVENT, onReopen);
+    return () => window.removeEventListener(REOPEN_EVENT, onReopen);
   }, []);
 
   if (decision !== null) return null;

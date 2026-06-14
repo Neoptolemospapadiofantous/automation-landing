@@ -1,9 +1,15 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowstack mark">
   <title>Flowstack — square mark, black on transparent</title>
+  <!-- input wire -->
+  <path d="M30 256 H110" stroke="#000000" stroke-width="18"/>
   <!-- node frame -->
-  <rect x="56" y="128" width="400" height="256" stroke="#000000" stroke-width="20" fill="none"/>
+  <rect x="120" y="180" width="272" height="152" stroke="#000000" stroke-width="18" fill="none"/>
   <!-- active core (filled) -->
-  <rect x="112" y="216" width="80" height="80" fill="#000000"/>
+  <rect x="167" y="232" width="48" height="48" fill="#000000"/>
   <!-- queued indicator (hollow) -->
-  <rect x="320" y="216" width="80" height="80" stroke="#000000" stroke-width="16" fill="none"/>
+  <rect x="297" y="232" width="48" height="48" stroke="#000000" stroke-width="14" fill="none"/>
+  <!-- output wire -->
+  <path d="M402 256 H468" stroke="#000000" stroke-width="18"/>
+  <!-- arrowhead -->
+  <path d="M448 218 L482 256 L448 294" stroke="#000000" stroke-width="18" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
 </svg>

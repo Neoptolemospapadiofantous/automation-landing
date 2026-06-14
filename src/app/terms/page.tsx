@@ -179,16 +179,41 @@ const sections: LegalSection[] = [
   },
   {
     ref: "§9",
-    title: "Warranties and disclaimer",
+    title: "Warranties, AI accuracy, and no advice",
     body: (
-      <p>
-        Except as expressly stated, the service is provided
-        &quot;as is&quot; and &quot;as available&quot;. To the maximum
-        extent permitted by law, we disclaim all implied warranties,
-        including merchantability, fitness for a particular purpose,
-        and non-infringement. Statutory consumer rights, where they
-        apply, are not affected.
-      </p>
+      <>
+        <p>
+          Except as expressly stated, the service is provided
+          &quot;as is&quot; and &quot;as available&quot;. To the
+          maximum extent permitted by law, we disclaim all implied
+          warranties, including merchantability, fitness for a
+          particular purpose, and non-infringement. Statutory consumer
+          rights, where they apply, are not affected.
+        </p>
+        <p>
+          <strong>AI accuracy.</strong> The agent is a large-language-
+          model-driven system. Its responses can be incomplete or
+          incorrect even when stated with apparent confidence. The
+          platform renders an explicit &quot;you are interacting with
+          AI&quot; disclosure at the start of every conversation (see{" "}
+          <a href="/privacy">Privacy §3</a>), and the system prompt
+          forbids the assistant from claiming to be human or inventing
+          facts, prices, or policies. Customer must not present the
+          assistant as a human to its end-users and must not remove the
+          platform&apos;s transparency disclosure.
+        </p>
+        <p>
+          <strong>No professional advice.</strong> The assistant does
+          not provide legal, medical, financial, or other regulated
+          professional advice. Conversations that would call for such
+          advice are routed to a human via the platform&apos;s
+          handoff mechanism. The Customer warrants it will not deploy
+          the assistant for any EU AI Act Annex III high-risk use case
+          (including recruitment screening, credit scoring, insurance
+          underwriting, education scoring, or essential-services
+          eligibility decisions).
+        </p>
+      </>
     ),
   },
   {
@@ -256,11 +281,12 @@ const sections: LegalSection[] = [
     title: "Governing law and disputes",
     body: (
       <p>
-        These Terms are governed by the laws of{" "}
-        <Tbc note="Portugal / Greece / other" />. The courts of{" "}
-        <Tbc note="city / country" /> have exclusive jurisdiction,
+        These Terms are governed by the laws of the Republic of Cyprus.
+        The courts of Nicosia, Cyprus have exclusive jurisdiction,
         without prejudice to any non-waivable consumer protections
-        available where you are habitually resident.
+        available where you are habitually resident. Nothing in this
+        clause restricts a party from seeking interim or injunctive
+        relief from a court of competent jurisdiction.
       </p>
     ),
   },
