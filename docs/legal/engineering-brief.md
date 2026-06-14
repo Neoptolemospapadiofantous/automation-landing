@@ -351,3 +351,47 @@ implementation status changed.
 > must confirm currency before any document relying on these is published.
 > These references support the engineering work; they are **not** a
 > substitute for the counsel sign-off required by GATE-COUNSEL.
+
+---
+
+## Handoff note — dashboard repo git state (added 2026-06-14)
+
+> Added by the parallel Hermes/dashboard session. It does **not** touch
+> `feat/cyprus-consumer-checkout` — but it had to clear that branch's WIP out
+> of the shared working tree to get its own gate green, so the state you
+> inherit differs slightly from what this brief assumes. Read this before you
+> start.
+
+**1. Your "already done" WIP is now a commit, not an uncommitted working tree.**
+The three done files (`app/Billing/TermsVersion.php`,
+`app/Models/PurchaseConsent.php`, the `create_purchase_consents` migration)
+plus the `docs/legal/*` edits were parked as a single checkpoint commit on
+`feat/cyprus-consumer-checkout`:
+
+```
+1494873  WIP checkpoint: cyprus consumer checkout consent (parked)
+```
+
+- To resume exactly as the brief assumes (files present, committed): just
+  `git checkout feat/cyprus-consumer-checkout` — everything is there.
+- To get back to **uncommitted** WIP (if you'd rather build from a clean
+  index): `git reset --soft HEAD~1` on that branch. Nothing is lost either way.
+
+**2. The dashboard's `docs/legal/` is NOT pristine — reconcile before editing.**
+The closing note of this brief says the dashboard `docs/legal/` is "unchanged."
+That isn't true of the checkpoint: it carries dashboard-side edits to **9**
+legal docs. Don't assume a clean slate or you'll clobber/duplicate:
+
+- modified: `README.md`, `claims-vs-reality.md`, `compliance-framework.md`,
+  `privacy-policy.md`, `trust-page.md`
+- new: `ENGINEERING-BRIEF.md`, `breach-runbook.md`, `cyprus-compliance.md`,
+  `go-live-checklist.md`
+
+(These are the dashboard repo's copies, separate from this landing-repo brief.)
+
+**3. Shared working tree — only one branch checked out at a time.**
+`automation_dashboard` is one working directory shared by both sessions. The
+Hermes session currently has it on `runtime-native-l1` (clean). When you
+`git checkout feat/cyprus-consumer-checkout` you switch the shared tree out
+from under it — fine as long as neither side is mid-edit. Coordinate the
+branch switch so you don't collide.
