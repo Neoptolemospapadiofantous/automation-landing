@@ -9,13 +9,18 @@
 #                   Rust-backed module resolver used by oxlint / eslint
 #                   plugins.
 #
-# msw (Mock Service Worker) is intentionally omitted — it's a dev-only
-# test mocking lib and does not need its postinstall to run in prod.
+#   - msw           transitive dependency of `shadcn` (the CLI we use to
+#                   install components). Its postinstall copies a single
+#                   ~5KB mockServiceWorker.js into public/. We don't use
+#                   msw for runtime mocking; allowing the build keeps
+#                   pnpm's strict-build-scripts policy happy on the
+#                   Forge box without harming production.
 #
 # This MUST be `onlyBuiltDependencies` (allow-list), NOT
 # `ignoredBuiltDependencies` (deny-list) — the latter would block these
 # packages from running their postinstall and break Next image at
 # runtime.
 onlyBuiltDependencies:
+  - msw
   - sharp
   - unrs-resolver
