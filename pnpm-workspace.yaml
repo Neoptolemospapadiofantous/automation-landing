@@ -1,4 +1,4 @@
-# pnpm 10 refuses to silently run package postinstall scripts (defence
+# pnpm refuses to silently run package postinstall scripts (defence
 # against supply-chain payloads). The packages listed below are
 # explicitly allowed; everything else is silently skipped.
 #
@@ -8,7 +8,6 @@
 #   - unrs-resolver downloads the platform-specific binary for the
 #                   Rust-backed module resolver used by oxlint / eslint
 #                   plugins.
-#
 #   - msw           transitive dependency of `shadcn` (the CLI we use to
 #                   install components). Its postinstall copies a single
 #                   ~5KB mockServiceWorker.js into public/. We don't use
@@ -16,10 +15,30 @@
 #                   pnpm's strict-build-scripts policy happy on the
 #                   Forge box without harming production.
 #
-# This MUST be `onlyBuiltDependencies` (allow-list), NOT
-# `ignoredBuiltDependencies` (deny-list) — the latter would block these
-# packages from running their postinstall and break Next image at
-# runtime.
+# We declare BOTH the v10 key (`onlyBuiltDependencies`) and the v11 key
+# (`allowBuilds`) because:
+#   - Local dev typically runs pnpm 10.x, which reads onlyBuiltDependencies
+#     and ignores allowBuilds.
+#   - Forge auto-installed pnpm 11.x (released 2026-04-28), which
+#     REMOVED onlyBuiltDependencies with no backward compat and reads
+#     allowBuilds instead.
+# Each version silently ignores the other's key, so the file stays
+# valid for both. Drop the v10 block whenever everyone upgrades.
+#
+# The `packages` field is required by some pnpm configs for the file to
+# be considered a valid workspace (see pnpm issues #9082, #9361). We're
+# a single-package project so it just declares the project root.
+
+packages:
+  - .
+
+# pnpm v11 syntax (current — used by Forge)
+allowBuilds:
+  msw: true
+  sharp: true
+  unrs-resolver: true
+
+# pnpm v10 syntax (legacy — still used by some local installs)
 onlyBuiltDependencies:
   - msw
   - sharp
