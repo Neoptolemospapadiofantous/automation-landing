@@ -2,13 +2,14 @@
  * Single source of truth for the production URL. Used by metadata,
  * sitemap, robots.txt, JSON-LD and any absolute link in OG.
  *
- * TBC: replace `https://flowstack.example` with the real production
- * domain before launch. Override locally via NEXT_PUBLIC_SITE_URL if
- * you need preview deployments to advertise their own host.
+ * Production canonical: https://www.flowstack.run (GA4 stream
+ * "Flowstack", id 15073273062). Override locally via
+ * NEXT_PUBLIC_SITE_URL if a preview deployment needs to advertise
+ * its own host instead.
  */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://flowstack.example";
+  "https://www.flowstack.run";
 
 /**
  * Google Analytics 4 measurement ID. Set NEXT_PUBLIC_GA_ID in Forge env.
@@ -28,8 +29,8 @@ export const BRAND = {
   twitter: "@flowstack" as const, // TBC: real handle
   locale: "en_US" as const,
   contact: {
-    privacy: "privacy@flowstack.example", // TBC
-    security: "security@flowstack.example", // TBC
-    legal: "legal@flowstack.example", // TBC
+    privacy: "privacy@flowstack.run",
+    security: "security@flowstack.run",
+    legal: "legal@flowstack.run",
   },
 };

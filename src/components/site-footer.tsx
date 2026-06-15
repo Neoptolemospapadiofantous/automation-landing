@@ -124,10 +124,10 @@ export function SiteFooter() {
               ·
             </span>
             <a
-              href="mailto:privacy@flowstack.example"
+              href="mailto:privacy@flowstack.run"
               className="text-ink-dim hover:text-ink transition-colors"
             >
-              privacy@flowstack.example
+              privacy@flowstack.run
             </a>
           </div>
         </div>

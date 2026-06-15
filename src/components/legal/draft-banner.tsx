@@ -26,9 +26,8 @@ export function DraftBanner() {
           <p className="text-ink-dim mt-1">
             It has not been reviewed by counsel and must not be relied on
             as legal advice or as the operator&apos;s final commitment.
-            Contact <span className="text-ink">privacy@flowstack.example</span>{" "}
-            <span className="text-ink-mute">[TBC]</span> for the live
-            version.
+            Contact <span className="text-ink">privacy@flowstack.run</span>{" "}
+            for the live version.
           </p>
         </div>
       </div>

@@ -1,0 +1,8 @@
+# Flowstack security disclosure policy (RFC 9116)
+# Found a vulnerability? Please email us — we'll respond within 5 business days.
+
+Contact: mailto:security@flowstack.run
+Expires: 2027-06-15T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.flowstack.run/.well-known/security.txt
+Policy: https://www.flowstack.run/security

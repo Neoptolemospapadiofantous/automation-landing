@@ -54,8 +54,8 @@ const sections: LegalSection[] = [
           purpose. You are responsible for the accuracy of registration
           details and for keeping account credentials confidential.
           Notify us immediately at{" "}
-          <a href="mailto:security@flowstack.example">
-            security@flowstack.example
+          <a href="mailto:security@flowstack.run">
+            security@flowstack.run
           </a>{" "}
           if you suspect unauthorised access.
         </p>
@@ -308,8 +308,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Questions about these Terms:{" "}
-        <a href="mailto:legal@flowstack.example">
-          legal@flowstack.example
+        <a href="mailto:legal@flowstack.run">
+          legal@flowstack.run
         </a>{" "}
         <Tbc note="confirm address" />. Postal address:{" "}
         <Tbc note="registered office" />.

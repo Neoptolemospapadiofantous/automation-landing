@@ -204,8 +204,8 @@ const sections: LegalSection[] = [
         The current list of sub-processors and their function lives in{" "}
         <a href="/dpa">§7 of the DPA</a>. We maintain a mailing list
         for advance notice of changes — to subscribe, email{" "}
-        <a href="mailto:privacy@flowstack.example">
-          privacy@flowstack.example
+        <a href="mailto:privacy@flowstack.run">
+          privacy@flowstack.run
         </a>
         .
       </p>
@@ -217,8 +217,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Found something? Email{" "}
-        <a href="mailto:security@flowstack.example">
-          security@flowstack.example
+        <a href="mailto:security@flowstack.run">
+          security@flowstack.run
         </a>
         . Please give us a reasonable window to investigate and fix
         before public disclosure; we will not pursue legal action

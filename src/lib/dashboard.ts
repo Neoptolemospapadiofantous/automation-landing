@@ -4,10 +4,12 @@
  * the browser. Distinct from DASHBOARD_API_URL (server-only, used by the
  * SSE poller and ISR fetch) — that value never reaches the client bundle.
  *
- * Local dev defaults to http://localhost:8000 (matches `php artisan serve`).
+ * Production canonical: https://app.flowstack.run. Override locally via
+ * NEXT_PUBLIC_DASHBOARD_URL=http://127.0.0.1:8000 in .env.local when you
+ * want Login / Register buttons to hit your local `php artisan serve`.
  */
 export const DASHBOARD_URL =
-  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:8000";
+  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "https://app.flowstack.run";
 
 function join(base: string, path: string): string {
   const trimmedBase = base.replace(/\/$/, "");

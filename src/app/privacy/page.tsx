@@ -25,7 +25,7 @@ const sections: LegalSection[] = [
           providing AI-powered assistant software to businesses across
           many sectors. We are the data controller for the personal
           data processed in connection with this site (
-          <a href="https://flowstack.example">flowstack.example</a>).
+          <a href="https://www.flowstack.run">flowstack.run</a>).
           For personal data processed inside the Flowstack agent
           platform on behalf of our business customers, we act as a
           data processor and the customer is the controller — see the{" "}
@@ -35,8 +35,8 @@ const sections: LegalSection[] = [
           Registered office:{" "}
           <Tbc note="legal name, registration number, address — Nicosia, Cyprus" />.
           Contact for privacy matters:{" "}
-          <a href="mailto:privacy@flowstack.example">
-            privacy@flowstack.example
+          <a href="mailto:privacy@flowstack.run">
+            privacy@flowstack.run
           </a>{" "}
           <Tbc note="confirm address" />.
         </p>
@@ -263,8 +263,8 @@ const sections: LegalSection[] = [
         </ul>
         <p>
           To exercise any of these, email{" "}
-          <a href="mailto:privacy@flowstack.example">
-            privacy@flowstack.example
+          <a href="mailto:privacy@flowstack.run">
+            privacy@flowstack.run
           </a>{" "}
           — we respond within one month. You can also lodge a complaint
           with the Cyprus{" "}
@@ -394,8 +394,8 @@ const sections: LegalSection[] = [
         Flowstack is a business product. We do not knowingly process
         personal data of children under 16. If you believe a child has
         provided us personal data, contact{" "}
-        <a href="mailto:privacy@flowstack.example">
-          privacy@flowstack.example
+        <a href="mailto:privacy@flowstack.run">
+          privacy@flowstack.run
         </a>{" "}
         and we will delete it.
       </p>
