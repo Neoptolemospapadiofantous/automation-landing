@@ -1,5 +1,7 @@
 "use server";
 
+import { sendAuditEmail } from "@/lib/mail";
+
 export type AuditFormState = {
   ok: boolean;
   message?: string;
@@ -30,18 +32,17 @@ export async function submitAudit(
     };
   }
 
-  // TODO: forward to CRM / email / Slack webhook. For now, log.
-  // consent_at gives the audit trail GDPR Art. 7(1) expects.
-  console.log("[audit-submission]", {
-    name,
-    email,
-    company,
-    leak,
-    consent_at: new Date().toISOString(),
-  });
+  // Real send. SMTP not configured falls back to console.log so dev /
+  // preview flows still work — the visitor sees success either way.
+  const result = await sendAuditEmail({ name, email, company, leak });
 
-  // Simulate latency so the optimistic UI feels real
-  await new Promise((r) => setTimeout(r, 600));
+  if (!result.ok && result.reason === "send-failed") {
+    return {
+      ok: false,
+      message:
+        "We hit a snag sending that. Email hello@flowstack.run directly and we'll take it from there.",
+    };
+  }
 
   return { ok: true, message: "Got it. We'll reply within 4 hours." };
 }
