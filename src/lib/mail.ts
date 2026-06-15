@@ -21,6 +21,13 @@ function getTransport(): nodemailer.Transporter | null {
     port,
     secure: port === 465, // 465 = implicit TLS, 587 = STARTTLS
     auth: { user, pass },
+    // Short timeouts so a misconfigured / blocked-port deploy surfaces a
+    // visible error in ~10s instead of leaving the server action hanging
+    // for nodemailer's 5-minute default. If you see consistent timeouts,
+    // try SMTP_PORT=587 (STARTTLS) — some networks silently drop 465.
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 }
 
