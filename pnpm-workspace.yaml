@@ -1,3 +1,21 @@
-ignoredBuiltDependencies:
+# pnpm 10 refuses to silently run package postinstall scripts (defence
+# against supply-chain payloads). The packages listed below are
+# explicitly allowed; everything else is silently skipped.
+#
+#   - sharp         compiles native libvips bindings used by Next image
+#                   optimisation. Without it, image transforms break at
+#                   runtime.
+#   - unrs-resolver downloads the platform-specific binary for the
+#                   Rust-backed module resolver used by oxlint / eslint
+#                   plugins.
+#
+# msw (Mock Service Worker) is intentionally omitted — it's a dev-only
+# test mocking lib and does not need its postinstall to run in prod.
+#
+# This MUST be `onlyBuiltDependencies` (allow-list), NOT
+# `ignoredBuiltDependencies` (deny-list) — the latter would block these
+# packages from running their postinstall and break Next image at
+# runtime.
+onlyBuiltDependencies:
   - sharp
   - unrs-resolver
