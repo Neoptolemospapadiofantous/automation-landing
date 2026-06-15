@@ -40,7 +40,14 @@ export type AuditSubmission = {
 
 export type SendResult =
   | { ok: true }
-  | { ok: false; reason: "smtp-not-configured" | "send-failed" };
+  | {
+      ok: false;
+      reason: "smtp-not-configured" | "send-failed";
+      /** Safe-to-show diagnostic — nodemailer error code + response snippet.
+       * Populated only on "send-failed" so visitors see a useful hint
+       * instead of a generic "snag" message while we debug. */
+      detail?: string;
+    };
 
 /**
  * Format the audit-form submission as a plain-text email and send it
@@ -97,6 +104,24 @@ export async function sendAuditEmail(
     return { ok: true };
   } catch (err) {
     console.error("[mail] send failed", err);
-    return { ok: false, reason: "send-failed" };
+    // Pull out the few fields that are safe to surface — nodemailer errors
+    // include `code` (EAUTH / ETIMEDOUT / etc), `responseCode` (e.g. 535)
+    // and a short `response` line from the SMTP server. None of these
+    // include credentials. Temporary debug aid; remove once SMTP is green.
+    const e = err as {
+      code?: string;
+      responseCode?: number;
+      response?: string;
+      message?: string;
+    };
+    const detail = [
+      e.code && `code=${e.code}`,
+      e.responseCode && `responseCode=${e.responseCode}`,
+      e.response && `response=${String(e.response).slice(0, 140)}`,
+      !e.code && !e.response && e.message && `message=${e.message.slice(0, 140)}`,
+    ]
+      .filter(Boolean)
+      .join(" | ");
+    return { ok: false, reason: "send-failed", detail };
   }
 }

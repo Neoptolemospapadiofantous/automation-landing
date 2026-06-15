@@ -37,10 +37,15 @@ export async function submitAudit(
   const result = await sendAuditEmail({ name, email, company, leak });
 
   if (!result.ok && result.reason === "send-failed") {
+    // TEMPORARY diagnostic — surface the SMTP error code in the visible
+    // message so we can debug without server-log access. Revert once the
+    // SMTP credentials are confirmed working.
+    const tail = result.detail ? ` [debug: ${result.detail}]` : "";
     return {
       ok: false,
       message:
-        "We hit a snag sending that. Email hello@flowstack.run directly and we'll take it from there.",
+        "We hit a snag sending that. Email hello@flowstack.run directly and we'll take it from there." +
+        tail,
     };
   }
 
