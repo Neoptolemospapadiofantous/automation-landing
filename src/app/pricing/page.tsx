@@ -39,14 +39,14 @@ export default function PricingPage() {
           (the ring-violet emphasis no longer reads in mono). */}
       <section className="relative pb-12">
         <div className="mx-auto max-w-[1280px] px-6">
-          <div className="grid grid-cols-1 gap-0 border-t border-l border-border-line lg:grid-cols-3">
+          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line lg:grid-cols-3">
             {pricingTiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
               return (
                 <div
                   key={tier.name}
-                  className={`relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 ${
-                    tier.featured ? "border-t-2 border-t-ink lg:-mt-px" : ""
+                  className={`lift-hover relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 ${
+                    tier.featured ? "flow-edge border-t-2 border-t-ink lg:-mt-px" : ""
                   }`}
                 >
                   {tier.featured && (

@@ -68,7 +68,7 @@ export function Hero() {
 
             {/* Proof — three structurally-true claims. Real platform
                 counters live in <LiveOutcomes /> further down the page. */}
-            <dl className="border-border-line mt-12 grid grid-cols-1 border sm:grid-cols-3">
+            <dl className="flow-edge border-border-line mt-12 grid grid-cols-1 border sm:grid-cols-3">
               {proof.map((p, i) => (
                 <div
                   key={p.l}

@@ -58,11 +58,11 @@ export default function AuditPage() {
           as the differentiator (per-step tint collapses in mono). */}
       <section className="relative pb-8">
         <div className="mx-auto max-w-[1280px] px-6">
-          <ol className="grid grid-cols-1 border-t border-l border-border-line md:grid-cols-3">
+          <ol className="depth-rise flow-edge grid grid-cols-1 border-t border-l border-border-line md:grid-cols-3">
             {expect.map((e) => (
               <li
                 key={e.step}
-                className="bg-surface/40 relative border-r border-b border-border-line p-8"
+                className="lift-hover bg-surface/40 relative border-r border-b border-border-line p-8"
               >
                 <div className="flex items-baseline gap-4">
                   <span className="text-ink font-mono text-5xl font-semibold leading-none tracking-[-0.04em]">

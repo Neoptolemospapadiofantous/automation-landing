@@ -12,7 +12,7 @@ export function CustomBuild() {
     <section className="relative isolate overflow-hidden py-20">
       <SectionWatermark text="CUSTOM" />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="border-border-hi relative grid grid-cols-1 gap-10 border p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="depth-rise flow-edge border-border-hi relative grid grid-cols-1 gap-10 border p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* corner registration ticks */}
           <span
             aria-hidden

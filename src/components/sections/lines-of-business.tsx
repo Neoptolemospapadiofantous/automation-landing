@@ -53,7 +53,7 @@ export function LinesOfBusiness() {
     >
       <SectionWatermark text="CHANNELS" size="sm" />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="border-border-line relative border">
+        <div className="depth-rise flow-edge border-border-line relative border">
           {/* corner registration ticks */}
           <span
             aria-hidden
@@ -90,7 +90,7 @@ export function LinesOfBusiness() {
               return (
                 <li
                   key={ch}
-                  className="flex flex-col gap-1.5 px-4 py-4 lg:gap-2"
+                  className="lift-hover flex flex-col gap-1.5 px-4 py-4 lg:gap-2"
                 >
                   <span
                     className="text-ink-mute font-mono text-[10px] tracking-[0.22em] uppercase"

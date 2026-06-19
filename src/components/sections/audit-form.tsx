@@ -71,7 +71,7 @@ export function AuditForm() {
             </ul>
           </div>
 
-          <form action={action} className="glass-strong relative p-7 sm:p-9">
+          <form action={action} className="flow-edge glass-strong relative p-7 sm:p-9">
             {/* title-block strip */}
             <div className="border-border-line -mx-7 -mt-7 mb-7 grid grid-cols-2 border-b sm:-mx-9 sm:-mt-9 sm:mb-9 sm:grid-cols-3">
               {[

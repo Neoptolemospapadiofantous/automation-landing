@@ -49,14 +49,14 @@ export async function LiveOutcomes() {
           <p className="bp-annot">{"// LIVE — STREAMS VIA SSE"}</p>
         </div>
 
-        <div className="border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b sm:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
+        <div className="depth-rise flow-edge border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b sm:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
           {items.map((m, i) => {
             const tint = tintMap[m.c];
             const ref = `R-1${(i + 1).toString().padStart(2, "0")}`;
             return (
               <figure
                 key={m.field}
-                className="relative flex flex-col gap-5 px-6 py-9"
+                className="lift-hover relative flex flex-col gap-5 px-6 py-9"
               >
                 <span
                   className="bp-annot absolute top-3 right-4 text-[10px] tracking-[0.2em]"

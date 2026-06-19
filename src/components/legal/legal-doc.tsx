@@ -46,7 +46,7 @@ export function LegalDoc({
             {intent}
           </p>
 
-          <dl className="border-border-line mt-8 grid grid-cols-2 border font-mono text-[11px] uppercase tracking-[0.18em] sm:grid-cols-3">
+          <dl className="flow-edge border-border-line mt-8 grid grid-cols-2 border font-mono text-[11px] uppercase tracking-[0.18em] sm:grid-cols-3">
             <div className="border-border-line border-r px-4 py-3">
               <dt className="text-ink-mute">Effective</dt>
               <dd className="text-ink mt-1 tabular-nums">{effective}</dd>

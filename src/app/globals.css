@@ -512,6 +512,242 @@
     }
   }
 
+  /* (4) Depth rise — a content card lays onto the sheet with a slight 3D
+        tilt as it scrolls into view, settling flat and square at center.
+        Reads like a drawing being placed on the drafting table. Apply to
+        a section's main bordered card / content block. The host section's
+        `overflow-hidden` clips the brief tilt overhang. */
+  @keyframes depth-rise {
+    from {
+      opacity: 0;
+      transform: perspective(1600px) translate3d(0, 52px, -90px) rotateX(7deg) scale(0.965);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+    }
+  }
+  @supports (animation-timeline: view()) {
+    .depth-rise {
+      animation: depth-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+      transform-origin: center bottom;
+      transform-style: preserve-3d;
+      will-change: opacity, transform;
+    }
+  }
+
+  /* (5) Layered parallax drift — decorative/background layers travel at a
+        different speed than the page so stacked elements separate in depth.
+        Put `-far` (slow) behind `-near` (fast) foreground content. */
+  @keyframes parallax-far  { from { transform: translateY(-32px); } to { transform: translateY(32px); } }
+  @keyframes parallax-near { from { transform: translateY(-78px); } to { transform: translateY(78px); } }
+  @supports (animation-timeline: view()) {
+    .parallax-far,
+    .parallax-near {
+      animation-name: parallax-far;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+      will-change: transform;
+    }
+    .parallax-near { animation-name: parallax-near; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .depth-rise,
+    .parallax-far,
+    .parallax-near {
+      animation: none !important;
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* ── Atmosphere — fixed page-wide ambient background behind all content.
+     A faint blueprint grid that slowly drifts plus two slow-floating
+     accent glows give the flat sheet depth. Decorative; silenced under
+     prefers-reduced-motion. ── */
+  .atmosphere-grid {
+    position: absolute;
+    /* Oversized so the transform drift never reveals a hard edge. */
+    inset: -64px;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.6;
+    /* Transform (compositor-friendly) rather than background-position
+       (repaints every frame across the whole viewport). */
+    animation: atmosphere-grid-drift 40s linear infinite;
+    will-change: transform;
+  }
+  @keyframes atmosphere-grid-drift {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(64px, 64px, 0); }
+  }
+  .atmosphere-glow {
+    width: 46vw;
+    height: 46vw;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.09;
+    will-change: transform;
+  }
+  .atmosphere-glow-1 {
+    top: -12vw;
+    left: -8vw;
+    background: radial-gradient(circle, var(--violet), transparent 70%);
+    animation: atmosphere-float-1 28s ease-in-out infinite;
+  }
+  .atmosphere-glow-2 {
+    right: -10vw;
+    bottom: -14vw;
+    background: radial-gradient(circle, var(--violet), transparent 70%);
+    animation: atmosphere-float-2 34s ease-in-out infinite;
+  }
+  @keyframes atmosphere-float-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(7vw, 5vw); }
+  }
+  @keyframes atmosphere-float-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-6vw, -4vw); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .atmosphere-grid,
+    .atmosphere-glow {
+      animation: none !important;
+    }
+  }
+
+  /* ── Continuous flow — a light that keeps moving through every section,
+     echoing the marching-wire motif so each panel reads as "live data
+     passing through." The edge light is masked to the 1px border so it
+     never covers content. Silenced under prefers-reduced-motion. ── */
+
+  /* Light travelling around an element's perimeter. */
+  .flow-edge { position: relative; }
+  .flow-edge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(
+      115deg,
+      transparent 38%,
+      var(--violet) 50%,
+      transparent 62%
+    );
+    background-size: 280% 280%;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: flow-edge 5.5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes flow-edge {
+    from { background-position: 0% 50%; }
+    to   { background-position: 280% 50%; }
+  }
+
+  /* Light travelling along a hairline — for section header dividers. */
+  .flow-underline {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--violet), transparent);
+    background-size: 45% 100%;
+    background-repeat: no-repeat;
+    animation: flow-underline 3.6s linear infinite;
+  }
+  @keyframes flow-underline {
+    from { background-position: -45% 0; }
+    to   { background-position: 145% 0; }
+  }
+
+  /* Continuous shimmer sweeping a filled bar (progress / meters). */
+  .flow-bar { position: relative; overflow: hidden; }
+  .flow-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--bg) 65%, transparent),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: flow-bar 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes flow-bar {
+    0%        { transform: translateX(-100%); }
+    60%, 100% { transform: translateX(220%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow-edge::after,
+    .flow-underline,
+    .flow-bar::after {
+      animation: none !important;
+    }
+    .flow-underline { background: var(--border-line); }
+  }
+
+  /* ── Ambient life — continuous idle motion so the page never reads as
+     frozen. All subtle; all silenced under prefers-reduced-motion. ── */
+
+  /* Slow vertical bob for floating panels (the hero schematic). Composes
+     on top of the scroll parallax applied to its parent wrapper. */
+  @keyframes ambient-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  .ambient-float { animation: ambient-float 6s ease-in-out infinite; }
+
+  /* Gentle breathing on the hollow square connection markers. Opacity
+     only — a scale pulse on the 8px squares sitting inline with body
+     copy (pricing/feature lists) pulled the eye off the text. */
+  @keyframes bp-dot-breathe {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1; }
+  }
+  .bp-dot { animation: bp-dot-breathe 3.6s ease-in-out infinite; }
+
+  /* Hover lift for grid cells — rise + faint accent fill + soft shadow. */
+  .lift-hover {
+    transition: transform 0.25s ease, background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .lift-hover:hover {
+    transform: translateY(-4px);
+    background-color: color-mix(in oklab, var(--bg-elev) 60%, transparent);
+    box-shadow: 0 14px 34px -22px var(--ink);
+  }
+
+  /* Slow drift of the blueprint grid so the schematic surface feels live. */
+  @keyframes bg-grid-pan {
+    from { background-position: 0 0; }
+    to   { background-position: 32px 32px; }
+  }
+  .bg-grid-pan { animation: bg-grid-pan 14s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ambient-float,
+    .bp-dot,
+    .bg-grid-pan {
+      animation: none !important;
+    }
+    .lift-hover:hover { transform: none; }
+  }
+
   /* Hairline grid background (component-local; body already has the sheet). */
   .bg-grid {
     background-image:

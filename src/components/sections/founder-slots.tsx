@@ -27,7 +27,7 @@ export async function FounderSlots() {
     : 0;
 
   return (
-    <div className="border-border-line bg-bg-elev/60 mx-auto mt-8 max-w-[640px] border p-5 backdrop-blur">
+    <div className="flow-edge border-border-line bg-bg-elev/60 mx-auto mt-8 max-w-[640px] border p-5 backdrop-blur">
       <div className="flex items-baseline justify-between gap-4">
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute">
           Founder cohort
@@ -48,7 +48,7 @@ export async function FounderSlots() {
 
       <div className="border-border-line mt-4 h-1.5 w-full overflow-hidden border bg-transparent">
         <div
-          className="h-full bg-violet transition-all"
+          className="flow-bar h-full bg-violet transition-all"
           style={{ width: `${pct}%` }}
           aria-label={`${pct}% of founder spots taken`}
         />
