@@ -6,7 +6,7 @@ import { registerUrl, loginUrl } from "@/lib/dashboard";
 export function SiteNav() {
   return (
     <header>
-      <div className="border-border-line bg-bg/80 mx-auto mt-4 flex max-w-[1280px] items-center justify-between gap-8 border px-5 py-3 backdrop-blur-[2px]">
+      <div className="border-border-line bg-bg/80 mx-auto flex max-w-[1280px] items-center justify-between gap-8 border px-4 py-2 backdrop-blur-[2px]">
         <div className="flex items-center gap-4">
           <Link href="/" aria-label="Flowstack home" className="shrink-0">
             <Logo />

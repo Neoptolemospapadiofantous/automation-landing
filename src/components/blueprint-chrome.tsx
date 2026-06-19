@@ -112,7 +112,7 @@ export function BlueprintChrome() {
       </div>
 
       {/* revision stamp */}
-      <div className="absolute bottom-8 right-8 hidden -rotate-[5deg] md:block">
+      <div className="absolute bottom-28 right-8 hidden -rotate-[5deg] md:block">
         <div className="border-draw/45 text-draw/70 border px-3 py-2 text-center font-mono uppercase">
           <div className="text-[11px] font-bold tracking-[0.3em]">Approved</div>
           <div className="border-draw/30 mt-1 border-t pt-1 text-[8px] tracking-[0.18em]">

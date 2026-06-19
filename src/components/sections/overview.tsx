@@ -32,6 +32,8 @@ export function Overview() {
           </span>
         </div>
 
+        <span className="flow-underline" aria-hidden />
+
         <ul>
           {agentRoles.map((r) => (
             <li key={r.ref}>

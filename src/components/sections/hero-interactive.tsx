@@ -28,7 +28,7 @@ export function HeroSchematic() {
   const lit = hover ?? active;
 
   return (
-    <div className="glass-strong relative">
+    <div className="ambient-float glass-strong relative">
       {/* corner registration ticks */}
       <span className="border-accent-line absolute -left-px -top-px h-3 w-3 border-l border-t" />
       <span className="border-accent-line absolute -right-px -top-px h-3 w-3 border-r border-t" />
@@ -56,7 +56,7 @@ export function HeroSchematic() {
       </div>
 
       {/* schematic body — vertical flow */}
-      <div className="bg-grid bg-grid-fade px-6 py-7">
+      <div className="bg-grid bg-grid-pan bg-grid-fade px-6 py-7">
         <ol
           onMouseLeave={() => {
             setHover(null);

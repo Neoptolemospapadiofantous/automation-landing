@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BlueprintChrome } from "@/components/blueprint-chrome";
+import { Atmosphere } from "@/components/atmosphere";
 import { LiveStatsProvider } from "@/components/live-stats-provider";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -110,6 +111,7 @@ export default async function RootLayout({
     >
       <body className="bg-bg text-ink min-h-full flex flex-col overflow-x-hidden">
         <LiveStatsProvider>
+          <Atmosphere />
           <BlueprintChrome />
           {/* Sticky chrome — announcement bar stacks on top, site nav
               sits underneath. Both move as one unit. z-40 sits above

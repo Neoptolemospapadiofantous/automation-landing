@@ -13,7 +13,7 @@ export function FinalCTA() {
     <section className="relative isolate overflow-hidden py-24">
       <SectionWatermark text="GO" />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="glass-strong relative px-8 py-16 sm:px-16 sm:py-20">
+        <div className="depth-rise flow-edge glass-strong relative px-8 py-16 sm:px-16 sm:py-20">
           {/* corner registration ticks */}
           <span
             aria-hidden
