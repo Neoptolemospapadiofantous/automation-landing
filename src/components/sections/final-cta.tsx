@@ -5,8 +5,8 @@ import { SectionWatermark } from "@/components/section-watermark";
 export function FinalCTA() {
   const title = "Start the agent. Custom build optional.";
   const subtitle =
-    "60 seconds to a live agent, $99/mo, cancel anytime. Bring us in for bespoke work when — or if — you outgrow it.";
-  const primary = { href: registerUrl(), label: "Try it for $99 →" };
+    "60 seconds to a live agent, €99/mo, cancel anytime. Bring us in for bespoke work when — or if — you outgrow it.";
+  const primary = { href: registerUrl(), label: "Try it for €99 →" };
   const secondary = { href: "/audit", label: "Talk about custom" };
 
   return (
@@ -70,7 +70,7 @@ export function FinalCTA() {
           <div className="mt-14 grid grid-cols-2 border-t border-border-line font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
               <span className="text-ink-mute">Starter</span>
-              <span className="text-draw">$99/MO · CANCEL ANYTIME</span>
+              <span className="text-draw">€99/MO · CANCEL ANYTIME</span>
             </div>
             <div className="flex flex-col gap-1 border-b border-border-line px-4 py-3 sm:border-b-0 sm:border-r">
               <span className="text-ink-mute">Setup</span>

@@ -16,10 +16,10 @@ import { pricingTiers, faqItems } from "@/lib/content";
  */
 export function HomepageJsonLd() {
   const offers = pricingTiers.map((t) => {
-    // Operator/Starter price like "$99/mo" → 99 USD recurring monthly.
+    // Operator/Starter price like "€99/mo" → 99 EUR recurring monthly.
     // Custom tier has no fixed price (was set to "Let's talk"), so no
     // Offer price field for that one — only the URL and name.
-    const monthlyMatch = /^\$([\d,]+)\/mo$/.exec(t.price);
+    const monthlyMatch = /^€([\d,]+)\/mo$/.exec(t.price);
     const numericPrice = monthlyMatch
       ? Number(monthlyMatch[1].replace(/,/g, ""))
       : null;
@@ -29,11 +29,11 @@ export function HomepageJsonLd() {
       url: `${SITE_URL}/pricing`,
       ...(numericPrice !== null && {
         price: numericPrice,
-        priceCurrency: "USD",
+        priceCurrency: "EUR",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: numericPrice,
-          priceCurrency: "USD",
+          priceCurrency: "EUR",
           billingDuration: "P1M",
           unitText: "MONTH",
         },

@@ -4,15 +4,16 @@
  * Currency, VAT rate, and VAT-treatment (incl. vs excl.) are all open
  * questions for the product owner — see the Engineering Brief:
  *
- *   OQ-1 Currency  — pricing is shown in USD for a Cyprus/EU company.
- *                    Confirm selling currency before launch.
+ *   OQ-1 Currency  — RESOLVED: EUR. The dashboard bills in EUR
+ *                    throughout (App\Billing\Plan::priceEur), so the
+ *                    public site matches.
  *   OQ-2 VAT        — Cyprus standard VAT is 19% as of 2026; OSS
  *                    registration is a tax-adviser decision.
  *
- * The values below are placeholders chosen so the page is valid
- * today: USD currency (unchanged from prior state), VAT not added to
- * the displayed sticker (treatment="exclusive"), label reads "ex. VAT".
- * Flipping any one of these to the real value is a one-line edit.
+ * VAT treatment below is still a placeholder chosen so the page is
+ * valid today: VAT not added to the displayed sticker
+ * (treatment="exclusive"), label reads "VAT not added". Flipping it to
+ * the real value is a one-line edit.
  *
  * For consumers, EU consumer law (CRD Art. 6) requires the **total
  * price incl. VAT** to be shown before contracting. When the seller
@@ -35,7 +36,7 @@ export type PricingConfig = {
 };
 
 export const PRICING_CONFIG: PricingConfig = {
-  currency: "USD", // OQ-1
+  currency: "EUR", // OQ-1 — resolved: dashboard bills in EUR
   vatRate: null, // OQ-2 — set to 0.19 once registered
   treatment: "exclusive", // OQ-2 — flip to "inclusive" for B2C sales
 };

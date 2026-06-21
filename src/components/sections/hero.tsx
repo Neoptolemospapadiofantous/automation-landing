@@ -13,7 +13,7 @@ import { registerUrl } from "@/lib/dashboard";
 const proof = [
   { v: "60s", l: "from signup to live agent" },
   { v: "24/7", l: "always-on, no humans needed" },
-  { v: "$99", l: "to start · cancel anytime" },
+  { v: "€99", l: "to start · cancel anytime" },
 ] as const;
 
 export function Hero() {
@@ -38,7 +38,7 @@ export function Hero() {
               Pick a role — sales, support, lead qualification, onboarding —
               and we provision an agent trained on your knowledge, with every
               conversation and lead streaming into a real-time dashboard.
-              $99/mo to start; bring us in for custom integrations when
+              €99/mo to start; bring us in for custom integrations when
               you&apos;re ready.
             </p>
 
@@ -56,7 +56,7 @@ export function Hero() {
                 href={registerUrl()}
                 className="btn-grad inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
               >
-                Try it for $99 →
+                Try it for €99 →
               </Link>
               <Link
                 href="/pricing"

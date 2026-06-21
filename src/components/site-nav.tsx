@@ -30,7 +30,7 @@ export function SiteNav() {
             href={registerUrl()}
             className="btn-grad inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em]"
           >
-            Try it for $99 →
+            Try it for €99 →
           </Link>
         </div>
       </div>

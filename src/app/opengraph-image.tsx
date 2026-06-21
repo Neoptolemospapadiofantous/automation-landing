@@ -121,7 +121,7 @@ export default async function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            $99/mo · cancel anytime
+            €99/mo · cancel anytime
           </div>
         </div>
 

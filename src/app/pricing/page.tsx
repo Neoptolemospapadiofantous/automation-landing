@@ -9,13 +9,13 @@ import { vatLabel } from "@/lib/pricing-display";
 export const metadata: Metadata = {
   title: "Pricing — Flowstack",
   description:
-    "Start with one agent for $99/mo. Scale to five for $399/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
+    "Start with one agent for €99/mo. Scale to five for €399/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — Flowstack",
     url: "/pricing",
     description:
-      "Start with one agent for $99/mo. Scale to five for $399/mo. Custom builds scoped per project.",
+      "Start with one agent for €99/mo. Scale to five for €399/mo. Custom builds scoped per project.",
   },
 };
 
@@ -27,11 +27,11 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Try it for $99. Scale when it works.{" "}
+            Try it for €99. Scale when it works.{" "}
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent for $99/mo to try the product. Five agents for $399/mo when you're running it in production. Custom builds with bespoke integrations on your stack — fixed scope, you keep the code."
+        lead="One agent for €99/mo to try the product. Five agents for €399/mo when you're running it in production. Custom builds with bespoke integrations on your stack — fixed scope, you keep the code."
       />
 
       {/* Pricing tiers — hairline-bordered cards in the editorial mono
@@ -76,7 +76,7 @@ export default function PricingPage() {
                     </span>
                     {/* VAT label — only shown next to numeric prices.
                         Custom tier ("Let's talk") has no number to qualify. */}
-                    {tier.price.startsWith("$") && (
+                    {tier.price.startsWith("€") && (
                       <span className="text-ink-mute font-mono text-[11px] uppercase tracking-[0.18em]">
                         {vatLabel()}
                       </span>
@@ -127,7 +127,7 @@ export default function PricingPage() {
               is driven by src/lib/pricing-display.ts so flipping the
               VAT treatment is a one-config-change. */}
           <p className="text-ink-mute mt-3 text-center font-mono text-[11px] uppercase tracking-[0.18em]">
-            All prices in USD · {vatLabel()} · final total shown at
+            All prices in EUR · {vatLabel()} · final total shown at
             checkout
           </p>
         </div>

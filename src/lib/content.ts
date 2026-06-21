@@ -40,7 +40,7 @@ export const agentRoles = [
   {
     ref: "ROLE-04",
     name: "Onboarding",
-    desc: "Walks new customers through setup, provisions accounts, and routes the rest to your CSM. From signup to first value, hands-off.",
+    desc: "Walks new customers through setup step by step, answers the recurring questions from your docs, and routes anything that needs a human to your team.",
     available: true,
   },
 ] as const;
@@ -52,7 +52,7 @@ export const faqItems = [
   },
   {
     q: "What's in the Starter plan?",
-    a: "$99/mo · 1 agent · 2,500 conversation credits · cancel anytime, no lock-in. Every feature is on — knowledge-base upload, transcript review, lead routing. Need more headroom? Buy a top-up pack or upgrade to Operator; either way nothing about your setup changes.",
+    a: "€99/mo · 1 agent · 2,500 conversation credits · cancel anytime, no lock-in. Every feature is on — knowledge-base upload, transcript review, lead routing. Need more headroom? Buy a top-up pack or upgrade to Operator; either way nothing about your setup changes.",
   },
   {
     q: "Does it connect to my existing stack?",
@@ -102,7 +102,7 @@ export const tintMap: Record<Tint, { text: string; bg: string; border: string }>
 export const pricingTiers = [
   {
     name: "Starter",
-    price: "$99/mo",
+    price: "€99/mo",
     cadence: "1 agent · cancel anytime",
     tint: "cyan",
     tagline: "One agent live in 60 seconds. Full feature set.",
@@ -113,21 +113,21 @@ export const pricingTiers = [
       "Knowledge-base upload + transcripts",
       "Cancel anytime · no lock-in",
     ],
-    cta: { href: registerUrl(), label: "Try it for $99" },
+    cta: { href: registerUrl(), label: "Try it for €99" },
     featured: false,
   },
   {
     name: "Operator",
-    price: "$399/mo",
+    price: "€399/mo",
     cadence: "up to 5 agents · cancel anytime",
     tint: "violet",
     tagline: "For teams running agents in production.",
     features: [
       "Everything in Starter",
-      "Up to 5 agents (one per role)",
+      "Up to 5 agents",
       "25,000 conversation credits / month",
       "Top-up credits anytime",
-      "24h email support",
+      "Cancel anytime · no lock-in",
     ],
     cta: { href: registerUrl(), label: "Start with Operator" },
     featured: true,

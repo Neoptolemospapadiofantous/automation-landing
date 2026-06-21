@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Pre-built AI agents for sales, support, lead qualification and onboarding — with every conversation streaming into a real-time dashboard. Starter $99/mo, cancel anytime. Custom builds wire the agent into your existing stack when you're ready — scoped per project.";
+  "Pre-built AI agents for sales, support, lead qualification and onboarding — with every conversation streaming into a real-time dashboard. Starter €99/mo, cancel anytime. Custom builds wire the agent into your existing stack when you're ready — scoped per project.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

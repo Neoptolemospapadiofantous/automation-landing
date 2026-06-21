@@ -1,22 +1,24 @@
 import { SectionWatermark } from "@/components/section-watermark";
 
 /**
- * Channels strip — a dec-page-style row that names the surfaces the
- * agent can live on. Sits between the hero and the agent-roles list so
- * "this is where it operates" is established before the visitor reads
- * what each role does.
+ * Deploy-surface strip — a dec-page-style row that names the ways the
+ * agent ships onto your site. Sits between the hero and the agent-roles
+ * list so "this is how it goes live" is established before the visitor
+ * reads what each role does.
+ *
+ * Only surfaces the product actually supports today (see the dashboard
+ * EmbedController): the JS widget, an inline iframe, a hosted chat page,
+ * and an inbound webhook. No SMS/Slack/WhatsApp/voice — those aren't
+ * shipped, so we don't list them.
  *
  * Visual language matches the rest of the system: hairline borders,
  * mono uppercase labels, sheet ref + small chat-bubble mark on the left.
  */
 const CHANNELS = [
-  "Web chat",
-  "Email",
-  "SMS",
-  "Slack",
-  "WhatsApp",
-  "Voice",
-  "API",
+  "Website widget",
+  "Inline iframe",
+  "Hosted chat page",
+  "Webhook",
 ] as const;
 
 function ChatGlyph({ className = "" }: { className?: string }) {
@@ -51,7 +53,7 @@ export function LinesOfBusiness() {
       aria-labelledby="channels-heading"
       className="relative isolate overflow-hidden py-20"
     >
-      <SectionWatermark text="CHANNELS" size="sm" />
+      <SectionWatermark text="EMBED" size="sm" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="depth-rise flow-edge border-border-line relative border">
           {/* corner registration ticks */}
@@ -76,15 +78,15 @@ export function LinesOfBusiness() {
           <div className="border-border-line flex items-center gap-3 border-b px-5 py-3">
             <ChatGlyph className="text-ink shrink-0" />
             <span id="channels-heading" className="bp-ref text-ink">
-              Channels covered
+              How it deploys
             </span>
             <span className="bp-annot ml-auto hidden sm:inline">
-              {"// inbound + outbound · agent ships with all of these"}
+              {"// embed on any site · every option included"}
             </span>
           </div>
 
           {/* channel cells — hairline-divided grid, mono labels */}
-          <ul className="divide-border-line grid grid-cols-2 divide-x divide-y sm:grid-cols-3 lg:grid-cols-7 lg:divide-y-0">
+          <ul className="divide-border-line grid grid-cols-2 divide-x divide-y sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0">
             {CHANNELS.map((ch, i) => {
               const ref = `CH-0${i + 1}`;
               return (
