@@ -90,6 +90,14 @@ const FALLBACK: PlatformStats = {
 
 const REVALIDATE_SECONDS = 300;
 
+// Hard cap on the dashboard fetch. Without it, a reachable-but-unresponsive
+// dashboard (connection opens, no bytes flow) hangs the request forever —
+// `catch` never fires because there's no rejection. At build time that
+// stalls static prerendering until the host kills the deploy (we hit the
+// Forge 10-min limit this way). Bounded wait → FALLBACK keeps builds and
+// renders fast even when the dashboard is degraded.
+const FETCH_TIMEOUT_MS = 3000;
+
 function statsUrl(): string {
   const base = process.env.DASHBOARD_API_URL ?? "http://localhost:8000";
   return `${base.replace(/\/$/, "")}/api/public/stats`;
@@ -105,6 +113,7 @@ export async function getPlatformStats(): Promise<PlatformStats> {
     const res = await fetch(statsUrl(), {
       next: { revalidate: REVALIDATE_SECONDS },
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!res.ok) return FALLBACK;
     const data = (await res.json()) as PlatformStats;
@@ -124,6 +133,7 @@ export async function fetchPlatformStatsFresh(): Promise<PlatformStats> {
     const res = await fetch(statsUrl(), {
       cache: "no-store",
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!res.ok) return FALLBACK;
     const data = (await res.json()) as PlatformStats;
