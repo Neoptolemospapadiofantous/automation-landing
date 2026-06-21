@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { NavLinks } from "./nav-links";
+import { MobileMenu } from "./mobile-menu";
 import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 export function SiteNav() {
   return (
     <header>
-      <div className="border-border-line bg-bg/80 mx-auto flex max-w-[1280px] items-center justify-between gap-4 border px-4 py-1.5 backdrop-blur-[2px] sm:gap-8 sm:py-2">
+      <div className="border-border-line bg-bg/80 relative mx-auto flex max-w-[1280px] items-center justify-between gap-4 border px-4 py-1.5 backdrop-blur-[2px] sm:gap-8 sm:py-2">
         <div className="flex items-center gap-4">
           <Link href="/" aria-label="Flowstack home" className="shrink-0">
             <Logo />
@@ -32,6 +33,7 @@ export function SiteNav() {
           >
             Try it for €99 →
           </Link>
+          <MobileMenu />
         </div>
       </div>
     </header>
