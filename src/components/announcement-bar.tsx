@@ -15,11 +15,13 @@ import { useLiveStats } from "@/components/live-stats-provider";
  *      <LiveStatsProvider /> context (driven by /api/stats/stream SSE) so
  *      a `php artisan platform:set next_cohort_open_at YYYY-MM-DD` on the
  *      dashboard ripples to every open tab within ~5 s.
- *   3. If both are missing (dashboard down + first paint before SSE), we
- *      fall back to BUILD_DEFAULT_OPEN_AT.
+ *   3. If no date is set anywhere (operator hasn't scheduled a cohort, or
+ *      the dashboard is down on first paint), the bar shows a static
+ *      "now open" state instead of inventing a countdown — so there is no
+ *      hard-coded date that silently expires.
  *
- * The day count is recomputed every minute on the client so the
- * countdown flips at midnight UTC without a page reload.
+ * When a future date IS set, the day count is recomputed every minute on
+ * the client so the countdown flips at midnight UTC without a page reload.
  *
  * Visual treatment:
  *   - Inverted: white ground, black ink.
@@ -29,13 +31,6 @@ import { useLiveStats } from "@/components/live-stats-provider";
  * Stickiness is owned by the shared `<header>` wrapper in layout.tsx so
  * this bar and the SiteNav stack as one chrome unit.
  */
-
-/**
- * Backstop only — used when neither SSR-fetched stats nor live SSE
- * carry a value. Operator sets the real date via
- * `php artisan platform:set next_cohort_open_at YYYY-MM-DD`.
- */
-const BUILD_DEFAULT_OPEN_AT = "2026-06-24";
 
 function parseOpenAt(value: string | null | undefined): Date | null {
   if (!value) return null;
@@ -62,9 +57,10 @@ export function AnnouncementBar({
   const live = useLiveStats();
   const liveOpenAt = live?.next_cohort_open_at ?? null;
 
-  // Source-of-truth precedence: live SSE > server-rendered prop > build default.
-  const openAtRaw = liveOpenAt ?? initialOpenAt ?? BUILD_DEFAULT_OPEN_AT;
-  const openAt = parseOpenAt(openAtRaw) ?? parseOpenAt(BUILD_DEFAULT_OPEN_AT)!;
+  // Source-of-truth precedence: live SSE > server-rendered prop. No build
+  // default — when nothing is set we render the static "now open" state
+  // rather than counting down to an arbitrary date.
+  const openAt = parseOpenAt(liveOpenAt ?? initialOpenAt);
 
   // Tick the countdown every minute on the client so the day flip
   // happens without a page reload. SSR uses the server's initial value.
@@ -74,9 +70,10 @@ export function AnnouncementBar({
     return () => clearInterval(id);
   }, []);
 
-  const days = daysUntil(openAt, now);
-  const open = days <= 0;
-  const dateLabel = formatYmd(openAt);
+  const days = openAt ? daysUntil(openAt, now) : 0;
+  // "Open" = no scheduled date (rolling intake) OR the date has arrived.
+  const open = openAt === null || days <= 0;
+  const dateLabel = openAt ? formatYmd(openAt) : null;
 
   return (
     <div
@@ -87,9 +84,10 @@ export function AnnouncementBar({
       {/* Sweep highlight — sits behind the content, never intercepts pointer events. */}
       <span aria-hidden className="ann-shimmer-bar" />
 
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch divide-y divide-bg/20 text-[13px] uppercase tracking-[0.18em] sm:flex-row sm:items-center sm:divide-y-0 sm:divide-x">
-        {/* NOTICE label with live pip */}
-        <div className="flex items-center gap-2.5 px-5 py-3.5 font-mono font-semibold sm:py-3">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch divide-y divide-bg/20 text-[11px] uppercase tracking-[0.16em] sm:flex-row sm:items-center sm:divide-y-0 sm:divide-x sm:text-[13px] sm:tracking-[0.18em]">
+        {/* NOTICE label with live pip — hidden on mobile to keep the
+            sticky header short; the pip moves into the countdown line. */}
+        <div className="hidden items-center gap-2.5 px-5 py-3.5 font-mono font-semibold sm:flex sm:py-3">
           <span
             aria-hidden
             className="bg-bg pulse-glow inline-block h-2 w-2 rounded-full"
@@ -98,11 +96,18 @@ export function AnnouncementBar({
         </div>
 
         {/* Countdown — day number bumped to draw the eye */}
-        <div className="flex flex-1 items-baseline gap-2.5 px-5 py-3.5 font-mono sm:py-3">
+        <div className="flex flex-1 items-baseline gap-2.5 px-5 py-2.5 font-mono sm:py-3">
+          {/* mobile-only live pip, since the Notice cell is hidden there */}
+          <span
+            aria-hidden
+            className="bg-bg pulse-glow inline-block h-1.5 w-1.5 shrink-0 self-center rounded-full sm:hidden"
+          />
           {open ? (
             <span>
               Founder cohort 01 ·{" "}
-              <span className="text-bg/65">open as of {dateLabel}</span>
+              <span className="text-bg/65">
+                {dateLabel ? `open as of ${dateLabel}` : "now open"}
+              </span>
             </span>
           ) : (
             <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
@@ -110,7 +115,7 @@ export function AnnouncementBar({
               <span aria-hidden className="text-bg/55">·</span>
               <span className="tabular-nums">{dateLabel}</span>
               <span aria-hidden className="text-bg/55">·</span>
-              <span className="text-[20px] font-bold leading-none tabular-nums tracking-[0.04em] sm:text-[22px]">
+              <span className="text-[17px] font-bold leading-none tabular-nums tracking-[0.04em] sm:text-[22px]">
                 {days}
               </span>
               <span>{days === 1 ? "day" : "days"}</span>
@@ -121,7 +126,7 @@ export function AnnouncementBar({
         {/* CTA — full inversion on hover, idle arrow nudge */}
         <Link
           href="/audit"
-          className="group hover:bg-bg hover:text-ink inline-flex items-center justify-between gap-3 px-5 py-3.5 font-mono font-bold transition-colors sm:justify-center sm:py-3"
+          className="group hover:bg-bg hover:text-ink inline-flex items-center justify-between gap-3 px-5 py-2.5 font-mono font-bold transition-colors sm:justify-center sm:py-3"
         >
           <span>{open ? "Join the cohort" : "Reserve a slot"}</span>
           <span aria-hidden className="ann-arrow inline-block">
