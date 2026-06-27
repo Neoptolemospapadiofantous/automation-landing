@@ -761,6 +761,35 @@
   }
 }
 
+/* ── Flowstack chat widget — host-side theme + placement overrides ──
+   The embed launcher (#fs-embed-btn) is injected into our top-level DOM
+   with a dashboard-baked black accent, which vanishes against this site's
+   black ground. Repaint it as the site's primary button — white block,
+   black icon, inverted hairline hover — and lift it (plus the teaser and
+   panel) clear of the cookie-consent bar while that bar is showing
+   (--fs-consent-h is measured + set by CookieConsent, 0 once dismissed).
+   The `html` prefix outranks the widget's single-ID rules, so these win
+   without !important regardless of stylesheet order. */
+html #fs-embed-btn {
+  bottom: calc(24px + var(--fs-consent-h, 0px));
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--border-hi);
+}
+html #fs-embed-btn:hover,
+html #fs-embed-btn:active {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+html #fs-embed-frame-wrap {
+  bottom: calc(96px + var(--fs-consent-h, 0px));
+}
+html #fs-embed-teaser {
+  bottom: calc(92px + var(--fs-consent-h, 0px));
+}
+
 /* Marquee for the logo ticker */
 @keyframes marquee {
   from { transform: translateX(0); }

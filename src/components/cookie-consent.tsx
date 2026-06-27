@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 /**
@@ -59,6 +59,25 @@ export function CookieConsent() {
   const [decision, setDecision] = useState<ConsentValue | null | "pending">(
     "pending",
   );
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Publish the bar's height so the chat launcher can sit above it while
+  // it's showing (consumed by `--fs-consent-h` in globals.css). Tracks
+  // resize since the bar reflows taller on narrow viewports.
+  useEffect(() => {
+    const el = dialogRef.current;
+    const root = document.documentElement;
+    if (!el) return;
+    const sync = () =>
+      root.style.setProperty("--fs-consent-h", `${el.offsetHeight}px`);
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.setProperty("--fs-consent-h", "0px");
+    };
+  }, [decision]);
 
   useEffect(() => {
     setDecision(readConsent());
@@ -84,6 +103,7 @@ export function CookieConsent() {
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-label="Cookie consent"
       aria-live="polite"
