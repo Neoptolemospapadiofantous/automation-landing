@@ -6,7 +6,6 @@ import { FounderSlots } from "@/components/sections/founder-slots";
 import { CustomBuild } from "@/components/sections/custom-build";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { HomepageJsonLd } from "@/components/jsonld";
-import { FlowstackWidget } from "@/components/flowstack-widget";
 
 export default function Home() {
   return (
@@ -24,9 +23,6 @@ export default function Home() {
       </div>
       <CustomBuild />
       <FinalCTA />
-      {/* Live chat widget — the visitor can interact with a real Flowstack
-          agent. Off unless NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG is set. */}
-      <FlowstackWidget />
     </>
   );
 }

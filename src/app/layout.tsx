@@ -9,6 +9,7 @@ import { LiveStatsProvider } from "@/components/live-stats-provider";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
+import { FlowstackWidget } from "@/components/flowstack-widget";
 import { SITE_URL, BRAND } from "@/lib/seo";
 import { getPlatformStats } from "@/lib/stats";
 
@@ -125,6 +126,10 @@ export default async function RootLayout({
           <SiteFooter />
           <CookieConsent />
           <Analytics />
+          {/* Live chat widget — mounted site-wide so the visitor can reach
+              a real Flowstack agent from any page. Off unless
+              NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG is set. */}
+          <FlowstackWidget />
         </LiveStatsProvider>
       </body>
     </html>
