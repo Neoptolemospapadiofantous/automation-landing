@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Script from "next/script";
+import { useReportWebVitals } from "next/web-vitals";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GA_ID } from "@/lib/seo";
 import { CONSENT_EVENT, readConsent, type ConsentValue } from "./cookie-consent";
@@ -32,7 +32,29 @@ declare global {
   }
 }
 
+// Module-level so the callback reference is stable — the hook re-fires
+// accumulated metrics when handed a new function, double-counting them.
+// GA wants integers; CLS is a small float, so scale it up first.
+function reportWebVitals(metric: {
+  id: string;
+  name: string;
+  value: number;
+}) {
+  window.gtag?.("event", metric.name, {
+    value: Math.round(
+      metric.name === "CLS" ? metric.value * 1000 : metric.value,
+    ),
+    event_category: "Web Vitals",
+    event_label: metric.id,
+    non_interaction: true,
+  });
+}
+
 export function Analytics() {
+  // Real-user Core Web Vitals into GA4. No-ops until gtag exists, and
+  // consent mode governs how the events are transmitted.
+  useReportWebVitals(reportWebVitals);
+
   // Subscribe to consent changes from the banner. We never call
   // gtag('consent', 'update', ...) for the initial paint — the
   // `consent default` set below establishes the deny-by-default state.
@@ -57,12 +79,13 @@ export function Analytics() {
 
   return (
     <>
-      {/* Set the default consent state BEFORE GA loads. Strategy
-          "beforeInteractive" guarantees this script runs before
-          @next/third-parties' GoogleAnalytics injects gtag.js. */}
-      <Script
+      {/* Set the default consent state BEFORE GA loads. A plain inline
+          <script> executes during HTML parse — always before the
+          `afterInteractive` gtag.js loader from @next/third-parties.
+          (next/script's beforeInteractive only works from the root
+          layout and silently downgrades here.) */}
+      <script
         id="ga-consent-default"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

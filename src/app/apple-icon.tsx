@@ -25,7 +25,6 @@ export default function AppleIcon() {
           background: "#000000",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={brandMarkDataUri()} width={markWidth} height={markHeight} alt="" />
       </div>
     ),

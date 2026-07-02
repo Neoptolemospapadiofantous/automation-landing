@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
@@ -28,6 +28,13 @@ const jetbrainsMono = JetBrains_Mono({
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
   "Pre-built AI agents for sales, support, lead qualification and onboarding — with every conversation streaming into a real-time dashboard. Starter €99/mo, cancel anytime. Custom builds wire the agent into your existing stack when you're ready — scoped per project.";
+
+// Next 16 requires viewport/themeColor as a separate export, not
+// inside `metadata`. Keeps mobile browser chrome on-brand black.
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -111,6 +118,15 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-bg text-ink min-h-full flex flex-col overflow-x-hidden">
+        {/* Keyboard/screen-reader escape hatch past the sticky chrome.
+            Visually hidden until focused. z-[60] clears the cookie
+            prompt (z-50). */}
+        <a
+          href="#main"
+          className="bg-ink text-bg sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:font-mono focus:text-[11px] focus:tracking-[0.18em] focus:uppercase"
+        >
+          Skip to content
+        </a>
         <LiveStatsProvider>
           <Atmosphere />
           <BlueprintChrome />
@@ -122,7 +138,9 @@ export default async function RootLayout({
             <AnnouncementBar initialOpenAt={stats.next_cohort_open_at} />
             <SiteNav />
           </div>
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <SiteFooter />
           <CookieConsent />
           <Analytics />

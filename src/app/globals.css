@@ -154,6 +154,12 @@
     background: var(--ink);
     color: var(--bg);
   }
+  /* One consistent keyboard-focus treatment everywhere — browser
+     defaults are inconsistent and near-invisible on the black sheet. */
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {

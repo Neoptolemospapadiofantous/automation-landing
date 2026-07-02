@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
+import { PricingJsonLd } from "@/components/jsonld";
 import { FAQ } from "@/components/sections/faq";
 import { SectionHeading } from "@/components/section-heading";
 import { pricingTiers } from "@/lib/content";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
+      <PricingJsonLd />
       <PageHero
         eyebrow="Pricing"
         eyebrowTint="violet"

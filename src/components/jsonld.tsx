@@ -93,13 +93,34 @@ export function HomepageJsonLd() {
         publisher: { "@id": `${SITE_URL}/#org` },
         offers,
       },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // Stringified JSON only — no executable code goes through
+      // dangerouslySetInnerHTML, so this is the canonical pattern for
+      // shipping JSON-LD with React.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+    />
+  );
+}
+
+/**
+ * Structured data for /pricing. FAQPage lives HERE, not on the
+ * homepage — Google only honours FAQ markup on the page where the
+ * questions are visible, and the accordion renders on /pricing.
+ * Source of truth is `faqItems` in lib/content.ts so the schema can
+ * never drift from the rendered FAQ.
+ */
+export function PricingJsonLd() {
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        // FAQPage schema — Google renders these as expandable
-        // rich-snippet items directly in the SERP. Source of truth is
-        // `faqItems` in lib/content.ts so the schema can never drift
-        // from the rendered FAQ accordion.
         "@type": "FAQPage",
-        "@id": `${SITE_URL}/#faq`,
+        "@id": `${SITE_URL}/pricing#faq`,
         mainEntity: faqItems.map((item) => ({
           "@type": "Question",
           name: item.q,
@@ -115,9 +136,6 @@ export function HomepageJsonLd() {
   return (
     <script
       type="application/ld+json"
-      // Stringified JSON only — no executable code goes through
-      // dangerouslySetInnerHTML, so this is the canonical pattern for
-      // shipping JSON-LD with React.
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
