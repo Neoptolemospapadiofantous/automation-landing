@@ -49,9 +49,9 @@ export const rolePages: RolePage[] = [
     metaTitle: "AI lead qualification agent for your website",
     metaDescription:
       "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
-    h1: "Every visitor greeted. Only the warm ones",
-    h1Accent: "reach your team.",
-    lead: "The lead-qualification agent greets every inbound visit, asks the questions that matter for your ICP, and hands your team only the conversations worth their time — full transcript attached.",
+    h1: "The lead that arrives at midnight",
+    h1Accent: "shouldn't wait until morning.",
+    lead: "Inbound interest doesn't keep office hours — but by the time your team sees a form fill, the lead has gone cold or gone elsewhere. The lead-qualification agent greets every visitor the moment they land, qualifies on ICP fit, and hands your team only the conversations worth their time, full transcript attached.",
     does: [
       {
         ref: "N-01",
@@ -78,9 +78,9 @@ export const rolePages: RolePage[] = [
     metaTitle: "AI sales agent for your website",
     metaDescription:
       "An AI sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
-    h1: "A sales conversation with every visitor —",
-    h1Accent: "even at 3am.",
-    lead: "The sales agent walks visitors through your offer, answers pricing and scope questions from the knowledge you upload, and books qualified demos straight onto your calendar.",
+    h1: "Most visitors with a buying question",
+    h1Accent: "never ask it. They leave.",
+    lead: "The visitor who's ready to buy rarely fills in a form — they have a question about pricing, scope or fit, no one to ask, and a competitor one tab away. The sales agent answers from the knowledge you upload the moment the question comes up, and books qualified demos straight onto your calendar.",
     does: [
       {
         ref: "N-01",
@@ -109,7 +109,7 @@ export const rolePages: RolePage[] = [
       "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
-    lead: "The support agent answers from your knowledge base in your tone, resolves the recurring questions on the spot, and escalates only when a human is actually needed — visitors can ask for one at any time.",
+    lead: "One person can't answer every question the second it's asked — so customers wait, and the same ten questions eat your team's day. The support agent handles the repetitive first-line questions from your knowledge base instantly, in your tone, and escalates only when a human is genuinely needed. Visitors can ask for one at any time.",
     does: [
       {
         ref: "N-01",
@@ -136,9 +136,9 @@ export const rolePages: RolePage[] = [
     metaTitle: "AI customer onboarding agent",
     metaDescription:
       "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
-    h1: "Setup walked through,",
-    h1Accent: "step by step.",
-    lead: "The onboarding agent walks new customers through setup step by step, answers the recurring questions straight from your docs, and routes anything that needs a human to your team.",
+    h1: "New customers sign up excited,",
+    h1Accent: "then get stuck.",
+    lead: "The gap between signup and first value is where new customers quietly churn. The onboarding agent walks each one through setup step by step, answers the recurring questions straight from your docs, and routes anything that needs a human to your team — before they give up.",
     does: [
       {
         ref: "N-01",

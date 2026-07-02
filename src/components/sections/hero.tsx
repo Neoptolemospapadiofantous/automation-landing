@@ -11,8 +11,8 @@ import { registerUrl } from "@/lib/dashboard";
  * <LiveOutcomes /> below the fold, driven off the dashboard SSE.
  */
 const proof = [
-  { v: "60s", l: "from signup to live agent" },
-  { v: "24/7", l: "always-on, no humans needed" },
+  { v: "60s", l: "from signup to answering visitors" },
+  { v: "24/7", l: "covered — including the hours you're closed" },
   { v: "€99", l: "to start · cancel anytime" },
 ] as const;
 
@@ -26,28 +26,28 @@ export function Hero() {
           <div className="max-w-[640px]">
             <span className="bp-ref inline-flex items-center gap-2.5">
               <span className="bp-dot" aria-hidden />
-              FIG. 00 — your AI agent, ready in 60 seconds
+              FIG. 00 — where your after-hours leads go
             </span>
 
             <h1 className="hero-headline-parallax mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-[76px]">
-              An AI agent for your team.{" "}
-              <span className="text-gradient">Live in 60 seconds.</span>
+              Your customers reach out around the clock.{" "}
+              <span className="text-gradient">Your team can&apos;t.</span>
             </h1>
 
             <p className="text-ink-dim mt-7 max-w-[52ch] text-pretty text-lg leading-[1.6]">
-              Pick a role — sales, support, lead qualification, onboarding —
-              and we provision an agent trained on your knowledge, with every
-              conversation and lead streaming into a real-time dashboard.
-              €99/mo to start; bring us in for custom integrations when
-              you&apos;re ready.
+              Put an always-on agent on your site that greets every visitor,
+              answers from your own knowledge, and hands your team only the
+              conversations worth their time — the moment someone messages, at
+              2pm or 2am. Every lead and transcript in one real-time dashboard.
+              From €99/mo, live in 60 seconds.
             </p>
 
             {/* Manifesto — the opinion */}
             <div className="border-border-hi mt-7 border-l pl-4">
               <p className="bp-annot leading-[1.8]">
-                {"// agent first · custom integrations on demand"}
+                {"// every inbound answered · nothing waits for morning"}
                 <br />
-                {"// pick a role, paste your knowledge, watch leads land"}
+                {"// pick the job to be done · we provision the agent"}
               </p>
             </div>
 

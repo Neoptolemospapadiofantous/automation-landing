@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Pre-built AI agents for sales, support, lead qualification and onboarding — with every conversation streaming into a real-time dashboard. Starter €99/mo, cancel anytime. Custom builds wire the agent into your existing stack when you're ready — scoped per project.";
+  "Every message that waits for business hours is a customer you're losing. Flowstack puts an always-on AI agent on your site — greeting, qualifying, answering and onboarding the moment someone reaches out, every conversation in a real-time dashboard. Live in 60 seconds, from €99/mo, cancel anytime.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on-brand black.
