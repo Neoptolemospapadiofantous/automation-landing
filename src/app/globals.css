@@ -795,6 +795,14 @@ html #fs-embed-frame-wrap {
 html #fs-embed-teaser {
   bottom: calc(92px + var(--fs-consent-h, 0px));
 }
+/* On phones the panel goes full-screen and already covers the cookie
+   bar, so the consent lift just strands the launcher mid-panel. Pin it
+   back to the corner while open — it's the close toggle there. */
+@media (max-width: 480px) {
+  html:has(#fs-embed-frame-wrap.open) #fs-embed-btn {
+    bottom: 24px;
+  }
+}
 
 /* Marquee for the logo ticker */
 @keyframes marquee {

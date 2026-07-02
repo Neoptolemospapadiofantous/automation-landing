@@ -73,13 +73,17 @@ export function MobileMenu() {
       {open && (
         <>
           {/* Click-away backdrop — dims + blurs the page so the open panel
-              reads as a distinct layer on the all-black sheet. */}
+              reads as a distinct layer on the all-black sheet.
+              NOT `fixed inset-0`: the nav container's backdrop-blur creates
+              a CSS containing block, which silently rescopes fixed
+              descendants to the nav box. Absolute + top-full + h-screen
+              covers the viewport below the nav instead. */}
           <button
             type="button"
             aria-hidden
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-sm"
+            className="absolute inset-x-0 top-full z-40 h-screen cursor-default bg-black/70 backdrop-blur-sm"
           />
           <div
             id="mobile-nav-panel"

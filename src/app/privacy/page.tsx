@@ -291,7 +291,11 @@ const sections: LegalSection[] = [
           starts <code>denied</code> by default and only flips to{" "}
           <code>granted</code> when you click Accept.
         </p>
-        <table className="legal-table">
+        {/* Scroll container: five columns don't fit a phone viewport,
+            and the page shell clips overflow — without this the right
+            columns are simply unreachable on mobile. */}
+        <div className="overflow-x-auto">
+          <table className="legal-table">
           <thead>
             <tr>
               <th>Cookie</th>
@@ -356,7 +360,8 @@ const sections: LegalSection[] = [
               </td>
             </tr>
           </tbody>
-        </table>
+          </table>
+        </div>
         <p>
           <strong>Two surfaces, two positions.</strong> The dashboard
           and the embedded chat widget use only strictly-necessary
