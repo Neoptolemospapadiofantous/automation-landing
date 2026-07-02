@@ -9,7 +9,11 @@ export function SiteNav() {
     <header>
       <div className="border-border-line bg-bg/80 relative mx-auto flex max-w-[1280px] items-center justify-between gap-4 border px-4 py-1.5 backdrop-blur-[2px] sm:gap-8 sm:py-2">
         <div className="flex items-center gap-4">
-          <Link href="/" aria-label="Flowstack home" className="shrink-0">
+          <Link
+            href="/"
+            aria-label="Flowstack home"
+            className="relative z-50 shrink-0"
+          >
             <Logo />
           </Link>
           <span
@@ -23,13 +27,13 @@ export function SiteNav() {
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href={loginUrl()}
-            className="text-ink-dim hover:text-ink hidden font-mono text-[11px] tracking-[0.18em] uppercase transition-colors sm:inline-flex"
+            className="text-ink-dim hover:text-ink relative z-50 hidden font-mono text-[11px] tracking-[0.18em] uppercase transition-colors sm:inline-flex"
           >
             Login
           </Link>
           <Link
             href={registerUrl()}
-            className="btn-grad inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em]"
+            className="btn-grad relative z-50 inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em]"
           >
             Try it for €99 →
           </Link>

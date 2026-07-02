@@ -3,9 +3,7 @@
 import {
   createContext,
   useContext,
-  useEffect,
-  useRef,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import type { PlatformStats } from "@/lib/stats";
@@ -41,11 +39,11 @@ export function useLiveStats(): PlatformStats | null {
 let refCount = 0;
 let es: EventSource | null = null;
 let last: PlatformStats | null = null;
-const listeners = new Set<(s: PlatformStats | null) => void>();
+const listeners = new Set<() => void>();
 
 function broadcast(next: PlatformStats | null) {
   last = next;
-  for (const fn of listeners) fn(next);
+  for (const fn of listeners) fn();
 }
 
 function acquire(): () => void {
@@ -70,27 +68,30 @@ function acquire(): () => void {
   };
 }
 
+function subscribe(onChange: () => void): () => void {
+  listeners.add(onChange);
+  const release = acquire();
+  return () => {
+    listeners.delete(onChange);
+    release();
+  };
+}
+
 /**
  * Mount this once near the root of any page that uses live-stat
  * islands. Children may freely sprinkle <LiveStat> / <LiveRelativeTime>
  * inside without paying the per-island EventSource cost.
+ *
+ * useSyncExternalStore reads the module-level snapshot directly, so a
+ * provider mounting after the EventSource is already open picks up the
+ * cached `last` without any seed-in-effect dance.
  */
 export function LiveStatsProvider({ children }: { children: ReactNode }) {
-  const [stats, setStats] = useState<PlatformStats | null>(last);
-  const release = useRef<(() => void) | null>(null);
-
-  useEffect(() => {
-    listeners.add(setStats);
-    release.current = acquire();
-    // If we missed the first event (already-open EventSource), seed
-    // with the most recent snapshot we've cached.
-    if (last) setStats(last);
-    return () => {
-      listeners.delete(setStats);
-      release.current?.();
-      release.current = null;
-    };
-  }, []);
+  const stats = useSyncExternalStore(
+    subscribe,
+    () => last,
+    () => null,
+  );
 
   return <Ctx.Provider value={stats}>{children}</Ctx.Provider>;
 }

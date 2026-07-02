@@ -95,12 +95,12 @@ export function SiteFooter() {
                   <span aria-hidden className="bp-dot" />
                   {c.h}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   {c.l.map((item) => (
                     <li key={item.label}>
                       <a
                         href={item.href}
-                        className="text-ink-dim hover:text-ink font-mono text-[13px] tracking-[0.04em] transition-colors"
+                        className="text-ink-dim hover:text-ink inline-flex min-h-[24px] items-center font-mono text-[13px] tracking-[0.04em] transition-colors"
                       >
                         {item.label}
                       </a>

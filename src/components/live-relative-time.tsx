@@ -20,18 +20,18 @@ export function LiveRelativeTime({ initial, field }: Props) {
   const live = useLiveStats();
   const iso = live?.[field] ?? null;
 
-  const [label, setLabel] = useState<string>(initial);
+  // The label is derived during render; the interval only bumps a tick
+  // counter so "4 min ago" re-formats once a minute without setting
+  // derived state inside the effect body.
+  const [, setTick] = useState(0);
 
   useEffect(() => {
     if (!iso) return;
-    const formatted = relativeTime(iso);
-    if (formatted) setLabel(formatted);
-    const id = setInterval(() => {
-      const next = relativeTime(iso);
-      if (next) setLabel(next);
-    }, 60_000);
+    const id = setInterval(() => setTick((t) => t + 1), 60_000);
     return () => clearInterval(id);
   }, [iso]);
+
+  const label = (iso ? relativeTime(iso) : null) || initial;
 
   return <span>{label}</span>;
 }

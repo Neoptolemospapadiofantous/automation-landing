@@ -20,9 +20,13 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false);
 
   // Close on route change so a tapped link doesn't leave the panel open.
-  useEffect(() => {
+  // Adjusted during render (not in an effect) per the React guidance on
+  // resetting state when a prop changes.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   // Close on Escape for keyboard users.
   useEffect(() => {
@@ -42,7 +46,7 @@ export function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((v) => !v)}
-        className="text-ink hover:text-ink-dim -mr-1 inline-flex h-9 w-9 items-center justify-center transition-colors"
+        className="text-ink hover:text-ink-dim relative z-50 -mr-1 inline-flex h-9 w-9 items-center justify-center transition-colors"
       >
         <svg
           width="20"
@@ -68,17 +72,18 @@ export function MobileMenu() {
 
       {open && (
         <>
-          {/* Click-away backdrop — sits under the panel, above page content. */}
+          {/* Click-away backdrop — dims + blurs the page so the open panel
+              reads as a distinct layer on the all-black sheet. */}
           <button
             type="button"
             aria-hidden
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 cursor-default bg-transparent"
+            className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-sm"
           />
           <div
             id="mobile-nav-panel"
-            className="border-border-line bg-bg absolute left-0 right-0 top-full z-50 flex flex-col border border-t-0 px-4 py-2"
+            className="border-border-hi bg-bg-elev absolute left-0 right-0 top-full z-50 flex flex-col border border-t-0 px-4 py-2 shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
           >
             {nav.links.map((l) => {
               const active = pathname === l.href;

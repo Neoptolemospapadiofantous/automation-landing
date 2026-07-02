@@ -116,7 +116,7 @@ const sections: LegalSection[] = [
           disclosure that you are interacting with an AI assistant and
           can request a human at any time. The disclosure is enforced at
           the interface layer and cannot be removed by the Client. The
-          AI Act's transparency obligations apply from 2 August 2026; we
+          AI Act&apos;s transparency obligations apply from 2 August 2026; we
           implemented them ahead of that date.
         </p>
         <p>

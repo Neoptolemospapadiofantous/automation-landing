@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 /**
@@ -53,11 +53,23 @@ export function reopenConsent() {
   window.dispatchEvent(new CustomEvent(REOPEN_EVENT));
 }
 
+// The decision lives in localStorage (an external store): re-read it
+// whenever the consent or reopen events fire. The server snapshot is
+// "pending" so nothing renders during SSR/hydration — no mismatch.
+function subscribeConsent(onChange: () => void): () => void {
+  window.addEventListener(EVENT_NAME, onChange);
+  window.addEventListener(REOPEN_EVENT, onChange);
+  return () => {
+    window.removeEventListener(EVENT_NAME, onChange);
+    window.removeEventListener(REOPEN_EVENT, onChange);
+  };
+}
+
 export function CookieConsent() {
-  // null until we've checked localStorage post-hydration; this avoids
-  // any SSR/CSR mismatch.
-  const [decision, setDecision] = useState<ConsentValue | null | "pending">(
-    "pending",
+  const decision = useSyncExternalStore<ConsentValue | null | "pending">(
+    subscribeConsent,
+    readConsent,
+    () => "pending",
   );
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -79,27 +91,12 @@ export function CookieConsent() {
     };
   }, [decision]);
 
-  useEffect(() => {
-    setDecision(readConsent());
-    // The footer "Cookie settings" link emits REOPEN_EVENT; reset our
-    // local decision so the banner re-mounts even after the visitor
-    // already chose once.
-    const onReopen = () => setDecision(null);
-    window.addEventListener(REOPEN_EVENT, onReopen);
-    return () => window.removeEventListener(REOPEN_EVENT, onReopen);
-  }, []);
-
   if (decision !== null) return null;
 
-  const accept = () => {
-    writeConsent("granted");
-    setDecision("granted");
-  };
-
-  const decline = () => {
-    writeConsent("denied");
-    setDecision("denied");
-  };
+  // writeConsent dispatches EVENT_NAME, which re-reads the store and
+  // hides the banner — no local state to keep in sync.
+  const accept = () => writeConsent("granted");
+  const decline = () => writeConsent("denied");
 
   return (
     <div
