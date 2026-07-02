@@ -14,36 +14,162 @@ export const nav = {
 };
 
 /**
- * Pre-built agent roles offered on signup. Each card on the homepage
- * roles list links to the dashboard's /register flow; role selection
- * happens inside the onboarding wizard. Order = priority.
+ * Per-role landing pages (/roles/{slug}) — the single source for both
+ * the homepage role cards AND the long-form role pages, so the two can
+ * never drift. Copy rule (same as everywhere): every claim must be
+ * backed by what the dashboard actually ships — knowledge-base upload,
+ * transcripts, lead routing, the real-time dashboard, the four web +
+ * webhook channels, EUR pricing. No SLAs, no integrations that live in
+ * the custom-build engagement.
  */
-export const agentRoles = [
+export type RoleDoes = { ref: string; title: string; desc: string };
+
+export type RolePage = {
+  slug: string;
+  ref: string;
+  name: string;
+  /** Short card copy (homepage roles list). */
+  desc: string;
+  /** SEO title — the query the page targets. Brand appended by template. */
+  metaTitle: string;
+  metaDescription: string;
+  /** Headline split so the template can gradient the accent. */
+  h1: string;
+  h1Accent: string;
+  lead: string;
+  does: RoleDoes[];
+};
+
+export const rolePages: RolePage[] = [
   {
+    slug: "lead-qualification",
     ref: "ROLE-01",
     name: "Lead qualification",
     desc: "Greets every inbound visit, qualifies on ICP fit, and hands only the warm conversations to your team — with the full transcript on every touch.",
-    available: true,
+    metaTitle: "AI lead qualification agent for your website",
+    metaDescription:
+      "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
+    h1: "Every visitor greeted. Only the warm ones",
+    h1Accent: "reach your team.",
+    lead: "The lead-qualification agent greets every inbound visit, asks the questions that matter for your ICP, and hands your team only the conversations worth their time — full transcript attached.",
+    does: [
+      {
+        ref: "N-01",
+        title: "Greets every inbound visit",
+        desc: "No forms, no queue — every visitor gets an instant first touch, on your site, at any hour.",
+      },
+      {
+        ref: "N-02",
+        title: "Qualifies on ICP fit",
+        desc: "Asks the questions that matter for your ICP and scores each conversation before anyone on your team gets pinged.",
+      },
+      {
+        ref: "N-03",
+        title: "Hands over only the warm conversations",
+        desc: "Warm leads land in your real-time dashboard with the full transcript on every touch; the rest never cost your team a minute.",
+      },
+    ],
   },
   {
+    slug: "sales",
     ref: "ROLE-02",
     name: "Sales",
     desc: "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos straight onto your calendar.",
-    available: true,
+    metaTitle: "AI sales agent for your website",
+    metaDescription:
+      "An AI sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
+    h1: "A sales conversation with every visitor —",
+    h1Accent: "even at 3am.",
+    lead: "The sales agent walks visitors through your offer, answers pricing and scope questions from the knowledge you upload, and books qualified demos straight onto your calendar.",
+    does: [
+      {
+        ref: "N-01",
+        title: "Walks visitors through your offer",
+        desc: "Answers what you do, for whom, and why it fits — sourced from the knowledge you upload, not generic filler.",
+      },
+      {
+        ref: "N-02",
+        title: "Handles pricing and scope questions",
+        desc: "The questions that stall deals get answered on the spot, inside the conversation where they came up.",
+      },
+      {
+        ref: "N-03",
+        title: "Books qualified demos",
+        desc: "Qualified conversations end on your calendar, and every exchange lands in the dashboard as a transcript.",
+      },
+    ],
   },
   {
+    slug: "customer-support",
     ref: "ROLE-03",
     name: "Customer support",
     desc: "First-line answers from your knowledge base. Escalates only when a human is actually needed. Trained on your tone, not generic.",
-    available: true,
+    metaTitle: "AI customer support agent for your website",
+    metaDescription:
+      "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
+    h1: "First-line support that sounds like you,",
+    h1Accent: "not a script.",
+    lead: "The support agent answers from your knowledge base in your tone, resolves the recurring questions on the spot, and escalates only when a human is actually needed — visitors can ask for one at any time.",
+    does: [
+      {
+        ref: "N-01",
+        title: "Answers from your knowledge base",
+        desc: "Upload your docs and FAQs; the agent answers with what you actually ship — trained on your tone, not generic.",
+      },
+      {
+        ref: "N-02",
+        title: "Escalates only when needed",
+        desc: "Recurring questions get resolved on the spot; conversations that need a human reach one, and visitors can ask for a human at any time.",
+      },
+      {
+        ref: "N-03",
+        title: "Captures every conversation",
+        desc: "Every thread lands in the dashboard as a full transcript, so you see what customers ask without anyone watching a queue.",
+      },
+    ],
   },
   {
+    slug: "onboarding",
     ref: "ROLE-04",
     name: "Onboarding",
     desc: "Walks new customers through setup step by step, answers the recurring questions from your docs, and routes anything that needs a human to your team.",
-    available: true,
+    metaTitle: "AI customer onboarding agent",
+    metaDescription:
+      "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
+    h1: "Setup walked through,",
+    h1Accent: "step by step.",
+    lead: "The onboarding agent walks new customers through setup step by step, answers the recurring questions straight from your docs, and routes anything that needs a human to your team.",
+    does: [
+      {
+        ref: "N-01",
+        title: "Guides setup step by step",
+        desc: "New customers get walked through setup interactively instead of digging through documentation alone.",
+      },
+      {
+        ref: "N-02",
+        title: "Answers the recurring questions",
+        desc: "The same ten questions every new account asks get answered from your docs — instantly, every time.",
+      },
+      {
+        ref: "N-03",
+        title: "Routes the exceptions to your team",
+        desc: "Anything that genuinely needs a human lands with your team, with the full conversation attached.",
+      },
+    ],
   },
-] as const;
+];
+
+/**
+ * Homepage role cards — derived from rolePages so card copy and page
+ * copy share one source. Order = priority.
+ */
+export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
+  ref,
+  name,
+  desc,
+  slug,
+  available: true,
+}));
 
 export const faqItems = [
   {

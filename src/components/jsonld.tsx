@@ -1,5 +1,5 @@
 import { SITE_URL, BRAND } from "@/lib/seo";
-import { pricingTiers, faqItems } from "@/lib/content";
+import { pricingTiers, faqItems, type RolePage } from "@/lib/content";
 
 /**
  * Structured data for the homepage. Three graphs in one `<script>`:
@@ -102,6 +102,39 @@ export function HomepageJsonLd() {
       // Stringified JSON only — no executable code goes through
       // dangerouslySetInnerHTML, so this is the canonical pattern for
       // shipping JSON-LD with React.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+    />
+  );
+}
+
+/**
+ * Breadcrumbs for the per-role landing pages — tells crawlers where
+ * /roles/{slug} sits in the site tree (there's no /roles index page;
+ * the homepage roles list is the parent).
+ */
+export function RoleBreadcrumbJsonLd({ role }: { role: RolePage }) {
+  const graph = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: BRAND.name,
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: role.name,
+        item: `${SITE_URL}/roles/${role.slug}`,
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );

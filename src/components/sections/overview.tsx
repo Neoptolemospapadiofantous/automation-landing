@@ -1,18 +1,15 @@
 import Link from "next/link";
 import { agentRoles } from "@/lib/content";
-import { registerUrl } from "@/lib/dashboard";
 import { SectionWatermark } from "@/components/section-watermark";
 
 /**
  * Agent role picker — the "drawing index" pattern applied to product
- * roles. Each row is one pre-built role on the platform; clicking
- * launches the dashboard register flow (role selection itself happens
- * inside the onboarding wizard, not via a URL param, so all rows share
- * the same destination).
+ * roles. Each row links to that role's landing page (/roles/{slug}),
+ * which carries the long-form pitch and the register CTA; sending
+ * visitors straight to /register skipped the persuasion step and
+ * starved the role pages of internal links.
  */
 export function Overview() {
-  const href = registerUrl();
-
   return (
     <section
       id="agents"
@@ -38,7 +35,7 @@ export function Overview() {
           {agentRoles.map((r) => (
             <li key={r.ref}>
               <Link
-                href={href}
+                href={`/roles/${r.slug}`}
                 className="group border-border-line hover:bg-bg-elev/60 grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b py-7 transition-colors sm:gap-8"
               >
                 <span className="bp-ref text-ink-mute group-hover:text-violet w-14 shrink-0 transition-colors sm:w-20">

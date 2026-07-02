@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
+import { rolePages } from "@/lib/content";
 
 /**
  * Sitemap. Only includes pages we want crawled and indexed; the four
@@ -12,6 +13,7 @@ import { SITE_URL } from "@/lib/seo";
  * make every build re-crawl everything.
  */
 const LAST_MOD = "2026-06-09";
+const ROLES_LAST_MOD = "2026-07-02"; // per-role pages shipped
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -33,5 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...rolePages.map((r) => ({
+      url: `${SITE_URL}/roles/${r.slug}`,
+      lastModified: ROLES_LAST_MOD,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }
