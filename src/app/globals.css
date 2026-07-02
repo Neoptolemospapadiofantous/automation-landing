@@ -804,6 +804,68 @@ html #fs-embed-teaser {
   }
 }
 
+/* ── View transitions — page navigation ─────────────────────────────
+   The <ViewTransition default="page-swap"> around page content in
+   app/layout.tsx activates these on route changes. Deliberately quiet:
+   old sheet fades out fast, new sheet fades in with an 8px rise — the
+   "new sheet laid on the drafting table" read. No directional slides;
+   they're app-idiom and the biggest motion-sensitivity trigger. */
+/* Pages differ in height, and the default group animation morphs the
+   snapshot box between the two — which visibly drags the old sheet's
+   content around mid-fade. Snap the group to the new geometry and
+   top-anchor both snapshots so this is a pure in-place crossfade. */
+::view-transition-group(.page-swap) {
+  animation: none;
+}
+::view-transition-image-pair(.page-swap) {
+  overflow: hidden;
+}
+::view-transition-old(.page-swap),
+::view-transition-new(.page-swap) {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+}
+::view-transition-old(.page-swap) {
+  animation: 120ms ease-in both vt-fade reverse;
+}
+::view-transition-new(.page-swap) {
+  animation:
+    200ms ease-out 90ms both vt-fade,
+    260ms ease-out 90ms both vt-rise;
+}
+@keyframes vt-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes vt-rise {
+  from { transform: translateY(8px); }
+  to   { transform: translateY(0); }
+}
+
+/* Sticky chrome (announcement bar + nav) is the spatial anchor: it
+   must not fade, move, or double-expose while the sheet below swaps. */
+::view-transition-group(site-chrome) {
+  animation: none;
+  z-index: 60;
+}
+::view-transition-old(site-chrome) {
+  display: none;
+}
+::view-transition-new(site-chrome) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
 /* Marquee for the logo ticker */
 @keyframes marquee {
   from { transform: translateX(0); }

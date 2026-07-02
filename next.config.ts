@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
   // script for the exact commands.
   output: "standalone",
 
+  // React <ViewTransition> integration — route navigations trigger
+  // the browser View Transitions API. Used for the subtle page-content
+  // crossfade in app/layout.tsx; no-ops in browsers without support.
+  experimental: {
+    viewTransition: true,
+  },
+
   // Baseline security headers on every response. A full CSP is
   // deliberately absent for now — the inline GA consent-default script
   // and gtag.js would need nonces/allowlists; frame-ancestors is the

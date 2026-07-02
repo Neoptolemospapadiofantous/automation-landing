@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ViewTransition } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
@@ -133,13 +134,20 @@ export default async function RootLayout({
           {/* Sticky chrome — announcement bar stacks on top, site nav
               sits underneath. Both move as one unit. z-40 sits above
               the persistent blueprint chrome (z-30) and below the
-              cookie consent prompt (z-50). */}
-          <div className="sticky top-0 z-40">
+              cookie consent prompt (z-50).
+              view-transition-name anchors it during page transitions:
+              the chrome must not fade or move while the sheet below
+              swaps (see the site-chrome rules in globals.css). */}
+          <div className="sticky top-0 z-40 [view-transition-name:site-chrome]">
             <AnnouncementBar initialOpenAt={stats.next_cohort_open_at} />
             <SiteNav />
           </div>
           <main id="main" className="flex-1">
-            {children}
+            {/* Page navigations crossfade the sheet content — subtle
+                fade + 8px rise ("new sheet laid on the table"), chrome
+                anchored. Animation lives in globals.css (.page-swap),
+                zeroed under prefers-reduced-motion. */}
+            <ViewTransition default="page-swap">{children}</ViewTransition>
           </main>
           <SiteFooter />
           <CookieConsent />
