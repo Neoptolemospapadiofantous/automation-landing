@@ -35,7 +35,7 @@ const body = `# ${BRAND.name}
 - [Customer support agent](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
 - [Pricing](${SITE_URL}/pricing): tiers and the pricing FAQ
-- [Custom build](${SITE_URL}/audit): free 30-minute scoping call, written fixed-scope proposal in 48h
+- [Custom build](${SITE_URL}/audit): the operations layer behind the agent — the automations it delegates to, integrations into the client's stack, and data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
 
 ## Contact
 

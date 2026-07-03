@@ -5,13 +5,13 @@ import { AuditForm } from "@/components/sections/audit-form";
 export const metadata: Metadata = {
   title: "Custom build — Flowstack",
   description:
-    "When the off-the-shelf agent isn't enough. Book a free 30-minute audit; we come back inside 48 hours with a written scope for the bespoke build.",
+    "The operations layer behind your AI agent: the automations it delegates to, the integrations into your stack, the data pipelines behind them. Book a free 30-minute audit; we return in 48 hours with a written, fixed-scope build. You keep the code.",
   alternates: { canonical: "/audit" },
   openGraph: {
     title: "Custom build — Flowstack",
     url: "/audit",
     description:
-      "Free 30-minute audit. Written scope inside 48 hours. Fixed-scope build, you keep the code.",
+      "The operations layer behind your agent — automations, integrations, data pipelines. Free 30-minute audit, written fixed-scope build, you keep the code.",
   },
 };
 
@@ -20,7 +20,7 @@ const expect = [
     step: "01",
     tint: "cyan",
     title: "30-minute call",
-    body: "You walk us through what the off-the-shelf agent can't do — the integration, the flow, the edge case. No slides on our side.",
+    body: "You walk us through the work you want off your plate — the integration, the automation, the data pipeline. No slides on our side.",
   },
   {
     step: "02",
@@ -44,11 +44,11 @@ export default function AuditPage() {
         eyebrowTint="violet"
         title={
           <>
-            For teams whose stack outruns{" "}
-            <span className="text-gradient">the off-the-shelf agent.</span>
+            Your AI agent, wired into the work{" "}
+            <span className="text-gradient">it should actually be doing.</span>
           </>
         }
-        lead="The trial gives you the agent itself — chat, knowledge base, transcripts, lead routing. The custom build is where bespoke flows, custom integrations and any internal tooling get wired up. Fixed scope, you own the code."
+        lead="The €99 agent handles the conversation — chat, knowledge, transcripts, lead routing. The custom build is the operations layer behind it: the automations your agent delegates to, the integrations into your stack, and the data pipelines behind them — every run on your dashboard, fully audited. We scope it, build it, and hand you the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

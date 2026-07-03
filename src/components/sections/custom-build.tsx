@@ -32,36 +32,37 @@ export function CustomBuild() {
           />
 
           <div className="max-w-[60ch]">
-            <span className="bp-ref">FIG. 02 / when off-the-shelf hits a wall</span>
+            <span className="bp-ref">FIG. 02 / the operations layer</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Need an integration we don&apos;t ship yet?
+              The chat is the front door.
               <br />
-              <span className="text-gradient">We&apos;ll build it.</span>
+              <span className="text-gradient">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 leading-[1.6]">
-              The trial gives you the agent itself — chat, knowledge base,
-              transcripts, lead routing. The studio gives you the rest —
-              custom integrations, bespoke flows, your own LLM, your own UI
-              on top, and anything we don&apos;t ship by default. Fixed
-              scope, you keep the code.
+              Your agent doesn&apos;t just answer — it hands off the work. We
+              build the automation layer behind it: sourcing and enriching
+              leads, running outreach sequences, syncing your CRM, moving data
+              between your tools. The agent delegates the task, the automation
+              runs it, and every run lands on your dashboard — fully audited.
+              Chat is the brain; the automations are the hands.
             </p>
 
             <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Bespoke flows on your stack
+                Automations wired to your stack — CRM, Sheets, internal tools
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                CRM, telephony, internal-tool integrations
+                Lead sourcing, enrichment and outreach pipelines
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Trained on your knowledge + voice
+                The agent delegates the work as it runs
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Runbooks + handover · you own it
+                Every run on your dashboard · fully audited
               </li>
             </ul>
           </div>
