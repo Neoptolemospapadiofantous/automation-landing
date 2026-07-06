@@ -41,13 +41,11 @@ export async function generateMetadata({
   };
 }
 
-/* The four ways the agent ships — the only channels the product
-   actually supports today (mirrors the homepage deploy strip). */
+/* The ways the agent ships — the only channels the app actually
+   surfaces today (mirrors the homepage deploy strip). */
 const CHANNELS = [
   { ref: "CH-01", name: "Website widget" },
-  { ref: "CH-02", name: "Inline iframe" },
-  { ref: "CH-03", name: "Hosted chat page" },
-  { ref: "CH-04", name: "Webhook" },
+  { ref: "CH-02", name: "Hosted chat page" },
 ] as const;
 
 const DASHBOARD_CELLS = [
@@ -133,7 +131,7 @@ export default async function RolePage({
         </div>
       </section>
 
-      {/* How it goes live — the four real channels, nothing invented. */}
+      {/* How it goes live — the real channels the app surfaces, nothing invented. */}
       <section className="relative pb-20">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="depth-rise border-border-line relative border">
@@ -143,11 +141,11 @@ export default async function RolePage({
                 {"// live in 60 seconds · embed on any site"}
               </span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
               {CHANNELS.map((c) => (
                 <div
                   key={c.ref}
-                  className="border-border-line border-b px-5 py-5 sm:border-r lg:border-b-0 lg:[&:nth-child(4)]:border-r-0"
+                  className="border-border-line border-b px-5 py-5 sm:border-r sm:border-b-0 sm:[&:nth-child(2)]:border-r-0"
                 >
                   <span className="bp-ref text-ink-mute block">{c.ref}</span>
                   <span className="text-ink mt-1 block font-mono text-[13px] tracking-[0.08em] uppercase">

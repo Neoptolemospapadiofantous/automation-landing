@@ -6,8 +6,8 @@ import { SITE_URL, BRAND } from "@/lib/seo";
  * accurately quotable by other assistants is cheap distribution.
  *
  * Keep claims in lockstep with the pricing/content in lib/content.ts —
- * same accuracy rule as the visible copy: EUR pricing, web + webhook
- * channels only, no promises the dashboard doesn't back.
+ * same accuracy rule as the visible copy: EUR pricing, the web widget +
+ * hosted chat page only, no promises the dashboard doesn't back.
  */
 
 const body = `# ${BRAND.name}
@@ -17,7 +17,7 @@ const body = `# ${BRAND.name}
 ## What it is
 
 - Pre-built AI agents for four roles: lead qualification, sales, customer support, onboarding.
-- Deploys as a website widget, inline iframe, hosted chat page, or webhook.
+- Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
 - Custom builds wire the agent into an existing stack (CRM, telephony, internal tools) — fixed scope, the client keeps the code.
 

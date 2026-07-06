@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
  * names so we don't imply integrations we haven't shipped.
  */
 const NODES = [
-  { label: "TRIGGER", title: "New inbound message", sub: "web + webhook" },
+  { label: "TRIGGER", title: "New inbound message", sub: "on your site" },
   { label: "ENRICH",  title: "Qualify on your ICP", sub: "context-aware" },
   { label: "ROUTE",   title: "Score & assign",      sub: "right person" },
   { label: "ACT",     title: "Notify + book",       sub: "in your stack" },

@@ -12,8 +12,8 @@ export const nav = {
  * the homepage role cards AND the long-form role pages, so the two can
  * never drift. Copy rule (same as everywhere): every claim must be
  * backed by what the dashboard actually ships — knowledge-base upload,
- * transcripts, lead routing, the real-time dashboard, the four web +
- * webhook channels, EUR pricing. No SLAs, no integrations that live in
+ * transcripts, lead routing, the real-time dashboard, the web widget +
+ * hosted chat page, EUR pricing. No SLAs, no integrations that live in
  * the custom build engagement.
  */
 export type RoleDoes = { ref: string; title: string; desc: string };

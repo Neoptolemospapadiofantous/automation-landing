@@ -6,19 +6,18 @@ import { SectionWatermark } from "@/components/section-watermark";
  * list so "this is how it goes live" is established before the visitor
  * reads what each role does.
  *
- * Only surfaces the product actually supports today (see the dashboard
- * EmbedController): the JS widget, an inline iframe, a hosted chat page,
- * and an inbound webhook. No SMS/Slack/WhatsApp/voice — those aren't
- * shipped, so we don't list them.
+ * Only what the app actually surfaces today (dashboard EmbedController):
+ * the JS embed widget (/widget/{slug}.js) and its hosted chat page
+ * (/embed/{slug}). No inbound webhook — the native runtime has none
+ * (AgentController hardcodes webhook_url = null); no SMS/Slack/WhatsApp/
+ * voice either. Those aren't shipped, so we don't list them.
  *
  * Visual language matches the rest of the system: hairline borders,
  * mono uppercase labels, sheet ref + small chat-bubble mark on the left.
  */
 const CHANNELS = [
   "Website widget",
-  "Inline iframe",
   "Hosted chat page",
-  "Webhook",
 ] as const;
 
 function ChatGlyph({ className = "" }: { className?: string }) {
@@ -86,7 +85,7 @@ export function LinesOfBusiness() {
           </div>
 
           {/* channel cells — hairline-divided grid, mono labels */}
-          <ul className="divide-border-line grid grid-cols-2 divide-x divide-y sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0">
+          <ul className="divide-border-line grid grid-cols-2 divide-x divide-y sm:grid-cols-2 lg:grid-cols-2 lg:divide-y-0">
             {CHANNELS.map((ch, i) => {
               const ref = `CH-0${i + 1}`;
               return (
