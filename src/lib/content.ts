@@ -1,11 +1,5 @@
 import { registerUrl } from "./dashboard";
 
-export const brand = {
-  name: "Flowstack",
-  tagline:
-    "AI agents for sales, support, lead qualification and onboarding — and bespoke automation when off-the-shelf isn't enough.",
-};
-
 export const nav = {
   links: [
     { href: "/audit", label: "Custom build" },
@@ -20,7 +14,7 @@ export const nav = {
  * backed by what the dashboard actually ships — knowledge-base upload,
  * transcripts, lead routing, the real-time dashboard, the four web +
  * webhook channels, EUR pricing. No SLAs, no integrations that live in
- * the custom-build engagement.
+ * the custom build engagement.
  */
 export type RoleDoes = { ref: string; title: string; desc: string };
 
@@ -182,7 +176,7 @@ export const faqItems = [
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "What ships at Starter is the agent itself — the chat experience, knowledge base, transcripts and lead routing into your real-time dashboard. Wiring it into your CRM, helpdesk, internal APIs or anything bespoke sits inside the Custom-build engagement, which we scope to your specific stack — fixed scope, credentials encrypted in your isolated tenant, you keep the code. The 30-minute audit covers what you'd need wired up.",
+    a: "What ships at Starter is the agent itself — the chat experience, knowledge base, transcripts and lead routing into your real-time dashboard. Wiring it into your CRM, helpdesk, internal APIs or anything bespoke sits inside the custom build engagement, which we scope to your specific stack — fixed scope, credentials encrypted in your isolated tenant, you keep the code. The 30-minute audit covers what you'd need wired up.",
   },
   {
     q: "When do I need a custom build instead of the off-the-shelf agent?",

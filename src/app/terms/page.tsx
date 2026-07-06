@@ -4,7 +4,7 @@ import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 export const metadata: Metadata = {
   title: "Terms of Service — Flowstack",
   description:
-    "The contract between Flowstack and customers of the agent platform and custom-build studio. Draft scaffold pending counsel review.",
+    "The contract between Flowstack and customers of the agent platform and custom build studio. Draft scaffold pending counsel review.",
   alternates: { canonical: "/terms" },
   robots: { index: false, follow: false },
 };
@@ -36,9 +36,9 @@ const sections: LegalSection[] = [
         <p>
           Flowstack provides (a) a self-serve AI-agent platform under
           the plans listed on our <a href="/pricing">pricing page</a>,
-          and (b) custom-build engagements scoped per project. The
+          and (b) custom build engagements scoped per project. The
           self-serve plans are billed monthly and may be cancelled at
-          any time. Custom-build engagements are governed by an order
+          any time. Custom build engagements are governed by an order
           form (statement of work) that incorporates these Terms.
         </p>
       </>
@@ -82,7 +82,7 @@ const sections: LegalSection[] = [
             least <Tbc note="N days, e.g. 30" /> notice by email.
           </li>
           <li>
-            Custom-build fees are quoted on the order form and invoiced
+            Custom build fees are quoted on the order form and invoiced
             on the schedule set there. Late payment interest accrues at{" "}
             <Tbc note="rate, e.g. statutory" />.
           </li>
@@ -142,7 +142,7 @@ const sections: LegalSection[] = [
           be linked back to you or any individual.
         </p>
         <p>
-          For custom-build engagements, IP ownership is set in the
+          For custom build engagements, IP ownership is set in the
           order form. The default is that you own the code we ship for
           you; we retain rights to the underlying platform and any
           reusable libraries we created before or independently of the
@@ -170,7 +170,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         We aim for high availability but do not currently offer a
-        contractual SLA on the self-serve plans. For custom-build
+        contractual SLA on the self-serve plans. For custom build
         engagements and enterprise terms, availability targets and
         remedies are set in the order form.{" "}
         <Tbc note="confirm whether a public uptime page or SLA exists" />
@@ -322,7 +322,7 @@ export default function TermsPage() {
   return (
     <LegalDoc
       title="Terms of Service"
-      intent="The contract between Flowstack and customers of the agent platform and the custom-build studio."
+      intent="The contract between Flowstack and customers of the agent platform and the custom build studio."
       effective="2026-06-08"
       reviewed="2026-06-08"
       sections={sections}
