@@ -86,25 +86,16 @@ export function LinesOfBusiness() {
 
           {/* channel cells — hairline-divided grid, mono labels */}
           <ul className="divide-border-line grid grid-cols-2 divide-x divide-y sm:grid-cols-2 lg:grid-cols-2 lg:divide-y-0">
-            {CHANNELS.map((ch, i) => {
-              const ref = `CH-0${i + 1}`;
-              return (
-                <li
-                  key={ch}
-                  className="lift-hover flex flex-col gap-1.5 px-4 py-4 lg:gap-2"
-                >
-                  <span
-                    className="text-ink-mute font-mono text-[10px] tracking-[0.22em] uppercase"
-                    aria-hidden
-                  >
-                    {ref}
-                  </span>
-                  <span className="text-ink font-mono text-[13px] tracking-[0.08em] uppercase">
-                    {ch}
-                  </span>
-                </li>
-              );
-            })}
+            {CHANNELS.map((ch) => (
+              <li
+                key={ch}
+                className="lift-hover flex flex-col gap-1.5 px-4 py-4 lg:gap-2"
+              >
+                <span className="text-ink font-mono text-[13px] tracking-[0.08em] uppercase">
+                  {ch}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

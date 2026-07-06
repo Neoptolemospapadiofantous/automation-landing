@@ -43,10 +43,7 @@ export async function generateMetadata({
 
 /* The ways the agent ships — the only channels the app actually
    surfaces today (mirrors the homepage deploy strip). */
-const CHANNELS = [
-  { ref: "CH-01", name: "Website widget" },
-  { ref: "CH-02", name: "Hosted chat page" },
-] as const;
+const CHANNELS = ["Website widget", "Hosted chat page"] as const;
 
 const DASHBOARD_CELLS = [
   {
@@ -142,14 +139,13 @@ export default async function RolePage({
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
-              {CHANNELS.map((c) => (
+              {CHANNELS.map((name) => (
                 <div
-                  key={c.ref}
+                  key={name}
                   className="border-border-line border-b px-5 py-5 sm:border-r sm:border-b-0 sm:[&:nth-child(2)]:border-r-0"
                 >
-                  <span className="bp-ref text-ink-mute block">{c.ref}</span>
-                  <span className="text-ink mt-1 block font-mono text-[13px] tracking-[0.08em] uppercase">
-                    {c.name}
+                  <span className="text-ink block font-mono text-[13px] tracking-[0.08em] uppercase">
+                    {name}
                   </span>
                 </div>
               ))}
