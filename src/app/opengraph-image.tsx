@@ -80,26 +80,27 @@ export default async function OpenGraphImage() {
           <div
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
-              fontSize: 96,
+              fontSize: 80,
               fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
-              maxWidth: 1000,
+              maxWidth: 1040,
             }}
           >
-            An AI agent for your team.
+            Answer every inbound.
           </div>
           <div
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
-              fontSize: 96,
+              fontSize: 80,
               fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
               color: dimColor,
+              maxWidth: 1040,
             }}
           >
-            Live in 60 seconds.
+            Automate what happens next.
           </div>
         </div>
 
@@ -121,7 +122,7 @@ export default async function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            €99/mo · cancel anytime
+            live in 60 seconds · €99/mo · cancel anytime
           </div>
         </div>
 

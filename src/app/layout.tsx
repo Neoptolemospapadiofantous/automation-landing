@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Every message that waits for business hours is a customer you're losing. Flowstack puts an always-on AI agent on your site — greeting, qualifying, answering and onboarding the moment someone reaches out, every conversation in a real-time dashboard. Live in 60 seconds, from €99/mo, cancel anytime.";
+  "Leads go cold overnight. The same ten questions eat your team's day. Flowstack answers every visitor from your own knowledge the moment they reach out — qualified, routed and logged in a real-time dashboard — and builds the automations and data pipelines that run behind it. From €99/mo, live in 60 seconds, cancel anytime.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on-brand black.
@@ -51,13 +51,14 @@ export const metadata: Metadata = {
   creator: BRAND.legalName,
   publisher: BRAND.legalName,
   keywords: [
-    "AI agent",
-    "AI agents",
-    "chatbot",
     "lead qualification",
-    "customer support AI",
-    "sales chatbot",
+    "after-hours leads",
+    "customer support automation",
     "onboarding automation",
+    "workflow automation",
+    "data pipelines",
+    "AI agent",
+    "website chat widget",
     "automation studio",
     "Flowstack",
   ],

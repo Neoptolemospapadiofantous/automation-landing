@@ -85,10 +85,10 @@ export function HomepageJsonLd() {
         "@id": `${SITE_URL}/#product`,
         name: BRAND.name,
         applicationCategory: "BusinessApplication",
-        applicationSubCategory: "AI Chatbot Platform",
+        applicationSubCategory: "Business Automation Platform",
         operatingSystem: "Web",
         description:
-          "Pre-built AI agents for sales, support, lead qualification and onboarding, deployed on your stack with a real-time dashboard.",
+          "Answers every website visitor from the company's own knowledge base around the clock — qualifying, routing and logging leads in a real-time dashboard — with custom automations, integrations and data pipelines scoped per project.",
         url: SITE_URL,
         publisher: { "@id": `${SITE_URL}/#org` },
         offers,

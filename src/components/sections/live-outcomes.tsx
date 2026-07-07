@@ -26,7 +26,7 @@ export async function LiveOutcomes() {
 
   const items: { field: CountField; l: string; c: Tint }[] = [
     { field: "teams_count", l: "teams on the platform", c: "violet" },
-    { field: "leads_qualified", l: "leads qualified by AI agents", c: "cyan" },
+    { field: "leads_qualified", l: "leads qualified automatically", c: "cyan" },
     { field: "messages_handled", l: "conversations handled", c: "success" },
     { field: "agents_active", l: "agents running right now", c: "warn" },
     { field: "messages_last_24h", l: "messages in the last 24h", c: "violet" },

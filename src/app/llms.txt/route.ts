@@ -12,14 +12,15 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} Pick a role — sales, customer support, lead qualification, or onboarding — and ${BRAND.name} provisions an AI agent trained on your knowledge base, with every conversation and lead streaming into a real-time dashboard.
+> ${BRAND.tagline} ${BRAND.name} answers every website conversation from the company's own knowledge base — the after-hours leads, the repeated support questions, the new customers stuck in setup — and builds the automation and data layer that runs behind it.
 
 ## What it is
 
-- Pre-built AI agents for four roles: lead qualification, sales, customer support, onboarding.
+- Fixes unattended inbound: leads that go cold after hours, support questions that eat the team's day, new customers who churn before first value.
+- Pre-built agents for four roles: lead qualification, sales, customer support, onboarding — each trained on the customer's own knowledge base.
 - Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
-- Custom builds wire the agent into an existing stack (CRM, telephony, internal tools) — fixed scope, the client keeps the code.
+- Custom builds add the operations layer behind the agent: automations, integrations into an existing stack (CRM, telephony, internal tools) and data pipelines — fixed scope, the client keeps the code.
 
 ## Pricing (EUR, VAT not included)
 

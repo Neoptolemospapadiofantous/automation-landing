@@ -78,9 +78,9 @@ export function SiteFooter() {
           <div className="max-w-[320px]">
             <Logo />
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              AI agents for sales, support, lead qualification and onboarding.
-              Plus a bespoke automation studio for when off-the-shelf
-              isn&apos;t enough.
+              Inbound answered around the clock — leads qualified, questions
+              resolved, customers onboarded. Plus the automations and data
+              pipelines behind it, built to order.
             </p>
             <p className="bp-annot mt-5">
               {"// pick a role · paste your knowledge · watch leads land"}
