@@ -37,10 +37,10 @@ Files:
   correct (no flash, SEO-friendly).
 - `src/components/sections/live-outcomes.tsx` — server component that
   renders the strip with one `<LiveStat>` per cell.
-- `src/components/sections/founder-slots.tsx` — scarcity callout.
-  Server-only (no SSE) — founder slots only changes when the operator
-  runs `php artisan platform:set` on the dashboard, so the 5-min ISR
-  refresh is correct.
+
+(The founder-slots scarcity callout was removed 2026-07-07 — the
+dashboard's `founder_slots_*` / `featured_proof` fields are still in
+the API payload and `PlatformStats` type, just no longer rendered.)
 
 Full design with sequence diagrams lives in the dashboard repo:
 `docs/architecture/landing-sse-pipeline.md` and `docs/public-surface.md`.
