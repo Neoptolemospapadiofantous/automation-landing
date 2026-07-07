@@ -44,7 +44,8 @@ export function CustomBuild() {
               leads, running outreach sequences, syncing your CRM, moving data
               between your tools. The agent delegates the task, the automation
               runs it, and every run lands on your dashboard — fully audited.
-              Chat is the brain; the automations are the hands.
+              It&apos;s the same automation stack we run Flowstack&apos;s own
+              growth on. Chat is the brain; the automations are the hands.
             </p>
 
             <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
