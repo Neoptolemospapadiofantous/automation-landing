@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLiveStats } from "@/components/live-stats-provider";
+import { registerUrl } from "@/lib/dashboard";
 
 /**
- * Pre-launch announcement bar with a live day countdown.
+ * Status announcement bar with a live day countdown to the next intake.
  *
  * Data flow:
  *   1. Server pre-renders with `initialOpenAt` — read from the dashboard's
@@ -104,14 +105,14 @@ export function AnnouncementBar({
           />
           {open ? (
             <span>
-              Founder cohort 01 ·{" "}
+              Flowstack is live ·{" "}
               <span className="text-bg/65">
-                {dateLabel ? `open as of ${dateLabel}` : "now open"}
+                {dateLabel ? `open since ${dateLabel}` : "onboarding new teams"}
               </span>
             </span>
           ) : (
             <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span>Founder cohort 01 opens</span>
+              <span>Next intake opens</span>
               <span aria-hidden className="text-bg/55">·</span>
               <span className="tabular-nums">{dateLabel}</span>
               <span aria-hidden className="text-bg/55">·</span>
@@ -123,12 +124,14 @@ export function AnnouncementBar({
           )}
         </div>
 
-        {/* CTA — full inversion on hover, idle arrow nudge */}
+        {/* CTA — full inversion on hover, idle arrow nudge. Open state
+            sends to registration; a scheduled intake sends to the audit,
+            the useful action while signup waits. */}
         <Link
-          href="/audit"
+          href={open ? registerUrl() : "/audit"}
           className="group hover:bg-bg hover:text-ink inline-flex items-center justify-between gap-3 px-5 py-2.5 font-mono font-bold transition-colors sm:justify-center sm:py-3"
         >
-          <span>{open ? "Join the cohort" : "Reserve a slot"}</span>
+          <span>{open ? "Try it for €99" : "Book the audit"}</span>
           <span aria-hidden className="ann-arrow inline-block">
             →
           </span>
