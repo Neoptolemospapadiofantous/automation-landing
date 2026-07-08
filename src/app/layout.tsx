@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Leads go cold overnight. The same ten questions eat your team's day. Flowstack answers every visitor from your own knowledge the moment they reach out — qualified, routed and logged in a real-time dashboard — and builds the automations and data pipelines that run behind it. From €99/mo, live in 60 seconds, cancel anytime.";
+  "Busywork done by hand. Data scattered across tools. Leads waiting for a reply. Flowstack builds the automations and data pipelines that run your repetitive work, pulls everything into one live view, and puts a chat agent on your site answering every inbound. One product, end to end — from €99/mo, cancel anytime.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on-brand black.

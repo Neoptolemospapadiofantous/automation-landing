@@ -87,7 +87,7 @@ export default async function OpenGraphImage() {
               maxWidth: 1040,
             }}
           >
-            Answer every inbound.
+            Automate the busywork.
           </div>
           <div
             style={{
@@ -100,7 +100,7 @@ export default async function OpenGraphImage() {
               maxWidth: 1040,
             }}
           >
-            Automate what happens next.
+            Answer every inbound.
           </div>
         </div>
 

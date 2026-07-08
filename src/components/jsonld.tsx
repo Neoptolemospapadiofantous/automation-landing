@@ -88,7 +88,7 @@ export function HomepageJsonLd() {
         applicationSubCategory: "Business Automation Platform",
         operatingSystem: "Web",
         description:
-          "Answers every website visitor from the company's own knowledge base around the clock — qualifying, routing and logging leads in a real-time dashboard — with custom automations, integrations and data pipelines scoped per project.",
+          "Automations, integrations and data pipelines scoped per project — repetitive work run automatically, data aggregated into one live view — with a chat agent answering every website visitor from the company's own knowledge base around the clock.",
         url: SITE_URL,
         publisher: { "@id": `${SITE_URL}/#org` },
         offers,

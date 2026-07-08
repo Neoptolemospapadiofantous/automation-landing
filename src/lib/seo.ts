@@ -25,7 +25,7 @@ export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const BRAND = {
   name: "Flowstack",
   legalName: "Flowstack Studio",
-  tagline: "Answer every inbound. Automate what happens next.",
+  tagline: "Automate the busywork. Answer every inbound.",
   twitter: "@flowstack" as const, // TBC: real handle
   locale: "en_US" as const,
   contact: {

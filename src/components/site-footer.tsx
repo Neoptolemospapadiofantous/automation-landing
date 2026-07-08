@@ -78,9 +78,9 @@ export function SiteFooter() {
           <div className="max-w-[320px]">
             <Logo />
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              Inbound answered around the clock — leads qualified, questions
-              resolved, customers onboarded. Plus the automations and data
-              pipelines behind it, built to order.
+              Automations and data pipelines built to order — busywork runs
+              itself, data lands in one place. A chat agent answers every
+              inbound, end to end.
             </p>
             <p className="bp-annot mt-5">
               {"// pick a role · paste your knowledge · watch leads land"}

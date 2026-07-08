@@ -12,7 +12,7 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} answers every website conversation from the company's own knowledge base — the after-hours leads, the repeated support questions, the new customers stuck in setup — and builds the automation and data layer that runs behind it.
+> ${BRAND.tagline} ${BRAND.name} builds the automations and data pipelines that run a team's repetitive work, aggregates scattered tools into one live view, and adds a chat agent that answers every website conversation from the company's own knowledge base — one product, end to end.
 
 ## What it is
 
