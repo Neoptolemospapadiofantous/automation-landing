@@ -8,11 +8,17 @@
     Wired in the Forge nginx config for flowstack.run (proxy site, so
     the location needs an explicit root):
 
-        error_page 502 503 504 /brb.html;
+        error_page 502 503 504 =503 /brb.html;
         location = /brb.html {
             internal;
             root /home/forge/flowstack.run/current/public;
         }
+
+    The "=503" matters: Cloudflare replaces origin 502/504 responses
+    with its own branded error page, so without it this file never
+    reaches visitors. Origin 503 bodies pass through untouched (and 503
+    is the correct "temporarily unavailable" signal for crawlers).
+    Verified live 2026-07-08 (pm2 stop -> 503 + this card via CF).
 
     The meta refresh re-requests the original URL every 30s, so visitors
     land back on the real page the moment the app answers again.
