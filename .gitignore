@@ -48,3 +48,4 @@ next-env.d.ts
 # landing site. Keep out of source history.
 *.docx
 /n8n-flows/
+.playwright-mcp/
