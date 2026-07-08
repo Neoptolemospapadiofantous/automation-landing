@@ -63,7 +63,11 @@ def forge_deploys(site_id: int) -> list:
 def box_vitals() -> dict:
     cmd = ("uptime; free -m | sed -n 2p; swapon --show --bytes --noheadings; "
            "pgrep -fc 'next[ ]build' || true; "
-           "cd ~/flowstack.run/current && git log --format=%h -1; "
+           # CI releases (ci-<sha7>-<run>) carry no .git — take the sha from
+           # the dir name; legacy Forge releases fall back to git log.
+           "b=$(basename $(readlink ~/flowstack.run/current)); "
+           "case $b in ci-*) echo $b | cut -d- -f2;; "
+           "*) cd ~/flowstack.run/current && git log --format=%h -1;; esac; "
            "pm2 jlist 2>/dev/null | python3 -c 'import json,sys; "
            "print(json.load(sys.stdin)[0][\"pm2_env\"][\"status\"])' 2>/dev/null || echo pm2-unknown")
     try:

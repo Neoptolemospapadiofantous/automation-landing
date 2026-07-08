@@ -1,6 +1,12 @@
 # =============================================================================
-# Flowstack landing — Forge deploy script
+# Flowstack landing — Forge deploy script  (EMERGENCY FALLBACK ONLY)
 # =============================================================================
+# ⚠ Since 2026-07-08 deploys are CI-built (.github/workflows/deploy.yml) and
+# Forge Quick Deploy is OFF: this script runs `next build` ON THE BOX, which
+# OOM-froze the 961MB server when builds overlapped (see SHARED.md §5).
+# Use Forge "Deploy Now" (which runs this) only if GitHub Actions is down,
+# and never while another build/deploy is running.
+#
 # Copy everything below the line into:
 #   Forge → site (flowstack.run) → Deployments → Deploy Script → Edit
 # Save → Deploy Now.
