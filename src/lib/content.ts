@@ -40,7 +40,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-01",
     name: "Lead qualification",
     desc: "Greets every inbound visit, qualifies on ICP fit, and hands only the warm conversations to your team — with the full transcript on every touch.",
-    metaTitle: "AI lead qualification agent for your website",
+    metaTitle: "Automated lead qualification for your website",
     metaDescription:
       "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
     h1: "The lead that arrives at midnight",
@@ -69,9 +69,9 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-02",
     name: "Sales",
     desc: "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos straight onto your calendar.",
-    metaTitle: "AI sales agent for your website",
+    metaTitle: "Automated sales agent for your website",
     metaDescription:
-      "An AI sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
+      "An automated sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
     lead: "The visitor who's ready to buy rarely fills in a form — they have a question about pricing, scope or fit, no one to ask, and a competitor one tab away. The sales agent answers from the knowledge you upload the moment the question comes up, and books qualified demos straight onto your calendar.",
@@ -98,7 +98,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-03",
     name: "Customer support",
     desc: "First-line answers from your knowledge base. Escalates only when a human is actually needed. Trained on your tone, not generic.",
-    metaTitle: "AI customer support agent for your website",
+    metaTitle: "Automated customer support agent for your website",
     metaDescription:
       "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
     h1: "First-line support that sounds like you,",
@@ -127,7 +127,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-04",
     name: "Onboarding",
     desc: "Walks new customers through setup step by step, answers the recurring questions from your docs, and routes anything that needs a human to your team.",
-    metaTitle: "AI customer onboarding agent",
+    metaTitle: "Automated customer onboarding agent",
     metaDescription:
       "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
     h1: "New customers sign up excited,",

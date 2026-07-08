@@ -9,8 +9,8 @@ import { registerUrl } from "@/lib/dashboard";
 
 /**
  * Per-role landing pages — one statically generated page per agent
- * role, targeting the query people actually type ("AI sales agent",
- * "AI customer support agent for website", ...). All copy comes from
+ * role, targeting the query people actually type ("automated sales
+ * agent", "customer support agent for website", ...). All copy comes from
  * `rolePages` in lib/content.ts; the sections below are the shared
  * factual frame (channels, dashboard, pricing) identical across roles.
  */

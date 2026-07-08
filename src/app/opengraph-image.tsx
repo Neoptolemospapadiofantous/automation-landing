@@ -68,19 +68,19 @@ export default async function OpenGraphImage() {
           <span>FIG. 00 / FLOWSTACK</span>
         </div>
 
-        {/* headline */}
+        {/* headline — the three-beat tagline, one line each */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            marginTop: 100,
-            gap: 28,
+            marginTop: 56,
+            gap: 24,
           }}
         >
           <div
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
-              fontSize: 80,
+              fontSize: 72,
               fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
@@ -92,7 +92,20 @@ export default async function OpenGraphImage() {
           <div
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
-              fontSize: 80,
+              fontSize: 72,
+              fontWeight: 600,
+              lineHeight: 1.0,
+              letterSpacing: "-0.04em",
+              color: dimColor,
+              maxWidth: 1040,
+            }}
+          >
+            Aggregate the data.
+          </div>
+          <div
+            style={{
+              fontFamily: "ui-sans-serif, system-ui, sans-serif",
+              fontSize: 72,
               fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",

@@ -5,13 +5,13 @@ import { AuditForm } from "@/components/sections/audit-form";
 export const metadata: Metadata = {
   title: "Custom build — Flowstack",
   description:
-    "The operations layer behind your AI agent: the automations it delegates to, the integrations into your stack, the data pipelines behind them. Book a free 30-minute audit; we return in 48 hours with a written, fixed-scope build. You keep the code.",
+    "End-to-end data aggregation and automation: the repetitive work run for you, the integrations into your stack, your data pulled from client-facing chat to in-house tools into one live view. Book a free 30-minute audit; we return in 48 hours with a written, fixed-scope build. You keep the code.",
   alternates: { canonical: "/audit" },
   openGraph: {
     title: "Custom build — Flowstack",
     url: "/audit",
     description:
-      "The operations layer behind your agent — automations, integrations, data pipelines. Free 30-minute audit, written fixed-scope build, you keep the code.",
+      "End-to-end data aggregation and automation — integrations, pipelines, one live view. Free 30-minute audit, written fixed-scope build, you keep the code.",
   },
 };
 
@@ -44,11 +44,11 @@ export default function AuditPage() {
         eyebrowTint="violet"
         title={
           <>
-            Your AI agent, wired into the work{" "}
-            <span className="text-gradient">it should actually be doing.</span>
+            Your operation, wired{" "}
+            <span className="text-gradient">end to end.</span>
           </>
         }
-        lead="The €99 agent handles the conversation — chat, knowledge, transcripts, lead routing. The custom build is the operations layer behind it: the automations your agent delegates to, the integrations into your stack, and the data pipelines behind them — every run on your dashboard, fully audited. We scope it, build it, and hand you the code."
+        lead="We map the work your team repeats and the data scattered across your tools, then build the automations and pipelines that run it — from client-facing chat through your in-house systems to one live dashboard, every run fully audited. We scope it, build it, and hand you the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

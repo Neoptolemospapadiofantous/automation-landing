@@ -37,8 +37,8 @@ export function Hero() {
 
             <p className="text-ink-dim mt-7 max-w-[52ch] text-pretty text-lg leading-[1.6]">
               We fix all three: automations that run the repetitive work,
-              your data pulled from scattered tools into one live view, and
-              a chat agent on your site answering every inbound. One product,
+              your data aggregated from scattered tools into one live view,
+              and chat on your site answering every inbound. One product,
               end to end. From €99/mo.
             </p>
 

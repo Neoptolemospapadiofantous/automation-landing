@@ -2,8 +2,9 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 /**
  * llms.txt — a plain-text site summary for AI assistants
- * (https://llmstxt.org). For a product that IS an AI agent, being
- * accurately quotable by other assistants is cheap distribution.
+ * (https://llmstxt.org). For an automation product whose front door is
+ * chat, being accurately quotable by other assistants is cheap
+ * distribution. Copy rule: no "AI agent" phrasing — see SHARED.md §3.4.
  *
  * Keep claims in lockstep with the pricing/content in lib/content.ts —
  * same accuracy rule as the visible copy: EUR pricing, the web widget +
