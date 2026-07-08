@@ -1,0 +1,112 @@
+# CI-built deploys — the box NEVER runs `next build`.
+#
+# Why: the Forge box (961MB / 1 vCPU, also hosting MySQL + PHP + Typesense +
+# Reverb) cannot survive on-box Turbopack builds — concurrent builds OOM'd it
+# and froze prod on 2026-07-08 (see SHARED.md §5 postmortem). This workflow
+# builds the artifact on a GitHub runner and ships it; the box only installs
+# prod deps, flips the release symlink and restarts PM2.
+#
+# Forge Quick Deploy for this site must stay OFF — this workflow replaces it.
+# Manual redeploy: Actions → deploy → "Run workflow" (workflow_dispatch).
+#
+# Secrets: FORGE_SSH_KEY (ed25519 private key; its .pub lives in
+# forge@178.128.138.142:~/.ssh/authorized_keys as "gha-deploy").
+# The NEXT_PUBLIC_* values below are browser-public by definition — they ship
+# in every client bundle — so they live here in plain text; runtime-only
+# secrets stay in the box's .env, which the release symlinks as before.
+
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time, queued not cancelled — concurrent activations on the
+# box were the root cause of the 2026-07-08 outage.
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+env:
+  NEXT_PUBLIC_DASHBOARD_URL: https://app.flowstack.run
+  NEXT_PUBLIC_SITE_URL: https://www.flowstack.run
+  NEXT_PUBLIC_GA_ID: G-FL3RK7X8JV
+  NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG: team-1-zmdcvje9
+  DASHBOARD_API_URL: https://app.flowstack.run
+  BOX: forge@178.128.138.142
+  SITE_ROOT: /home/forge/flowstack.run
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.0 # match the box
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # match the box (v22.x)
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+
+      - run: pnpm build
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.FORGE_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H 178.128.138.142 >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Ship artifact
+        run: |
+          REL="$SITE_ROOT/releases/ci-${GITHUB_SHA::7}-${GITHUB_RUN_NUMBER}"
+          echo "REL=$REL" >> "$GITHUB_ENV"
+          ssh -i ~/.ssh/deploy_key "$BOX" "mkdir -p '$REL'"
+          # Source tree the runtime needs (next start reads next.config +
+          # package.json; public/ serves static files). No node_modules —
+          # the box does a prod-only install from its warm pnpm store.
+          rsync -a -e "ssh -i ~/.ssh/deploy_key" \
+            --exclude .git --exclude node_modules --exclude .next \
+            --exclude ops --exclude .github \
+            ./ "$BOX:$REL/"
+          # Build output, minus the (huge, build-only) compiler cache.
+          rsync -a -e "ssh -i ~/.ssh/deploy_key" \
+            --exclude cache \
+            .next/ "$BOX:$REL/.next/"
+
+      - name: Activate release
+        run: |
+          ssh -i ~/.ssh/deploy_key "$BOX" bash -s <<REMOTE
+          set -euo pipefail
+          cd "$REL"
+          # Prod deps only (~15s from the warm store; devDeps are build-time).
+          pnpm install --frozen-lockfile --prod
+          ln -sf "$SITE_ROOT/.env" .env
+          ln -sfn "$REL" "$SITE_ROOT/current"
+          # delete+start (not reload) so runtime config changes converge —
+          # same rationale as the old Forge deploy script.
+          pm2 delete site-3238855 2>/dev/null || true
+          pm2 start /home/forge/.pm2-conf/site-3238855.json --update-env
+          pm2 save
+          # Keep the 5 newest releases.
+          cd "$SITE_ROOT/releases" && ls -t | tail -n +6 | xargs -r rm -rf
+          REMOTE
+
+      - name: Smoke check
+        run: |
+          sleep 6
+          for i in 1 2 3 4 5; do
+            code=$(curl -s --max-time 10 -o /dev/null -w '%{http_code}' https://www.flowstack.run/robots.txt) && \
+              [ "$code" = "200" ] && echo "live ($code)" && exit 0
+            echo "attempt $i: $code"; sleep 8
+          done
+          echo "site not healthy after deploy" >&2; exit 1
