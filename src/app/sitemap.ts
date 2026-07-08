@@ -3,17 +3,18 @@ import { SITE_URL } from "@/lib/seo";
 import { rolePages } from "@/lib/content";
 
 /**
- * Sitemap. Only includes pages we want crawled and indexed; the four
- * legal drafts opt out via per-page `robots: { index: false }` so they
- * are deliberately absent here too.
+ * Sitemap — every page we want crawled and indexed, legal documents
+ * included (they went in force 2026-07-08; the old draft noindex is
+ * gone).
  *
  * lastModified is hard-coded per route. Bump these when the page
  * actually changes — fake-fresh dates train crawlers to ignore the
  * sitemap. Date must be passed in via constant; `new Date()` would
  * make every build re-crawl everything.
  */
-const LAST_MOD = "2026-06-09";
-const ROLES_LAST_MOD = "2026-07-02"; // per-role pages shipped
+const LAST_MOD = "2026-07-08"; // brand repositioning shipped
+const ROLES_LAST_MOD = "2026-07-08"; // meta titles reworded
+const LEGAL_LAST_MOD = "2026-07-08"; // in force, indexable
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -40,6 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: ROLES_LAST_MOD,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...["privacy", "terms", "security", "dpa"].map((slug) => ({
+      url: `${SITE_URL}/${slug}`,
+      lastModified: LEGAL_LAST_MOD,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
     })),
   ];
 }

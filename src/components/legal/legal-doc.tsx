@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { DraftBanner } from "./draft-banner";
 
 export type LegalSection = {
   /** Numbered ref like "§1" — displayed in mono next to the title and used as #anchor. */
@@ -10,11 +9,11 @@ export type LegalSection = {
 };
 
 /**
- * Shared shell for the four legal scaffolds (Privacy, Terms, Security,
- * DPA). Renders a DRAFT banner, a header strip with effective + last-
- * reviewed dates, a sticky TOC on lg+ screens, and the §-numbered
- * sections. Body prose runs in Inter for readability — mono everywhere
- * works for marketing but punishes long-form reading.
+ * Shared shell for the four legal documents (Privacy, Terms, Security,
+ * DPA). Renders a header strip with effective + last-reviewed dates, a
+ * sticky TOC on lg+ screens, and the §-numbered sections. Body prose
+ * runs in Inter for readability — mono everywhere works for marketing
+ * but punishes long-form reading.
  */
 export function LegalDoc({
   title,
@@ -27,9 +26,9 @@ export function LegalDoc({
   title: string;
   /** One-line plain-language summary above the section list. */
   intent: string;
-  /** ISO date this draft was last edited. */
+  /** ISO date this document took effect. */
   effective: string;
-  /** ISO date this draft was last reviewed (counsel or internal). */
+  /** ISO date this document was last reviewed. */
   reviewed: string;
   sections: LegalSection[];
 }) {
@@ -57,12 +56,12 @@ export function LegalDoc({
             </div>
             <div className="border-border-line col-span-2 border-t px-4 py-3 sm:col-span-1 sm:border-t-0">
               <dt className="text-ink-mute">Status</dt>
-              <dd className="text-ink mt-1">Draft · pending counsel</dd>
+              <dd className="text-ink mt-1">In force</dd>
             </div>
           </dl>
         </header>
 
-        {/* Banner + content */}
+        {/* TOC + content */}
         <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr] lg:gap-16">
           {/* sticky TOC — only on lg+ */}
           <aside className="hidden lg:block">
@@ -90,8 +89,6 @@ export function LegalDoc({
           </aside>
 
           <div className="min-w-0">
-            <DraftBanner />
-
             <div className="space-y-14">
               {sections.map((s) => (
                 <section

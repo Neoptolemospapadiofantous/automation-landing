@@ -4,9 +4,8 @@ import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 export const metadata: Metadata = {
   title: "Security — Flowstack",
   description:
-    "How Flowstack protects the platform, your data, and your customers' data. Draft scaffold pending counsel review.",
+    "How Flowstack protects the platform, your data, and your customers' data.",
   alternates: { canonical: "/security" },
-  robots: { index: false, follow: false },
 };
 
 const Tbc = ({ note }: { note: string }) => (

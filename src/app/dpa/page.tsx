@@ -4,9 +4,8 @@ import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 export const metadata: Metadata = {
   title: "Data Processing Agreement — Flowstack",
   description:
-    "GDPR Article 28 Data Processing Agreement between Flowstack (processor) and the Customer (controller). Draft scaffold pending counsel review.",
+    "GDPR Article 28 Data Processing Agreement between Flowstack (processor) and the Customer (controller).",
   alternates: { canonical: "/dpa" },
-  robots: { index: false, follow: false },
 };
 
 const Tbc = ({ note }: { note: string }) => (

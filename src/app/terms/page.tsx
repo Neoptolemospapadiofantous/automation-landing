@@ -4,9 +4,8 @@ import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 export const metadata: Metadata = {
   title: "Terms of Service — Flowstack",
   description:
-    "The contract between Flowstack and customers of the agent platform and custom build studio. Draft scaffold pending counsel review.",
+    "The contract between Flowstack and customers of the agent platform and custom build studio.",
   alternates: { canonical: "/terms" },
-  robots: { index: false, follow: false },
 };
 
 const Tbc = ({ note }: { note: string }) => (
