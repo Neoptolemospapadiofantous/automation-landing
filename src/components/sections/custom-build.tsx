@@ -9,7 +9,7 @@ import { SectionWatermark } from "@/components/section-watermark";
  */
 export function CustomBuild() {
   return (
-    <section className="relative isolate overflow-hidden py-20">
+    <section id="custom" className="relative isolate overflow-hidden py-20">
       <SectionWatermark text="CUSTOM" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="depth-rise flow-edge border-border-hi relative grid grid-cols-1 gap-10 border p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -32,7 +32,7 @@ export function CustomBuild() {
           />
 
           <div className="max-w-[60ch]">
-            <span className="bp-ref">FIG. 02 / the operations layer</span>
+            <span className="bp-ref text-violet">S/08 / the operations layer</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               The chat is the front door.
               <br />

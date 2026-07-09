@@ -109,7 +109,7 @@ export default async function OpenGraphImage() {
               fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
-              color: dimColor,
+              color: "#F5C518",
               maxWidth: 1040,
             }}
           >

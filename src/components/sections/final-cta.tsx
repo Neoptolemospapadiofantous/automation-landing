@@ -10,7 +10,7 @@ export function FinalCTA() {
   const secondary = { href: "/audit", label: "Talk about custom" };
 
   return (
-    <section className="relative isolate overflow-hidden py-24">
+    <section id="commit" className="relative isolate overflow-hidden py-24">
       <SectionWatermark text="GO" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="depth-rise flow-edge glass-strong relative px-8 py-16 sm:px-16 sm:py-20">
@@ -34,7 +34,7 @@ export function FinalCTA() {
 
           {/* sheet reference, top-left */}
           <div className="bp-ref absolute left-6 top-6 sm:left-8 sm:top-8">
-            SHEET 09 / NEXT STEP
+            S/10 / NEXT STEP
           </div>
 
           <div className="relative flex flex-col items-center text-center">

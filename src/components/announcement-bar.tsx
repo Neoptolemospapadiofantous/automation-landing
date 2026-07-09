@@ -80,7 +80,7 @@ export function AnnouncementBar({
     <div
       role="region"
       aria-label="Launch announcement"
-      className="bg-ink text-bg ann-enter ann-rail ann-shimmer relative"
+      className="bg-violet text-bg ann-enter ann-rail ann-shimmer relative"
     >
       {/* Sweep highlight — sits behind the content, never intercepts pointer events. */}
       <span aria-hidden className="ann-shimmer-bar" />

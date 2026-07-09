@@ -24,10 +24,14 @@ import { SectionWatermark } from "@/components/section-watermark";
 export async function LiveOutcomes() {
   const stats = await getPlatformStats();
 
+  // Bento: the headline count gets the big cell; the rest stay compact.
+  const big: { field: CountField; l: string } = {
+    field: "messages_handled",
+    l: "conversations handled — every one answered the moment it arrived",
+  };
   const items: { field: CountField; l: string; c: Tint }[] = [
     { field: "teams_count", l: "teams on the platform", c: "violet" },
     { field: "leads_qualified", l: "leads qualified automatically", c: "cyan" },
-    { field: "messages_handled", l: "conversations handled", c: "success" },
     { field: "agents_active", l: "agents running right now", c: "warn" },
     { field: "messages_last_24h", l: "messages in the last 24h", c: "violet" },
     { field: "time_saved_hours", l: "hours given back to teams", c: "cyan" },
@@ -41,7 +45,7 @@ export async function LiveOutcomes() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-1">
-            <span className="bp-ref">SHEET 04A / LIVE READOUTS</span>
+            <span className="bp-ref text-violet">S/05 / LIVE READOUTS</span>
             <h2 className="text-ink text-2xl font-semibold tracking-tight sm:text-3xl">
               Live across the platform
             </h2>
@@ -49,14 +53,39 @@ export async function LiveOutcomes() {
           <p className="bp-annot">{"// LIVE — STREAMS VIA SSE"}</p>
         </div>
 
-        <div className="depth-rise flow-edge border-border-line divide-border-line grid grid-cols-2 divide-x divide-y overflow-hidden border-x border-b sm:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
+        <div className="depth-rise flow-edge border-border-line grid grid-cols-2 gap-px overflow-hidden border bg-border-line sm:grid-cols-3">
+          <figure className="lift-hover bg-bg relative col-span-2 row-span-2 flex flex-col justify-between px-7 py-8">
+            <span className="bp-annot absolute top-3 right-4 text-[10px] tracking-[0.2em]" aria-hidden="true">
+              R-101
+            </span>
+            <div className="text-ink text-6xl font-semibold tracking-[-0.045em] sm:text-7xl lg:text-8xl">
+              <LiveStat
+                initial={stats.display[big.field]}
+                field={big.field}
+                fallback={
+                  <span className="text-ink-mute/60" aria-hidden>
+                    —
+                  </span>
+                }
+              />
+            </div>
+            <div className="mt-6 flex flex-col gap-2">
+              <div className="bp-dim w-full" aria-hidden="true" />
+              <figcaption className="text-ink-dim flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em]">
+                <span className="bp-dot" aria-hidden="true" />
+                {big.l}
+              </figcaption>
+            </div>
+          </figure>
           {items.map((m, i) => {
             const tint = tintMap[m.c];
-            const ref = `R-1${(i + 1).toString().padStart(2, "0")}`;
+            const ref = `R-1${(i + 2).toString().padStart(2, "0")}`;
             return (
               <figure
                 key={m.field}
-                className="lift-hover relative flex flex-col gap-5 px-6 py-9"
+                className={`lift-hover bg-bg relative flex flex-col gap-5 px-6 py-8 ${
+                  i === items.length - 1 ? "max-sm:col-span-2" : ""
+                }`}
               >
                 <span
                   className="bp-annot absolute top-3 right-4 text-[10px] tracking-[0.2em]"
@@ -65,7 +94,7 @@ export async function LiveOutcomes() {
                   {ref}
                 </span>
                 <div
-                  className={`text-4xl font-semibold tracking-[-0.04em] sm:text-5xl ${tint.text}`}
+                  className={`text-4xl font-semibold tracking-[-0.04em] ${tint.text}`}
                 >
                   <LiveStat
                     initial={stats.display[m.field]}
@@ -77,7 +106,7 @@ export async function LiveOutcomes() {
                     }
                   />
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="mt-auto flex flex-col gap-2">
                   <div className="bp-dim w-full" aria-hidden="true" />
                   <figcaption className="text-ink-dim flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em]">
                     <span className="bp-dot" aria-hidden="true" />
@@ -88,6 +117,9 @@ export async function LiveOutcomes() {
             );
           })}
         </div>
+        <p className="bp-annot mt-4">
+          {"// dashes are instruments calibrating — cells light up as real counts cross the honesty threshold"}
+        </p>
 
         {/* Recency callout — distinct from the count cells because it's a
             timestamp, not an aggregate. Hides itself when no qualified

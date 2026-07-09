@@ -19,7 +19,7 @@ export function Overview() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>
-            <span className="bp-ref">What it fixes</span>
+            <span className="bp-ref text-violet">S/07 / agent roles</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               Pick the job you need done.
             </h2>

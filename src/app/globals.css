@@ -186,18 +186,40 @@
     background-clip: border-box;
   }
 
-  /* Solid hard-edged accent button — white block on black. */
+  /* Solid hard-edged accent button — white block on black, hard offset
+     block in the signal accent for depth (no soft shadows on this brand). */
   .btn-grad {
     background: var(--ink);
     color: var(--bg);
     border: 1px solid var(--ink);
     font-family: var(--font-mono);
     letter-spacing: 0.06em;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    box-shadow: 4px 4px 0 var(--violet);
+    transition: background 0.15s, color 0.15s, border-color 0.15s,
+      box-shadow 0.15s, transform 0.15s;
   }
   .btn-grad:hover {
-    background: var(--ink-dim);
-    border-color: var(--ink-dim);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--violet);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-grad:hover { transform: none; box-shadow: 4px 4px 0 var(--violet); }
+  }
+
+  /* ── Automation ticker — continuous marquee strip under the hero.
+     Track content is doubled in the component; -50% = one seamless loop.
+     Pauses on hover; frozen under reduced motion. ── */
+  .tick-track {
+    display: flex;
+    width: max-content;
+    animation: tick-scroll 38s linear infinite;
+  }
+  .ticker-strip:hover .tick-track { animation-play-state: paused; }
+  @keyframes tick-scroll {
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tick-track { animation: none; }
   }
 
   /* Outlined "drawn" button — ghost variant. */

@@ -19,7 +19,7 @@ const proof = [
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pb-20 pt-10 sm:pt-14">
+    <section id="hero" className="relative isolate overflow-hidden pb-20 pt-10 sm:pt-14">
       <SectionWatermark text="FLOWSTACK" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -30,16 +30,17 @@ export function Hero() {
               FIG. 00 — the work eating your week
             </span>
 
-            <h1 className="hero-headline-parallax mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-[76px]">
-              Busywork by hand. Data in silos.{" "}
-              <span className="text-gradient">Leads left waiting.</span>
+            <h1 className="hero-headline-parallax mt-6 text-balance text-[44px] font-semibold leading-[0.99] tracking-[-0.045em] sm:text-[50px] lg:text-[54px]">
+              <span className="block">Automate the busywork.</span>
+              <span className="text-ink-dim block">Aggregate the data.</span>
+              <span className="text-gradient block">Answer every inbound.</span>
             </h1>
 
             <p className="text-ink-dim mt-7 max-w-[52ch] text-pretty text-lg leading-[1.6]">
-              We fix all three: automations that run the repetitive work,
-              your data aggregated from scattered tools into one live view,
-              and chat on your site answering every inbound. One product,
-              end to end. From €99/mo.
+              We build the automations that run your repetitive work, pull
+              your data from scattered tools into one live view, and put chat
+              on your site so nothing inbound waits. One product, end to end.
+              From €99/mo.
             </p>
 
             {/* Manifesto — the opinion */}
@@ -62,7 +63,7 @@ export function Hero() {
                 href={registerUrl()}
                 className="btn-draw inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
               >
-                Try the agent for €99
+                Try the chat for €99
               </Link>
             </div>
 
