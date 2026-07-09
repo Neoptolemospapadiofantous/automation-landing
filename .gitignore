@@ -49,3 +49,5 @@ next-env.d.ts
 *.docx
 /n8n-flows/
 .playwright-mcp/
+__pycache__/
+*.pyc
