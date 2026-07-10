@@ -49,10 +49,9 @@ export function AuditForm() {
               </span>
             </div>
 
-            <p className="text-ink-dim mt-6 max-w-[55ch] text-lg leading-[1.65]">
-              Tell us what the off-the-shelf agent doesn&apos;t cover.
-              We come back inside 48 hours with a written, fixed-scope
-              proposal — what we&apos;ll build, in how long, for how much.
+            <p className="text-ink-dim mt-6 max-w-[48ch] text-lg leading-[1.65]">
+              Tell us what to take off your plate. A written, fixed-scope
+              proposal comes back within 48 hours.
             </p>
 
             <ul className="mt-10 space-y-4">

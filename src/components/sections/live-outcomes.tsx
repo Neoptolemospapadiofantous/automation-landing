@@ -27,7 +27,7 @@ export async function LiveOutcomes() {
   // Bento: the headline count gets the big cell; the rest stay compact.
   const big: { field: CountField; l: string } = {
     field: "messages_handled",
-    l: "conversations handled — every one answered the moment it arrived",
+    l: "conversations handled — none waited",
   };
   const items: { field: CountField; l: string; c: Tint }[] = [
     { field: "teams_count", l: "teams on the platform", c: "violet" },

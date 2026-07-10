@@ -20,19 +20,19 @@ const expect = [
     step: "01",
     tint: "cyan",
     title: "30-minute call",
-    body: "You walk us through the work you want off your plate — the integration, the automation, the data pipeline. No slides on our side.",
+    body: "You walk us through the work you want off your plate. No slides on our side.",
   },
   {
     step: "02",
     tint: "violet",
     title: "Written scope in 48h",
-    body: "We come back with a fixed-scope build proposal: what we'll ship, on which integrations, in how long, for how much. Yours to keep.",
+    body: "A fixed-scope proposal: what ships, in how long, for how much. Yours to keep.",
   },
   {
     step: "03",
     tint: "success",
     title: "You decide",
-    body: "Hire us for the build, take the scope to someone else, or do it yourself. The document is yours either way — no follow-up sales emails.",
+    body: "Hire us, take the scope elsewhere, or build it yourself. No follow-up sales emails.",
   },
 ] as const;
 
@@ -48,7 +48,7 @@ export default function AuditPage() {
             <span className="text-gradient">end to end.</span>
           </>
         }
-        lead="We map the work your team repeats and the data scattered across your tools, then build the automations and pipelines that run it — from client-facing chat through your in-house systems to one live dashboard, every run fully audited. We scope it, build it, and hand you the code."
+        lead="We map the work your team repeats, then build the automations and pipelines that run it — chat to in-house systems to one live dashboard. We scope it, build it, and hand you the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

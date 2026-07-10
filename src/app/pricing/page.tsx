@@ -33,7 +33,7 @@ export default function PricingPage() {
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent for €99/mo to try the product. Five agents for €399/mo when you're running it in production. Custom builds with bespoke integrations on your stack — fixed scope, you keep the code."
+        lead="One agent for €99/mo. Five for €399/mo in production. Custom builds on your stack — fixed scope, you keep the code."
       />
 
       {/* Pricing tiers — hairline-bordered cards in the editorial mono

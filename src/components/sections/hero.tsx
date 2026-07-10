@@ -36,11 +36,9 @@ export function Hero() {
               <span className="text-gradient block">Answer every inbound.</span>
             </h1>
 
-            <p className="text-ink-dim mt-7 max-w-[52ch] text-pretty text-lg leading-[1.6]">
-              We build the automations that run your repetitive work, pull
-              your data from scattered tools into one live view, and put chat
-              on your site so nothing inbound waits. One product, end to end.
-              From €99/mo.
+            <p className="text-ink-dim mt-7 max-w-[46ch] text-pretty text-lg leading-[1.6]">
+              Automations run your repetitive work. Your data lands in one
+              live view. Chat answers your site. End to end, from €99/mo.
             </p>
 
             {/* Manifesto — the opinion */}

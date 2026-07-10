@@ -39,28 +39,28 @@ export const rolePages: RolePage[] = [
     slug: "lead-qualification",
     ref: "ROLE-01",
     name: "Lead qualification",
-    desc: "Greets every inbound visit, qualifies on ICP fit, and hands only the warm conversations to your team — with the full transcript on every touch.",
+    desc: "Qualifies every inbound visit on ICP fit. Your team gets only the warm ones, transcript attached.",
     metaTitle: "Automated lead qualification for your website",
     metaDescription:
       "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
-    lead: "Inbound interest doesn't keep office hours — but by the time your team sees a form fill, the lead has gone cold or gone elsewhere. The lead-qualification agent greets every visitor the moment they land, qualifies on ICP fit, and hands your team only the conversations worth their time, full transcript attached.",
+    lead: "Inbound doesn't keep office hours. The agent greets every visitor the moment they land, qualifies on ICP fit, and hands your team only the conversations worth their time.",
     does: [
       {
         ref: "N-01",
         title: "Greets every inbound visit",
-        desc: "No forms, no queue — every visitor gets an instant first touch, on your site, at any hour.",
+        desc: "No forms, no queue — an instant first touch, at any hour.",
       },
       {
         ref: "N-02",
         title: "Qualifies on ICP fit",
-        desc: "Asks the questions that matter for your ICP and scores each conversation before anyone on your team gets pinged.",
+        desc: "Asks the questions that matter, scores each conversation before anyone is pinged.",
       },
       {
         ref: "N-03",
         title: "Hands over only the warm conversations",
-        desc: "Warm leads land in your real-time dashboard with the full transcript on every touch; the rest never cost your team a minute.",
+        desc: "Warm leads land on your dashboard with full transcripts; the rest cost nothing.",
       },
     ],
   },
@@ -68,28 +68,28 @@ export const rolePages: RolePage[] = [
     slug: "sales",
     ref: "ROLE-02",
     name: "Sales",
-    desc: "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos straight onto your calendar.",
+    desc: "Answers pricing and scope questions on the spot. Books qualified demos onto your calendar.",
     metaTitle: "Automated sales agent for your website",
     metaDescription:
       "An automated sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
-    lead: "The visitor who's ready to buy rarely fills in a form — they have a question about pricing, scope or fit, no one to ask, and a competitor one tab away. The sales agent answers from the knowledge you upload the moment the question comes up, and books qualified demos straight onto your calendar.",
+    lead: "Ready-to-buy visitors rarely fill in forms — they have a pricing question and a competitor one tab away. The sales agent answers on the spot and books the demo.",
     does: [
       {
         ref: "N-01",
         title: "Walks visitors through your offer",
-        desc: "Answers what you do, for whom, and why it fits — sourced from the knowledge you upload, not generic filler.",
+        desc: "What you do, for whom, why it fits — from your own knowledge.",
       },
       {
         ref: "N-02",
         title: "Handles pricing and scope questions",
-        desc: "The questions that stall deals get answered on the spot, inside the conversation where they came up.",
+        desc: "Deal-stalling questions answered on the spot, inside the conversation.",
       },
       {
         ref: "N-03",
         title: "Books qualified demos",
-        desc: "Qualified conversations end on your calendar, and every exchange lands in the dashboard as a transcript.",
+        desc: "Qualified conversations end on your calendar, transcribed.",
       },
     ],
   },
@@ -97,28 +97,28 @@ export const rolePages: RolePage[] = [
     slug: "customer-support",
     ref: "ROLE-03",
     name: "Customer support",
-    desc: "First-line answers from your knowledge base. Escalates only when a human is actually needed. Trained on your tone, not generic.",
+    desc: "First-line answers from your knowledge base, in your tone. Escalates only when a human is needed.",
     metaTitle: "Automated customer support agent for your website",
     metaDescription:
       "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
-    lead: "One person can't answer every question the second it's asked — so customers wait, and the same ten questions eat your team's day. The support agent handles the repetitive first-line questions from your knowledge base instantly, in your tone, and escalates only when a human is genuinely needed. Visitors can ask for one at any time.",
+    lead: "The same ten questions eat your team's day. The support agent resolves them instantly from your knowledge base, in your tone — a human is one ask away.",
     does: [
       {
         ref: "N-01",
         title: "Answers from your knowledge base",
-        desc: "Upload your docs and FAQs; the agent answers with what you actually ship — trained on your tone, not generic.",
+        desc: "Answers from your docs and FAQs, in your tone — not generic.",
       },
       {
         ref: "N-02",
         title: "Escalates only when needed",
-        desc: "Recurring questions get resolved on the spot; conversations that need a human reach one, and visitors can ask for a human at any time.",
+        desc: "Recurring questions resolved instantly; a human is one ask away.",
       },
       {
         ref: "N-03",
         title: "Captures every conversation",
-        desc: "Every thread lands in the dashboard as a full transcript, so you see what customers ask without anyone watching a queue.",
+        desc: "Every thread transcribed on your dashboard — no one watches a queue.",
       },
     ],
   },
@@ -126,28 +126,28 @@ export const rolePages: RolePage[] = [
     slug: "onboarding",
     ref: "ROLE-04",
     name: "Onboarding",
-    desc: "Walks new customers through setup step by step, answers the recurring questions from your docs, and routes anything that needs a human to your team.",
+    desc: "Walks new customers through setup, answers the recurring questions from your docs, routes the rest to you.",
     metaTitle: "Automated customer onboarding agent",
     metaDescription:
       "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
     h1: "New customers sign up excited,",
     h1Accent: "then get stuck.",
-    lead: "The gap between signup and first value is where new customers quietly churn. The onboarding agent walks each one through setup step by step, answers the recurring questions straight from your docs, and routes anything that needs a human to your team — before they give up.",
+    lead: "The gap between signup and first value is where customers quietly churn. The onboarding agent walks each one through setup and routes the stuck ones to your team.",
     does: [
       {
         ref: "N-01",
         title: "Guides setup step by step",
-        desc: "New customers get walked through setup interactively instead of digging through documentation alone.",
+        desc: "Interactive setup guidance instead of digging through docs alone.",
       },
       {
         ref: "N-02",
         title: "Answers the recurring questions",
-        desc: "The same ten questions every new account asks get answered from your docs — instantly, every time.",
+        desc: "The questions every new account asks, answered instantly from your docs.",
       },
       {
         ref: "N-03",
         title: "Routes the exceptions to your team",
-        desc: "Anything that genuinely needs a human lands with your team, with the full conversation attached.",
+        desc: "Whatever needs a human lands with your team, conversation attached.",
       },
     ],
   },
@@ -168,23 +168,23 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const faqItems = [
   {
     q: "What does the agent actually do?",
-    a: "It greets every visitor, takes the action your chosen role needs — qualify a lead, answer a sales question, resolve a support ticket, walk a new user through onboarding — captures the conversation, and pushes the lead into a real-time dashboard. You see every transcript without anyone watching a queue.",
+    a: "It greets every visitor, does the job your role needs — qualify, answer, resolve, onboard — and pushes every conversation and lead into a real-time dashboard.",
   },
   {
     q: "What's in the Starter plan?",
-    a: "€99/mo · 1 agent · 2,500 conversation credits · cancel anytime, no lock-in. Every feature is on — knowledge-base upload, transcript review, lead routing. Need more headroom? Buy a top-up pack or upgrade to Operator; either way nothing about your setup changes.",
+    a: "€99/mo · 1 agent · 2,500 conversation credits · cancel anytime. Every feature on. Need more? Top up or move to Operator.",
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "What ships at Starter is the agent itself — the chat experience, knowledge base, transcripts and lead routing into your real-time dashboard. Wiring it into your CRM, helpdesk, internal APIs or anything bespoke sits inside the custom build engagement, which we scope to your specific stack — fixed scope, credentials encrypted in your isolated tenant, you keep the code. The 30-minute audit covers what you'd need wired up.",
+    a: "Starter ships the chat: knowledge base, transcripts, lead routing, live dashboard. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
   },
   {
     q: "When do I need a custom build instead of the off-the-shelf agent?",
-    a: "When you need bespoke flows, integrations we don't ship by default (an internal CRM, a custom auth gateway, your own LLM), or your own UI on top of the chat. The trial covers the standardisable 80% of use cases; we build the rest — fixed scope, you keep the code.",
+    a: "When you need bespoke flows, integrations we don't ship by default, data pipelines, or your own UI. The €99 product covers the standardisable 80% — we build the rest.",
   },
   {
     q: "Are we locked in?",
-    a: "No. The product is yours to trial and cancel anytime — no monthly minimums, no exit fees. Custom builds are fixed-scope and you keep the code; if you outgrow us, you walk with everything we shipped.",
+    a: "No. Cancel anytime, no minimums, no exit fees. Custom builds are fixed-scope and you keep the code.",
   },
 ] as const;
 

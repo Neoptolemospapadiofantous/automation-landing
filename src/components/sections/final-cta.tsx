@@ -3,9 +3,9 @@ import { registerUrl } from "@/lib/dashboard";
 import { SectionWatermark } from "@/components/section-watermark";
 
 export function FinalCTA() {
-  const title = "Stop losing the conversations you're not there for.";
+  const title = "Stop doing the work your operation could run itself.";
   const subtitle =
-    "Sixty seconds from now, every visitor to your site can get an answer — qualified, logged, and routed to your team. €99/mo, cancel anytime. Bring us in for the custom work if you outgrow it.";
+    "Book the audit and we map the busywork off your plate — or put chat on your site in 60 seconds. Start at either end.";
   const primary = { href: registerUrl(), label: "Try it for €99 →" };
   const secondary = { href: "/audit", label: "Talk about custom" };
 

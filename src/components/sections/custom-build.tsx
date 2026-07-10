@@ -38,14 +38,10 @@ export function CustomBuild() {
               <br />
               <span className="text-gradient">We build what runs behind it.</span>
             </h2>
-            <p className="text-ink-dim mt-5 leading-[1.6]">
-              Your agent doesn&apos;t just answer — it hands off the work. We
-              build the automation layer behind it: sourcing and enriching
-              leads, running outreach sequences, syncing your CRM, moving data
-              between your tools. The agent delegates the task, the automation
-              runs it, and every run lands on your dashboard — fully audited.
-              It&apos;s the same automation stack we run Flowstack&apos;s own
-              growth on. Chat is the brain; the automations are the hands.
+            <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
+              Lead sourcing, outreach sequences, CRM sync, data pipelines —
+              built on your stack, every run audited. The same stack we run
+              Flowstack&apos;s own growth on.
             </p>
 
             <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
