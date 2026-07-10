@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Busywork done by hand. Data scattered across tools. Leads waiting for a reply. Flowstack automates the repetitive work and aggregates your data end to end — from client-facing chat to in-house tools to one live dashboard. From €99/mo, cancel anytime.";
+  "Busywork done by hand. Data scattered across tools. Leads waiting for a reply. Flowstack automates the repetitive work and aggregates your data end to end — from client-facing chat to in-house tools to one live dashboard. Chat from €99/mo; automations scoped per project.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on-brand black.

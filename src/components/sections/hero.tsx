@@ -38,7 +38,8 @@ export function Hero() {
 
             <p className="text-ink-dim mt-7 max-w-[46ch] text-pretty text-lg leading-[1.6]">
               Automations run your repetitive work. Your data lands in one
-              live view. Chat answers your site. End to end, from €99/mo.
+              live view. Chat answers your site — from €99/mo. The rest is
+              scoped custom, starting with a free audit.
             </p>
 
             {/* Manifesto — the opinion */}
