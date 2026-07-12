@@ -1,6 +1,7 @@
 /**
- * Site-wide in-development notice — deliberately loud: yellow caution
- * stripes on both flanks, a WIP stamp, bold mono text. Sits under the
+ * Site-wide in-development notice — loud on desktop (yellow caution
+ * stripes + WIP stamp), compact on mobile (thin strip, small dot, no
+ * flanks — phone rows are too narrow for the tape). Sits under the
  * sticky chrome, non-sticky so it scrolls with the page. Remove from
  * layout.tsx when the platform is feature-complete.
  */
@@ -14,16 +15,19 @@ export function DevNotice() {
   return (
     <div role="note" className="border-y" style={{ borderColor: "var(--violet)" }}>
       <div className="flex items-stretch">
-        {/* caution stripes — left flank */}
-        <span aria-hidden className="w-16 shrink-0 opacity-70 sm:w-28" style={STRIPES} />
+        {/* caution stripes — desktop flanks only */}
+        <span aria-hidden className="hidden shrink-0 opacity-70 sm:block sm:w-16 lg:w-28" style={STRIPES} />
 
-        <p className="text-ink mx-auto flex items-center gap-3 px-4 py-3 text-center font-mono text-[12px] font-bold tracking-[0.08em] sm:text-[13px]">
-          <span
-            className="ins-stamp shrink-0"
-            style={{ color: "var(--violet)" }}
-            aria-hidden
-          >
-            WIP
+        <p className="text-ink mx-auto flex items-center gap-2.5 px-4 py-1.5 font-mono text-[10.5px] font-bold leading-[1.5] tracking-[0.05em] sm:gap-3 sm:py-3 sm:text-center sm:text-[13px] sm:tracking-[0.08em]">
+          {/* wrappers own the responsive display — bp-dot/ins-stamp set
+              their own `display` in unlayered CSS and beat utilities */}
+          <span aria-hidden className="shrink-0 sm:hidden">
+            <span className="bp-dot" style={{ borderColor: "var(--violet)" }} />
+          </span>
+          <span aria-hidden className="hidden shrink-0 sm:block">
+            <span className="ins-stamp" style={{ color: "var(--violet)" }}>
+              WIP
+            </span>
           </span>
           <span>
             Some features are still in development —{" "}
@@ -34,8 +38,8 @@ export function DevNotice() {
           </span>
         </p>
 
-        {/* caution stripes — right flank */}
-        <span aria-hidden className="w-16 shrink-0 opacity-70 sm:w-28" style={STRIPES} />
+        {/* caution stripes — desktop flanks only */}
+        <span aria-hidden className="hidden shrink-0 opacity-70 sm:block sm:w-16 lg:w-28" style={STRIPES} />
       </div>
     </div>
   );
