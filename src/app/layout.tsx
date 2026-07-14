@@ -8,7 +8,6 @@ import { BlueprintChrome } from "@/components/blueprint-chrome";
 import { Atmosphere } from "@/components/atmosphere";
 import { LiveStatsProvider } from "@/components/live-stats-provider";
 import { AnnouncementBar } from "@/components/announcement-bar";
-import { DevNotice } from "@/components/dev-notice";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
 import { FlowstackWidget } from "@/components/flowstack-widget";
@@ -144,8 +143,6 @@ export default async function RootLayout({
             <AnnouncementBar initialOpenAt={stats.next_cohort_open_at} />
             <SiteNav />
           </div>
-          {/* In-development notice — not sticky; scrolls away with the page. */}
-          <DevNotice />
           <main id="main" className="flex-1">
             {/* Page navigations crossfade the sheet content — subtle
                 fade + 8px rise ("new sheet laid on the table"), chrome
