@@ -43,10 +43,11 @@
     <path d="M635 75 L680 110 L635 145" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
   </g>
 
-  <!-- tagline, right of the mark -->
-  <g font-family="sans-serif" fill="#FFFFFF" font-weight="600">
-    <text x="730" y="225" font-size="56" letter-spacing="-1">An AI agent for your team.</text>
-    <text x="730" y="290" font-size="56" letter-spacing="-1" fill="#B8B8B8">Live in 60 seconds.</text>
+  <!-- tagline, right of the mark — canonical three-beat, third beat in signal yellow -->
+  <g font-family="sans-serif" fill="#FFFFFF" font-weight="600" font-size="44">
+    <text x="730" y="196">Automate the busywork.</text>
+    <text x="730" y="248">Aggregate the data.</text>
+    <text x="730" y="300" fill="#F5C518">Answer every inbound.</text>
   </g>
 
   <!-- dimension line + annotation under tagline -->

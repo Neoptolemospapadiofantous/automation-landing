@@ -37,9 +37,11 @@
     <path d="M635 75 L680 110 L635 145" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
   </g>
 
-  <!-- tagline below mark, in safe area -->
-  <g font-family="sans-serif" fill="#FFFFFF" font-weight="600">
-    <text x="680" y="330" font-size="32" letter-spacing="-0.5">An AI agent for your team. <tspan fill="#B8B8B8">Live in 60 seconds.</tspan></text>
+  <!-- tagline below mark — canonical three-beat, third beat in signal yellow -->
+  <g font-family="sans-serif" fill="#FFFFFF" font-weight="600" font-size="26">
+    <text x="680" y="312">Automate the busywork.</text>
+    <text x="680" y="344">Aggregate the data.</text>
+    <text x="680" y="376" fill="#F5C518">Answer every inbound.</text>
   </g>
 
   <!-- baseline -->

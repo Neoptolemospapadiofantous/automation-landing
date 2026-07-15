@@ -47,7 +47,7 @@
     </g>
 
     <!-- wide mark, centered horizontally in safe area -->
-    <g transform="translate(440 130) scale(1.0)">
+    <g transform="translate(440 74) scale(0.82)">
       <path d="M0 110 H120" stroke="#FFFFFF" stroke-width="18"/>
       <rect x="135" y="47.5" width="410" height="125" stroke="#FFFFFF" stroke-width="18" fill="none"/>
       <rect x="205" y="85" width="50" height="50" fill="#FFFFFF"/>
@@ -56,12 +56,11 @@
       <path d="M635 75 L680 110 L635 145" stroke="#FFFFFF" stroke-width="18" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
     </g>
 
-    <!-- tagline below mark -->
-    <g font-family="sans-serif" fill="#FFFFFF" font-weight="600">
-      <text x="773" y="370" text-anchor="middle" font-size="44" letter-spacing="-0.5">
-        An AI agent for your team.
-        <tspan fill="#B8B8B8">Live in 60 seconds.</tspan>
-      </text>
+    <!-- tagline below mark — canonical three-beat, third beat in signal yellow -->
+    <g font-family="sans-serif" fill="#FFFFFF" font-weight="600" font-size="40" text-anchor="middle">
+      <text x="773" y="300">Automate the busywork.</text>
+      <text x="773" y="352">Aggregate the data.</text>
+      <text x="773" y="404" fill="#F5C518">Answer every inbound.</text>
     </g>
   </g>
 
