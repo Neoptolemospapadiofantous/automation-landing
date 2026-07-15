@@ -16,6 +16,10 @@
  */
 
 const BRB_HTML = __BRB_HTML__;
+// Short sha256 of public/brb.html at deploy time (same exactly-once
+// placeholder rule as above). The prod panel compares this against the
+// local file to catch an out-of-date edge copy.
+const BRB_SHA = __BRB_SHA__;
 
 // Cloudflare-generated origin-connection failures. If we see one of these
 // as a subrequest status, the box itself is unreachable.
@@ -35,6 +39,14 @@ function brb() {
 
 const worker = {
   async fetch(request) {
+    // Health probe for the prod panel — answered at the edge, never
+    // touches the origin. Exposes only the script name + card hash.
+    if (new URL(request.url).pathname === "/__edge-brb/health") {
+      return Response.json(
+        { ok: true, script: "flowstack-edge-brb", brb_sha: BRB_SHA },
+        { headers: { "Cache-Control": "no-store" } },
+      );
+    }
     let response;
     try {
       // The race guards the header phase only: once fetch resolves, the

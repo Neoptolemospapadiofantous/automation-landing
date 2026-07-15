@@ -10,6 +10,7 @@ Runs as a `services.list` pane (auto-restart). Stdlib only, like the sibling
 dashboards.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -42,6 +43,30 @@ def http_probe(url: str, timeout: int = 8) -> dict:
                     "ms": int((time.time() - t0) * 1000), "head": body[:200].decode("utf-8", "replace")}
     except Exception as e:
         return {"ok": False, "status": 0, "ms": int((time.time() - t0) * 1000), "err": str(e)[:80]}
+
+
+EDGE_HOSTS = ("www.flowstack.run", "app.flowstack.run")
+
+
+def edge_health(host: str) -> dict:
+    """The edge-brb worker answers /__edge-brb/health at the edge (never
+    hits the origin) with its name + the sha of its embedded BRB card."""
+    try:
+        req = urllib.request.Request(
+            f"https://{host}/__edge-brb/health", headers={"User-Agent": "prod-panel"})
+        with urllib.request.urlopen(req, timeout=8) as r:
+            data = json.load(r)
+            return {"ok": bool(data.get("ok")), "sha": data.get("brb_sha", "?")}
+    except Exception as e:
+        return {"ok": False, "err": str(e)[:60]}
+
+
+def local_brb_sha() -> str:
+    try:
+        with open(os.path.join(REPO, "public", "brb.html"), "rb") as f:
+            return hashlib.sha256(f.read()).hexdigest()[:12]
+    except Exception:
+        return "?"
 
 
 def forge_deploys(site_id: int) -> list:
@@ -115,6 +140,8 @@ def refresh_loop():
             "deploys": {name: forge_deploys(sid) for name, sid in SITES.items()},
             "box": box_vitals(),
             "git": git_heads(),
+            "edge": {h: edge_health(h) for h in EDGE_HOSTS},
+            "brb_local_sha": local_brb_sha(),
             "ts": time.time(),
         }
         with state_lock:
@@ -164,6 +191,32 @@ def render() -> str:
     else:
         rows.append(f"<tr><td>box {BOX}</td><td>{pill(False, 'SSH UNREACHABLE')}</td>"
                     f"<td class=dim>{box.get('err', '')}</td></tr>")
+
+    # Edge BRB worker — must answer at the edge on every routed host, and
+    # its embedded card must match the local public/brb.html.
+    local_sha = s.get("brb_local_sha", "?")
+    edge_shas = set()
+    for host, e in (s.get("edge") or {}).items():
+        short = host.split(".")[0]
+        if e.get("ok"):
+            sha = e.get("sha", "?")
+            edge_shas.add(sha)
+            rows.append(
+                f"<tr><td>edge worker ({short})</td>"
+                f"<td>{pill(True, 'active · brb ' + sha)}</td>"
+                f"<td class=dim>answers /__edge-brb/health at the edge</td></tr>")
+        else:
+            err = e.get("err", "worker missing on route?")
+            rows.append(
+                f"<tr><td>edge worker ({short})</td>"
+                f"<td>{pill(False, 'NOT ANSWERING')}</td>"
+                f"<td class=dim>{err}</td></tr>")
+    if edge_shas:
+        in_sync = edge_shas == {local_sha}
+        sync_label = f"edge {'/'.join(sorted(edge_shas))} vs local {local_sha}"
+        rows.append(
+            f"<tr><td>edge brb sync</td><td>{pill(in_sync, sync_label, warn=not in_sync)}</td>"
+            f"<td class=dim>{'card in sync' if in_sync else 'STALE — run ops/edge-brb/deploy.sh'}</td></tr>")
 
     dep_rows = []
     for site, deps in s["deploys"].items():

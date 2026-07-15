@@ -22,14 +22,19 @@ ACCOUNT_ID=$(echo "$ZONE_JSON" | python3 -c "import json,sys; r=json.load(sys.st
 [ -n "$ZONE_ID" ] || { echo "token cannot see the flowstack.run zone" >&2; exit 1; }
 echo "zone: $ZONE_ID  account: $ACCOUNT_ID"
 
-# Build worker.js: inject public/brb.html into the template as a JS string.
+# Build worker.js: inject public/brb.html + its hash into the template.
 python3 - "$REPO/public/brb.html" "$HERE/worker.template.js" "$HERE/worker.js" <<'PYEOF'
-import json, sys
+import hashlib, json, sys
 brb, template, out = sys.argv[1:4]
-with open(brb) as f: html = f.read()
+with open(brb, "rb") as f: raw = f.read()
+html = raw.decode()
+sha = hashlib.sha256(raw).hexdigest()[:12]
 with open(template) as f: tpl = f.read()
-with open(out, "w") as f: f.write(tpl.replace("__BRB_HTML__", json.dumps(html), 1))
-print("worker.js built")
+assert tpl.count("__BRB_HTML__") == 1 and tpl.count("__BRB_SHA__") == 1, "placeholders must appear exactly once"
+src = tpl.replace("__BRB_HTML__", json.dumps(html), 1).replace("__BRB_SHA__", json.dumps(sha), 1)
+assert "__BRB_HTML__" not in src and "__BRB_SHA__" not in src
+with open(out, "w") as f: f.write(src)
+print(f"worker.js built (brb sha {sha})")
 PYEOF
 
 # Upload the module worker.
