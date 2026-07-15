@@ -4,8 +4,10 @@
  * request through untouched; only replaces Cloudflare's branded connection
  * error with our BRB card (503 + Retry-After + 30s client auto-retry).
  *
- * __BRB_HTML__ is injected by deploy.sh from public/brb.html at deploy
- * time — single source of truth with the nginx-served card.
+ * The BRB_HTML constant below is injected by deploy.sh from
+ * public/brb.html at deploy time — single source of truth with the
+ * nginx-served card. (The injection placeholder must appear exactly
+ * once in this file: on the const line, never in comments.)
  *
  * Deployed to routes: flowstack.run/*, www.flowstack.run/*,
  * app.flowstack.run/* (NOT ws.flowstack.run — websockets stay untouched).
