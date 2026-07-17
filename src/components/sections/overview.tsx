@@ -19,14 +19,12 @@ export function Overview() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>
-            <span className="bp-ref text-violet">S/07 / agent roles</span>
+            <span className="bp-ref text-violet">S/05 / agent roles</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               Pick the job you need done.
             </h2>
           </div>
-          <span className="bp-annot hidden sm:block">
-            {`// ${agentRoles.length} jobs · one agent each · live in 60s`}
-          </span>
+          <span className="bp-annot hidden normal-case sm:block">Four roles · live in 60 seconds</span>
         </div>
 
         <span className="flow-underline" aria-hidden />
@@ -65,13 +63,13 @@ export function Overview() {
           ))}
         </ul>
 
-        <p className="bp-annot mt-6">
-          {"// don't see your role? "}
+        <p className="bp-annot mt-6 normal-case">
+          {"Don't see your role? "}
           <Link
             href="/audit"
             className="text-draw hover:text-violet underline-offset-4 hover:underline"
           >
-            book a custom build →
+            Book a custom build →
           </Link>
         </p>
       </div>

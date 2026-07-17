@@ -38,7 +38,6 @@ export function Problems() {
               Three ways a week disappears.
             </h2>
           </div>
-          <span className="bp-annot hidden sm:block">{"// what we fix"}</span>
         </div>
 
         <div className="border-border-hi mt-10 grid grid-cols-1 gap-px border bg-border-hi md:grid-cols-3">

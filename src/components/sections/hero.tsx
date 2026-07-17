@@ -42,15 +42,6 @@ export function Hero() {
               scoped custom, starting with a free audit.
             </p>
 
-            {/* Manifesto — the opinion */}
-            <div className="border-border-hi mt-7 border-l pl-4">
-              <p className="bp-annot leading-[1.8]">
-                {"// the busywork runs itself · the data lands in one place"}
-                <br />
-                {"// the chat agent answers the front door"}
-              </p>
-            </div>
-
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/audit"

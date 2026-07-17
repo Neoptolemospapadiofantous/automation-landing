@@ -40,7 +40,6 @@ export function Pipeline() {
               One pipeline, client-facing to in-house.
             </h2>
           </div>
-          <span className="bp-annot hidden sm:block">{"// how it runs"}</span>
         </div>
 
         {/* transmission line with station markers */}
@@ -69,9 +68,6 @@ export function Pipeline() {
           ))}
         </div>
 
-        <p className="bp-annot mt-5">
-          {"// it's the same automation stack we run Flowstack's own growth on"}
-        </p>
       </div>
     </section>
   );

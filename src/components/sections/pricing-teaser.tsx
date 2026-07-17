@@ -13,12 +13,12 @@ export function PricingTeaser() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-hi flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>
-            <span className="bp-ref text-violet">S/09</span>
+            <span className="bp-ref text-violet">S/07</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               Try it for €99. Scale when it works.
             </h2>
           </div>
-          <span className="bp-annot hidden sm:block">{"// no lock-in, ever"}</span>
+          <span className="bp-annot hidden normal-case sm:block">No lock-in, ever</span>
         </div>
 
         <div className="border-border-hi mt-10 grid grid-cols-1 gap-px border bg-border-hi lg:grid-cols-3">
@@ -69,8 +69,8 @@ export function PricingTeaser() {
           ))}
         </div>
 
-        <p className="bp-annot mt-5 text-center">
-          {"// all prices EUR · final total at checkout · "}
+        <p className="bp-annot mt-5 text-center normal-case">
+          {"All prices EUR · final total at checkout · "}
           <Link href="/pricing" className="text-draw hover:text-violet underline-offset-4 hover:underline">
             full pricing &amp; FAQ →
           </Link>

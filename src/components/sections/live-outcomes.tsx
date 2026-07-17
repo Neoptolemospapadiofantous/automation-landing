@@ -45,12 +45,12 @@ export async function LiveOutcomes() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-1">
-            <span className="bp-ref text-violet">S/05 / LIVE READOUTS</span>
+            <span className="bp-ref text-violet">S/04 / LIVE READOUTS</span>
             <h2 className="text-ink text-2xl font-semibold tracking-tight sm:text-3xl">
               Live across the platform
             </h2>
           </div>
-          <p className="bp-annot">{"// LIVE — STREAMS VIA SSE"}</p>
+          <p className="bp-annot normal-case">Updates live</p>
         </div>
 
         <div className="depth-rise flow-edge border-border-line grid grid-cols-2 gap-px overflow-hidden border bg-border-line sm:grid-cols-3">
@@ -117,8 +117,9 @@ export async function LiveOutcomes() {
             );
           })}
         </div>
-        <p className="bp-annot mt-4">
-          {"// dashes are instruments calibrating — cells light up as real counts cross the honesty threshold"}
+        <p className="bp-annot mt-4 normal-case">
+          Counts appear once real usage crosses our display threshold — no
+          invented numbers.
         </p>
 
         {/* Recency callout — distinct from the count cells because it's a

@@ -34,14 +34,10 @@ export function FinalCTA() {
 
           {/* sheet reference, top-left */}
           <div className="bp-ref absolute left-6 top-6 sm:left-8 sm:top-8">
-            S/10 / NEXT STEP
+            S/08 / NEXT STEP
           </div>
 
           <div className="relative flex flex-col items-center text-center">
-            <span className="bp-annot mb-6 block" aria-hidden>
-              {"// commit"}
-            </span>
-
             <h2 className="max-w-[22ch] text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[56px]">
               {title}
             </h2>

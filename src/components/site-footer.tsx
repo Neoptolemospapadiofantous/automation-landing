@@ -82,8 +82,8 @@ export function SiteFooter() {
               itself, data lands in one place. A chat agent answers every
               inbound, end to end.
             </p>
-            <p className="bp-annot mt-5">
-              {"// pick a role · paste your knowledge · watch leads land"}
+            <p className="bp-annot mt-5 normal-case">
+              Pick a role · paste your knowledge · watch leads land
             </p>
           </div>
 
