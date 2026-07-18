@@ -118,7 +118,7 @@ export function SiteFooter() {
         {/* Footer baseline: copyright + cookie-settings re-open + privacy contact */}
         <div className="border-border-line mt-16 flex flex-col items-start justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
           <p className="bp-annot">
-            © 2026 Flowstack Studio · Nicosia, Cyprus · All rights
+            © 2026 Flowstack Studio · Limassol, Cyprus · All rights
             reserved
           </p>
           <div className="bp-annot flex flex-col items-start gap-x-5 gap-y-2 sm:flex-row sm:items-center">

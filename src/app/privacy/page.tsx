@@ -20,7 +20,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           Flowstack Studio Ltd (&quot;Flowstack&quot;, &quot;we&quot;,
-          &quot;us&quot;) is a company established in Nicosia, Cyprus,
+          &quot;us&quot;) is a company established in Limassol, Cyprus,
           providing AI-powered assistant software to businesses across
           many sectors. We are the data controller for the personal
           data processed in connection with this site (
@@ -32,7 +32,7 @@ const sections: LegalSection[] = [
         </p>
         <p>
           Registered office:{" "}
-          <Tbc note="legal name, registration number, address — Nicosia, Cyprus" />.
+          <Tbc note="legal name, registration number, address — Limassol, Cyprus" />.
           Contact for privacy matters:{" "}
           <a href="mailto:privacy@flowstack.run">
             privacy@flowstack.run

@@ -281,7 +281,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         These Terms are governed by the laws of the Republic of Cyprus.
-        The courts of Nicosia, Cyprus have exclusive jurisdiction,
+        The courts of Limassol, Cyprus have exclusive jurisdiction,
         without prejudice to any non-waivable consumer protections
         available where you are habitually resident. Nothing in this
         clause restricts a party from seeking interim or injunctive
