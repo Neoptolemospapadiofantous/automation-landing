@@ -100,11 +100,11 @@ These were open `[TBC]`s in the original scaffolds and are now closed
 across `/privacy`, `/terms`, `/security`, `/dpa` and the working
 drafts here:
 
-- **Jurisdiction.** Nicosia, Cyprus. Cyprus
+- **Jurisdiction.** Limassol, Cyprus. Cyprus
   [Commissioner for Personal Data Protection](https://www.dataprotection.gov.cy)
   (Law 125(I)/2018) is the supervisory authority.
 - **Governing law.** Republic of Cyprus; exclusive jurisdiction in
-  the Nicosia courts.
+  the Limassol courts.
 - **Engine.** Native runtime, calling LLM providers server-side
   through a single internal contract. **No third-party
   conversational engine is involved** — Voiceflow has been deleted
@@ -141,7 +141,7 @@ The shortlist of remaining TBCs. Full inventory in
 order:
 
 1. **Corporate identity** — legal entity name, registration number,
-   registered office in Nicosia, Cyprus.
+   registered office in Limassol, Cyprus.
 2. **Contact addresses** — `privacy@`, `security@`, `legal@`.
 3. **Hosting provider + region** — last unknown in the vendor stack.
 4. **Per-provider transfer mechanism** — SCC vs DPF status verified

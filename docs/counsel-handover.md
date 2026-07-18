@@ -157,7 +157,7 @@ that the new drafts already resolve are struck off; remaining open
 questions are grouped by category with source location in `[brackets]`.
 
 ### 5.0 What's already decided (no longer TBC)
-- **Jurisdiction: Cyprus.** Nicosia, Cyprus is the registered seat; the
+- **Jurisdiction: Cyprus.** Limassol, Cyprus is the registered seat; the
   Commissioner for Personal Data Protection (Law 125(I)/2018) is the
   supervisory authority. Reflected in `/privacy §1, §7`, `/terms §13`,
   `/security §7`.
@@ -179,7 +179,7 @@ questions are grouped by category with source location in `[brackets]`.
 
 ### 5.1 Corporate identity (still open)
 - Legal entity full name, registration number, registered office in
-  Nicosia, Cyprus *[privacy §1, terms §15]*
+  Limassol, Cyprus *[privacy §1, terms §15]*
 - Confirm contact email addresses (`privacy@`, `security@`, `legal@`)
   *[privacy §1, terms §15]*
 - Postal address for legal notices *[terms §15]*
