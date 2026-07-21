@@ -69,6 +69,26 @@ export function PricingTeaser() {
           ))}
         </div>
 
+        {/* Trust strip — factual claims only, each backed by a live page
+            or shipped behavior (DPA in force, AI-disclosure at chat start,
+            cancel-anytime billing, code handover on custom builds). */}
+        <div className="border-border-line mt-8 grid grid-cols-2 gap-px border bg-border-line text-center lg:grid-cols-4">
+          {[
+            ["GDPR", "DPA in force"],
+            ["EU AI Act", "transparent by design"],
+            ["No lock-in", "cancel anytime"],
+            ["Custom builds", "you keep the code"],
+          ].map(([k, v]) => (
+            <div key={k} className="bg-bg px-4 py-3.5">
+              <span className="text-ink block font-mono text-[11px] font-bold tracking-[0.14em] uppercase">
+                {k}
+              </span>
+              <span className="text-ink-mute mt-0.5 block font-mono text-[10.5px] tracking-[0.06em]">
+                {v}
+              </span>
+            </div>
+          ))}
+        </div>
         <p className="bp-annot mt-5 text-center normal-case">
           {"All prices EUR · final total at checkout · "}
           <Link href="/pricing" className="text-draw hover:text-violet underline-offset-4 hover:underline">

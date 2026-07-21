@@ -30,6 +30,17 @@ const cols: { h: string; l: FooterLink[] }[] = [
       { label: "DPA", href: "/dpa" },
     ],
   },
+  {
+    h: "Company",
+    l: [
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/neoptolemos-papadiofantous",
+      },
+      { label: "hello@flowstack.run", href: "mailto:hello@flowstack.run" },
+      { label: "Book the audit", href: "/audit" },
+    ],
+  },
 ];
 
 const titleBlock = [
@@ -88,7 +99,7 @@ export function SiteFooter() {
           </div>
 
           {/* Link columns — hairline-divided grid, shared 1px borders, no gaps */}
-          <div className="border-border-line grid grid-cols-1 border-t border-l sm:grid-cols-2">
+          <div className="border-border-line grid grid-cols-1 border-t border-l sm:grid-cols-3">
             {cols.map((c) => (
               <div
                 key={c.h}

@@ -54,8 +54,13 @@ export function HomepageJsonLd() {
         url: SITE_URL,
         logo: `${SITE_URL}/icon`,
         sameAs: [
-          // TBC: real LinkedIn / X / GitHub URLs when they exist
+          "https://www.linkedin.com/in/neoptolemos-papadiofantous",
         ],
+        founder: {
+          "@type": "Person",
+          name: "Neoptolemos Papadiofantous",
+          sameAs: "https://www.linkedin.com/in/neoptolemos-papadiofantous",
+        },
         contactPoint: [
           {
             "@type": "ContactPoint",

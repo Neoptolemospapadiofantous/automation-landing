@@ -2,6 +2,8 @@ import { registerUrl } from "./dashboard";
 
 export const nav = {
   links: [
+    { href: "/#agents", label: "Product" },
+    { href: "/#pipeline", label: "How it works" },
     { href: "/audit", label: "Custom build" },
     { href: "/pricing", label: "Pricing" },
   ],
