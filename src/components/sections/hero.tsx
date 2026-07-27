@@ -14,7 +14,7 @@ import { registerUrl } from "@/lib/dashboard";
 const proof = [
   { v: "48h", l: "from audit call to a written, fixed-scope build" },
   { v: "24/7", l: "your ops keep running — including while you're closed" },
-  { v: "60s", l: "to add the chat agent · from €99/mo" },
+  { v: "60s", l: "to add the chat — the front door · from €99/mo" },
 ] as const;
 
 export function Hero() {
@@ -27,7 +27,7 @@ export function Hero() {
           <div className="max-w-[640px]">
             <span className="bp-ref inline-flex items-center gap-2.5">
               <span className="bp-dot" aria-hidden />
-              FIG. 00 — the work eating your week
+              FIG. 00 — the work you can hand off
             </span>
 
             <h1 className="hero-headline-parallax mt-6 text-balance text-[44px] font-semibold leading-[0.99] tracking-[-0.045em] sm:text-[50px] lg:text-[54px]">
@@ -37,9 +37,10 @@ export function Hero() {
             </h1>
 
             <p className="text-ink-dim mt-7 max-w-[46ch] text-pretty text-lg leading-[1.6]">
-              Automations run your repetitive work. Your data lands in one
-              live view. Chat answers your site — from €99/mo. The rest is
-              scoped custom, starting with a free audit.
+              The €99 chat is the front door. Behind it, delegation:
+              automations run your repetitive work, pipelines pull your
+              scattered numbers into one live view you can run the business
+              from. Scoped custom, starting with a free audit.
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">

@@ -48,7 +48,7 @@ export default function AuditPage() {
             <span className="text-gradient">end to end.</span>
           </>
         }
-        lead="We map the work your team repeats, then build the automations and pipelines that run it — chat to in-house systems to one live dashboard. We scope it, build it, and hand you the code."
+        lead="You hand us the work your team repeats; we build the automations and pipelines that run it — chat to in-house systems to one live dashboard — then hand you the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

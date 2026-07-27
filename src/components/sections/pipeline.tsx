@@ -18,13 +18,13 @@ const STAGES = [
   },
   {
     ref: "ST-03 / aggregate",
-    title: "Data pulled into one place",
+    title: "Your numbers, aggregated",
     body: "Pipelines collect what's scattered across your tools into one source of truth.",
   },
   {
     ref: "ST-04 / display",
     title: "One live view",
-    body: "Conversations, leads and every run on a real-time dashboard, fully audited.",
+    body: "Conversations, leads and every run on one real-time dashboard, fully audited — the Monday report, already built.",
   },
 ] as const;
 
@@ -37,7 +37,7 @@ export function Pipeline() {
           <div>
             <span className="bp-ref text-violet">S/03</span>
             <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              One pipeline, client-facing to in-house.
+              Delegate once. It runs end to end.
             </h2>
           </div>
         </div>

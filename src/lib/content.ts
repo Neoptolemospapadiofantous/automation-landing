@@ -169,8 +169,8 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 
 export const faqItems = [
   {
-    q: "What does the agent actually do?",
-    a: "It greets every visitor, does the job your role needs — qualify, answer, resolve, onboard — and pushes every conversation and lead into a real-time dashboard.",
+    q: "Is this just a chat widget?",
+    a: "The chat is the front door. It greets every visitor, does the job your role needs — qualify, answer, resolve, onboard — and lands every conversation and lead on a real-time dashboard. Behind it, the custom build takes over the rest: automations and reporting pipelines on your own stack.",
   },
   {
     q: "What's in the Starter plan?",

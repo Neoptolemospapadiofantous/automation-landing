@@ -21,7 +21,7 @@ export function Overview() {
           <div>
             <span className="bp-ref text-violet">S/05 / agent roles</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Pick the job you need done.
+              Pick the first job you hand off.
             </h2>
           </div>
           <span className="bp-annot hidden normal-case sm:block">Four roles · live in 60 seconds</span>

@@ -32,16 +32,17 @@ export function CustomBuild() {
           />
 
           <div className="max-w-[60ch]">
-            <span className="bp-ref text-violet">S/06 / the operations layer</span>
+            <span className="bp-ref text-violet">S/06 / the delegation layer</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               The chat is the front door.
               <br />
               <span className="text-gradient">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              Lead sourcing, outreach sequences, CRM sync, data pipelines —
-              built on your stack, every run audited. The same stack we run
-              Flowstack&apos;s own growth on.
+              Lead sourcing, outreach sequences, CRM sync, reporting
+              pipelines — the work your team runs by hand, delegated to
+              automations on your stack, every run audited. The same stack
+              we run Flowstack&apos;s own growth on.
             </p>
 
             <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
@@ -55,7 +56,7 @@ export function CustomBuild() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                The agent delegates the work as it runs
+                Reports that build themselves — your numbers in one live view
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />

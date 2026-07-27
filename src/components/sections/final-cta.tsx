@@ -5,7 +5,7 @@ import { SectionWatermark } from "@/components/section-watermark";
 export function FinalCTA() {
   const title = "Stop doing the work your operation could run itself.";
   const subtitle =
-    "Book the audit and we map the busywork off your plate — or put chat on your site in 60 seconds. Start at either end.";
+    "Book the audit and we map what your team can hand off — or start at the front door: chat on your site in 60 seconds.";
   const primary = { href: registerUrl(), label: "Try it for €99 →" };
   const secondary = { href: "/audit", label: "Talk about custom" };
 

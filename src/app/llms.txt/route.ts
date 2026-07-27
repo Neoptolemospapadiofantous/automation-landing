@@ -13,7 +13,7 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} builds the automations and data pipelines that run a team's repetitive work, aggregates scattered tools into one live view, and adds a chat agent that answers every website conversation from the company's own knowledge base — one product, end to end.
+> ${BRAND.tagline} ${BRAND.name} lets a team delegate its operations: a chat agent answers every website conversation from the company's own knowledge base (the front door, from €99/mo), and behind it ${BRAND.name} builds the automations and data pipelines that run the repetitive work and aggregate scattered tools into one live view — one product, end to end.
 
 ## What it is
 
@@ -21,7 +21,7 @@ const body = `# ${BRAND.name}
 - Pre-built agents for four roles: lead qualification, sales, customer support, onboarding — each trained on the customer's own knowledge base.
 - Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
-- Custom builds add the operations layer behind the agent: automations, integrations into an existing stack (CRM, telephony, internal tools) and data pipelines — fixed scope, the client keeps the code.
+- Custom builds add the delegation layer behind the agent: automations, integrations into an existing stack (CRM, telephony, internal tools) and reporting/data pipelines — fixed scope, the client keeps the code.
 
 ## Pricing (EUR, VAT not included)
 
@@ -37,7 +37,7 @@ const body = `# ${BRAND.name}
 - [Customer support agent](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
 - [Pricing](${SITE_URL}/pricing): tiers and the pricing FAQ
-- [Custom build](${SITE_URL}/audit): the operations layer behind the agent — the automations it delegates to, integrations into the client's stack, and data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
+- [Custom build](${SITE_URL}/audit): the delegation layer behind the agent — the automations it delegates to, integrations into the client's stack, and reporting/data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
 
 ## Contact
 
