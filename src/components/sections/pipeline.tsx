@@ -14,17 +14,17 @@ const STAGES = [
   {
     ref: "ST-02 / automate",
     title: "The busywork runs itself",
-    body: "Follow-ups sent, records synced, workflows triggered — scoped to your stack.",
+    body: "Follow-ups sent, records synced, workflows triggered — on your stack.",
   },
   {
     ref: "ST-03 / aggregate",
     title: "Your numbers, aggregated",
-    body: "Pipelines collect what's scattered across your tools into one source of truth.",
+    body: "What's scattered across your tools, pulled into one source of truth.",
   },
   {
     ref: "ST-04 / display",
     title: "One live view",
-    body: "Conversations, leads and every run on one real-time dashboard, fully audited — the Monday report, already built.",
+    body: "Conversations, leads and every run on one live dashboard — the Monday report, already built.",
   },
 ] as const;
 

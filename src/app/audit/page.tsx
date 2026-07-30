@@ -5,7 +5,7 @@ import { AuditForm } from "@/components/sections/audit-form";
 export const metadata: Metadata = {
   title: "Custom build — Flowstack",
   description:
-    "End-to-end data aggregation and automation: the repetitive work run for you, the integrations into your stack, your data pulled from client-facing chat to in-house tools into one live view. Book a free 30-minute audit; we return in 48 hours with a written, fixed-scope build. You keep the code.",
+    "Business intelligence delegation, custom-built: automations run your repetitive work, your data lands in one live view. Free 30-minute audit, written fixed-scope build in 48 hours. You keep the code.",
   alternates: { canonical: "/audit" },
   openGraph: {
     title: "Custom build — Flowstack",
@@ -48,7 +48,7 @@ export default function AuditPage() {
             <span className="text-gradient">end to end.</span>
           </>
         }
-        lead="You hand us the work your team repeats; we build the automations and pipelines that run it — chat to in-house systems to one live dashboard — then hand you the code."
+        lead="You hand us the work your team repeats; we build the automations and pipelines that run it, then hand you the code."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

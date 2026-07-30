@@ -39,8 +39,7 @@ export function CustomBuild() {
               <span className="text-gradient">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              Lead sourcing, outreach sequences, CRM sync, reporting
-              pipelines — the work your team runs by hand, delegated to
+              Lead sourcing, outreach, CRM sync, reporting — delegated to
               automations on your stack, every run audited. The same stack
               we run Flowstack&apos;s own growth on.
             </p>
@@ -56,7 +55,7 @@ export function CustomBuild() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Reports that build themselves — your numbers in one live view
+                Reports that build themselves — one live view
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />

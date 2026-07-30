@@ -47,7 +47,7 @@ export const rolePages: RolePage[] = [
       "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
-    lead: "Inbound doesn't keep office hours. The agent greets every visitor the moment they land, qualifies on ICP fit, and hands your team only the conversations worth their time.",
+    lead: "Inbound doesn't keep office hours. The agent qualifies every visitor on ICP fit and hands your team only the conversations worth their time.",
     does: [
       {
         ref: "N-01",
@@ -76,7 +76,7 @@ export const rolePages: RolePage[] = [
       "An automated sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
-    lead: "Ready-to-buy visitors rarely fill in forms — they have a pricing question and a competitor one tab away. The sales agent answers on the spot and books the demo.",
+    lead: "Buying questions rarely make it into forms — there's a competitor one tab away. The sales agent answers on the spot and books the demo.",
     does: [
       {
         ref: "N-01",
@@ -170,7 +170,7 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "The chat is the front door. It greets every visitor, does the job your role needs — qualify, answer, resolve, onboard — and lands every conversation and lead on a real-time dashboard. Behind it, the custom build takes over the rest: automations and reporting pipelines on your own stack.",
+    a: "No. The chat is the front door: it answers visitors and captures leads on your dashboard. Behind it, we build the automations and reporting that run the rest — that's the delegation.",
   },
   {
     q: "What's in the Starter plan?",

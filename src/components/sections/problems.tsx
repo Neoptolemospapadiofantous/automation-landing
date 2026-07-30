@@ -9,19 +9,19 @@ const PROBLEMS = [
   {
     ref: "P-01 / repetition",
     title: "Busywork by hand",
-    body: "Follow-ups typed one by one. Records copied between tools. The same report, rebuilt every Monday.",
+    body: "Follow-ups typed one by one. The same report, rebuilt every Monday.",
     cost: "cost: hours, every week, forever",
   },
   {
     ref: "P-02 / fragmentation",
     title: "Data in silos",
-    body: "CRM, spreadsheet and inbox all disagree. Decisions run on the loudest partial view.",
+    body: "CRM, spreadsheet and inbox all disagree. Decisions run half-blind.",
     cost: "cost: decisions made half-blind",
   },
   {
     ref: "P-03 / latency",
     title: "Leads left waiting",
-    body: "The 11pm buying question doesn't wait for morning. It opens a competitor's site.",
+    body: "The 11pm buying question doesn't wait for morning — it opens a competitor's site.",
     cost: "cost: revenue that never arrives",
   },
 ] as const;
