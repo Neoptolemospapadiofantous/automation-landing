@@ -37,9 +37,9 @@ export function Hero() {
             </h1>
 
             <p className="text-ink-dim mt-7 max-w-[46ch] text-pretty text-lg leading-[1.6]">
-              We fix your back office: business intelligence, automations,
-              optimization. Chat from €99/mo. The rest starts with a free
-              audit.
+              We set up systems that answer your website, send your
+              follow-ups, and put your numbers in one live view — so you
+              stop doing it by hand. From €99/mo.
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">

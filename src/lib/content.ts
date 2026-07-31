@@ -170,7 +170,7 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. The chat is the front door. Behind it we build the automations and reporting that run your back office.",
+    a: "No. The chat answers your website. Behind it, we build the systems that do your repetitive work and gather your numbers into one view.",
   },
   {
     q: "What's in the Starter plan?",
