@@ -9,22 +9,22 @@ const STAGES = [
   {
     ref: "ST-01 / intake",
     title: "Chat answers the front door",
-    body: "Every visitor answered from your own knowledge, instantly — website widget or hosted chat page.",
+    body: "Website widget or hosted chat page, answering from your own knowledge.",
   },
   {
     ref: "ST-02 / automate",
-    title: "The busywork runs itself",
-    body: "Follow-ups sent, records synced, workflows triggered — on your stack.",
+    title: "Busywork runs itself",
+    body: "Follow-ups, syncs, workflows — on your stack.",
   },
   {
     ref: "ST-03 / aggregate",
-    title: "Your numbers, aggregated",
-    body: "What's scattered across your tools, pulled into one source of truth.",
+    title: "Numbers in one place",
+    body: "Scattered tools, one source of truth.",
   },
   {
     ref: "ST-04 / display",
     title: "One live view",
-    body: "Conversations, leads and every run on one live dashboard — the Monday report, already built.",
+    body: "The Monday report, already built.",
   },
 ] as const;
 

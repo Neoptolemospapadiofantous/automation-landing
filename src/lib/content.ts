@@ -41,13 +41,13 @@ export const rolePages: RolePage[] = [
     slug: "lead-qualification",
     ref: "ROLE-01",
     name: "Lead qualification",
-    desc: "Qualifies every inbound visit on ICP fit. Your team gets only the warm ones, transcript attached.",
+    desc: "Qualifies every visit on ICP fit. Your team gets only the warm ones.",
     metaTitle: "Automated lead qualification for your website",
     metaDescription:
       "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
-    lead: "Inbound doesn't keep office hours. The agent qualifies every visitor on ICP fit and hands your team only the conversations worth their time.",
+    lead: "Inbound doesn't keep office hours. The agent qualifies every visitor and hands over only the warm ones.",
     does: [
       {
         ref: "N-01",
@@ -70,13 +70,13 @@ export const rolePages: RolePage[] = [
     slug: "sales",
     ref: "ROLE-02",
     name: "Sales",
-    desc: "Answers pricing and scope questions on the spot. Books qualified demos onto your calendar.",
+    desc: "Answers pricing questions on the spot. Books the demo.",
     metaTitle: "Automated sales agent for your website",
     metaDescription:
       "An automated sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
-    lead: "Buying questions rarely make it into forms — there's a competitor one tab away. The sales agent answers on the spot and books the demo.",
+    lead: "Buying questions don't wait — a competitor is one tab away. The agent answers on the spot and books the demo.",
     does: [
       {
         ref: "N-01",
@@ -99,13 +99,13 @@ export const rolePages: RolePage[] = [
     slug: "customer-support",
     ref: "ROLE-03",
     name: "Customer support",
-    desc: "First-line answers from your knowledge base, in your tone. Escalates only when a human is needed.",
+    desc: "First-line answers from your knowledge base, in your tone.",
     metaTitle: "Automated customer support agent for your website",
     metaDescription:
       "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
-    lead: "The same ten questions eat your team's day. The support agent resolves them instantly from your knowledge base, in your tone — a human is one ask away.",
+    lead: "The same ten questions eat your day. The agent resolves them from your knowledge base — a human is one ask away.",
     does: [
       {
         ref: "N-01",
@@ -128,13 +128,13 @@ export const rolePages: RolePage[] = [
     slug: "onboarding",
     ref: "ROLE-04",
     name: "Onboarding",
-    desc: "Walks new customers through setup, answers the recurring questions from your docs, routes the rest to you.",
+    desc: "Walks new customers through setup, routes the rest to you.",
     metaTitle: "Automated customer onboarding agent",
     metaDescription:
       "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
     h1: "New customers sign up excited,",
     h1Accent: "then get stuck.",
-    lead: "The gap between signup and first value is where customers quietly churn. The onboarding agent walks each one through setup and routes the stuck ones to your team.",
+    lead: "Customers churn between signup and first value. The agent walks each one through setup, routes the stuck ones to you.",
     does: [
       {
         ref: "N-01",
@@ -170,23 +170,23 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. The chat is the front door: it answers visitors and captures leads on your dashboard. Behind it, we build the automations and reporting that run the rest — that's the delegation.",
+    a: "No. The chat is the front door. Behind it we build the automations and reporting that run your back office.",
   },
   {
     q: "What's in the Starter plan?",
-    a: "€99/mo · 1 agent · 2,500 conversation credits · cancel anytime. Every feature on. Need more? Top up or move to Operator.",
+    a: "€99/mo · 1 agent · 2,500 conversation credits · cancel anytime. Every feature on.",
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "Starter ships the chat: knowledge base, transcripts, lead routing, live dashboard. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
+    a: "Starter ships the chat. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
   },
   {
-    q: "When do I need a custom build instead of the off-the-shelf agent?",
-    a: "When you need bespoke flows, integrations we don't ship by default, data pipelines, or your own UI. The €99 product covers the standardisable 80% — we build the rest.",
+    q: "When do I need a custom build?",
+    a: "When you need integrations, data pipelines, or your own UI. The €99 product covers the standard 80% — we build the rest.",
   },
   {
     q: "Are we locked in?",
-    a: "No. Cancel anytime, no minimums, no exit fees. Custom builds are fixed-scope and you keep the code.",
+    a: "No. Cancel anytime, no minimums, no exit fees. Custom builds: you keep the code.",
   },
 ] as const;
 

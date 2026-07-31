@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "Business intelligence delegation for small teams: automations run your busywork, your numbers land in one live view, chat answers every inbound. Chat from €99/mo; the build behind it scoped per project.";
+  "We fix your back office: business intelligence, automations, optimization. Chat from €99/mo; the build behind it scoped per project.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on-brand black.

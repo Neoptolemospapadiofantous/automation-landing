@@ -12,9 +12,9 @@ import { registerUrl } from "@/lib/dashboard";
  * the dashboard SSE.
  */
 const proof = [
-  { v: "48h", l: "from audit call to a written, fixed-scope build" },
-  { v: "24/7", l: "your ops keep running — including while you're closed" },
-  { v: "60s", l: "to add the chat — the front door · from €99/mo" },
+  { v: "48h", l: "audit → written fixed scope" },
+  { v: "24/7", l: "your ops keep running" },
+  { v: "60s", l: "to add the chat · from €99/mo" },
 ] as const;
 
 export function Hero() {
@@ -37,9 +37,9 @@ export function Hero() {
             </h1>
 
             <p className="text-ink-dim mt-7 max-w-[46ch] text-pretty text-lg leading-[1.6]">
-              Hand off the busywork and the reporting. Automations run the
-              work, your numbers land in one live view, chat answers your
-              site. Start with the €99 chat — or a free audit.
+              We fix your back office: business intelligence, automations,
+              optimization. Chat from €99/mo. The rest starts with a free
+              audit.
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">

@@ -13,7 +13,7 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} is business intelligence delegation for small teams: a chat agent on the company's site answers every inbound from their own knowledge base (the front door, from €99/mo), and behind it ${BRAND.name} builds the automations and data pipelines that run the busywork and aggregate scattered tools into one live view.
+> ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (from €99/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
 
 ## What it is
 
