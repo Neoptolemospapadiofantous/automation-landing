@@ -33,7 +33,6 @@ env:
   NEXT_PUBLIC_SITE_URL: https://www.flowstack.run
   NEXT_PUBLIC_GA_ID: G-FL3RK7X8JV
   NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG: team-1-zmdcvje9
-  DASHBOARD_API_URL: https://app.flowstack.run
   BOX: forge@178.128.138.142
   SITE_ROOT: /home/forge/flowstack.run
 

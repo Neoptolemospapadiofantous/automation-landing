@@ -32,7 +32,7 @@ export function CustomBuild() {
           />
 
           <div className="max-w-[60ch]">
-            <span className="bp-ref text-violet">S/06 / the delegation layer</span>
+            <span className="bp-ref text-violet">S/05 / the delegation layer</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               The chat is the front door.
               <br />

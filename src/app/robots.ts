@@ -13,9 +13,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // /api/stats/stream is a Server-Sent Events endpoint; nothing
-        // for a crawler to index and it will hold the connection open.
-        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

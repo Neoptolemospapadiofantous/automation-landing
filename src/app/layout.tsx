@@ -6,13 +6,11 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BlueprintChrome } from "@/components/blueprint-chrome";
 import { Atmosphere } from "@/components/atmosphere";
-import { LiveStatsProvider } from "@/components/live-stats-provider";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@/components/analytics";
 import { FlowstackWidget } from "@/components/flowstack-widget";
 import { SITE_URL, BRAND } from "@/lib/seo";
-import { getPlatformStats } from "@/lib/stats";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -104,15 +102,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // SSR the announcement bar with the dashboard's current open-date so
-  // first paint is correct + SEO-stable. The bar then subscribes to the
-  // SSE stream after hydration to flip on operator changes (`php artisan
-  // platform:set next_cohort_open_at YYYY-MM-DD`) without a page reload.
-  const stats = await getPlatformStats();
-
   return (
     <html
       lang="en"
@@ -129,35 +121,33 @@ export default async function RootLayout({
         >
           Skip to content
         </a>
-        <LiveStatsProvider>
-          <Atmosphere />
-          <BlueprintChrome />
-          {/* Sticky chrome — announcement bar stacks on top, site nav
-              sits underneath. Both move as one unit. z-40 sits above
-              the persistent blueprint chrome (z-30) and below the
-              cookie consent prompt (z-50).
-              view-transition-name anchors it during page transitions:
-              the chrome must not fade or move while the sheet below
-              swaps (see the site-chrome rules in globals.css). */}
-          <div className="sticky top-0 z-40 [view-transition-name:site-chrome]">
-            <AnnouncementBar initialOpenAt={stats.next_cohort_open_at} />
-            <SiteNav />
-          </div>
-          <main id="main" className="flex-1">
-            {/* Page navigations crossfade the sheet content — subtle
-                fade + 8px rise ("new sheet laid on the table"), chrome
-                anchored. Animation lives in globals.css (.page-swap),
-                zeroed under prefers-reduced-motion. */}
-            <ViewTransition default="page-swap">{children}</ViewTransition>
-          </main>
-          <SiteFooter />
-          <CookieConsent />
-          <Analytics />
-          {/* Live chat widget — mounted site-wide so the visitor can reach
-              a real Flowstack agent from any page. Off unless
-              NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG is set. */}
-          <FlowstackWidget />
-        </LiveStatsProvider>
+        <Atmosphere />
+        <BlueprintChrome />
+        {/* Sticky chrome — announcement bar stacks on top, site nav
+            sits underneath. Both move as one unit. z-40 sits above
+            the persistent blueprint chrome (z-30) and below the
+            cookie consent prompt (z-50).
+            view-transition-name anchors it during page transitions:
+            the chrome must not fade or move while the sheet below
+            swaps (see the site-chrome rules in globals.css). */}
+        <div className="sticky top-0 z-40 [view-transition-name:site-chrome]">
+          <AnnouncementBar />
+          <SiteNav />
+        </div>
+        <main id="main" className="flex-1">
+          {/* Page navigations crossfade the sheet content — subtle
+              fade + 8px rise ("new sheet laid on the table"), chrome
+              anchored. Animation lives in globals.css (.page-swap),
+              zeroed under prefers-reduced-motion. */}
+          <ViewTransition default="page-swap">{children}</ViewTransition>
+        </main>
+        <SiteFooter />
+        <CookieConsent />
+        <Analytics />
+        {/* Live chat widget — mounted site-wide so the visitor can reach
+            a real Flowstack agent from any page. Off unless
+            NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG is set. */}
+        <FlowstackWidget />
       </body>
     </html>
   );

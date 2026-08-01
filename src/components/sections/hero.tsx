@@ -7,9 +7,7 @@ import { registerUrl } from "@/lib/dashboard";
  * Proof cells. Three claims that are structurally true — the 48h scope
  * turnaround is the audit-page promise, the other two describe the
  * always-on product. No time-based metric is hard-coded that we can't
- * back. The real "hours given back" / "leads qualified" / "messages
- * handled" counters are in <LiveOutcomes /> below the fold, driven off
- * the dashboard SSE.
+ * back.
  */
 const proof = [
   { v: "48h", l: "audit → written fixed scope" },
@@ -57,8 +55,7 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Proof — three structurally-true claims. Real platform
-                counters live in <LiveOutcomes /> further down the page. */}
+            {/* Proof — three structurally-true claims. */}
             <dl className="flow-edge border-border-line mt-12 grid grid-cols-1 border sm:grid-cols-3">
               {proof.map((p, i) => (
                 <div

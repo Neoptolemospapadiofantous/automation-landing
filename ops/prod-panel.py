@@ -136,7 +136,7 @@ def refresh_loop():
     while True:
         snap = {
             "landing": http_probe("https://www.flowstack.run/robots.txt"),
-            "dashboard": http_probe("https://app.flowstack.run/api/public/stats"),
+            "dashboard": http_probe("https://app.flowstack.run/api/health"),
             "deploys": {name: forge_deploys(sid) for name, sid in SITES.items()},
             "box": box_vitals(),
             "git": git_heads(),

@@ -28,9 +28,9 @@ const sections: LegalSection[] = [
           exposed in browsers, logs, or source control.
         </p>
         <p>
-          The marketing site (flowstack.com) runs on a persistent Node
-          host because the live-stats pipeline requires a long-lived
-          process for the SSE broadcaster singleton — see the{" "}
+          The marketing site (flowstack.run) is a statically prerendered
+          Next.js application served from its own host; it holds no
+          customer data and calls no model providers — see the{" "}
           <a href="/dpa">DPA</a> for the full sub-processor list and the
           deploy guide for the operational shape.{" "}
           <Tbc note="confirm hosting provider + region(s)" />

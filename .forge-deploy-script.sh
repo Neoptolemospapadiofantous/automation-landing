@@ -15,10 +15,9 @@
 #   - Replaces `npm ci || npm install` with `pnpm install --frozen-lockfile`.
 #   - Replaces `npm run build` with `pnpm build`.
 #   - Adds a one-time `npm i -g pnpm` bootstrap (no-op after first install).
-#   - Pins PM2 to `instances: 1` (was `"max"`): the SSE stats broadcaster in
-#     src/lib/stats-broadcaster.ts is a per-process module singleton, so each
-#     cluster worker would poll the dashboard independently (~N req/5s). One
-#     instance keeps it a true singleton — ~1 request/5s regardless of traffic.
+#   - Pins PM2 to `instances: 1` (was `"max"`): the box is 961MB/1 vCPU and
+#     the site is fully prerendered, so extra cluster workers buy nothing and
+#     cost memory the build already fights for.
 #   - Writes the PM2 config on EVERY deploy (was: only if the file was missing)
 #     and does delete+start rather than reload, so runtime changes like the
 #     instance count actually converge — `pm2 reload` won't scale workers down.

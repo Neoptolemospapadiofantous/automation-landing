@@ -1,8 +1,9 @@
 /**
  * Visitor-facing dashboard origin. Read from NEXT_PUBLIC_DASHBOARD_URL so
  * register / login / "start trial" links can target the Laravel app from
- * the browser. Distinct from DASHBOARD_API_URL (server-only, used by the
- * SSE poller and ISR fetch) — that value never reaches the client bundle.
+ * the browser. This is the only dashboard URL the landing site knows —
+ * the server-only DASHBOARD_API_URL was retired with the live-stats
+ * pipeline on 2026-08-01.
  *
  * Production canonical: https://app.flowstack.run. Override locally via
  * NEXT_PUBLIC_DASHBOARD_URL=http://127.0.0.1:8000 in .env.local when you

@@ -8,7 +8,7 @@ import { Eyebrow } from "@/components/eyebrow";
  * Route error boundary — keeps the site chrome (nav/footer render from
  * the layout above this boundary) and speaks the same sheet language
  * as the 404. `unstable_retry` re-fetches and re-renders the segment,
- * which recovers from transient faults like a hiccuping stats fetch.
+ * which recovers from transient render faults.
  */
 export default function Error({
   error,

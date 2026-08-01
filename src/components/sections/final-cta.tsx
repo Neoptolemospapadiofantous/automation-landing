@@ -34,7 +34,7 @@ export function FinalCTA() {
 
           {/* sheet reference, top-left */}
           <div className="bp-ref absolute left-6 top-6 sm:left-8 sm:top-8">
-            S/08 / NEXT STEP
+            S/07 / NEXT STEP
           </div>
 
           <div className="relative flex flex-col items-center text-center">

@@ -1,18 +1,14 @@
 # Deploy: Laravel Forge
 
-How the Flowstack landing site is deployed on Laravel Forge. Specifically tuned for the constraints in `AGENTS.md`: persistent Node host, one process, working SSE.
+How the Flowstack landing site is deployed on Laravel Forge: one long-lived Node process behind Nginx, one process per box.
 
 ---
 
 ## 1. Why Forge is the right shape
 
-The site has one architectural constraint that rules out most deploy targets:
+The site is fully prerendered (static + ISR) and holds no per-visitor server state, so nothing here is exotic — Forge is used because the whole Flowstack stack already lives on this box and deploys are CI-built artifacts rsynced into a release directory (see `.github/workflows/deploy.yml`).
 
-> **Deployment must be persistent Node.** Vercel serverless / Edge / Lambda / Cloudflare Workers all break the singleton (each invocation is a fresh isolate). — `AGENTS.md`
-
-The stats broadcaster (`src/lib/stats-broadcaster.ts`) is a module-level singleton: one poller in the Node process fans out to every visitor's SSE connection. If the process restarts or runs as N separate isolates, the optimisation breaks and the dashboard sees N× the load.
-
-Forge provisions a long-lived VPS with supervisord-managed daemons. The Next process stays warm, the singleton survives, SSE works. Vercel does not — don't migrate without rewriting the broadcaster to a short-interval-polling client (see the dashboard docs).
+The live-stats SSE pipeline that used to force a persistent single-process host was removed 2026-08-01, so a serverless host is no longer architecturally excluded. It is still not worth moving: the deploy path, the BRB error page, and the ops panel all assume this box.
 
 ---
 
@@ -26,7 +22,7 @@ Forge provisions a long-lived VPS with supervisord-managed daemons. The Next pro
 | OS | Ubuntu 22.04 LTS (Forge default) |
 | Node version | 22 LTS or 24 LTS — pick via Forge → Server → Node |
 | pnpm | `npm i -g pnpm` once via SSH or Forge → Recipes |
-| Time zone | UTC (so log timestamps line up with the SSE `last_activity_at`) |
+| Time zone | UTC (so log timestamps line up across the fleet) |
 
 If the PHP dashboard runs on the same server, Forge already has PHP 8.3+ installed. The Node site is a separate Forge "site" record sharing the same VPS.
 
@@ -96,7 +92,7 @@ pm2 reload flowstack-landing --update-env || \
 pm2 save
 ```
 
-**Caveat with PM2 cluster mode**: do not run more than one instance. The singleton broadcaster + one process per box is the design. PM2 cluster of `n` workers = `n` broadcasters = `n×` dashboard load.
+**Caveat with PM2 cluster mode**: keep `instances: 1`. The box is 961 MB / 1 vCPU and every page is prerendered, so extra workers only compete for memory.
 
 ---
 
@@ -140,10 +136,7 @@ PORT=3000
 # robots.txt, canonicals, JSON-LD, OG image URLs.
 NEXT_PUBLIC_SITE_URL=https://[your-domain]
 
-# Dashboard linkage.
-#   DASHBOARD_API_URL is SERVER-ONLY (broadcaster uses it).
-#   NEXT_PUBLIC_DASHBOARD_URL is the visitor-facing login/register URL.
-DASHBOARD_API_URL=http://127.0.0.1:8000
+# Dashboard linkage — visitor-facing login/register URL.
 NEXT_PUBLIC_DASHBOARD_URL=https://[dashboard-domain]
 ```
 
@@ -153,17 +146,16 @@ NEXT_PUBLIC_DASHBOARD_URL=https://[dashboard-domain]
 - **`HOSTNAME=0.0.0.0`** — bind to all interfaces so Nginx on the same box can reach it. `localhost`-only binding also works.
 - **`PORT=3000`** — must match the `proxy_pass` in Nginx (§8).
 - **`NEXT_PUBLIC_SITE_URL`** — without this every absolute URL on the site (canonical, OG image, sitemap) renders as `flowstack.example`. The single most-leveraged var on launch day.
-- **`DASHBOARD_API_URL`** — server-only, no `NEXT_PUBLIC_` prefix. The broadcaster fetches it every 5s.
-- **`NEXT_PUBLIC_DASHBOARD_URL`** — what visitor "Login" / "Try it for $99" buttons point at. Usually the same host as the dashboard.
+- **`NEXT_PUBLIC_DASHBOARD_URL`** — what visitor "Login" / "Try it for €99" buttons point at. Usually the same host as the dashboard.
 
 ---
 
 ## 8. Nginx config — required tweaks
 
-Forge → Site → Files → Edit Nginx Configuration. Replace the default `location /` block (and add the two extra `location` blocks) so the file's `server` block contains:
+Forge → Site → Files → Edit Nginx Configuration. Replace the default `location /` block (and add the static-asset block) so the file's `server` block contains:
 
 ```nginx
-# Default proxy for everything except SSE and static
+# Default proxy for everything except static assets
 location / {
     proxy_pass http://127.0.0.1:3000;
     proxy_http_version 1.1;
@@ -173,21 +165,6 @@ location / {
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
-}
-
-# CRITICAL — SSE stream. Buffering MUST be off; default Nginx will
-# accumulate ~4 KB of events before flushing, defeating "live".
-location /api/stats/stream {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_http_version 1.1;
-    proxy_set_header Host $host;
-    proxy_set_header Connection "";
-    proxy_buffering off;
-    proxy_cache off;
-    chunked_transfer_encoding on;
-    # Long-lived connection — don't kill SSE at 60s default.
-    proxy_read_timeout 24h;
-    proxy_send_timeout 24h;
 }
 
 # Long-cache Next's hashed static assets — immutable per build.
@@ -200,7 +177,7 @@ location /_next/static/ {
 
 Reload Nginx (Forge → Server → Manage Nginx → Restart, or via SSH `sudo nginx -t && sudo systemctl reload nginx`).
 
-The SSE block is the one Forge users miss most often. Symptom of forgetting it: visitors see the SSR-rendered fallback values forever; the dashboard never pushes anything new.
+The live site also carries an `error_page 502 503 504 =503 /brb.html` block so a dead or hung Node process serves the branded offline card instead of a Cloudflare error — keep it when editing this file.
 
 ---
 
@@ -229,15 +206,8 @@ curl -s https://[your-domain]/robots.txt
 # OG image renders (1200×630 PNG)
 curl -sI https://[your-domain]/opengraph-image | grep -E 'content-type|content-length'
 
-# SSE: connect, expect immediate `data: {...}` then idle
-curl -N --max-time 8 https://[your-domain]/api/stats/stream | head -2
-
 # JSON-LD validates: paste URL into
 #   https://search.google.com/test/rich-results
-
-# Single-EventSource collapse working:
-#   open DevTools → Network → filter "stream" → reload homepage.
-#   Expect exactly 1 EventSource connection per tab, not 7.
 ```
 
 ---
@@ -270,11 +240,6 @@ For very fast rollback without rebuilding, keep the previous `.next/standalone/`
 
 ## 12. Troubleshooting
 
-### "Live stats don't update on the production site"
-- Open `/api/stats/stream` directly in a browser tab. You should see `data: {...}` events. If nothing, check Nginx §8 — `proxy_buffering off` is missing.
-- Check the daemon log for connection errors to the dashboard. If `DASHBOARD_API_URL` is wrong, the broadcaster silently falls back to FALLBACK and nothing changes ever.
-- Verify the dashboard's `/api/public/stats` is reachable from the landing's box: `curl http://127.0.0.1:8000/api/public/stats` from SSH.
-
 ### "Site shows old version after deploy"
 - Forge deploy log: did the script succeed? (Forge → Site → Deployments → click the deploy)
 - Did supervisorctl restart actually fire? `sudo supervisorctl status flowstack-landing` should show recent uptime, not days.
@@ -297,17 +262,14 @@ For very fast rollback without rebuilding, keep the previous `.next/standalone/`
 
 ## 13. Scaling notes
 
-The current shape (one process, one box, one broadcaster) handles a lot:
+The current shape (one process, one box) handles a lot:
 
-- Static prerender + ISR: every page except `/api/stats/stream` is cached / generated at build time.
-- SSE: tested up to ~200 concurrent connections per Node process without breaking a sweat on 2 GB RAM.
-- Dashboard load: 1 fetch per 5 s regardless of visitor count — that's the whole point.
+- Static prerender + ISR: every page is cached / generated at build time, so serving is close to static-file cost.
+- No per-visitor server state and no outbound calls at request time — nothing fans out with traffic.
 
 If you outgrow one box:
 
-1. **Vertical first.** A 4 GB / 2 vCPU droplet handles ~1000 concurrent SSE viewers comfortably.
-2. **Don't add Node workers on the same box** — that breaks the singleton.
-3. **Don't shard horizontally** without switching the broadcaster to a Redis pub/sub or short-interval client polling (see the dashboard's `docs/architecture/landing-sse-pipeline.md` for the fallback design).
-4. **CDN in front for static** — Cloudflare or similar in proxy mode caches `/_next/static/` and the OG image. Make sure SSE is excluded from CDN buffering (Cloudflare auto-detects `Content-Type: text/event-stream`).
+1. **Vertical first.** A 4 GB / 2 vCPU droplet has plenty of headroom, and gives the CI-built deploy room to breathe.
+2. **CDN in front for static** — Cloudflare or similar in proxy mode caches `/_next/static/` and the OG image.
 
 End of guide.

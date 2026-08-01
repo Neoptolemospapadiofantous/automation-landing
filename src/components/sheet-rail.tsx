@@ -13,11 +13,10 @@ const SHEETS: Array<[id: string, label: string]> = [
   ["hero", "S/01"],
   ["problems", "S/02"],
   ["pipeline", "S/03"],
-  ["live", "S/04"],
-  ["agents", "S/05"],
-  ["custom", "S/06"],
-  ["plans", "S/07"],
-  ["commit", "S/08"],
+  ["agents", "S/04"],
+  ["custom", "S/05"],
+  ["plans", "S/06"],
+  ["commit", "S/07"],
 ];
 
 export function SheetRail() {
