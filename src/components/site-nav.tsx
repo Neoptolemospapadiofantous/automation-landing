@@ -7,7 +7,7 @@ import { registerUrl, loginUrl } from "@/lib/dashboard";
 export function SiteNav() {
   return (
     <header>
-      <div className="border-border-line bg-bg/80 relative mx-auto flex max-w-[1280px] items-center justify-between gap-4 border px-4 py-1.5 backdrop-blur-[2px] sm:gap-8 sm:py-2">
+      <div className="border-border-line bg-bg/80 relative mx-auto flex max-w-[1280px] items-center justify-between gap-2 border px-4 py-1.5 backdrop-blur-[2px] sm:gap-8 sm:py-2">
         <div className="flex items-center gap-4">
           <Link
             href="/"
@@ -24,18 +24,22 @@ export function SiteNav() {
           </span>
         </div>
         <NavLinks />
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Link
             href={loginUrl()}
             className="text-ink-dim hover:text-ink relative z-50 hidden font-mono text-[11px] tracking-[0.18em] uppercase transition-colors sm:inline-flex"
           >
             Login
           </Link>
+          {/* whitespace-nowrap: the label used to wrap to 2–3 lines on
+              phones. Compact sizing below sm; under 360px the price
+              alone remains so the button never forces overflow. */}
           <Link
             href={registerUrl()}
-            className="btn-grad relative z-50 inline-flex items-center px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em]"
+            className="btn-grad relative z-50 inline-flex items-center px-3 py-1.5 text-[11px] font-medium tracking-normal uppercase whitespace-nowrap sm:px-4 sm:py-2 sm:text-[12px] sm:tracking-[0.08em]"
           >
-            Try it for €99 →
+            <span className="hidden min-[360px]:inline">Try it for&nbsp;</span>
+            €99 →
           </Link>
           <MobileMenu />
         </div>

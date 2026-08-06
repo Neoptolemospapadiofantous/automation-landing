@@ -3,7 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { AuditForm } from "@/components/sections/audit-form";
 
 export const metadata: Metadata = {
-  title: "Custom build — Flowstack",
+  title: "Custom build",
   description:
     "Business intelligence delegation, custom-built: automations run your repetitive work, your data lands in one live view. Free 30-minute audit, written fixed-scope build in 48 hours. You keep the code.",
   alternates: { canonical: "/audit" },

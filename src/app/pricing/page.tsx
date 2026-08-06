@@ -8,7 +8,7 @@ import { pricingTiers } from "@/lib/content";
 import { vatLabel } from "@/lib/pricing-display";
 
 export const metadata: Metadata = {
-  title: "Pricing — Flowstack",
+  title: "Pricing",
   description:
     "Start with one agent for €99/mo. Scale to five for €399/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
   alternates: { canonical: "/pricing" },

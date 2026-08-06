@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 
 export const metadata: Metadata = {
-  title: "Data Processing Agreement — Flowstack",
+  title: "Data Processing Agreement",
   description:
     "GDPR Article 28 Data Processing Agreement between Flowstack (processor) and the Customer (controller).",
   alternates: { canonical: "/dpa" },

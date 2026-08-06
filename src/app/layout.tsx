@@ -129,8 +129,12 @@ export default function RootLayout({
             cookie consent prompt (z-50).
             view-transition-name anchors it during page transitions:
             the chrome must not fade or move while the sheet below
-            swaps (see the site-chrome rules in globals.css). */}
-        <div className="sticky top-0 z-40 [view-transition-name:site-chrome]">
+            swaps (see the site-chrome rules in globals.css).
+            On phones the announcement bar is a fixed h-9 (36px) single
+            row, and -top-9 lets exactly that row scroll away so only
+            the nav stays pinned — the two-bar stack ate ~20% of a
+            phone viewport. At sm+ the full stack sticks as before. */}
+        <div className="sticky -top-9 z-40 [view-transition-name:site-chrome] sm:top-0">
           <AnnouncementBar />
           <SiteNav />
         </div>

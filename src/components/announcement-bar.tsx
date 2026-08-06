@@ -29,7 +29,7 @@ export function AnnouncementBar() {
       {/* Sweep highlight — sits behind the content, never intercepts pointer events. */}
       <span aria-hidden className="ann-shimmer-bar" />
 
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch divide-y divide-bg/20 text-[11px] uppercase tracking-[0.16em] sm:flex-row sm:items-center sm:divide-y-0 sm:divide-x sm:text-[13px] sm:tracking-[0.18em]">
+      <div className="mx-auto flex max-w-[1280px] items-center divide-x divide-bg/20 text-[10px] uppercase tracking-[0.08em] sm:text-[13px] sm:tracking-[0.18em]">
         {/* NOTICE label with pip — hidden on mobile to keep the sticky
             header short; the pip moves into the notice line. */}
         <div className="hidden items-center gap-2.5 px-5 py-3.5 font-mono font-semibold sm:flex sm:py-3">
@@ -40,22 +40,28 @@ export function AnnouncementBar() {
           Notice
         </div>
 
-        <div className="flex flex-1 items-baseline gap-2.5 px-5 py-2.5 font-mono sm:py-3">
+        {/* On phones this is the whole bar: one fixed-height row (h-9)
+            so layout.tsx can pin the sticky wrapper at -top-9 and let
+            the bar scroll away, keeping only the nav stuck. min-w-0 +
+            truncate keep it a single line down to the narrowest phones. */}
+        <div className="flex h-9 min-w-0 flex-1 items-center gap-2 px-4 font-mono sm:h-auto sm:gap-2.5 sm:px-5 sm:py-3">
           {/* mobile-only pip, since the Notice cell is hidden there */}
           <span
             aria-hidden
-            className="bg-bg pulse-glow inline-block h-1.5 w-1.5 shrink-0 self-center rounded-full sm:hidden"
+            className="bg-bg pulse-glow inline-block h-1.5 w-1.5 shrink-0 rounded-full sm:hidden"
           />
-          <span>
+          <span className="truncate">
             Flowstack is live ·{" "}
             <span className="text-bg/65">onboarding new teams</span>
           </span>
         </div>
 
-        {/* CTA — full inversion on hover, idle arrow nudge. */}
+        {/* CTA — full inversion on hover, idle arrow nudge. Hidden on
+            phones: the nav directly below carries the same CTA, and a
+            second full-width yellow row doubled the sticky header. */}
         <Link
           href={registerUrl()}
-          className="group hover:bg-bg hover:text-ink inline-flex items-center justify-between gap-3 px-5 py-2.5 font-mono font-bold transition-colors sm:justify-center sm:py-3"
+          className="group hover:bg-bg hover:text-ink hidden items-center justify-center gap-3 px-5 py-3 font-mono font-bold transition-colors sm:inline-flex"
         >
           <span>Try it for €99</span>
           <span aria-hidden className="ann-arrow inline-block">
