@@ -4,8 +4,9 @@ import { BRAND } from "@/lib/seo";
 /**
  * Default Open Graph image — what every URL on the site shows when it
  * gets pasted into Slack, Twitter, Discord, LinkedIn, iMessage, etc.
- * Mirrors the mono editorial system of the live site: black ground,
- * white ink, hairline grid, corner registration ticks, monospace.
+ * Mirrors the "ink on paper" system of the live site (2026-08
+ * redesign): paper ground, ink type, hairline grid, corner
+ * registration ticks, the marker-highlight swipe on the third beat.
  *
  * Per-page OG overrides can be added by creating sibling files like
  * `src/app/pricing/opengraph-image.tsx`.
@@ -14,11 +15,14 @@ export const alt = `${BRAND.name} — ${BRAND.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const INK = "#000000";
+const SIGNAL = "#F5C518";
+const SIGNAL_INK = "#141412";
+
 export default async function OpenGraphImage() {
-  const tickColor = "#FFFFFF";
-  const lineColor = "rgba(255,255,255,0.14)";
-  const muteColor = "#6B6B6B";
-  const dimColor = "#B8B8B8";
+  const lineColor = "rgba(0,0,0,0.09)";
+  const muteColor = "#8A8A8A";
+  const dimColor = "#525252";
 
   return new ImageResponse(
     (
@@ -29,8 +33,8 @@ export default async function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          background: "#000000",
-          color: "#FFFFFF",
+          background: "#FFFFFF",
+          color: INK,
           fontFamily:
             "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
           padding: 64,
@@ -40,10 +44,10 @@ export default async function OpenGraphImage() {
         }}
       >
         {/* corner registration ticks — same furniture as the chrome */}
-        <div style={tickStyle("top-left", tickColor)} />
-        <div style={tickStyle("top-right", tickColor)} />
-        <div style={tickStyle("bottom-left", tickColor)} />
-        <div style={tickStyle("bottom-right", tickColor)} />
+        <div style={tickStyle("top-left", INK)} />
+        <div style={tickStyle("top-right", INK)} />
+        <div style={tickStyle("bottom-left", INK)} />
+        <div style={tickStyle("bottom-right", INK)} />
 
         {/* sheet ref top-left */}
         <div
@@ -61,27 +65,30 @@ export default async function OpenGraphImage() {
             style={{
               width: 10,
               height: 10,
-              border: `1.5px solid ${tickColor}`,
+              border: `1.5px solid ${INK}`,
+              background: SIGNAL,
               display: "flex",
             }}
           />
           <span>FIG. 00 / FLOWSTACK</span>
         </div>
 
-        {/* headline — the three-beat tagline, one line each */}
+        {/* headline — the three-beat tagline, one line each; third beat
+            carries the marker-highlight swipe from the live hero */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            marginTop: 56,
-            gap: 24,
+            marginTop: 52,
+            gap: 22,
+            alignItems: "flex-start",
           }}
         >
           <div
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
               fontSize: 72,
-              fontWeight: 600,
+              fontWeight: 700,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
               maxWidth: 1040,
@@ -93,7 +100,7 @@ export default async function OpenGraphImage() {
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
               fontSize: 72,
-              fontWeight: 600,
+              fontWeight: 700,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
               color: dimColor,
@@ -106,11 +113,13 @@ export default async function OpenGraphImage() {
             style={{
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
               fontSize: 72,
-              fontWeight: 600,
+              fontWeight: 700,
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
-              color: "#F5C518",
-              maxWidth: 1040,
+              color: SIGNAL_INK,
+              background: SIGNAL,
+              padding: "6px 14px",
+              maxWidth: 1080,
             }}
           >
             Answer every inbound.
@@ -123,7 +132,7 @@ export default async function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 20,
-            marginTop: 40,
+            marginTop: 36,
           }}
         >
           <div style={{ width: 96, height: 1, background: dimColor }} />
@@ -147,17 +156,17 @@ export default async function OpenGraphImage() {
             alignItems: "flex-end",
             marginTop: "auto",
             paddingTop: 32,
-            borderTop: `1px solid ${lineColor}`,
+            borderTop: `1px solid rgba(0,0,0,0.14)`,
             fontSize: 18,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
             color: muteColor,
           }}
         >
-          <span style={{ color: tickColor, letterSpacing: "0.1em" }}>
+          <span style={{ color: INK, letterSpacing: "0.1em" }}>
             FLOWSTACK / AUTOMATION
           </span>
-          <span>SHEET 01 · REV A · SCALE 1:1</span>
+          <span>SHEET 01 · REV B · SCALE 1:1</span>
         </div>
       </div>
     ),
