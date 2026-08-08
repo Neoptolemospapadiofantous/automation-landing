@@ -192,34 +192,6 @@ export const faqItems = [
 
 export type Tint = "violet" | "cyan" | "success" | "warn" | "danger";
 
-export const tintMap: Record<Tint, { text: string; bg: string; border: string }> = {
-  violet: {
-    text: "text-violet",
-    bg: "bg-violet/12",
-    border: "border-violet/40",
-  },
-  cyan: {
-    text: "text-cyan",
-    bg: "bg-cyan/12",
-    border: "border-cyan/40",
-  },
-  success: {
-    text: "text-success",
-    bg: "bg-success/12",
-    border: "border-success/40",
-  },
-  warn: {
-    text: "text-warn",
-    bg: "bg-warn/12",
-    border: "border-warn/40",
-  },
-  danger: {
-    text: "text-danger",
-    bg: "bg-danger/12",
-    border: "border-danger/40",
-  },
-};
-
 /* ---------- Pricing tiers (Pricing page) ---------- */
 export const pricingTiers = [
   {

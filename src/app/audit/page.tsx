@@ -18,19 +18,16 @@ export const metadata: Metadata = {
 const expect = [
   {
     step: "01",
-    tint: "cyan",
     title: "30-minute call",
     body: "You walk us through the work you want off your plate. No slides on our side.",
   },
   {
     step: "02",
-    tint: "violet",
     title: "Written scope in 48h",
     body: "A fixed-scope proposal: what ships, in how long, for how much. Yours to keep.",
   },
   {
     step: "03",
-    tint: "success",
     title: "You decide",
     body: "Hire us, take the scope elsewhere, or build it yourself. No follow-up sales emails.",
   },

@@ -182,12 +182,6 @@
 @layer utilities {
   /* Blueprint panel: crisp translucent fill over the grid, hairline border.
      (Was a frosted-glass panel; kept the class name so sections recolor.) */
-  .glass {
-    background: color-mix(in oklab, var(--bg-elev) 78%, transparent);
-    border: 1px solid var(--border-line);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-  }
   .glass-strong {
     background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
     border: 1px solid var(--border-hi);
@@ -271,12 +265,6 @@
 
   /* ── Blueprint motif utilities (use these to draw the schematic) ── */
 
-  /* Node box: an outlined component in the flow, monospace-labelled. */
-  .bp-node {
-    border: 1px solid var(--draw);
-    background: color-mix(in oklab, var(--bg-elev) 90%, transparent);
-    font-family: var(--font-mono);
-  }
   /* Small hollow square marker — a connection point on the diagram. */
   .bp-dot {
     display: inline-block;
@@ -325,31 +313,6 @@
     }
   }
 
-  /* Vertical connector wire with a downward arrowhead (stacked nodes). */
-  .bp-wire-v {
-    position: relative;
-    width: 2px;
-    color: var(--violet);
-    background-image: linear-gradient(180deg, currentColor 55%, transparent 55%);
-    background-size: 2px 11px;
-    animation: bp-march-v 0.9s linear infinite;
-  }
-  .bp-wire-v::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-top: 7px solid var(--violet);
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-  }
-  @keyframes bp-march-v {
-    to {
-      background-position: 0 11px;
-    }
-  }
-
   /* Dimension line: a measured span with end ticks (annotation device). */
   .bp-dim {
     position: relative;
@@ -382,40 +345,6 @@
       var(--line-strong) 7px
     );
   }
-
-  /* Status stamp — rotated outlined mono label (APPROVED, LIVE, REV A,
-     DRAFT). Reads like a rubber stamp impressed on a drawing sheet.
-     Use on a decorative span/div; set a tint via text-color.
-
-       <span class="ins-stamp">APPROVED</span>
-   */
-  .ins-stamp {
-    display: inline-block;
-    padding: 0.4rem 0.65rem;
-    border: 1.5px solid currentColor;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    line-height: 1;
-    transform: rotate(-6deg);
-    color: var(--ink-dim);
-    background: transparent;
-    position: relative;
-  }
-  .ins-stamp::before,
-  .ins-stamp::after {
-    content: "";
-    position: absolute;
-    left: 0.4rem;
-    right: 0.4rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.55;
-  }
-  .ins-stamp::before { top: 2px; }
-  .ins-stamp::after  { bottom: 2px; }
 
   /* Long-form legal prose. Default mono everywhere punishes long reads,
      so legal pages opt into sans body via this class. Set on the body
@@ -582,28 +511,8 @@
     }
   }
 
-  /* (5) Layered parallax drift — decorative/background layers travel at a
-        different speed than the page so stacked elements separate in depth.
-        Put `-far` (slow) behind `-near` (fast) foreground content. */
-  @keyframes parallax-far  { from { transform: translateY(-32px); } to { transform: translateY(32px); } }
-  @keyframes parallax-near { from { transform: translateY(-78px); } to { transform: translateY(78px); } }
-  @supports (animation-timeline: view()) {
-    .parallax-far,
-    .parallax-near {
-      animation-name: parallax-far;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-      will-change: transform;
-    }
-    .parallax-near { animation-name: parallax-near; }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .depth-rise,
-    .parallax-far,
-    .parallax-near {
+    .depth-rise {
       animation: none !important;
       transform: none;
       opacity: 1;
@@ -689,31 +598,9 @@
     to   { background-position: 145% 0; }
   }
 
-  /* Continuous shimmer sweeping a filled bar (progress / meters). */
-  .flow-bar { position: relative; overflow: hidden; }
-  .flow-bar::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      color-mix(in oklab, var(--bg) 65%, transparent),
-      transparent
-    );
-    transform: translateX(-100%);
-    animation: flow-bar 2.6s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes flow-bar {
-    0%        { transform: translateX(-100%); }
-    60%, 100% { transform: translateX(220%); }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .flow-edge::after,
-    .flow-underline,
-    .flow-bar::after {
+    .flow-underline {
       animation: none !important;
     }
     .flow-underline { background: var(--border-line); }
@@ -721,14 +608,6 @@
 
   /* ── Ambient life — continuous idle motion so the page never reads as
      frozen. All subtle; all silenced under prefers-reduced-motion. ── */
-
-  /* Slow vertical bob for floating panels (the hero schematic). Composes
-     on top of the scroll parallax applied to its parent wrapper. */
-  @keyframes ambient-float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-7px); }
-  }
-  .ambient-float { animation: ambient-float 6s ease-in-out infinite; }
 
   /* Gentle breathing on the hollow square connection markers. Opacity
      only — a scale pulse on the 8px squares sitting inline with body
@@ -750,32 +629,11 @@
     box-shadow: 0 14px 34px -22px var(--ink);
   }
 
-  /* Slow drift of the blueprint grid so the schematic surface feels live. */
-  @keyframes bg-grid-pan {
-    from { background-position: 0 0; }
-    to   { background-position: 32px 32px; }
-  }
-  .bg-grid-pan { animation: bg-grid-pan 14s linear infinite; }
-
   @media (prefers-reduced-motion: reduce) {
-    .ambient-float,
-    .bp-dot,
-    .bg-grid-pan {
+    .bp-dot {
       animation: none !important;
     }
     .lift-hover:hover { transform: none; }
-  }
-
-  /* Hairline grid background (component-local; body already has the sheet). */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, var(--line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .bg-grid-fade {
-    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
   }
 }
 
@@ -877,13 +735,6 @@ html #fs-embed-teaser {
     animation-delay: 0s !important;
   }
 }
-
-/* Marquee for the logo ticker */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.animate-marquee { animation: marquee 40s linear infinite; }
 
 /* Pulse glow for status dots */
 @keyframes pulse-glow {
