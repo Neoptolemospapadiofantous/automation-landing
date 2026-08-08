@@ -5,45 +5,55 @@ import { SectionWatermark } from "@/components/section-watermark";
  * Upsell band on the homepage: positions the bespoke automation
  * engagement (the original Flowstack "we ship custom builds" offering)
  * as the next step for teams whose needs outgrow the off-the-shelf
- * agent. Visually echoes the title-block CTA pattern.
+ * agent.
+ *
+ * Since the 2026-08 "ink on paper" redesign this is the page's one
+ * full-bleed dark moment: the section re-enters the BLACK sheet via
+ * the `sheet-black` token class, so every token inside (--bg, --ink,
+ * --violet → plotter yellow #F5C518) flips with it — the two-sheet
+ * system from branding/tokens.css doing exactly what it was built for.
  */
 export function CustomBuild() {
   return (
-    <section id="custom" className="relative isolate overflow-hidden py-20">
+    <section
+      id="custom"
+      className="sheet-black bg-bg text-ink relative isolate mt-24 overflow-hidden py-20"
+    >
       <SectionWatermark text="CUSTOM" />
-      <div className="mx-auto max-w-[1280px] px-6">
-        <div className="depth-rise flow-edge border-border-hi relative grid grid-cols-1 gap-10 border p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
-          {/* corner registration ticks */}
-          <span
-            aria-hidden
-            className="border-violet absolute -left-px -top-px h-4 w-4 border-l border-t"
-          />
-          <span
-            aria-hidden
-            className="border-violet absolute -right-px -top-px h-4 w-4 border-r border-t"
-          />
-          <span
-            aria-hidden
-            className="border-violet absolute -bottom-px -left-px h-4 w-4 border-b border-l"
-          />
-          <span
-            aria-hidden
-            className="border-violet absolute -bottom-px -right-px h-4 w-4 border-b border-r"
-          />
 
+      {/* corner registration ticks — signal yellow on the ink band */}
+      <span
+        aria-hidden
+        className="border-violet pointer-events-none absolute top-5 left-6 h-4 w-4 border-t-2 border-l-2"
+      />
+      <span
+        aria-hidden
+        className="border-violet pointer-events-none absolute top-5 right-6 h-4 w-4 border-t-2 border-r-2"
+      />
+      <span
+        aria-hidden
+        className="border-violet pointer-events-none absolute bottom-5 left-6 h-4 w-4 border-b-2 border-l-2"
+      />
+      <span
+        aria-hidden
+        className="border-violet pointer-events-none absolute right-6 bottom-5 h-4 w-4 border-r-2 border-b-2"
+      />
+
+      <div className="mx-auto max-w-[1280px] px-6">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-[60ch]">
             <span className="bp-ref text-violet">S/05 / the delegation layer</span>
-            <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+            <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-4xl lg:text-[44px] lg:leading-[1.06]">
               The chat is the front door.
               <br />
-              <span className="text-gradient">We build what runs behind it.</span>
+              <span className="text-ink-dim">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
               Back-office automations on your stack, every run audited. The
               same stack we run Flowstack&apos;s own growth on.
             </p>
 
-            <ul className="bp-annot mt-5 grid gap-2.5 sm:grid-cols-2">
+            <ul className="bp-annot mt-6 grid gap-2.5 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
                 CRM, Sheets, internal tools — wired

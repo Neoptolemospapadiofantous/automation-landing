@@ -31,7 +31,7 @@ export function Problems() {
     <section id="problems" className="relative isolate overflow-hidden py-24">
       <SectionWatermark text="FIX" size="sm" />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="border-border-hi flex flex-wrap items-end justify-between gap-4 border-b pb-5">
+        <div className="border-ink flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
           <div>
             <span className="bp-ref text-violet">S/02</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">

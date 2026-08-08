@@ -11,8 +11,9 @@ import { registerUrl } from "@/lib/dashboard";
  * production, so the bar now renders the open state directly. No
  * hard-coded date lives here — nothing to silently expire.
  *
- * Visual treatment:
- *   - Inverted: white ground, black ink.
+ * Visual treatment ("ink on paper", 2026-08):
+ *   - Inverted against the paper sheet: black strip, paper text, the
+ *     live pip in signal yellow.
  *   - Entry slide, marching-ants bottom edge, slow shimmer sweep, idle
  *     arrow nudge. prefers-reduced-motion silences all of them.
  *
@@ -24,7 +25,7 @@ export function AnnouncementBar() {
     <div
       role="region"
       aria-label="Launch announcement"
-      className="bg-violet text-bg ann-enter ann-rail ann-shimmer relative"
+      className="bg-ink text-bg ann-enter ann-rail ann-shimmer relative"
     >
       {/* Sweep highlight — sits behind the content, never intercepts pointer events. */}
       <span aria-hidden className="ann-shimmer-bar" />
@@ -35,7 +36,7 @@ export function AnnouncementBar() {
         <div className="hidden items-center gap-2.5 px-5 py-3.5 font-mono font-semibold sm:flex sm:py-3">
           <span
             aria-hidden
-            className="bg-bg pulse-glow inline-block h-2 w-2 rounded-full"
+            className="pulse-glow inline-block h-2 w-2 rounded-full bg-[var(--signal)]"
           />
           Notice
         </div>
@@ -48,7 +49,7 @@ export function AnnouncementBar() {
           {/* mobile-only pip, since the Notice cell is hidden there */}
           <span
             aria-hidden
-            className="bg-bg pulse-glow inline-block h-1.5 w-1.5 shrink-0 rounded-full sm:hidden"
+            className="pulse-glow inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--signal)] sm:hidden"
           />
           <span className="truncate">
             Flowstack is live ·{" "}

@@ -1,10 +1,12 @@
 /**
  * Fixed, page-wide ambient background behind all content. Pure CSS: a
- * faint blueprint grid that slowly drifts plus two slow-floating accent
- * glows that give the otherwise-flat sheet a sense of depth. Decorative
- * only — aria-hidden, pointer-events-none, sits at -z so it never
- * intercepts interaction or covers content. Silenced under
- * prefers-reduced-motion via the .atmosphere-* rules in globals.css.
+ * faint blueprint grid that slowly drifts, giving the flat paper sheet
+ * a sense of depth. (The two floating accent glows were removed with
+ * the 2026-08 white-sheet redesign — blurred gold clouds read as
+ * stains on paper.) Decorative only — aria-hidden, pointer-events-none,
+ * sits at -z so it never intercepts interaction or covers content.
+ * Silenced under prefers-reduced-motion via the .atmosphere-* rules in
+ * globals.css.
  */
 export function Atmosphere() {
   return (
@@ -13,8 +15,6 @@ export function Atmosphere() {
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
       <span className="atmosphere-grid" />
-      <span className="atmosphere-glow atmosphere-glow-1 absolute" />
-      <span className="atmosphere-glow atmosphere-glow-2 absolute" />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ViewTransition } from "react";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -18,6 +18,12 @@ const inter = Inter({
   display: "swap",
 });
 
+const interTight = Inter_Tight({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
@@ -29,10 +35,10 @@ const DESCRIPTION =
   "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat from €99/mo.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
-// inside `metadata`. Keeps mobile browser chrome on-brand black.
+// inside `metadata`. Keeps mobile browser chrome on the paper sheet.
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: "#FFFFFF",
+  colorScheme: "light",
 };
 
 export const metadata: Metadata = {
@@ -108,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
+      className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable} sheet-white h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="bg-bg text-ink min-h-full flex flex-col overflow-x-hidden">

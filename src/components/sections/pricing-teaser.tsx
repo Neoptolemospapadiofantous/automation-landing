@@ -11,7 +11,7 @@ export function PricingTeaser() {
   return (
     <section id="plans" className="relative isolate overflow-hidden py-24">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="border-border-hi flex flex-wrap items-end justify-between gap-4 border-b pb-5">
+        <div className="border-ink flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
           <div>
             <span className="bp-ref text-violet">S/06</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
@@ -21,19 +21,20 @@ export function PricingTeaser() {
           <span className="bp-annot hidden normal-case sm:block">No lock-in, ever</span>
         </div>
 
-        <div className="border-border-hi mt-10 grid grid-cols-1 gap-px border bg-border-hi lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-5">
           {pricingTiers.map((tier) => (
             <div
               key={tier.name}
-              className={`relative flex flex-col p-7 ${tier.featured ? "bg-bg-elev" : "bg-bg"}`}
+              className={`bg-bg relative flex flex-col p-7 ${
+                tier.featured
+                  ? "border-ink border-[1.5px] shadow-[6px_6px_0_var(--signal)]"
+                  : "border-border-hi border"
+              }`}
             >
               {tier.featured && (
-                <>
-                  <span aria-hidden className="bg-violet absolute -top-px left-0 right-0 h-0.5" />
-                  <span className="text-violet absolute right-5 top-4 font-mono text-[9px] tracking-[0.22em] uppercase">
-                    Most picked
-                  </span>
-                </>
+                <span className="border-ink bg-[var(--signal)] text-[var(--signal-ink)] absolute -top-2.5 left-6 border-[1.5px] px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] uppercase">
+                  Most picked
+                </span>
               )}
               <span className="text-ink font-mono text-[12px] tracking-[0.22em] uppercase">
                 {tier.name}

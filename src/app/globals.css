@@ -77,7 +77,18 @@
      The mono brand tokens (--bg, --ink, --violet, … and --radius) live in
      branding/tokens.css — canonical, imported above, and shared verbatim
      with the dashboard repo. This block only derives the shadcn semantic
-     tokens from them. */
+     tokens from them.
+
+     Since the 2026-08 "ink on paper" redesign the site runs on the WHITE
+     sheet (`sheet-white` on <html>), so --violet resolves to the dark
+     gold #8A6A00 — right for accent TEXT on paper, too dark for the
+     signal FILLS the design leans on. --signal is the raw plotter
+     yellow for fills only (CTA blocks, marker highlights, hard offset
+     shadows) — always paired with near-black text/borders, on either
+     sheet, so it needs no per-sheet variant and stays out of the
+     vendored tokens file. */
+  --signal: #f5c518;
+  --signal-ink: #141412;
   --background: var(--bg);
   --foreground: var(--ink);
   --card: var(--surface);
@@ -140,7 +151,13 @@
   }
   html {
     @apply font-sans;
-    color-scheme: dark;
+    color-scheme: light;
+  }
+  /* Display face for the big ink headlines — Inter Tight, loaded via
+     next/font in layout.tsx. Body copy stays on Inter. */
+  h1,
+  h2 {
+    font-family: var(--font-display), var(--font-sans);
   }
   body {
     @apply bg-bg text-ink;
@@ -178,32 +195,48 @@
     -webkit-backdrop-filter: blur(2px);
   }
 
-  /* "Gradient" text → solid accent ink (blueprint has no gradients). */
+  /* "Gradient" text → marker highlight: ink text over a signal-yellow
+     swipe, the redesign's one loud gesture. Works on both sheets (ink
+     text is forced near-black, the fill is constant). box-decoration-
+     break keeps the swipe on every line when the phrase wraps. */
   .text-gradient {
-    color: var(--violet);
-    background: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
+    color: var(--signal-ink);
+    background: linear-gradient(
+      transparent 8%,
+      var(--signal) 8%,
+      var(--signal) 94%,
+      transparent 94%
+    );
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-inline: 0.08em;
+    margin-inline: -0.08em;
   }
 
-  /* Solid hard-edged accent button — white block on black, hard offset
-     block in the signal accent for depth (no soft shadows on this brand). */
+  /* Yellow inset underline for a key figure (proof cells). */
+  .mark-under {
+    box-shadow: inset 0 -0.32em 0 var(--signal);
+  }
+
+  /* Solid hard-edged signal button — plotter-yellow block, near-black
+     text, hard offset shadow in the sheet's ink (black on paper, white
+     inside a .sheet-black band). No soft shadows on this brand. */
   .btn-grad {
-    background: var(--ink);
-    color: var(--bg);
-    border: 1px solid var(--ink);
+    background: var(--signal);
+    color: var(--signal-ink);
+    border: 1.5px solid var(--signal-ink);
     font-family: var(--font-mono);
     letter-spacing: 0.06em;
-    box-shadow: 4px 4px 0 var(--violet);
+    box-shadow: 4px 4px 0 var(--ink);
     transition: background 0.15s, color 0.15s, border-color 0.15s,
       box-shadow 0.15s, transform 0.15s;
   }
   .btn-grad:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--violet);
+    box-shadow: 6px 6px 0 var(--ink);
   }
   @media (prefers-reduced-motion: reduce) {
-    .btn-grad:hover { transform: none; box-shadow: 4px 4px 0 var(--violet); }
+    .btn-grad:hover { transform: none; box-shadow: 4px 4px 0 var(--ink); }
   }
 
   /* ── Automation ticker — continuous marquee strip under the hero.
@@ -499,23 +532,7 @@
     }
   }
 
-  /* (2) Hero schematic float — schematic lags behind page scroll, so
-        it appears to "linger" briefly as the hero exits. Subtle but
-        adds clear depth between foreground pitch + demo box. */
-  @keyframes hero-schematic-float {
-    from { transform: translateY(-8%); }
-    to   { transform: translateY(16%); }
-  }
-  @supports (animation-timeline: view()) {
-    .hero-schematic-parallax {
-      animation: hero-schematic-float linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-      will-change: transform;
-    }
-  }
-
-  /* (3) Hero headline fade — H1 fades from full opacity to 0 over the
+  /* (2) Hero headline fade — H1 fades from full opacity to 0 over the
         second half of its scroll lifecycle, so the page transitions
         cinematically into the next section. */
   @keyframes hero-headline-fade {
@@ -532,7 +549,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-schematic-parallax,
     .hero-headline-parallax {
       animation: none !important;
       transform: none;
@@ -616,37 +632,11 @@
     from { transform: translate3d(0, 0, 0); }
     to   { transform: translate3d(64px, 64px, 0); }
   }
-  .atmosphere-glow {
-    width: 46vw;
-    height: 46vw;
-    border-radius: 9999px;
-    filter: blur(90px);
-    opacity: 0.09;
-    will-change: transform;
-  }
-  .atmosphere-glow-1 {
-    top: -12vw;
-    left: -8vw;
-    background: radial-gradient(circle, var(--violet), transparent 70%);
-    animation: atmosphere-float-1 28s ease-in-out infinite;
-  }
-  .atmosphere-glow-2 {
-    right: -10vw;
-    bottom: -14vw;
-    background: radial-gradient(circle, var(--violet), transparent 70%);
-    animation: atmosphere-float-2 34s ease-in-out infinite;
-  }
-  @keyframes atmosphere-float-1 {
-    0%, 100% { transform: translate(0, 0); }
-    50%      { transform: translate(7vw, 5vw); }
-  }
-  @keyframes atmosphere-float-2 {
-    0%, 100% { transform: translate(0, 0); }
-    50%      { transform: translate(-6vw, -4vw); }
-  }
+  /* (The floating accent glows were removed with the white-sheet
+     redesign — blurred gold clouds read as stains on paper. The faint
+     drifting grid alone carries the ambient depth.) */
   @media (prefers-reduced-motion: reduce) {
-    .atmosphere-grid,
-    .atmosphere-glow {
+    .atmosphere-grid {
       animation: none !important;
     }
   }
@@ -954,15 +944,17 @@ html #fs-embed-teaser {
   position: absolute;
   inset: 0;
   width: 25%;
+  /* The bar is ink-on-paper now (black strip), so the sweep is a faint
+     light pass instead of the old dark multiply. */
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.08) 50%,
+    rgba(255, 255, 255, 0.09) 50%,
     transparent 100%
   );
   animation: ann-shimmer 7s linear infinite;
   pointer-events: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
 }
 
 /* Idle arrow nudge — subtle breathing motion, 2.4s rhythm, paused on

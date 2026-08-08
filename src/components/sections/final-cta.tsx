@@ -13,36 +13,16 @@ export function FinalCTA() {
     <section id="commit" className="relative isolate overflow-hidden py-24">
       <SectionWatermark text="GO" />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="depth-rise flow-edge glass-strong relative px-8 py-16 sm:px-16 sm:py-20">
-          {/* corner registration ticks */}
-          <span
-            aria-hidden
-            className="border-violet pointer-events-none absolute -left-px -top-px h-4 w-4 border-l border-t"
-          />
-          <span
-            aria-hidden
-            className="border-violet pointer-events-none absolute -right-px -top-px h-4 w-4 border-r border-t"
-          />
-          <span
-            aria-hidden
-            className="border-violet pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b border-l"
-          />
-          <span
-            aria-hidden
-            className="border-violet pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b border-r"
-          />
-
-          {/* sheet reference, top-left */}
-          <div className="bp-ref absolute left-6 top-6 sm:left-8 sm:top-8">
-            S/07 / NEXT STEP
-          </div>
-
+        <div className="depth-rise relative px-2 py-10 sm:py-14">
           <div className="relative flex flex-col items-center text-center">
-            <h2 className="max-w-[22ch] text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[56px]">
-              {title}
+            {/* sheet reference */}
+            <span className="bp-ref">S/07 / commit</span>
+
+            <h2 className="mt-6 max-w-[14ch] text-[56px] leading-[0.98] font-bold tracking-[-0.05em] text-balance sm:text-[80px] lg:text-[104px]">
+              <span className="text-gradient">{title}</span>
             </h2>
 
-            <p className="text-ink-dim mt-6 max-w-[58ch] text-balance font-mono text-sm leading-[1.7] tracking-[0.04em]">
+            <p className="text-ink-dim mt-7 max-w-[52ch] text-lg leading-[1.6] text-balance">
               {subtitle}
             </p>
 
@@ -63,7 +43,7 @@ export function FinalCTA() {
           </div>
 
           {/* title-block strip: bordered mono key/value cells */}
-          <div className="mt-14 grid grid-cols-2 border-t border-border-line font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
+          <div className="border-border-line mx-auto mt-16 grid max-w-[900px] grid-cols-2 border font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
               <span className="text-ink-mute">Starter</span>
               <span className="text-draw">€99/MO · CANCEL ANYTIME</span>

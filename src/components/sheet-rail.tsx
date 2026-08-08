@@ -44,7 +44,8 @@ export function SheetRail() {
       aria-label="Sheet index"
       className="border-border-line fixed bottom-0 left-0 top-0 z-30 hidden w-[68px] flex-col items-center gap-0.5 border-r pb-7 pt-36 min-[1440px]:flex"
       style={{
-        background: "linear-gradient(90deg, rgba(0,0,0,.94), rgba(0,0,0,.55))",
+        background:
+          "linear-gradient(90deg, color-mix(in oklab, var(--bg) 94%, transparent), color-mix(in oklab, var(--bg) 55%, transparent))",
       }}
     >
       <span
