@@ -5,13 +5,13 @@ import { AuditForm } from "@/components/sections/audit-form";
 export const metadata: Metadata = {
   title: "Custom build",
   description:
-    "Business intelligence delegation, custom-built: automations run your repetitive work, your data lands in one live view. Free 30-minute audit, written fixed-scope build in 48 hours. You keep the code.",
+    "Thirty minutes and you'll have a number. Every build is scoped here first: a free 30-minute audit, then a written fixed-scope proposal within 48 hours — what ships, in how long, for how much. Yours to keep.",
   alternates: { canonical: "/audit" },
   openGraph: {
     title: "Custom build — Flowstack",
     url: "/audit",
     description:
-      "End-to-end data aggregation and automation — integrations, pipelines, one live view. Free 30-minute audit, written fixed-scope build, you keep the code.",
+      "Every build is scoped here first: a free 30-minute audit, then a written fixed-scope proposal within 48 hours. Yours to keep, whether or not you go ahead.",
   },
 };
 
@@ -41,11 +41,11 @@ export default function AuditPage() {
         eyebrowTint="violet"
         title={
           <>
-            Your operation, wired{" "}
-            <span className="text-gradient">end to end.</span>
+            Thirty minutes, and you&apos;ll have{" "}
+            <span className="text-gradient">a number.</span>
           </>
         }
-        lead="You hand us the work your team repeats; we build the automations and pipelines that run it, then hand you the code."
+        lead="Every build is quoted for your stack, so this is where the price comes from. Free, in 48 hours, and yours to keep whether or not you go ahead."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}
