@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { Ticker } from "@/components/sections/ticker";
+import { Proof } from "@/components/sections/proof";
 import { Problems } from "@/components/sections/problems";
 import { Pipeline } from "@/components/sections/pipeline";
 import { Overview } from "@/components/sections/overview";
@@ -13,7 +14,9 @@ import { HomepageJsonLd } from "@/components/jsonld";
 /**
  * Homepage — a numbered drawing set (S/01–S/08), tracked by the fixed
  * SheetRail on very wide screens. Tight client-legible narrative:
- * what we do (hero) → the pains (problems) → how it runs (pipeline) →
+ * what we do (hero) → why believe us (proof, unnumbered — like the
+ * ticker, it is an interstitial rather than part of the argument) →
+ * the pains (problems) → how it runs (pipeline) →
  * the product (roles) → the ops layer (custom build) → what we build →
  * pricing →
  * commit. (The audit-trail log and by-hand comparison sections were cut
@@ -26,6 +29,7 @@ export default function Home() {
       <SheetRail />
       <Hero />
       <Ticker />
+      <Proof />
       <Problems />
       <Pipeline />
       <Overview />
