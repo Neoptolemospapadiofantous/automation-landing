@@ -15,8 +15,9 @@ const SHEETS: Array<[id: string, label: string]> = [
   ["pipeline", "S/03"],
   ["agents", "S/04"],
   ["custom", "S/05"],
-  ["plans", "S/06"],
-  ["commit", "S/07"],
+  ["catalogue", "S/06"],
+  ["plans", "S/07"],
+  ["commit", "S/08"],
 ];
 
 export function SheetRail() {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { PricingJsonLd } from "@/components/jsonld";
 import { FAQ } from "@/components/sections/faq";
+import { Catalogue } from "@/components/sections/catalogue";
 import { SectionHeading } from "@/components/section-heading";
 import { pricingTiers } from "@/lib/content";
 import { vatLabel } from "@/lib/pricing-display";
@@ -123,6 +124,18 @@ export default function PricingPage() {
             })}
           </div>
 
+          {/* What a credit actually buys. "2,500 conversation credits" is a
+              unit with no exchange rate until you say this — the numbers and
+              the never-charged list come from the services sheet. */}
+          <p className="text-ink-dim mx-auto mt-8 max-w-[62ch] text-center text-[14px] leading-[1.6]">
+            A typical short conversation uses 5–8 credits — so Starter covers
+            roughly <span className="text-ink font-semibold">300–500 conversations a month</span>,
+            Operator about ten times that. You are never charged for the opening
+            greeting, a visitor returning to an earlier chat, the instant answers
+            we set up for your common questions, or any conversation while one of
+            your team is handling it personally.
+          </p>
+
           <p className="bp-annot mt-8 text-center">
             {"// all projects: built on your stack · code & credentials handed over · no monthly minimums"}
           </p>
@@ -136,6 +149,11 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
+
+      {/* The subscription is the only thing with a price. Everything we build
+          is scoped after the audit — but a visitor still has to be able to
+          learn it exists, which is what this repeats from the homepage. */}
+      <Catalogue />
 
       <section className="relative pt-12">
         <div className="mx-auto max-w-[1280px] px-6">

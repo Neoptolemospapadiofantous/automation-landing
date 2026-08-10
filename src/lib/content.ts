@@ -167,6 +167,54 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
   available: true,
 }));
 
+/**
+ * What we build for you — the service catalogue, shared by the homepage
+ * band and the pricing page so the two can never drift.
+ *
+ * DELIBERATELY UNPRICED (founder decision, 2026-08-10). Build work is
+ * scoped and quoted after the audit, never listed: a list price on a
+ * bespoke build is a guess the client would later hold us to. The
+ * priced document is the services sheet, delivered with the proposal —
+ * it stays a sales artefact and never becomes a web page.
+ *
+ * Names track that sheet exactly, because a customer sees both.
+ * Source: master-vm-system/docs/SERVICES_EN.html.
+ */
+export const buildCatalogue = [
+  {
+    name: "Agent go-live",
+    desc: "We load your knowledge, write the instant answers for your common questions, tune how it speaks and install it on your site.",
+  },
+  {
+    name: "Cold outreach",
+    desc: "Your own sending domain, your ideal-customer list built and verified, sequences in your voice, sending on a schedule.",
+  },
+  {
+    name: "One live view",
+    desc: "The numbers you rebuild by hand every week, pulled out of the tools they're scattered across into one dashboard.",
+  },
+  {
+    name: "Booking",
+    desc: "A real calendar connection: request, availability, booking, confirmation and reminder — end to end, no phone tag.",
+  },
+  {
+    name: "Invoices & documents",
+    desc: "Documents generated, sent and chased automatically, with the payment follow-up running itself.",
+  },
+  {
+    name: "Connect your tools",
+    desc: "Two or more systems kept in step, so your CRM, spreadsheets and inbox stop needing the same thing typed twice.",
+  },
+  {
+    name: "Inbox triage",
+    desc: "Incoming mail sorted, labelled and routed to the right person automatically.",
+  },
+  {
+    name: "Ongoing care",
+    desc: "We watch everything we built and are alerted before you notice a problem. Breakages are never billed.",
+  },
+] as const;
+
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
