@@ -40,20 +40,49 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
         {/* Hairline grid — one cell per service. Two columns from sm, so the
             eight read as a menu rather than a wall. */}
         <div className="border-border-line mt-10 grid grid-cols-1 gap-px border bg-border-line sm:grid-cols-2">
-          {buildCatalogue.map((item) => (
-            <div
-              key={item.name}
-              className="bg-bg lift-hover flex flex-col gap-2 px-5 py-6"
-            >
-              <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
-                <span className="bp-dot shrink-0" aria-hidden />
-                {item.name}
-              </span>
-              <p className="text-ink-dim text-[14px] leading-[1.55]">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+          {buildCatalogue.map((item) => {
+            /* Two of the eight have a page of their own so far; the rest
+               explain themselves here and end at the audit like everything
+               else. `in` keeps this type-safe against the const tuple. */
+            const href = "href" in item ? item.href : null;
+
+            const inner = (
+              <>
+                <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
+                  <span className="bp-dot shrink-0" aria-hidden />
+                  {item.name}
+                  {href && (
+                    <span
+                      aria-hidden
+                      className="text-violet ml-auto transition-transform group-hover:translate-x-0.5"
+                    >
+                      →
+                    </span>
+                  )}
+                </span>
+                <p className="text-ink-dim text-[14px] leading-[1.55]">
+                  {item.desc}
+                </p>
+              </>
+            );
+
+            return href ? (
+              <Link
+                key={item.name}
+                href={href}
+                className="bg-bg lift-hover group flex flex-col gap-2 px-5 py-6"
+              >
+                {inner}
+              </Link>
+            ) : (
+              <div
+                key={item.name}
+                className="bg-bg lift-hover flex flex-col gap-2 px-5 py-6"
+              >
+                {inner}
+              </div>
+            );
+          })}
         </div>
 
         {/* Closing move, left-aligned under the grid: the sentence and the
@@ -61,9 +90,9 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
             chat widget floats — a CTA parked there competes with it. */}
         <div className="mt-10 flex flex-col items-start gap-5">
           <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-            Each one is scoped and quoted after a free 30-minute audit.{" "}
+            Scoped and quoted after a free 30-minute audit.{" "}
             <span className="text-ink font-semibold">
-              Fixed price before we start, and you keep the code.
+              Fixed price, and you keep the code.
             </span>
           </p>
           <Link href="/audit" className={ctaClass()}>

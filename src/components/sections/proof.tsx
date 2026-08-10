@@ -38,26 +38,23 @@ export function Proof() {
           <span className="bp-ref text-violet">on ourselves first</span>
 
           <h2 className="text-ink mt-4 text-2xl font-semibold tracking-[-0.03em] text-balance sm:text-3xl">
-            We run all of this on our own business before we sell it to
-            yours.
+            We run this on ourselves before we sell it to you.
           </h2>
 
           <div className="mt-7 flex flex-col gap-5">
             <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              The emails and posts we send are assigned by live experiments —
-              which subject line, which style, which format — and judged on
-              what actually came back.
+              Every email and post we send is assigned by a live experiment,
+              and judged on what came back.
             </p>
 
             <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              The evidence said our video posts reached about half as many
-              people as our plain ones.{" "}
+              The evidence said our video posts reached half as many people.{" "}
               <span className="text-ink font-semibold">We retired video.</span>
             </p>
 
             <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              A bug was inflating our own reply rate. We found it, repaired
-              the data, and revised the number down — twice.{" "}
+              A bug inflated our own reply rate. We found it and revised the
+              number down — twice.{" "}
               <span className="text-ink font-semibold">
                 That is the standard we hold your numbers to.
               </span>

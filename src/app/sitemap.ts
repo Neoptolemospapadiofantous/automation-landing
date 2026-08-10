@@ -15,6 +15,7 @@ import { rolePages } from "@/lib/content";
 const LAST_MOD = "2026-07-08"; // brand repositioning shipped
 const ROLES_LAST_MOD = "2026-07-08"; // meta titles reworded
 const LEGAL_LAST_MOD = "2026-07-08"; // in force, indexable
+const SERVICES_LAST_MOD = "2026-08-11"; // service pages published
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -27,6 +28,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE_URL}/pricing`,
       lastModified: LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/what-works`,
+      lastModified: SERVICES_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/outreach`,
+      lastModified: SERVICES_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.9,
     },

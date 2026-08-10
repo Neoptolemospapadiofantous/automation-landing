@@ -45,7 +45,7 @@ export default function AuditPage() {
             <span className="text-gradient">a number.</span>
           </>
         }
-        lead="Every build is quoted for your stack, so this is where the price comes from. Free, in 48 hours, and yours to keep whether or not you go ahead."
+        lead="Every build is quoted for your stack. Free, in 48 hours, yours to keep."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}

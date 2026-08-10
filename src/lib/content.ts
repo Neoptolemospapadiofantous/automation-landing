@@ -183,35 +183,37 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const buildCatalogue = [
   {
     name: "Agent go-live",
-    desc: "We load your knowledge, write the instant answers for your common questions, tune how it speaks and install it on your site.",
+    desc: "We load your knowledge, tune the voice, and install it on your site.",
   },
   {
     name: "Cold outreach",
-    desc: "Your own sending domain, your ideal-customer list built and verified, sequences in your voice, sending on a schedule.",
+    href: "/outreach",
+    desc: "Your own sending domain, a verified list, sequences in your voice.",
   },
   {
     name: "One live view",
-    desc: "The numbers you rebuild by hand every week, pulled out of the tools they're scattered across into one dashboard.",
+    href: "/what-works",
+    desc: "The numbers you rebuild by hand, pulled into one dashboard.",
   },
   {
     name: "Booking",
-    desc: "A real calendar connection: request, availability, booking, confirmation and reminder — end to end, no phone tag.",
+    desc: "Request, availability, booking, confirmation, reminder. No phone tag.",
   },
   {
     name: "Invoices & documents",
-    desc: "Documents generated, sent and chased automatically, with the payment follow-up running itself.",
+    desc: "Generated, sent and chased. The payment follow-up runs itself.",
   },
   {
     name: "Connect your tools",
-    desc: "Two or more systems kept in step, so your CRM, spreadsheets and inbox stop needing the same thing typed twice.",
+    desc: "Your CRM, sheets and inbox stop needing the same thing typed twice.",
   },
   {
     name: "Inbox triage",
-    desc: "Incoming mail sorted, labelled and routed to the right person automatically.",
+    desc: "Incoming mail sorted, labelled and routed automatically.",
   },
   {
     name: "Ongoing care",
-    desc: "We watch everything we built and are alerted before you notice a problem. Breakages are never billed.",
+    desc: "We watch what we built and fix it before you notice.",
   },
 ] as const;
 
