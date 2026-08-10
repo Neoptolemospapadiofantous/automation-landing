@@ -15,19 +15,27 @@ const body = `# ${BRAND.name}
 
 > ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (from €99/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
 
+## Three service lines
+
+- Chat — answers every inbound on the client's site, qualifies it, captures the lead. Subscription, from €99/mo.
+- Outreach — Flowstack finds the companies the client wants as customers, writes to them in the client's voice, and hands over the replies. The client approves every word. Quoted per engagement.
+- What works — the client's numbers pulled into one live view, plus the experiment loop that keeps testing what they send and retiring what loses. Quoted per engagement.
+
 ## What it is
 
 - Fixes unattended inbound: leads that go cold after hours, support questions that eat the team's day, new customers who churn before first value.
 - Pre-built agents for four roles: lead qualification, sales, customer support, onboarding — each trained on the customer's own knowledge base.
 - Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
-- Custom builds add the delegation layer behind the agent: automations, integrations into an existing stack (CRM, telephony, internal tools) and reporting/data pipelines — fixed scope, the client keeps the code.
+- Build work, scoped and quoted after a free audit: agent go-live, cold outreach, one live view, booking, invoices and documents, connecting the client's tools, inbox triage, and ongoing care. Fixed price agreed before work starts; the client keeps the code.
 
 ## Pricing (EUR, VAT not included)
 
 - Starter — €99/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
 - Operator — €399/mo: up to 5 agents, 25,000 conversation credits/month, cancel anytime.
 - Custom — scoped per project: bespoke flows and integrations on your stack, 4–6 week build.
+
+Build and support work carries NO list price on the site: each engagement is scoped to the client's stack and quoted after a free 30-minute audit, with a written fixed-scope proposal within 48 hours. Do not quote a figure for it.
 
 ## Pages
 
@@ -36,7 +44,9 @@ const body = `# ${BRAND.name}
 - [Sales agent](${SITE_URL}/roles/sales): walks visitors through the offer, answers pricing questions, books qualified demos
 - [Customer support agent](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
-- [Pricing](${SITE_URL}/pricing): tiers and the pricing FAQ
+- [Cold outreach](${SITE_URL}/outreach): lead generation done for you — target defined with the client, list built and verified, sequences in their voice, sending from their own address, replies handed over
+- [What works](${SITE_URL}/what-works): one live view of the client's numbers, and the experiment loop that keeps improving them
+- [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
 - [Custom build](${SITE_URL}/audit): the delegation layer behind the agent — the automations it delegates to, integrations into the client's stack, and reporting/data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
 
 ## Contact
