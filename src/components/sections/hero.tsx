@@ -38,10 +38,11 @@ export function Hero() {
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            We set up systems that answer your website, send your follow-ups,
-            and put your numbers in one live view — so you stop doing it by
-            hand.{" "}
-            <span className="text-ink font-semibold">Chat from €99/mo.</span>
+            We do three things: answer your website, find you customers, and
+            find out what&apos;s actually working.{" "}
+            <span className="text-ink font-semibold">
+              Chat from €99/mo. Everything else starts with a free audit.
+            </span>
           </p>
 
           <div className="mt-9 flex flex-col items-start gap-3.5 sm:flex-row sm:items-center">

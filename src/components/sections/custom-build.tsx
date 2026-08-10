@@ -54,22 +54,32 @@ export function CustomBuild() {
               same stack we run Flowstack&apos;s own growth on.
             </p>
 
+            {/* Two of these now have pages; the rest are named in full in
+                the catalogue directly below, so this list points rather
+                than repeats. */}
             <ul className="bp-annot mt-6 grid gap-2.5 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                CRM, Sheets, internal tools — wired
+                <Link href="/outreach" className="underline underline-offset-4">
+                  Cold outreach
+                </Link>
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Lead sourcing and outreach pipelines
+                <Link
+                  href="/what-works"
+                  className="underline underline-offset-4"
+                >
+                  One live view
+                </Link>
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Reports that build themselves
+                Your tools, wired together
               </li>
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                One live, audited view
+                Booking, invoices, inbox triage
               </li>
             </ul>
           </div>
