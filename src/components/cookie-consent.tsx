@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Cookie consent prompt for analytics (Google Analytics 4).
@@ -113,7 +114,7 @@ export function CookieConsent() {
             aria-hidden
             className="bg-ink pulse-glow mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full"
           />
-          <p className="text-ink-dim font-mono text-[12.5px] leading-[1.55] tracking-[0.02em]">
+          <p className="text-ink-dim font-mono text-[12px] leading-[1.55] tracking-[0.02em]">
             <span className="text-ink font-semibold tracking-[0.18em] uppercase">
               Cookies ·
             </span>{" "}
@@ -135,14 +136,14 @@ export function CookieConsent() {
           <button
             type="button"
             onClick={decline}
-            className="btn-draw inline-flex items-center justify-center px-5 py-2.5 text-[12px] font-semibold tracking-[0.12em] uppercase"
+            className={ctaClass({ variant: "ghost", size: "sm" })}
           >
             Decline
           </button>
           <button
             type="button"
             onClick={accept}
-            className="btn-grad inline-flex items-center justify-center px-5 py-2.5 text-[12px] font-semibold tracking-[0.12em] uppercase"
+            className={ctaClass({ size: "sm" })}
           >
             Accept
           </button>

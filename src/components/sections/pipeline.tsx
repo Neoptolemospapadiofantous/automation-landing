@@ -60,7 +60,7 @@ export function Pipeline() {
           {STAGES.map((s) => (
             <div key={s.ref} className="bg-bg px-5 py-6">
               <span className="bp-ref text-ink-dim">{s.ref}</span>
-              <h3 className="text-ink mt-2.5 text-[15.5px] font-semibold tracking-[-0.01em]">
+              <h3 className="text-ink mt-2.5 text-[15px] font-semibold tracking-[-0.01em]">
                 {s.title}
               </h3>
               <p className="text-ink-mute mt-2 text-[13px] leading-[1.6]">{s.body}</p>

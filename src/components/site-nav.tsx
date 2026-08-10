@@ -3,6 +3,7 @@ import { Logo } from "./logo";
 import { NavLinks } from "./nav-links";
 import { MobileMenu } from "./mobile-menu";
 import { registerUrl, loginUrl } from "@/lib/dashboard";
+import { ctaClass } from "@/components/ui/button";
 
 export function SiteNav() {
   return (
@@ -36,7 +37,7 @@ export function SiteNav() {
               alone remains so the button never forces overflow. */}
           <Link
             href={registerUrl()}
-            className="btn-grad relative z-50 inline-flex items-center px-3 py-1.5 text-[11px] font-medium tracking-normal uppercase whitespace-nowrap sm:px-4 sm:py-2 sm:text-[12px] sm:tracking-[0.08em]"
+            className={ctaClass({ size: "nav", className: "relative z-50" })}
           >
             <span className="hidden min-[360px]:inline">Try it for&nbsp;</span>
             €99 →

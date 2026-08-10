@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { registerUrl } from "@/lib/dashboard";
 import { SectionWatermark } from "@/components/section-watermark";
+import { ctaClass } from "@/components/ui/button";
 
 export function FinalCTA() {
   const title = "Hand it off.";
@@ -29,13 +30,13 @@ export function FinalCTA() {
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
               <Link
                 href={primary.href}
-                className="btn-grad inline-flex items-center justify-center px-7 py-4 text-[13px]"
+                className={ctaClass()}
               >
                 {primary.label}
               </Link>
               <Link
                 href={secondary.href}
-                className="btn-draw inline-flex items-center justify-center px-7 py-4 text-[13px]"
+                className={ctaClass({ variant: "ghost" })}
               >
                 {secondary.label}
               </Link>

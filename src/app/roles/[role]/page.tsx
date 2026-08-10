@@ -6,6 +6,7 @@ import { SectionWatermark } from "@/components/section-watermark";
 import { RoleBreadcrumbJsonLd } from "@/components/jsonld";
 import { rolePages } from "@/lib/content";
 import { registerUrl } from "@/lib/dashboard";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Per-role landing pages — one statically generated page per agent
@@ -211,7 +212,7 @@ export default async function RolePage({
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <Link
                   href={registerUrl()}
-                  className="btn-grad inline-flex items-center px-6 py-4 text-xs font-semibold tracking-[0.18em] uppercase"
+                  className={ctaClass()}
                 >
                   Try it for €99 →
                 </Link>

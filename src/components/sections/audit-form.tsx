@@ -10,6 +10,7 @@ import {
   submitAudit,
   type AuditFormState,
 } from "@/app/actions/submit-audit";
+import { ctaClass } from "@/components/ui/button";
 
 const initial: AuditFormState = { ok: false };
 
@@ -165,7 +166,7 @@ export function AuditForm() {
             <button
               type="submit"
               disabled={pending}
-              className="btn-grad mt-5 inline-flex h-13 w-full items-center justify-center rounded-none px-6 py-4 text-[13px] tracking-[0.06em] uppercase transition disabled:cursor-not-allowed disabled:opacity-70"
+              className={ctaClass({ className: "mt-5 h-13 w-full rounded-none transition disabled:cursor-not-allowed disabled:opacity-70" })}
             >
               {pending
                 ? "Sending…"

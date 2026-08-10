@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Eyebrow } from "./eyebrow";
 import type { Tint } from "@/lib/content";
+import { ctaClass } from "@/components/ui/button";
 
 type CTA = { href: string; label: string; variant?: "primary" | "secondary" };
 
@@ -57,7 +58,7 @@ export function PageHero({
                   <Link
                     key={c.href + c.label}
                     href={c.href}
-                    className="btn-grad inline-flex items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.18em] uppercase"
+                    className={ctaClass()}
                   >
                     {c.label}
                   </Link>
@@ -65,7 +66,7 @@ export function PageHero({
                   <Link
                     key={c.href + c.label}
                     href={c.href}
-                    className="btn-draw inline-flex items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.18em] uppercase"
+                    className={ctaClass({ variant: "ghost" })}
                   >
                     {c.label}
                   </Link>

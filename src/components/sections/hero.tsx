@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ProductWindow } from "./product-window";
 import { registerUrl } from "@/lib/dashboard";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Hero — "ink on paper" (2026-08 redesign): huge ink headline with the
@@ -46,13 +47,13 @@ export function Hero() {
           <div className="mt-9 flex flex-col items-start gap-3.5 sm:flex-row sm:items-center">
             <Link
               href="/audit"
-              className="btn-grad inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
+              className={ctaClass()}
             >
               Book the free audit →
             </Link>
             <Link
               href={registerUrl()}
-              className="btn-draw inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
+              className={ctaClass({ variant: "ghost" })}
             >
               Try the chat for €99
             </Link>

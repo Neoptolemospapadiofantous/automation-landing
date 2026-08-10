@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { Eyebrow } from "@/components/eyebrow";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Route error boundary — keeps the site chrome (nav/footer render from
@@ -42,13 +43,13 @@ export default function Error({
           <button
             type="button"
             onClick={() => unstable_retry()}
-            className="btn-grad inline-flex items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.18em] uppercase"
+            className={ctaClass()}
           >
             Try again →
           </button>
           <Link
             href="/"
-            className="btn-draw inline-flex items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.18em] uppercase"
+            className={ctaClass({ variant: "ghost" })}
           >
             Back to index
           </Link>

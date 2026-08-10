@@ -6,6 +6,7 @@ import { FAQ } from "@/components/sections/faq";
 import { SectionHeading } from "@/components/section-heading";
 import { pricingTiers } from "@/lib/content";
 import { vatLabel } from "@/lib/pricing-display";
+import { ctaClass } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -101,7 +102,7 @@ export default function PricingPage() {
                           aria-hidden
                           className="bp-dot mt-2 shrink-0"
                         />
-                        <span className="text-ink text-[14.5px] leading-[1.45]">
+                        <span className="text-ink text-[15px] leading-[1.45]">
                           {f}
                         </span>
                       </li>
@@ -110,9 +111,10 @@ export default function PricingPage() {
 
                   <Link
                     href={tier.cta.href}
-                    className={`mt-8 inline-flex w-full items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase ${
-                      tier.featured ? "btn-grad" : "btn-draw"
-                    }`}
+                    className={ctaClass({
+                      variant: tier.featured ? "primary" : "ghost",
+                      className: "mt-8 w-full",
+                    })}
                   >
                     {tier.cta.label}
                   </Link>

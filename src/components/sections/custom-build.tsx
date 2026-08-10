@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionWatermark } from "@/components/section-watermark";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Upsell band on the homepage: positions the bespoke automation
@@ -76,7 +77,7 @@ export function CustomBuild() {
           <div className="flex flex-col items-start gap-3 lg:items-end">
             <Link
               href="/audit"
-              className="btn-grad inline-flex items-center justify-center px-6 py-4 text-[13px] font-semibold tracking-[0.12em] uppercase"
+              className={ctaClass()}
             >
               Book the audit →
             </Link>

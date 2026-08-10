@@ -70,7 +70,7 @@ export default function AuditPage() {
                 <h3 className="text-ink mt-5 text-xl font-semibold tracking-[-0.02em]">
                   {e.title}
                 </h3>
-                <p className="text-ink-dim mt-3 text-[14.5px] leading-[1.55]">
+                <p className="text-ink-dim mt-3 text-[15px] leading-[1.55]">
                   {e.body}
                 </p>
               </li>

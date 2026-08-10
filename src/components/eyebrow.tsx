@@ -1,10 +1,13 @@
 import { cn } from "@/lib/utils";
 import type { Tint } from "@/lib/content";
 
-// Tint names are kept for API compatibility — the underlying tokens
-// (--violet, --draw, --success, ...) all resolve to white in the current
-// mono palette, so every variant renders as white-on-black. Re-introduce
-// per-tint color by editing those tokens in globals.css.
+// Tint names are an API, not five colours. The brand is monochrome plus
+// one signal, so on the current white sheet these resolve to just three
+// inks: `violet` → the gold accent #8A6A00, `warn` → mid-grey, and
+// cyan/success/danger → plain black. Nothing here is red or green; a
+// `danger` eyebrow reads as emphasis, not alarm. The tokens live in
+// branding/tokens.css (canonical, shared verbatim with the dashboard) —
+// per-tint colour would have to be reintroduced there, not here.
 const tintInk: Record<Tint, { dot: string; label: string }> = {
   violet: { dot: "border-violet", label: "text-violet" },
   cyan: { dot: "border-draw", label: "text-draw" },

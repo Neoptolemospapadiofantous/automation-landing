@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { pricingTiers } from "@/lib/content";
 import { vatLabel } from "@/lib/pricing-display";
+import { ctaClass } from "@/components/ui/button";
 
 /**
  * Homepage pricing — the same three tiers as /pricing, from the same
@@ -32,7 +33,7 @@ export function PricingTeaser() {
               }`}
             >
               {tier.featured && (
-                <span className="border-ink bg-[var(--signal)] text-[var(--signal-ink)] absolute -top-2.5 left-6 border-[1.5px] px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] uppercase">
+                <span className="border-ink bg-[var(--signal)] text-[var(--signal-ink)] absolute -top-2.5 left-6 border-[1.5px] px-2 py-0.5 font-mono text-[10px] tracking-[0.22em] uppercase">
                   Most picked
                 </span>
               )}
@@ -49,10 +50,10 @@ export function PricingTeaser() {
                   </span>
                 )}
               </div>
-              <p className="text-ink-mute mt-1 text-[12.5px]">{tier.cadence}</p>
+              <p className="text-ink-mute mt-1 text-[12px]">{tier.cadence}</p>
               <ul className="mb-7 mt-5 space-y-2.5">
                 {tier.features.slice(0, 4).map((f) => (
-                  <li key={f} className="text-ink-dim flex items-start gap-3 text-[13.5px]">
+                  <li key={f} className="text-ink-dim flex items-start gap-3 text-[13px]">
                     <span aria-hidden className="bp-dot mt-1.5 shrink-0" />
                     {f}
                   </li>
@@ -60,9 +61,10 @@ export function PricingTeaser() {
               </ul>
               <Link
                 href={tier.cta.href}
-                className={`mt-auto inline-flex w-full items-center justify-center px-6 py-3.5 text-[12px] font-semibold tracking-[0.12em] uppercase ${
-                  tier.featured ? "btn-grad" : "btn-draw"
-                }`}
+                className={ctaClass({
+                  variant: tier.featured ? "primary" : "ghost",
+                  className: "mt-auto w-full",
+                })}
               >
                 {tier.cta.label}
               </Link>
@@ -84,7 +86,7 @@ export function PricingTeaser() {
               <span className="text-ink block font-mono text-[11px] font-bold tracking-[0.14em] uppercase">
                 {k}
               </span>
-              <span className="text-ink-mute mt-0.5 block font-mono text-[10.5px] tracking-[0.06em]">
+              <span className="text-ink-mute mt-0.5 block font-mono text-[10px] tracking-[0.06em]">
                 {v}
               </span>
             </div>
