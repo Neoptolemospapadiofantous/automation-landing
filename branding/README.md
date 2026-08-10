@@ -4,6 +4,12 @@ Logo files in every resolution every platform asks for. Built from a small
 set of SVG masters in `source/`, rendered to PNG/ICO via
 [`render.sh`](./render.sh).
 
+`tokens.css` here is the canonical brand palette — vendored byte-identical
+into the dashboard as `resources/css/tokens.css`. Edit it landing-side
+first, then re-sync; a diff between the two is a bug.
+[`design-system.py`](./design-system.py) renders the *system* those tokens
+describe as a component library — see below.
+
 ---
 
 ## TL;DR — which file do I upload?
@@ -35,6 +41,8 @@ set of SVG masters in `source/`, rendered to PNG/ICO via
 branding/
 ├── README.md            # this file
 ├── render.sh            # regenerates every PNG from the SVG masters
+├── tokens.css           # canonical palette — shared verbatim with the dashboard
+├── design-system.py     # regenerates the design-system cards from tokens.css
 ├── source/              # editable SVG masters — only files you should hand-edit
 │   ├── mark-square-white.svg
 │   ├── mark-square-black.svg
@@ -100,6 +108,37 @@ Requires ImageMagick (`convert`). Re-runs in ~5 seconds. Output is
 
 ---
 
+## The design system
+
+`branding/design-system.py` generates the card bundle behind the
+design-system project on claude.ai/design ("Flowstack — ink on paper",
+`9fa84e9e-1ae0-4649-a4c9-0b60f14c9969`) — eight standalone HTML cards
+across Foundations (colour, type scale), Components (buttons, blueprint
+motifs, forms), Brand (signal gestures) and Patterns (pricing tier,
+two-sheet system).
+
+```bash
+python3 branding/design-system.py          # → branding/design-system-build/ (gitignored)
+```
+
+Then upload with the `DesignSync` tool: `finalize_plan` with the build
+directory as `localDir`, then `write_files` against the project id. Never
+hand-edit a card in the web UI — the script is the source of truth and
+the next run would overwrite it.
+
+Two rules keep the cards trustworthy:
+
+1. **Colours are read from `tokens.css` at build time.** No hex is ever
+   typed into a card, so a palette change flows through by re-running.
+2. **The component CSS is a transcription of `globals.css`, and must stay
+   one.** A card that renders differently from the live site is worse
+   than no card, because it looks authoritative. This is not theoretical:
+   the buttons card is what caught the fact that Tailwind's `tracking-*`
+   utilities are emitted ahead of `.btn-grad` in the same cascade layer,
+   so eleven call sites carried letter-spacing that never rendered.
+
+---
+
 ## How the assets are composed
 
 ### Square mark
@@ -120,9 +159,12 @@ All three banners share the same vocabulary as the live site:
 - 160-pixel hairline grid background at ~10% opacity
 - Corner registration ticks (engineering-drawing motif)
 - Sheet ref top-left: `FIG. 00 / FLOWSTACK`
-- Wide mark + headline (`An AI agent for your team. Live in 60 seconds.`)
-- Dimension line + monospace annotation (`$99/MO · CANCEL ANYTIME`)
-- Mono baseline: `FLOWSTACK / AUTOMATION  ·  SHEET 01 · REV A · SCALE 1:1`
+- Wide mark + the canonical three-beat tagline, set one beat per line
+  (`Automate the busywork.` / `Aggregate the data.` / `Answer every inbound.`),
+  the third beat carrying the signal-yellow marker highlight
+- Dimension line + monospace annotation (`€99/MO · CANCEL ANYTIME`)
+- Mono baseline: `FLOWSTACK / AUTOMATION  ·  SHEET 01 · REV <letter> · SCALE 1:1`
+  — bump the REV letter in the master whenever a composition changes
 
 Fonts: system `sans-serif` for the headline, system `ui-monospace` /
 `Menlo` for the mono surfaces. Renderer falls back automatically when
