@@ -146,6 +146,33 @@ BASE = f"""
     line-height:1; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); }}
 """
 
+# The status palette lives in the dashboard's own stylesheet, not tokens.css
+# (it is app-semantic, and tokens.css must stay byte-identical across repos).
+# Read it from there rather than hand-copying — same rule as the brand tokens.
+DASH_CSS = REPO.parent / "automation_dashboard/resources/css/app.css"
+
+def status_tokens():
+    if not DASH_CSS.exists():
+        raise SystemExit(
+            f"Cannot read the status palette: {DASH_CSS} not found.\n"
+            "The App cards document automation_dashboard, so that repo must be a "
+            "sibling of this one. Refusing to emit a card with invented colours."
+        )
+    css = DASH_CSS.read_text()
+    def block(sel):
+        i = css.index(sel + " {")
+        return css[i:css.index("}", i)]
+    out = {}
+    for name, sel in (("white", ".sheet-white"), ("black", ".sheet-black"), ("solid", ":root")):
+        out[name] = dict(re.findall(r"(--state-[\w-]+):\s*([^;]+);", block(sel)))
+    return out
+
+STATUS = status_tokens()
+
+def st(sheet, key):
+    """--state-ok-ink for the given sheet, falling back to the sheet-invariant block."""
+    return (STATUS[sheet].get(f"--state-{key}") or STATUS["solid"][f"--state-{key}"]).strip()
+
 APP_CSS = """
   /* Transcribed from automation_dashboard: resources/css/app.css (.btn-signal)
      and resources/js/Components/{Primary,Secondary,Danger}Button.vue. Tokens are
@@ -159,7 +186,7 @@ APP_CSS = """
   .app-primary:hover { transform:translate(1px,1px); box-shadow:2px 2px 0 var(--ink); }
   .app-secondary { background:transparent; color:var(--ink); border-color:var(--ink); }
   .app-secondary:hover { background:var(--ink); color:var(--bg); }
-  .app-danger { background:#dc2626; color:#fff; border-color:#dc2626; }
+  .app-danger { background:__BAD_SOLID__; color:__BAD_ON__; border-color:__BAD_SOLID__; }
   .app-input { width:100%; padding:8px 12px; font-size:14px; background:var(--bg);
                color:var(--ink); border:1px solid var(--border-hi); border-radius:0; }
   .app-label { display:block; font-family:var(--font-mono); font-size:12px;
@@ -175,6 +202,11 @@ APP_CSS = """
   .meter { height:6px; background:var(--surface-hi); overflow:hidden; }
   .meter > i { display:block; height:100%; }
 """
+
+# The danger button is the status palette's `solid` role — resolve it from the
+# dashboard tokens rather than repeating the hex, so the card follows a retune.
+APP_CSS = (APP_CSS.replace("__BAD_SOLID__", st("solid", "bad-solid"))
+                  .replace("__BAD_ON__", st("solid", "bad-on")))
 
 def card(path, group, title, subtitle, body, width=880, height=520, extra=""):
     html = f"""<!-- @dsCard group="{group}" -->
@@ -539,60 +571,69 @@ CARDS.append(card(
   </div>
   <div>
     <label class="app-label" style="margin-bottom:6px">Webhook URL</label>
-    <input class="app-input" value="not-a-url" style="border-color:#dc2626">
-    <p style="margin:6px 0 0;font-size:14px;color:#dc2626">Must be a valid https URL.</p>
+    <input class="app-input" value="not-a-url" style="border-color:{st('white','bad-ink')}">
+    <p style="margin:6px 0 0;font-size:14px;color:{st('white','bad-ink')}">Must be a valid https URL.</p>
   </div>
 </div>
 <p class="ds-note">Square corners, hairline borders, mono uppercase labels — the same
-register as the marketing forms, one size denser. The error red is NOT a brand token:
-see the status card. select needs the app.css re-theme, because @tailwindcss/forms
+register as the marketing forms, one size denser. The error colour is --state-bad-ink,
+not a raw red — see the status card. select needs the app.css re-theme, because @tailwindcss/forms
 hard-codes a white background that survives the black sheet.</p>""",
   width=680, height=600, extra=APP_CSS))
 
 CARDS.append(card(
-  "app/status.html", "App", "Status colour — OPEN QUESTION",
-  "The one unresolved part of the system",
+  "app/status.html", "App", "Status colour",
+  "Four families, five roles",
   f"""<div class="ds-stack">
   <div>
-    <div class="ds-label" style="margin-bottom:10px">what the app renders today (Tailwind's default palette)</div>
+    <div class="ds-label" style="margin-bottom:10px">white sheet</div>
     <div class="ds-row">
-      <span class="badge" style="background:#fffbeb;color:#b45309">Draft</span>
-      <span class="badge" style="background:#ecfdf5;color:#047857">Published</span>
-      <span class="badge" style="background:#fff1f2;color:#be123c">Failed</span>
-      <span class="badge" style="background:#eff6ff;color:#1d4ed8">Queued</span>
+      <span class="badge" style="background:{st('white','ok-surface')};color:{st('white','ok-ink')};border:1px solid {st('white','ok-line')}">Published</span>
+      <span class="badge" style="background:{st('white','warn-surface')};color:{st('white','warn-ink')};border:1px solid {st('white','warn-line')}">Draft</span>
+      <span class="badge" style="background:{st('white','bad-surface')};color:{st('white','bad-ink')};border:1px solid {st('white','bad-line')}">Failed</span>
+      <span class="badge" style="background:{st('white','info-surface')};color:{st('white','info-ink')};border:1px solid {st('white','info-line')}">Queued</span>
     </div>
   </div>
   <div class="on-black" style="padding:20px;border:1px solid var(--border-line)">
-    <div class="ds-label" style="margin-bottom:10px">the same badges on the black sheet — they do not flip</div>
+    <div class="ds-label" style="margin-bottom:10px">black sheet — the same classes, resolved through the sheet</div>
     <div class="ds-row">
-      <span class="badge" style="background:#fffbeb;color:#b45309">Draft</span>
-      <span class="badge" style="background:#ecfdf5;color:#047857">Published</span>
-      <span class="badge" style="background:#fff1f2;color:#be123c">Failed</span>
-      <span class="badge" style="background:#eff6ff;color:#1d4ed8">Queued</span>
+      <span class="badge" style="background:{st('black','ok-surface')};color:{st('black','ok-ink')};border:1px solid {st('black','ok-line')}">Published</span>
+      <span class="badge" style="background:{st('black','warn-surface')};color:{st('black','warn-ink')};border:1px solid {st('black','warn-line')}">Draft</span>
+      <span class="badge" style="background:{st('black','bad-surface')};color:{st('black','bad-ink')};border:1px solid {st('black','bad-line')}">Failed</span>
+      <span class="badge" style="background:{st('black','info-surface')};color:{st('black','info-ink')};border:1px solid {st('black','info-line')}">Queued</span>
     </div>
-    <p class="bp-annot" style="margin:12px 0 0;color:var(--ink-dim)">
-      Near-white pills burning a hole in a black page, dark text at roughly 3:1 —
-      below the 4.5:1 that small text needs.</p>
   </div>
   <div>
-    <div class="ds-label" style="margin-bottom:10px">what the tokens say status should be</div>
+    <div class="ds-label" style="margin-bottom:10px">solid fills — sheet-invariant, they carry their own foreground</div>
     <div class="ds-row">
-      <span class="badge" style="border:1px solid var(--border-hi);color:var(--ink-mute)">Draft</span>
-      <span class="badge" style="border:1px solid var(--ink);color:var(--ink)">Published</span>
-      <span class="badge" style="background:var(--ink);color:var(--bg)">Failed</span>
-      <span class="badge" style="border:1px solid var(--border-hi);color:var(--ink-dim)">Queued</span>
+      <span class="badge" style="background:{st('solid','bad-solid')};color:{st('solid','bad-on')}">Delete</span>
+      <span class="badge" style="background:{st('solid','ok-solid')};color:{st('solid','ok-on')}">Done</span>
+      <span class="badge" style="background:{st('solid','warn-solid')};color:{st('solid','warn-on')}">Attention</span>
+      <span class="badge" style="background:{st('solid','info-solid')};color:{st('solid','info-on')}">Active</span>
     </div>
-    <p class="bp-annot" style="margin:10px 0 0">
-      tokens.css maps --success and --danger to plain ink and --warn to grey:
-      the brand's answer is that status is carried by weight and label, not hue.</p>
   </div>
+  <table style="border-collapse:collapse;font-size:13px">
+    <tr><td style="padding:3px 16px 3px 0"><span class="ds-label">surface</span></td>
+        <td class="bp-annot">chip fill — 1.03–1.31:1 against the page, so a badge never glares</td></tr>
+    <tr><td style="padding:3px 16px 3px 0"><span class="ds-label">ink</span></td>
+        <td class="bp-annot">text and icons — &ge;4.5:1 against BOTH the page and its own chip</td></tr>
+    <tr><td style="padding:3px 16px 3px 0"><span class="ds-label">line</span></td>
+        <td class="bp-annot">hairline borders on callouts</td></tr>
+    <tr><td style="padding:3px 16px 3px 0"><span class="ds-label">solid</span></td>
+        <td class="bp-annot">saturated fill for a filled control; sheet-invariant</td></tr>
+    <tr><td style="padding:3px 16px 3px 0"><span class="ds-label">on</span></td>
+        <td class="bp-annot">the foreground for solid — warn's is near-black, the yellow rule again</td></tr>
+  </table>
 </div>
-<p class="ds-note">UNRESOLVED, and deliberately shown rather than quietly decided.
-171 off-palette colour classes across 36 files render the top row. Going fully mono
-is what the tokens ask for and would fix the dark sheet, but a failed run and a
-published one would then differ only by their label — a real cost in an ops UI. The
-third option is a small set of sheet-aware status tokens, semantic but on-brand.
-Founder call; nothing has been recoloured beyond the credit meter's second yellow.</p>""",
+<p class="ds-note">RESOLVED 2026-08-10. The brand is monochrome plus one signal and
+tokens.css says status is ink and grey — right for the marketing site, wrong for an
+ops UI where you scan a list to find the broken run. So: a small semantic set, and
+only this set. 171 raw Tailwind palette classes across 36 files were migrated onto
+it; those were frozen light-mode values that never flipped, so chips were near-white
+blocks on the black sheet and standalone coloured text sat at 3.34:1. Now
+6.47:1 light / 7.59:1 dark, measured in a browser, not estimated. warn's ink is the
+BRAND accent rather than a new yellow. Reach for these instead of Tailwind's
+palette — that leak is the bug they replace.</p>""",
   width=880, height=680, extra=APP_CSS))
 
 print(f"{len(CARDS)} cards → {OUT}")
