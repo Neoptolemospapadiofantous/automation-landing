@@ -146,6 +146,36 @@ BASE = f"""
     line-height:1; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); }}
 """
 
+APP_CSS = """
+  /* Transcribed from automation_dashboard: resources/css/app.css (.btn-signal)
+     and resources/js/Components/{Primary,Secondary,Danger}Button.vue. Tokens are
+     the same vendored tokens.css, so colour comes from the shared block above. */
+  .app-btn { display:inline-flex; align-items:center; padding:8px 16px;
+             border:1px solid; font-family:var(--font-mono); font-weight:600;
+             font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+             cursor:pointer; text-decoration:none; }
+  .app-primary { background:var(--signal); color:#111; border-color:#111;
+                 box-shadow:3px 3px 0 var(--ink); transition:all .15s; }
+  .app-primary:hover { transform:translate(1px,1px); box-shadow:2px 2px 0 var(--ink); }
+  .app-secondary { background:transparent; color:var(--ink); border-color:var(--ink); }
+  .app-secondary:hover { background:var(--ink); color:var(--bg); }
+  .app-danger { background:#dc2626; color:#fff; border-color:#dc2626; }
+  .app-input { width:100%; padding:8px 12px; font-size:14px; background:var(--bg);
+               color:var(--ink); border:1px solid var(--border-hi); border-radius:0; }
+  .app-label { display:block; font-family:var(--font-mono); font-size:12px;
+               text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-dim); }
+  .sidebar-link { display:flex; align-items:center; gap:10px; border-left:2px solid transparent;
+                  padding:6px 8px; font-size:14px; font-weight:500; color:var(--ink-dim);
+                  text-decoration:none; }
+  .sidebar-link.is-active { border-left-color:var(--violet); background:var(--surface-hi);
+                            color:var(--ink); }
+  .sidebar-link:hover { background:var(--surface-hi); color:var(--ink); }
+  .badge { display:inline-block; padding:2px 8px; font-family:var(--font-mono);
+           font-size:11px; letter-spacing:0.06em; text-transform:uppercase; }
+  .meter { height:6px; background:var(--surface-hi); overflow:hidden; }
+  .meter > i { display:block; height:100%; }
+"""
+
 def card(path, group, title, subtitle, body, width=880, height=520, extra=""):
     html = f"""<!-- @dsCard group="{group}" -->
 <!doctype html>
@@ -238,7 +268,7 @@ the drawn ProductWindow and the sheet chrome (8–9.5px drafting marks).</p>""",
 
 # ── 3. Buttons ───────────────────────────────────────────────────────────
 CARDS.append(card(
-  "components/buttons.html", "Components", "Buttons",
+  "components/buttons.html", "Site", "Buttons — marketing",
   "Primary / ghost, three sizes",
   f"""<div class="ds-stack">
   <div>
@@ -301,7 +331,7 @@ keeps the swipe on every line when a phrase wraps.</p>""",
 
 # ── 5. Blueprint motifs ──────────────────────────────────────────────────
 CARDS.append(card(
-  "components/blueprint.html", "Components", "Blueprint motifs",
+  "components/blueprint.html", "Foundations", "Blueprint motifs",
   "Refs, dots, wires, dimensions, hatch",
   f"""<div class="ds-stack">
   <div class="ds-row" style="gap:28px">
@@ -330,7 +360,7 @@ gradients — no images, no icons beyond lucide's line set.</p>""",
 
 # ── 6. Forms ─────────────────────────────────────────────────────────────
 CARDS.append(card(
-  "components/forms.html", "Components", "Form fields",
+  "components/forms.html", "Site", "Form fields — marketing",
   "Label, input, textarea, submit",
   f"""<div style="max-width:420px" class="ds-stack">
   <div>
@@ -377,7 +407,7 @@ def tier(name, price, cadence, feats, featured):
     </div>"""
 
 CARDS.append(card(
-  "patterns/pricing.html", "Patterns", "Pricing tier",
+  "patterns/pricing.html", "Site", "Pricing tier",
   "Default and featured",
   f"""<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px">
   {tier("Starter","€99/mo","1 agent · cancel anytime",
@@ -393,7 +423,7 @@ to different sizes.</p>""",
 
 # ── 8. Two-sheet system ──────────────────────────────────────────────────
 CARDS.append(card(
-  "patterns/two-sheets.html", "Patterns", "Two-sheet system",
+  "patterns/two-sheets.html", "Site", "Two-sheet system",
   "White ground, one inverted band",
   f"""<div style="border:1px solid var(--border-line)">
   <div style="padding:26px">
@@ -414,6 +444,156 @@ CARDS.append(card(
 <p class="ds-note">Never more than one inverted band in a scroll. The flip is the
 punctuation, so a second one spends the effect.</p>""",
   width=880, height=560))
+
+# ── 9-12. The dashboard (automation_dashboard) ───────────────────────────
+# The app vendors tokens.css byte-identical, so colour is shared and only the
+# component layer differs. These cards exist to make the differences legible —
+# which ones are deliberate, and which are still open.
+
+CARDS.append(card(
+  "app/buttons.html", "App", "Buttons — app",
+  "Primary, secondary, danger",
+  f"""<div class="ds-stack">
+  <div class="ds-row">
+    <button class="app-btn app-primary">Save changes</button>
+    <button class="app-btn app-secondary">Cancel</button>
+    <button class="app-btn app-danger">Delete agent</button>
+  </div>
+  <div class="on-black" style="padding:22px;border:1px solid var(--border-line)">
+    <div class="ds-label" style="margin-bottom:10px">dark mode — the offset shadow flips with the sheet</div>
+    <div class="ds-row">
+      <button class="app-btn app-primary">Save changes</button>
+      <button class="app-btn app-secondary">Cancel</button>
+    </div>
+  </div>
+  <div>
+    <div class="ds-label" style="margin-bottom:10px">the deliberate divergence</div>
+    <div class="ds-row" style="gap:32px">
+      <div><a class="btn btn-grad size-lg" href="#">Site — lifts out</a>
+        <div class="bp-annot" style="margin-top:8px">4px shadow → 6px, translate(-2,-2)</div></div>
+      <div><button class="app-btn app-primary">App — presses in</button>
+        <div class="bp-annot" style="margin-top:8px">3px shadow → 2px, translate(+1,+1)</div></div>
+    </div>
+  </div>
+</div>
+<p class="ds-note">Same paint, opposite hover. A marketing CTA should feel raised;
+an app control should feel pressed. That is a choice, not drift — recorded here so
+nobody "fixes" it. The shadow itself is var(--ink) on both: it falls on the page
+ground, so it must flip. It was hard-coded #111 until 2026-08-10, which made it
+invisible in dark mode.</p>""",
+  width=880, height=620, extra=APP_CSS))
+
+CARDS.append(card(
+  "app/chrome.html", "App", "App chrome",
+  "Sidebar links, credit meter, page header",
+  f"""<div class="ds-row" style="align-items:flex-start;gap:28px">
+  <div style="width:230px;border:1px solid var(--border-line)">
+    <div style="padding:10px">
+      <a class="sidebar-link is-active" href="#"><span class="bp-dot"></span>Overview</a>
+      <a class="sidebar-link" href="#"><span class="bp-dot"></span>Agents</a>
+      <a class="sidebar-link" href="#"><span class="bp-dot"></span>Conversations</a>
+      <a class="sidebar-link" href="#"><span class="bp-dot"></span>Knowledge</a>
+    </div>
+    <div style="border-top:1px solid var(--border-line);padding:12px">
+      <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px">
+        <span style="color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em">Operator plan</span>
+        <span style="color:var(--ink-dim)">1,240 left</span>
+      </div>
+      <div class="meter" style="margin-top:6px"><i style="width:62%;background:var(--ink-dim)"></i></div>
+      <div class="bp-annot" style="font-size:10px;margin-top:4px">2,760 / 4,000 monthly used</div>
+      <div class="meter" style="margin-top:10px"><i style="width:88%;background:var(--signal)"></i></div>
+      <div class="bp-annot" style="font-size:10px;margin-top:4px">warning state — the BRAND yellow</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:300px;border:1px solid var(--border-line);padding:18px">
+    <div class="bp-annot" style="margin-bottom:6px">Agents / Sales Bot</div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="bp-ref">FS</span>
+      <h3 style="margin:0;font-size:20px;font-weight:600">Sales Bot</h3>
+    </div>
+    <div class="bp-dim" style="margin-top:8px;max-width:7rem"></div>
+    <p style="margin:8px 0 0;font-size:14px;color:var(--ink-dim)">Engine configuration</p>
+  </div>
+</div>
+<p class="ds-note">The active sidebar link is marked with the accent slot (--violet →
+gold on paper), the only place the accent carries state rather than decoration. The
+credit meter's warning bar was Tailwind's amber-500 until 2026-08-10 — a second
+yellow nobody chose, sitting beside the brand's own.</p>""",
+  width=880, height=480, extra=APP_CSS))
+
+CARDS.append(card(
+  "app/forms.html", "App", "Form fields — app",
+  "Label, input, checkbox, error",
+  f"""<div style="max-width:420px" class="ds-stack">
+  <div>
+    <label class="app-label" style="margin-bottom:6px">Agent name</label>
+    <input class="app-input" value="Sales Bot">
+  </div>
+  <div>
+    <label class="app-label" style="margin-bottom:6px">Reply tone</label>
+    <select class="app-input"><option>Professional</option></select>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <input type="checkbox" checked style="width:16px;height:16px;accent-color:var(--ink);border-radius:0">
+    <span style="font-size:14px">Capture leads automatically</span>
+  </div>
+  <div>
+    <label class="app-label" style="margin-bottom:6px">Webhook URL</label>
+    <input class="app-input" value="not-a-url" style="border-color:#dc2626">
+    <p style="margin:6px 0 0;font-size:14px;color:#dc2626">Must be a valid https URL.</p>
+  </div>
+</div>
+<p class="ds-note">Square corners, hairline borders, mono uppercase labels — the same
+register as the marketing forms, one size denser. The error red is NOT a brand token:
+see the status card. select needs the app.css re-theme, because @tailwindcss/forms
+hard-codes a white background that survives the black sheet.</p>""",
+  width=680, height=600, extra=APP_CSS))
+
+CARDS.append(card(
+  "app/status.html", "App", "Status colour — OPEN QUESTION",
+  "The one unresolved part of the system",
+  f"""<div class="ds-stack">
+  <div>
+    <div class="ds-label" style="margin-bottom:10px">what the app renders today (Tailwind's default palette)</div>
+    <div class="ds-row">
+      <span class="badge" style="background:#fffbeb;color:#b45309">Draft</span>
+      <span class="badge" style="background:#ecfdf5;color:#047857">Published</span>
+      <span class="badge" style="background:#fff1f2;color:#be123c">Failed</span>
+      <span class="badge" style="background:#eff6ff;color:#1d4ed8">Queued</span>
+    </div>
+  </div>
+  <div class="on-black" style="padding:20px;border:1px solid var(--border-line)">
+    <div class="ds-label" style="margin-bottom:10px">the same badges on the black sheet — they do not flip</div>
+    <div class="ds-row">
+      <span class="badge" style="background:#fffbeb;color:#b45309">Draft</span>
+      <span class="badge" style="background:#ecfdf5;color:#047857">Published</span>
+      <span class="badge" style="background:#fff1f2;color:#be123c">Failed</span>
+      <span class="badge" style="background:#eff6ff;color:#1d4ed8">Queued</span>
+    </div>
+    <p class="bp-annot" style="margin:12px 0 0;color:var(--ink-dim)">
+      Near-white pills burning a hole in a black page, dark text at roughly 3:1 —
+      below the 4.5:1 that small text needs.</p>
+  </div>
+  <div>
+    <div class="ds-label" style="margin-bottom:10px">what the tokens say status should be</div>
+    <div class="ds-row">
+      <span class="badge" style="border:1px solid var(--border-hi);color:var(--ink-mute)">Draft</span>
+      <span class="badge" style="border:1px solid var(--ink);color:var(--ink)">Published</span>
+      <span class="badge" style="background:var(--ink);color:var(--bg)">Failed</span>
+      <span class="badge" style="border:1px solid var(--border-hi);color:var(--ink-dim)">Queued</span>
+    </div>
+    <p class="bp-annot" style="margin:10px 0 0">
+      tokens.css maps --success and --danger to plain ink and --warn to grey:
+      the brand's answer is that status is carried by weight and label, not hue.</p>
+  </div>
+</div>
+<p class="ds-note">UNRESOLVED, and deliberately shown rather than quietly decided.
+171 off-palette colour classes across 36 files render the top row. Going fully mono
+is what the tokens ask for and would fix the dark sheet, but a failed run and a
+published one would then differ only by their label — a real cost in an ops UI. The
+third option is a small set of sheet-aware status tokens, semantic but on-brand.
+Founder call; nothing has been recoloured beyond the credit meter's second yellow.</p>""",
+  width=880, height=680, extra=APP_CSS))
 
 print(f"{len(CARDS)} cards → {OUT}")
 for c in CARDS:
