@@ -21,7 +21,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Cold outreach",
   description:
-    "Lead generation, done for you: we find the companies you want as customers, write to them in your voice, and hand you the warm replies. You approve every word. Free 30-minute audit, written fixed scope in 48 hours.",
+    "Lead generation, done for you: we find the companies you want as customers, write to them in your voice, and hand you the replies. You approve every word.",
   alternates: { canonical: "/outreach" },
   openGraph: {
     title: "Cold outreach — Flowstack",

@@ -13,6 +13,8 @@ const cols: { h: string; l: FooterLink[] }[] = [
   {
     h: "Product",
     l: [
+      { label: "Cold outreach", href: "/outreach" },
+      { label: "What works", href: "/what-works" },
       { label: "Lead qualification", href: "/roles/lead-qualification" },
       { label: "Sales", href: "/roles/sales" },
       { label: "Customer support", href: "/roles/customer-support" },

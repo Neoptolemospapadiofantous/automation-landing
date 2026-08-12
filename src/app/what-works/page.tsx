@@ -25,7 +25,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "What works",
   description:
-    "Business intelligence and analytics, run as a service: your numbers pulled into one live view, then the experiments that change them — testing what you send, keeping what wins, retiring what doesn't.",
+    "Business intelligence and analytics as a service: your numbers in one live view, plus the experiments that change them — keep what wins, retire what doesn't.",
   alternates: { canonical: "/what-works" },
   openGraph: {
     title: "What works — Flowstack",
