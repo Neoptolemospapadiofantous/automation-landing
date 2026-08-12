@@ -44,5 +44,5 @@ export async function submitAudit(
     };
   }
 
-  return { ok: true, message: "Got it. We'll reply within 4 hours." };
+  return { ok: true, message: "Got it. We'll come back to book the call." };
 }

@@ -172,7 +172,7 @@ export function AuditForm() {
                 ? "Sending…"
                 : state.ok
                   ? "Sent — we'll be in touch"
-                  : "Send — we reply within 4 hours"}
+                  : "Send the brief"}
             </button>
 
             {state.message && (
