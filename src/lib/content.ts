@@ -1,9 +1,19 @@
 import { registerUrl } from "./dashboard";
 
+/**
+ * Primary nav. Four items is the ceiling: at the `lg` breakpoint where these
+ * first appear there is ~112px of slack in the header row, and a fifth link
+ * costs ~105px — so this list trades rather than grows.
+ *
+ * `Product` (/#agents) and `How it works` (/#pipeline) were homepage anchors;
+ * they became the two service pages on 2026-08-12, so the nav names what we
+ * sell instead of pointing at scroll positions. The roles those anchors led to
+ * are still linked from the footer and reachable on the homepage itself.
+ */
 export const nav = {
   links: [
-    { href: "/#agents", label: "Product" },
-    { href: "/#pipeline", label: "How it works" },
+    { href: "/outreach", label: "Outreach" },
+    { href: "/what-works", label: "What works" },
     { href: "/audit", label: "Custom build" },
     { href: "/pricing", label: "Pricing" },
   ],
