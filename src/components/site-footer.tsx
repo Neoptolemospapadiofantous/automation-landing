@@ -107,10 +107,10 @@ export function SiteFooter() {
                 key={c.h}
                 className="border-border-line border-r border-b px-5 py-5"
               >
-                <h4 className="bp-ref text-ink-mute mb-4 flex items-center gap-2">
+                <h2 className="bp-ref text-ink-mute mb-4 flex items-center gap-2">
                   <span aria-hidden className="bp-dot" />
                   {c.h}
-                </h4>
+                </h2>
                 <ul className="space-y-1">
                   {c.l.map((item) => (
                     <li key={item.label}>

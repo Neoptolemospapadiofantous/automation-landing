@@ -44,7 +44,7 @@ export const rolePages: RolePage[] = [
     desc: "Qualifies every visit on ICP fit. Your team gets only the warm ones.",
     metaTitle: "Automated lead qualification for your website",
     metaDescription:
-      "Qualify every inbound visitor on ICP fit before your team spends a minute. Full transcripts, lead routing and a real-time dashboard. Live in 60 seconds, from €99/mo.",
+      "Qualify every inbound visitor on ICP fit before your team spends a minute. Transcripts, lead routing and a live dashboard. From €99/mo.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
     lead: "Inbound doesn't keep office hours. The agent qualifies every visitor and hands over only the warm ones.",
@@ -73,7 +73,7 @@ export const rolePages: RolePage[] = [
     desc: "Answers pricing questions on the spot. Books the demo.",
     metaTitle: "Automated sales agent for your website",
     metaDescription:
-      "An automated sales agent that walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Live in 60 seconds, from €99/mo.",
+      "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. From €99/mo.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
     lead: "Buying questions don't wait — a competitor is one tab away. The agent answers on the spot and books the demo.",
@@ -102,7 +102,7 @@ export const rolePages: RolePage[] = [
     desc: "First-line answers from your knowledge base, in your tone.",
     metaTitle: "Automated customer support agent for your website",
     metaDescription:
-      "First-line support answers from your own knowledge base, escalation only when a human is actually needed, and every conversation captured. Live in 60 seconds, from €99/mo.",
+      "First-line answers from your own knowledge base, escalation only when a human is needed, every conversation captured. From €99/mo.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
     lead: "The same ten questions eat your day. The agent resolves them from your knowledge base — a human is one ask away.",
@@ -131,7 +131,7 @@ export const rolePages: RolePage[] = [
     desc: "Walks new customers through setup, routes the rest to you.",
     metaTitle: "Automated customer onboarding agent",
     metaDescription:
-      "Walk every new customer through setup step by step, answer the recurring questions from your docs, and route the rest to your team. Live in 60 seconds, from €99/mo.",
+      "Walk every new customer through setup, answer the recurring questions from your docs, and route the rest to your team. From €99/mo.",
     h1: "New customers sign up excited,",
     h1Accent: "then get stuck.",
     lead: "Customers churn between signup and first value. The agent walks each one through setup, routes the stuck ones to you.",
