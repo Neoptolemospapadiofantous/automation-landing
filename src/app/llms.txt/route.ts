@@ -44,7 +44,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 ## Pages
 
 - [Home](${SITE_URL}/): product overview and agent roles
-- [Lead qualification agent](${SITE_URL}/roles/lead-qualification): greets every inbound visit, qualifies on ICP fit, hands over only warm conversations
+- [Lead qualification agent](${SITE_URL}/roles/lead-qualification): greets every inbound visit, scores the ones worth the team's time, hands over only warm conversations
 - [Sales agent](${SITE_URL}/roles/sales): walks visitors through the offer, answers pricing questions, books qualified demos
 - [Customer support agent](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs

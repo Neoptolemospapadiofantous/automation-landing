@@ -51,13 +51,13 @@ export const rolePages: RolePage[] = [
     slug: "lead-qualification",
     ref: "ROLE-01",
     name: "Lead qualification",
-    desc: "Qualifies every visit on ICP fit. Your team gets only the warm ones.",
+    desc: "Works out who is worth your time. You only get the good ones.",
     metaTitle: "Automated lead qualification for your website",
     metaDescription:
-      "Qualify every inbound visitor on ICP fit before your team spends a minute. Transcripts, lead routing and a live dashboard. Free to start, €9/mo paid.",
+      "Qualify every visitor before your team spends a minute on them. Transcripts, lead routing and a live dashboard. Free to start, €9/mo paid.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
-    lead: "Inbound doesn't keep office hours. The agent qualifies every visitor and hands over only the warm ones.",
+    lead: "Questions arrive at all hours. The chat sorts them and passes you the good ones.",
     does: [
       {
         ref: "N-01",
@@ -66,13 +66,13 @@ export const rolePages: RolePage[] = [
       },
       {
         ref: "N-02",
-        title: "Qualifies on ICP fit",
-        desc: "Asks the questions that matter, scores each conversation before anyone is pinged.",
+        title: "Scores the ones worth your time",
+        desc: "Asks a few questions and scores the visitor before anyone is pinged.",
       },
       {
         ref: "N-03",
         title: "Hands over only the warm conversations",
-        desc: "Warm leads land on your dashboard with full transcripts; the rest cost nothing.",
+        desc: "Good leads land on your dashboard with the whole conversation attached.",
       },
     ],
   },
@@ -86,7 +86,7 @@ export const rolePages: RolePage[] = [
       "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Free to start, €9/mo paid.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
-    lead: "Buying questions don't wait — a competitor is one tab away. The agent answers on the spot and books the demo.",
+    lead: "A buyer with a question won't wait. The chat answers it and books the call.",
     does: [
       {
         ref: "N-01",
@@ -96,12 +96,12 @@ export const rolePages: RolePage[] = [
       {
         ref: "N-02",
         title: "Handles pricing and scope questions",
-        desc: "Deal-stalling questions answered on the spot, inside the conversation.",
+        desc: "Price and scope questions answered on the spot.",
       },
       {
         ref: "N-03",
         title: "Books qualified demos",
-        desc: "Qualified conversations end on your calendar, transcribed.",
+        desc: "Good conversations end on your calendar.",
       },
     ],
   },
@@ -109,13 +109,13 @@ export const rolePages: RolePage[] = [
     slug: "customer-support",
     ref: "ROLE-03",
     name: "Customer support",
-    desc: "First-line answers from your knowledge base, in your tone.",
+    desc: "Answers the questions your team keeps answering.",
     metaTitle: "Automated customer support agent for your website",
     metaDescription:
       "First-line answers from your own knowledge base, escalation only when a human is needed, every conversation captured. Free to start, €9/mo paid.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
-    lead: "The same ten questions eat your day. The agent resolves them from your knowledge base — a human is one ask away.",
+    lead: "The same ten questions eat your day. The chat answers them from your own docs.",
     does: [
       {
         ref: "N-01",
@@ -125,12 +125,12 @@ export const rolePages: RolePage[] = [
       {
         ref: "N-02",
         title: "Escalates only when needed",
-        desc: "Recurring questions resolved instantly; a human is one ask away.",
+        desc: "Repeat questions handled instantly. A human is one ask away.",
       },
       {
         ref: "N-03",
         title: "Captures every conversation",
-        desc: "Every thread transcribed on your dashboard — no one watches a queue.",
+        desc: "Every conversation saved on your dashboard. Nobody watches a queue.",
       },
     ],
   },
@@ -144,17 +144,17 @@ export const rolePages: RolePage[] = [
       "Walk every new customer through setup, answer the recurring questions from your docs, and route the rest to your team. Free to start, €9/mo paid.",
     h1: "New customers sign up excited,",
     h1Accent: "then get stuck.",
-    lead: "Customers churn between signup and first value. The agent walks each one through setup, routes the stuck ones to you.",
+    lead: "New customers get stuck right after signing up. The chat walks them through setup.",
     does: [
       {
         ref: "N-01",
         title: "Guides setup step by step",
-        desc: "Interactive setup guidance instead of digging through docs alone.",
+        desc: "Step-by-step setup instead of a wall of docs.",
       },
       {
         ref: "N-02",
         title: "Answers the recurring questions",
-        desc: "The questions every new account asks, answered instantly from your docs.",
+        desc: "The questions every new account asks, answered instantly.",
       },
       {
         ref: "N-03",
@@ -198,7 +198,7 @@ export const buildCatalogue = [
   {
     name: "Cold outreach",
     href: "/outreach",
-    desc: "Your own sending domain, a verified list, sequences in your voice.",
+    desc: "Your own address, a checked list, emails written in your voice.",
   },
   {
     name: "One live view",
@@ -207,11 +207,11 @@ export const buildCatalogue = [
   },
   {
     name: "Booking",
-    desc: "Request, availability, booking, confirmation, reminder. No phone tag.",
+    desc: "Booking, confirmation and reminders. No phone tag.",
   },
   {
     name: "Invoices & documents",
-    desc: "Generated, sent and chased. The payment follow-up runs itself.",
+    desc: "Invoices made, sent and chased. The follow-up runs itself.",
   },
   {
     name: "Connect your tools",
@@ -230,7 +230,7 @@ export const buildCatalogue = [
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. The chat answers your website. Behind it, we build the systems that do your repetitive work and gather your numbers into one view.",
+    a: "No. The chat answers your website. Behind it, we automate your repetitive work and pull your numbers into one view.",
   },
   {
     q: "What do the plans cost?",
@@ -275,7 +275,7 @@ export const pricingTiers = [
     price: "€9/mo",
     cadence: "1 agent · cancel anytime",
     tint: "cyan",
-    tagline: "One agent live in 60 seconds. Full feature set.",
+    tagline: "One agent, live in a minute. Every feature on.",
     features: [
       "1 agent, any role",
       "2,500 conversation credits / month",
@@ -291,7 +291,7 @@ export const pricingTiers = [
     price: "€19/mo",
     cadence: "up to 5 agents · cancel anytime",
     tint: "violet",
-    tagline: "For a site with real inbound volume.",
+    tagline: "For a site with real traffic.",
     features: [
       "Everything in Starter",
       "Up to 5 agents",
@@ -307,7 +307,7 @@ export const pricingTiers = [
     price: "€39/mo",
     cadence: "up to 5 agents · cancel anytime",
     tint: "violet",
-    tagline: "For teams running agents in production.",
+    tagline: "For teams running several agents every day.",
     features: [
       "Everything in Growth",
       "Up to 5 agents",
@@ -323,7 +323,7 @@ export const pricingTiers = [
     price: "Let's talk",
     cadence: "scoped · 4–6 week build",
     tint: "success",
-    tagline: "When the off-the-shelf agent isn't enough.",
+    tagline: "When the standard chat is not enough.",
     features: [
       "Bespoke flows on your stack",
       "Custom integrations (CRM, telephony, internal tools)",

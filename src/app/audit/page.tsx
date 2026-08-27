@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
+import { Tldr } from "@/components/tldr";
 import { AuditForm } from "@/components/sections/audit-form";
 
 export const metadata: Metadata = {
@@ -19,12 +20,12 @@ const expect = [
   {
     step: "01",
     title: "30-minute call",
-    body: "You walk us through the work you want off your plate. No slides on our side.",
+    body: "You show us the work you want off your plate. No slides on our side.",
   },
   {
     step: "02",
     title: "Written scope in 48h",
-    body: "A fixed-scope proposal: what ships, in how long, for how much. Yours to keep.",
+    body: "What we would build, how long it takes, what it costs. Yours to keep.",
   },
   {
     step: "03",
@@ -45,9 +46,23 @@ export default function AuditPage() {
             <span className="text-gradient">a number.</span>
           </>
         }
-        lead="Every build is quoted for your stack. Free, in 48 hours, yours to keep."
+        lead="Every build is quoted for your setup, before any work starts."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
+        ]}
+      />
+
+      <Tldr
+        rows={[
+          { k: "Cost", v: "Nothing. The call and the written scope are both free." },
+          {
+            k: "Time",
+            v: "Thirty minutes on a call, then a written price within 48 hours.",
+          },
+          {
+            k: "Commitment",
+            v: "None. Take the scope elsewhere if you want. We won't chase you.",
+          },
         ]}
       />
 

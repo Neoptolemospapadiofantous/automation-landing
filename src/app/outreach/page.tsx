@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
+import { Tldr } from "@/components/tldr";
 import { SectionWatermark } from "@/components/section-watermark";
 import { ctaClass } from "@/components/ui/button";
 
@@ -35,22 +36,22 @@ const steps = [
   {
     ref: "O-01",
     title: "You tell us who",
-    body: "Half an hour to name the target — clinics, firms, hotels, here or abroad. We build and verify the list. You approve it before anything sends.",
+    body: "Half an hour to name who you want — clinics, firms, hotels, here or abroad. We build the list. You approve it.",
   },
   {
     ref: "O-02",
     title: "We write the emails",
-    body: "A first email and a few polite follow-ups, in your voice, in Greek or English. You approve every word.",
+    body: "A first email and a few polite follow-ups, in Greek or English. You approve every word.",
   },
   {
     ref: "O-03",
     title: "Sending runs itself",
-    body: "A few a day from your own address, ramped safely into inboxes. A reply stops the sequence. Bounces and unsubscribes handle themselves.",
+    body: "A few a day, from your own address. A reply stops the sequence. Bounces and opt-outs handle themselves.",
   },
   {
     ref: "O-04",
     title: "You see everything",
-    body: "A monthly report: what went out, who replied, what to try next. Want a different kind of company? We change the list and the sequences.",
+    body: "A monthly report: what went out, who replied, what to try next. Want a different kind of company? Say so and we switch.",
   },
 ] as const;
 
@@ -72,8 +73,25 @@ export default function OutreachPage() {
             <span className="text-gradient">already interested.</span>
           </>
         }
-        lead="We find the companies you want as customers, write in your voice, and hand you the replies."
+        lead="We find companies that fit you, email them in your voice, and hand you the replies."
         ctas={[{ href: "/audit", label: "Book the audit →", variant: "primary" }]}
+      />
+
+      <Tldr
+        rows={[
+          {
+            k: "What it is",
+            v: "We build the list, write the emails, and send them from your own address.",
+          },
+          {
+            k: "Your part",
+            v: "Half an hour to say who you want. After that, you approve the words.",
+          },
+          {
+            k: "What it costs",
+            v: "Quoted after a free 30-minute call. Fixed price before we start.",
+          },
+        ]}
       />
 
       {/* How it runs — four beats, the same four the pitch uses. */}

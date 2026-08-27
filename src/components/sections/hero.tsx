@@ -38,11 +38,8 @@ export function Hero() {
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            We do three things: answer your website, find you customers, and
-            find out what&apos;s actually working.{" "}
-            <span className="text-ink font-semibold">
-              Chat is free to start. Everything else starts with a free audit.
-            </span>
+            We answer your website, find you customers, and show you{" "}
+            <span className="text-ink font-semibold">what is working.</span>
           </p>
 
           <div className="mt-9 flex flex-col items-start gap-3.5 sm:flex-row sm:items-center">

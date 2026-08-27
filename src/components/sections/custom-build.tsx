@@ -50,8 +50,8 @@ export function CustomBuild() {
               <span className="text-ink-dim">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              Back-office automations on your stack, every run audited. The
-              same stack we run Flowstack&apos;s own growth on.
+              We automate the work behind it, on your own tools. The same
+              setup we run our own company on.
             </p>
 
             {/* Two of these now have pages; the rest are named in full in

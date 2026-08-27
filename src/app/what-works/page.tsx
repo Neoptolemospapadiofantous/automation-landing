@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
+import { Tldr } from "@/components/tldr";
 import { ProductWindow } from "@/components/sections/product-window";
 import { SectionWatermark } from "@/components/section-watermark";
 import { ctaClass } from "@/components/ui/button";
@@ -40,7 +41,7 @@ const halves = [
     ref: "W-01",
     name: "One live view",
     what: "Built once, around your stack.",
-    body: "Your sales, leads and weekly figures — pulled out of scattered tools into one dashboard that keeps itself current.",
+    body: "Your sales, leads and weekly figures, pulled out of scattered tools into one dashboard that keeps itself up to date.",
     points: [
       "Your CRM, spreadsheets, inbox and billing, read in one place",
       "The weekly report stops being a job someone does",
@@ -51,7 +52,7 @@ const halves = [
     ref: "W-02",
     name: "The loop",
     what: "Runs every month, on your numbers.",
-    body: "A dashboard says what happened. The loop decides what to change — and tells you what moved, and why.",
+    body: "A dashboard tells you what happened. The loop tells you what to change, and what moved when you did.",
     points: [
       "Subject lines, sequences and formats tested against each other",
       "Winners kept, losers retired — on the evidence, not a hunch",
@@ -78,8 +79,25 @@ export default function WhatWorksPage() {
             <span className="text-gradient">This tells you what to do next.</span>
           </>
         }
-        lead="We put your numbers in one live view, then run the experiments that change them."
+        lead="We put your numbers in one dashboard, then run the tests that change them."
         ctas={[{ href: "/audit", label: "Book the audit →", variant: "primary" }]}
+      />
+
+      <Tldr
+        rows={[
+          {
+            k: "What it is",
+            v: "All your numbers in one dashboard, built around the tools you already use.",
+          },
+          {
+            k: "What else",
+            v: "Every month we test what you send, keep what works, and drop what doesn't.",
+          },
+          {
+            k: "What it costs",
+            v: "Quoted after a free 30-minute call. Fixed price, and you keep the code.",
+          },
+        ]}
       />
 
       {/* The live view, drawn. Same component the homepage hero uses — it is

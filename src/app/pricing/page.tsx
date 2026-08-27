@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
+import { Tldr } from "@/components/tldr";
 import { PricingJsonLd } from "@/components/jsonld";
 import { FAQ } from "@/components/sections/faq";
 import { Catalogue } from "@/components/sections/catalogue";
@@ -12,7 +13,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Start free with one agent. Paid plans from €9/mo, and our most expensive plan is €39/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
+    "Start free with one agent. Paid plans are €9 to €39 a month, and €39 is our most expensive. Anything we build is quoted per project. No lock-in, ever.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — Flowstack",
@@ -35,7 +36,24 @@ export default function PricingPage() {
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent free. €9/mo when you outgrow it, €39/mo for five in production — that is our top plan. Custom builds on your stack — fixed scope, you keep the code."
+        lead="The chat has a price list. Everything we build is quoted for your setup."
+      />
+
+      <Tldr
+        rows={[
+          {
+            k: "The chat",
+            v: "Free for one agent. €9, €19 or €39 a month for more agents and more chats.",
+          },
+          {
+            k: "Anything we build",
+            v: "No list price. We quote it after a free 30-minute call, and the price is fixed.",
+          },
+          {
+            k: "Lock-in",
+            v: "None. Cancel any month. On builds, the code is yours to keep.",
+          },
+        ]}
       />
 
       {/* Pricing tiers — hairline-bordered cards in the editorial mono
@@ -128,12 +146,12 @@ export default function PricingPage() {
               unit with no exchange rate until you say this — the numbers and
               the never-charged list come from the services sheet. */}
           <p className="text-ink-dim mx-auto mt-8 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            A typical short conversation uses 5–8 credits — so Starter covers
-            roughly <span className="text-ink font-semibold">300–500 conversations a month</span>,
-            Operator about ten times that. You are never charged for the opening
-            greeting, a visitor returning to an earlier chat, the instant answers
-            we set up for your common questions, or any conversation while one of
-            your team is handling it personally.
+            A short chat uses 5–8 credits. So Starter covers roughly{" "}
+            <span className="text-ink font-semibold">300–500 chats a month</span>,
+            and Operator about ten times that. You are not charged for the opening
+            hello, a visitor coming back to an old chat, the instant answers we
+            set up for your common questions, or any chat one of your team takes
+            over.
           </p>
 
           <p className="bp-annot mt-8 text-center">

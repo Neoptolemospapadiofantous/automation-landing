@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
+import { Tldr } from "@/components/tldr";
 import { SectionWatermark } from "@/components/section-watermark";
 import { RoleBreadcrumbJsonLd } from "@/components/jsonld";
 import { rolePages } from "@/lib/content";
@@ -50,17 +51,17 @@ const DASHBOARD_CELLS = [
   {
     ref: "D-01",
     title: "Full transcripts",
-    desc: "Every conversation captured end to end — read what visitors actually asked, in their words.",
+    desc: "Every conversation saved end to end — read what visitors actually asked.",
   },
   {
     ref: "D-02",
     title: "Lead routing",
-    desc: "Conversations that qualify become leads in the dashboard, with the context your team needs to follow up.",
+    desc: "Good conversations become leads, with the context your team needs to follow up.",
   },
   {
     ref: "D-03",
     title: "Real-time view",
-    desc: "Watch conversations and leads land as they happen — no exports, no waiting on a report.",
+    desc: "Watch chats and leads land as they happen. No exports, no waiting.",
   },
 ] as const;
 
@@ -90,6 +91,20 @@ export default async function RolePage({
         ctas={[
           { href: registerUrl(), label: "Start free →" },
           { href: "/pricing", label: "See pricing", variant: "secondary" },
+        ]}
+      />
+
+      <Tldr
+        rows={[
+          { k: "What it does", v: r.desc },
+          {
+            k: "Where it lives",
+            v: "On your website, or on a chat page you can link to. Set up in about a minute.",
+          },
+          {
+            k: "What it costs",
+            v: "Free for one agent, then €9 to €39 a month. Cancel any month.",
+          },
         ]}
       />
 
@@ -195,9 +210,9 @@ export default async function RolePage({
                   Free to start. Cancel anytime.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  Starter is one agent — any role, 2,500 conversation credits
-                  a month, every feature on. Operator runs up to five agents
-                  with 25,000 credits. No lock-in either way.
+                  Free covers one agent. Starter is €9 a month for 2,500
+                  conversation credits, Operator €39 for five agents and
+                  25,000. Cancel any month.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// need it wired into your CRM or internal tools? "}

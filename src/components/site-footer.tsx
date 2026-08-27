@@ -91,9 +91,9 @@ export function SiteFooter() {
           <div className="max-w-[320px]">
             <Logo />
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              Automations and data pipelines built to order — busywork runs
-              itself, data lands in one place. A chat agent answers every
-              inbound, end to end.
+              We answer your website, find you customers, and put your
+              numbers in one place. Built to order, on the tools you already
+              use.
             </p>
             <p className="bp-annot mt-5 normal-case">
               Pick a role · paste your knowledge · watch leads land

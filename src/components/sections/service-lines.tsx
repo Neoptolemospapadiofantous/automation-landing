@@ -4,8 +4,17 @@ import Link from "next/link";
  * The three service lines — the block that makes the shape of the
  * business legible in about eight seconds.
  *
- * Before this, a visitor could read the whole homepage and still not
- * know we do lead generation. One line each, one destination each.
+ * It used to render as three unlabelled cells straight after the ticker,
+ * with no heading above them, and it did not read as a section at all: a
+ * visitor could scroll past the only place the site says "we do cold
+ * outreach, and it has a page" without registering it. Hence the heading,
+ * and cues that name the destination instead of saying "see how it
+ * works" twice.
+ *
+ * Deliberately carries no sheet number: like the ticker and the proof
+ * band it is an interstitial, and the numbered set (S/01 hero … S/09
+ * commit) is tracked by SheetRail, which would have to renumber seven
+ * printed refs to make room here.
  *
  * Only the chat carries a price: it is a subscription and already has
  * one. The other two say what the next page contains rather than
@@ -14,21 +23,21 @@ import Link from "next/link";
 const lines = [
   {
     name: "Chat",
-    desc: "Answers every inbound on your site, day or night.",
+    desc: "Answers your website visitors, day and night.",
     href: "/pricing",
-    cue: "Free to start",
+    cue: "See the plans",
   },
   {
     name: "Outreach",
-    desc: "We find the companies you want as customers, and write to them in your voice.",
+    desc: "We find companies that fit you and email them in your voice.",
     href: "/outreach",
-    cue: "See how it works",
+    cue: "How outreach works",
   },
   {
     name: "What works",
-    desc: "We test what you send, keep what wins, and show you the numbers.",
+    desc: "Your numbers in one dashboard, plus tests that say what to change.",
     href: "/what-works",
-    cue: "See how it works",
+    cue: "How the loop works",
   },
 ] as const;
 
@@ -36,7 +45,17 @@ export function ServiceLines() {
   return (
     <section id="services" className="relative pt-16">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="border-border-line grid grid-cols-1 gap-px border bg-border-line md:grid-cols-3">
+        <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
+          <div>
+            <span className="bp-ref">what we sell</span>
+            <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
+              Three services. One page each.
+            </h2>
+          </div>
+          <p className="bp-annot normal-case">Start with any one of them.</p>
+        </div>
+
+        <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line md:grid-cols-3">
           {lines.map((l) => (
             <Link
               key={l.name}
