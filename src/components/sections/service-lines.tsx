@@ -16,7 +16,7 @@ const lines = [
     name: "Chat",
     desc: "Answers every inbound on your site, day or night.",
     href: "/pricing",
-    cue: "From €99/mo",
+    cue: "Free to start",
   },
   {
     name: "Outreach",

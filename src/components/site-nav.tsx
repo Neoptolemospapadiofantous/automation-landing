@@ -39,8 +39,8 @@ export function SiteNav() {
             href={registerUrl()}
             className={ctaClass({ size: "nav", className: "relative z-50" })}
           >
-            <span className="hidden min-[360px]:inline">Try it for&nbsp;</span>
-            €99 →
+            <span className="hidden min-[360px]:inline">Start&nbsp;</span>
+            free →
           </Link>
           <MobileMenu />
         </div>

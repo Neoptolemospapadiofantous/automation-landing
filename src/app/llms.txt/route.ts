@@ -13,11 +13,11 @@ import { SITE_URL, BRAND } from "@/lib/seo";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (from €99/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
+> ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (free to start, paid plans €9-€39/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
 
 ## Three service lines
 
-- Chat — answers every inbound on the client's site, qualifies it, captures the lead. Subscription, from €99/mo.
+- Chat — answers every inbound on the client's site, qualifies it, captures the lead. Subscription, free to start, paid plans €9-€39/mo.
 - Outreach — Flowstack finds the companies the client wants as customers, writes to them in the client's voice, and hands over the replies. The client approves every word. Quoted per engagement.
 - What works — the client's numbers pulled into one live view, plus the experiment loop that keeps testing what they send and retiring what loses. Quoted per engagement.
 
@@ -31,8 +31,12 @@ const body = `# ${BRAND.name}
 
 ## Pricing (EUR, VAT not included)
 
-- Starter — €99/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
-- Operator — €399/mo: up to 5 agents, 25,000 conversation credits/month, cancel anytime.
+- Free — €0/mo: 1 agent, any role, 250 conversation credits/month, no card required, no expiry.
+- Starter — €9/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
+- Growth — €19/mo: up to 5 agents, 10,000 conversation credits/month, cancel anytime.
+- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work.
+- Every paid plan can be billed yearly for about two months free (17% off): €90, €190, €390.
+- Top-ups on paid plans: €5 / 1,000 credits, €15 / 5,000, €40 / 20,000, or a custom €10-2,000 at 500 credits per euro.
 - Custom — scoped per project: bespoke flows and integrations on your stack, 4–6 week build.
 
 Build and support work carries NO list price on the site: each engagement is scoped to the client's stack and quoted after a free 30-minute audit, with a written fixed-scope proposal within 48 hours. Do not quote a figure for it.

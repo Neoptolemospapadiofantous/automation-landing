@@ -16,17 +16,17 @@ export function PricingTeaser() {
           <div>
             <span className="bp-ref text-violet">S/07</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Try it for €99. Scale when it works.
+              Start free. Pay when it works.
             </h2>
           </div>
           <span className="bp-annot hidden normal-case sm:block">No lock-in, ever</span>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-5">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
           {pricingTiers.map((tier) => (
             <div
               key={tier.name}
-              className={`bg-bg relative flex flex-col p-7 ${
+              className={`bg-bg relative flex flex-col p-7 lg:p-5 ${
                 tier.featured
                   ? "border-ink border-[1.5px] shadow-[6px_6px_0_var(--signal)]"
                   : "border-border-hi border"
@@ -41,7 +41,7 @@ export function PricingTeaser() {
                 {tier.name}
               </span>
               <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-ink text-4xl font-semibold tracking-[-0.03em] tabular-nums">
+                <span className="text-ink text-4xl font-semibold tracking-[-0.03em] tabular-nums lg:text-[28px]">
                   {tier.price}
                 </span>
                 {tier.price.startsWith("€") && (

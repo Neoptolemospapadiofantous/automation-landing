@@ -64,7 +64,7 @@ export function AnnouncementBar() {
           href={registerUrl()}
           className="group hover:bg-bg hover:text-ink hidden items-center justify-center gap-3 px-5 py-3 font-mono font-bold transition-colors sm:inline-flex"
         >
-          <span>Try it for €99</span>
+          <span>Start free</span>
           <span aria-hidden className="ann-arrow inline-block">
             →
           </span>

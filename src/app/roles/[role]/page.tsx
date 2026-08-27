@@ -88,7 +88,7 @@ export default async function RolePage({
         }
         lead={r.lead}
         ctas={[
-          { href: registerUrl(), label: "Try it for €99 →" },
+          { href: registerUrl(), label: "Start free →" },
           { href: "/pricing", label: "See pricing", variant: "secondary" },
         ]}
       />
@@ -192,7 +192,7 @@ export default async function RolePage({
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="max-w-[52ch]">
                 <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-                  From €99/mo. Cancel anytime.
+                  Free to start. Cancel anytime.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
                   Starter is one agent — any role, 2,500 conversation credits
@@ -214,7 +214,7 @@ export default async function RolePage({
                   href={registerUrl()}
                   className={ctaClass()}
                 >
-                  Try it for €99 →
+                  Start free →
                 </Link>
                 <Link
                   href="/pricing"

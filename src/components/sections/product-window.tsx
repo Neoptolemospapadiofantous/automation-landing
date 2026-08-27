@@ -159,7 +159,7 @@ export function ProductWindow() {
           </div>
         </div>
 
-        {/* the €99 chat answering after hours — floats over the window's
+        {/* the chat answering after hours — floats over the window's
             lower-right corner onto the ink band */}
         <div
           role="img"

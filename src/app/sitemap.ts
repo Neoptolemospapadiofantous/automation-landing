@@ -12,10 +12,10 @@ import { rolePages } from "@/lib/content";
  * sitemap. Date must be passed in via constant; `new Date()` would
  * make every build re-crawl everything.
  */
-const LAST_MOD = "2026-07-08"; // brand repositioning shipped
-const ROLES_LAST_MOD = "2026-07-08"; // meta titles reworded
-const LEGAL_LAST_MOD = "2026-07-08"; // in force, indexable
-const SERVICES_LAST_MOD = "2026-08-11"; // service pages published
+const LAST_MOD = "2026-08-27"; // pricing repriced: free tier + 4 plans, hero/pricing copy reworked
+const ROLES_LAST_MOD = "2026-08-27"; // role CTAs now lead with the free tier
+const LEGAL_LAST_MOD = "2026-07-08"; // in force; the footer/nav tweaks since are not content changes
+const SERVICES_LAST_MOD = "2026-08-12"; // published 08-11, footer discovery added 08-12
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

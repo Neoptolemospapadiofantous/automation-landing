@@ -16,7 +16,7 @@ import { pricingTiers, faqItems, type RolePage } from "@/lib/content";
  */
 export function HomepageJsonLd() {
   const offers = pricingTiers.map((t) => {
-    // Operator/Starter price like "€99/mo" → 99 EUR recurring monthly.
+    // A tier price like "€19/mo" → 19 EUR recurring monthly ("€0/mo" → 0).
     // Custom tier has no fixed price (was set to "Let's talk"), so no
     // Offer price field for that one — only the URL and name.
     const monthlyMatch = /^€([\d,]+)\/mo$/.exec(t.price);

@@ -12,13 +12,13 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Start with one agent for €99/mo. Scale to five for €399/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
+    "Start free with one agent. Paid plans from €9/mo, and our most expensive plan is €39/mo. Custom builds with bespoke integrations on your stack — scoped per project. No lock-in, ever.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — Flowstack",
     url: "/pricing",
     description:
-      "Start with one agent for €99/mo. Scale to five for €399/mo. Custom builds scoped per project.",
+      "Start free with one agent. Paid plans from €9/mo. Custom builds scoped per project.",
   },
 };
 
@@ -31,11 +31,11 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Try it for €99. Scale when it works.{" "}
+            Start free. Pay when it works.{" "}
             <span className="text-gradient">Custom when you need it.</span>
           </>
         }
-        lead="One agent for €99/mo. Five for €399/mo in production. Custom builds on your stack — fixed scope, you keep the code."
+        lead="One agent free. €9/mo when you outgrow it, €39/mo for five in production — that is our top plan. Custom builds on your stack — fixed scope, you keep the code."
       />
 
       {/* Pricing tiers — hairline-bordered cards in the editorial mono
@@ -43,13 +43,13 @@ export default function PricingPage() {
           (the ring-violet emphasis no longer reads in mono). */}
       <section className="relative pb-12">
         <div className="mx-auto max-w-[1280px] px-6">
-          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line lg:grid-cols-3">
+          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-5">
             {pricingTiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
               return (
                 <div
                   key={tier.name}
-                  className={`lift-hover relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 ${
+                  className={`lift-hover relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 lg:p-6 ${
                     tier.featured ? "flow-edge border-t-2 border-t-ink lg:-mt-px" : ""
                   }`}
                 >
@@ -75,7 +75,7 @@ export default function PricingPage() {
                   </h3>
 
                   <div className="mt-5 flex items-baseline gap-2">
-                    <span className="text-ink text-4xl font-semibold tracking-[-0.03em]">
+                    <span className="text-ink text-4xl font-semibold tracking-[-0.03em] lg:text-3xl">
                       {tier.price}
                     </span>
                     {/* VAT label — only shown next to numeric prices.
@@ -92,7 +92,7 @@ export default function PricingPage() {
 
                   <div className="bp-dim mt-5 w-full" aria-hidden />
 
-                  <p className="text-ink-dim mt-5 text-[15px] leading-[1.5]">
+                  <p className="text-ink-dim mt-5 text-[15px] leading-[1.5] lg:text-[13px]">
                     {tier.tagline}
                   </p>
 
@@ -103,7 +103,7 @@ export default function PricingPage() {
                           aria-hidden
                           className="bp-dot mt-2 shrink-0"
                         />
-                        <span className="text-ink text-[15px] leading-[1.45]">
+                        <span className="text-ink text-[15px] leading-[1.45] lg:text-[13px]">
                           {f}
                         </span>
                       </li>

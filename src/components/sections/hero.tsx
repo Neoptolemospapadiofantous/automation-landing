@@ -16,7 +16,7 @@ import { ctaClass } from "@/components/ui/button";
 const proof = [
   { v: "48h", l: "audit → written fixed scope", mark: true },
   { v: "24/7", l: "your ops keep running", mark: false },
-  { v: "60s", l: "to add the chat · from €99/mo", mark: false },
+  { v: "60s", l: "to add the chat · free to start", mark: false },
 ] as const;
 
 export function Hero() {
@@ -41,7 +41,7 @@ export function Hero() {
             We do three things: answer your website, find you customers, and
             find out what&apos;s actually working.{" "}
             <span className="text-ink font-semibold">
-              Chat from €99/mo. Everything else starts with a free audit.
+              Chat is free to start. Everything else starts with a free audit.
             </span>
           </p>
 
@@ -56,7 +56,7 @@ export function Hero() {
               href={registerUrl()}
               className={ctaClass({ variant: "ghost" })}
             >
-              Try the chat for €99
+              Try the chat, free
             </Link>
           </div>
         </div>

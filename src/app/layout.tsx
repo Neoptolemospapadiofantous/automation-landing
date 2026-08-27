@@ -32,7 +32,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat from €99/mo.";
+  "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat is free to start.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on the paper sheet.
