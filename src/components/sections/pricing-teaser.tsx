@@ -26,7 +26,7 @@ export function PricingTeaser() {
           {pricingTiers.map((tier) => (
             <div
               key={tier.name}
-              className={`bg-bg relative flex flex-col p-7 lg:p-5 ${
+              className={`bg-bg relative flex flex-col p-7 lg:p-4 xl:p-5 ${
                 tier.featured
                   ? "border-ink border-[1.5px] shadow-[6px_6px_0_var(--signal)]"
                   : "border-border-hi border"
@@ -63,7 +63,7 @@ export function PricingTeaser() {
                 href={tier.cta.href}
                 className={ctaClass({
                   variant: tier.featured ? "primary" : "ghost",
-                  className: "mt-auto w-full",
+                  className: "mt-auto w-full lg:px-3 lg:text-[12px] xl:px-6 xl:text-[13px]",
                 })}
               >
                 {tier.cta.label}

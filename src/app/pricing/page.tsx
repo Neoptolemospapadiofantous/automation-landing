@@ -67,7 +67,7 @@ export default function PricingPage() {
               return (
                 <div
                   key={tier.name}
-                  className={`lift-hover relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 lg:p-6 ${
+                  className={`lift-hover relative flex flex-col border-r border-b border-border-line bg-surface/40 p-8 lg:p-4 xl:p-6 ${
                     tier.featured ? "flow-edge border-t-2 border-t-ink lg:-mt-px" : ""
                   }`}
                 >
@@ -132,7 +132,7 @@ export default function PricingPage() {
                     href={tier.cta.href}
                     className={ctaClass({
                       variant: tier.featured ? "primary" : "ghost",
-                      className: "mt-8 w-full",
+                      className: "mt-8 w-full lg:px-3 lg:text-[12px] xl:px-6 xl:text-[13px]",
                     })}
                   >
                     {tier.cta.label}
