@@ -88,9 +88,9 @@ export default function PricingPage() {
                   )}
 
                   <span className="bp-ref text-ink-mute">{ref}</span>
-                  <h3 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
+                  <h2 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
                     {tier.name}
-                  </h3>
+                  </h2>
 
                   <div className="mt-5 flex items-baseline gap-2">
                     <span className="text-ink text-4xl font-semibold tracking-[-0.03em] lg:text-3xl">

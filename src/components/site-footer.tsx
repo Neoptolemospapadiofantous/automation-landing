@@ -1,48 +1,32 @@
+import Link from "next/link";
 import { Logo } from "./logo";
+import { siteMap, siteMapRoles } from "@/lib/content";
 import { CookieSettingsLink } from "./cookie-settings-link";
 
-type FooterLink = { label: string; href: string };
-
 /**
- * Footer columns. Every link here MUST resolve to a real page —
- * dead "#" anchors used to be a habit and broke trust on the legal
- * column especially. If a section doesn't have content yet, omit
- * the link rather than promising it.
+ * Footer columns, read from the shared site map so the footer, the header
+ * panel and the homepage index can never disagree about what we sell.
+ *
+ * Every link here MUST resolve to a real page — dead "#" anchors used to be
+ * a habit and broke trust on the legal column especially. If a section
+ * doesn't have content yet, omit the link rather than promising it.
+ *
+ * The old single "Product" column mixed four services with four chat roles
+ * and read as one undifferentiated list of eight. They are different things
+ * — one is what you buy, the other is which job the chat does — so they get
+ * their own headings.
  */
-const cols: { h: string; l: FooterLink[] }[] = [
+const cols = [
+  siteMap.services,
+  siteMapRoles,
   {
-    h: "Product",
-    l: [
-      { label: "Cold outreach", href: "/outreach" },
-      { label: "What works", href: "/what-works" },
-      { label: "Lead qualification", href: "/roles/lead-qualification" },
-      { label: "Sales", href: "/roles/sales" },
-      { label: "Customer support", href: "/roles/customer-support" },
-      { label: "Onboarding", href: "/roles/onboarding" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Custom build", href: "/audit" },
+    heading: siteMap.company.heading,
+    items: [
+      ...siteMap.company.items,
+      { href: "/audit", label: "Book the audit", desc: "" },
     ],
   },
-  {
-    h: "Legal",
-    l: [
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
-      { label: "Security", href: "/security" },
-      { label: "DPA", href: "/dpa" },
-    ],
-  },
-  {
-    h: "Company",
-    l: [
-      {
-        label: "LinkedIn",
-        href: "https://www.linkedin.com/in/neoptolemos-papadiofantous",
-      },
-      { label: "hello@flowstack.run", href: "mailto:hello@flowstack.run" },
-      { label: "Book the audit", href: "/audit" },
-    ],
-  },
+  siteMap.legal,
 ];
 
 const titleBlock = [
@@ -89,7 +73,9 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-[320px_1fr] lg:gap-x-16">
           {/* Identity block */}
           <div className="max-w-[320px]">
-            <Logo />
+            <Link href="/" aria-label="Flowstack home">
+              <Logo />
+            </Link>
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
               We answer your website, find you customers, and put your
               numbers in one place. Built to order, on the tools you already
@@ -101,19 +87,19 @@ export function SiteFooter() {
           </div>
 
           {/* Link columns — hairline-divided grid, shared 1px borders, no gaps */}
-          <div className="border-border-line grid grid-cols-1 border-t border-l sm:grid-cols-3">
+          <div className="border-border-line grid grid-cols-1 border-t border-l sm:grid-cols-2 lg:grid-cols-4">
             {cols.map((c) => (
               <div
-                key={c.h}
+                key={c.heading}
                 className="border-border-line border-r border-b px-5 py-5"
               >
                 <h2 className="bp-ref text-ink-mute mb-4 flex items-center gap-2">
                   <span aria-hidden className="bp-dot" />
-                  {c.h}
+                  {c.heading}
                 </h2>
                 <ul className="space-y-1">
-                  {c.l.map((item) => (
-                    <li key={item.label}>
+                  {c.items.map((item) => (
+                    <li key={item.href}>
                       <a
                         href={item.href}
                         className="text-ink-dim hover:text-ink inline-flex min-h-[24px] items-center font-mono text-[13px] tracking-[0.04em] transition-colors"

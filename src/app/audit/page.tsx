@@ -82,9 +82,9 @@ export default function AuditPage() {
                   </span>
                   <span className="bp-dim flex-1" aria-hidden />
                 </div>
-                <h3 className="text-ink mt-5 text-xl font-semibold tracking-[-0.02em]">
+                <h2 className="text-ink mt-5 text-xl font-semibold tracking-[-0.02em]">
                   {e.title}
-                </h3>
+                </h2>
                 <p className="text-ink-dim mt-3 text-[15px] leading-[1.55]">
                   {e.body}
                 </p>

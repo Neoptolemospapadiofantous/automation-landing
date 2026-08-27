@@ -3,15 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav } from "@/lib/content";
+import { siteMap, siteMapRoles } from "@/lib/content";
 import { loginUrl } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 
 /**
  * Phone-only nav menu. Below `lg` the inline <NavLinks /> is hidden and
  * below `sm` the Login link is hidden too — so on a phone the bar would
- * otherwise show only the logo + the primary CTA, leaving Pricing /
- * Custom build / Login unreachable. This hamburger surfaces them.
+ * otherwise show only the logo + the primary CTA, leaving every page
+ * unreachable from the top of the screen. This hamburger surfaces them.
+ *
+ * It carries the SAME groups as the desktop panel and the footer, read from
+ * the shared site map, so a phone is never shown a smaller site than a
+ * laptop. Scrolls internally: nine links plus headings can exceed a short
+ * viewport in landscape.
  *
  * Hidden at `lg+` where the inline nav already covers the links.
  */
@@ -87,24 +92,32 @@ export function MobileMenu() {
           />
           <div
             id="mobile-nav-panel"
-            className="border-border-hi bg-bg-elev absolute left-0 right-0 top-full z-50 flex flex-col border border-t-0 px-4 py-2 shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+            className="border-border-hi bg-bg-elev absolute left-0 right-0 top-full z-50 flex max-h-[calc(100vh-var(--nav-h,64px))] flex-col overflow-y-auto overscroll-contain border border-t-0 px-4 py-2 shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
           >
-            {nav.links.map((l) => {
-              const active = pathname === l.href;
-              return (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "border-border-line/60 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
-                    active ? "text-ink" : "text-ink-dim hover:text-ink",
-                  )}
-                >
-                  {l.label}
-                </Link>
-              );
-            })}
+            {[siteMap.services, siteMapRoles].map((g) => (
+              <div key={g.heading} className="py-1">
+                <span className="text-ink-mute mt-2 block font-mono text-[10px] tracking-[0.22em] uppercase">
+                  {g.heading}
+                </span>
+                {g.items.map((it) => {
+                  const active = pathname === it.href;
+                  return (
+                    <Link
+                      key={it.href}
+                      href={it.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "border-border-line/60 flex items-center gap-2 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
+                        active ? "text-ink" : "text-ink-dim hover:text-ink",
+                      )}
+                    >
+                      <span className="bp-dot shrink-0" aria-hidden />
+                      {it.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
             <Link
               href={loginUrl()}
               className="text-ink-dim hover:text-ink py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors sm:hidden"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { rolePages } from "@/lib/content";
+import { siteMap, siteMapRoles, type SiteLink } from "@/lib/content";
 
 /**
  * S/08 — the sheet index: every page on this site, in one place, each
@@ -15,28 +15,6 @@ import { rolePages } from "@/lib/content";
  * which is where people look for them, and putting them in a band about
  * what we sell would dilute it.
  */
-const services = [
-  {
-    href: "/pricing",
-    name: "Chat plans",
-    desc: "What the chat costs. Free, then €9 to €39 a month.",
-  },
-  {
-    href: "/outreach",
-    name: "Cold outreach",
-    desc: "We find companies that fit you and email them in your voice.",
-  },
-  {
-    href: "/what-works",
-    name: "What works",
-    desc: "Your numbers in one dashboard, and the tests behind them.",
-  },
-  {
-    href: "/audit",
-    name: "Custom build",
-    desc: "Free 30-minute call, written price in 48 hours.",
-  },
-] as const;
 
 function IndexList({
   heading,
@@ -45,7 +23,7 @@ function IndexList({
 }: {
   heading: string;
   note: string;
-  items: readonly { href: string; name: string; desc: string }[];
+  items: readonly SiteLink[];
 }) {
   return (
     <div>
@@ -64,7 +42,7 @@ function IndexList({
             >
               <span className="flex flex-col gap-1">
                 <span className="text-ink font-semibold tracking-[-0.01em]">
-                  {it.name}
+                  {it.label}
                 </span>
                 <span className="text-ink-dim max-w-[46ch] text-[14px] leading-[1.5]">
                   {it.desc}
@@ -85,12 +63,6 @@ function IndexList({
 }
 
 export function SiteIndex() {
-  const roles = rolePages.map((r) => ({
-    href: `/roles/${r.slug}`,
-    name: r.name,
-    desc: r.desc,
-  }));
-
   return (
     <section id="index" className="relative pb-24">
       <div className="mx-auto max-w-[1280px] px-6">
@@ -109,13 +81,13 @@ export function SiteIndex() {
         <div className="mt-10 grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-2">
           <IndexList
             heading="What we sell"
-            note="// four pages"
-            items={services}
+            note={siteMap.services.note}
+            items={siteMap.services.items}
           />
           <IndexList
-            heading="The chat, by job"
-            note="// same product, four jobs"
-            items={roles}
+            heading={siteMapRoles.heading}
+            note={siteMapRoles.note}
+            items={siteMapRoles.items}
           />
         </div>
       </div>

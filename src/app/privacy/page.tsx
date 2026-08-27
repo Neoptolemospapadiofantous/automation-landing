@@ -4,7 +4,7 @@ import { LegalDoc, type LegalSection } from "@/components/legal/legal-doc";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Flowstack collects, uses, shares, retains and protects personal data.",
+    "How Flowstack collects, uses, shares, retains and protects personal data — what we hold, why we hold it, how long for, and the rights you can exercise.",
   alternates: { canonical: "/privacy" },
 };
 

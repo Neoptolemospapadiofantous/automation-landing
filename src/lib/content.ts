@@ -1,23 +1,94 @@
 import { registerUrl } from "./dashboard";
 
 /**
- * Primary nav. Four items is the ceiling: at the `lg` breakpoint where these
- * first appear there is ~112px of slack in the header row, and a fifth link
- * costs ~105px — so this list trades rather than grows.
+ * THE SITE MAP — one source for the header dropdown, the mobile menu, the
+ * footer columns and the homepage index band.
  *
- * `Product` (/#agents) and `How it works` (/#pipeline) were homepage anchors;
- * they became the two service pages on 2026-08-12, so the nav names what we
- * sell instead of pointing at scroll positions. The roles those anchors led to
- * are still linked from the footer and reachable on the homepage itself.
+ * These four surfaces used to be four hand-kept lists, and they had already
+ * drifted: the role pages sat in the footer and nowhere in the header, so a
+ * visitor on a desktop could not reach half the product from the top of the
+ * page. Anything added here appears in all four places at once.
+ *
+ * `roles` is derived from rolePages further down, so a new role never has to
+ * be registered in a second list.
+ */
+export type SiteLink = { href: string; label: string; desc: string };
+
+export const siteMap = {
+  services: {
+    heading: "Services",
+    note: "// what we sell",
+    items: [
+      {
+        href: "/pricing",
+        label: "Chat plans",
+        desc: "What the chat costs. Free, then €9 to €39 a month.",
+      },
+      {
+        href: "/outreach",
+        label: "Cold outreach",
+        desc: "We find companies that fit you and email them in your voice.",
+      },
+      {
+        href: "/what-works",
+        label: "What works",
+        desc: "Your numbers in one dashboard, and the tests behind them.",
+      },
+      {
+        href: "/audit",
+        label: "Custom build",
+        desc: "Free 30-minute call, written price in 48 hours.",
+      },
+    ] satisfies SiteLink[],
+  },
+  company: {
+    heading: "Company",
+    note: "// talk to us",
+    items: [
+      {
+        href: "https://www.linkedin.com/in/neoptolemos-papadiofantous",
+        label: "LinkedIn",
+        desc: "What we are shipping, in public.",
+      },
+      {
+        href: "mailto:hello@flowstack.run",
+        label: "hello@flowstack.run",
+        desc: "A human reads this one.",
+      },
+    ] satisfies SiteLink[],
+  },
+  legal: {
+    heading: "Legal",
+    note: "// in force",
+    items: [
+      { href: "/privacy", label: "Privacy", desc: "What we collect and why." },
+      { href: "/terms", label: "Terms", desc: "The agreement you are on." },
+      { href: "/security", label: "Security", desc: "How your data is held." },
+      { href: "/dpa", label: "DPA", desc: "Our data processing agreement." },
+    ] satisfies SiteLink[],
+  },
+} as const;
+
+/**
+ * Primary nav bar.
+ *
+ * FOUR ITEMS IS STILL THE CEILING — at the `lg` breakpoint where these first
+ * appear there is ~112px of slack in the header row and a fifth link costs
+ * ~105px. That is why the full set is reached through the `Services` panel
+ * rather than by growing this list: the bar keeps the two highest-intent
+ * destinations one click away, and the panel holds everything else.
  */
 export const nav = {
+  /** The item that opens the structured panel. */
+  menuLabel: "Services",
+  /** Flat items to the right of the panel trigger. */
   links: [
-    { href: "/outreach", label: "Outreach" },
     { href: "/what-works", label: "What works" },
     { href: "/audit", label: "Custom build" },
     { href: "/pricing", label: "Pricing" },
   ],
 };
+
 
 /**
  * Per-role landing pages (/roles/{slug}) — the single source for both
@@ -176,6 +247,23 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
   slug,
   available: true,
 }));
+
+/**
+ * The roles group of the site map — derived, so adding a role to `rolePages`
+ * puts it in the header panel, the mobile menu, the footer and the homepage
+ * index with no second edit.
+ */
+export const roleLinks: SiteLink[] = rolePages.map((r) => ({
+  href: `/roles/${r.slug}`,
+  label: r.name,
+  desc: r.desc,
+}));
+
+export const siteMapRoles = {
+  heading: "The chat, by job",
+  note: "// same product, four jobs",
+  items: roleLinks,
+};
 
 /**
  * What we build for you — the service catalogue, shared by the homepage
