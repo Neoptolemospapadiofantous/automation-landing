@@ -153,7 +153,7 @@ export function AuditForm() {
                   the{" "}
                   <Link
                     href="/privacy"
-                    className="text-ink underline-offset-4 hover:underline"
+                    className="text-ink inline-block py-1 underline-offset-4 hover:underline"
                   >
                     Privacy Policy
                   </Link>

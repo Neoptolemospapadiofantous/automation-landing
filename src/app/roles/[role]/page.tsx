@@ -233,7 +233,7 @@ export default async function RolePage({
                 </Link>
                 <Link
                   href="/pricing"
-                  className="text-ink-dim hover:text-ink font-mono text-[12px] tracking-[0.08em] uppercase transition-colors"
+                  className="text-ink-dim hover:text-ink inline-block py-2 font-mono text-[12px] tracking-[0.08em] uppercase transition-colors"
                 >
                   Full pricing →
                 </Link>
