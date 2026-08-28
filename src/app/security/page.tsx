@@ -17,8 +17,10 @@ const sections: LegalSection[] = [
         <p>
           The agent platform is a Laravel application that operates its
           own conversational runtime, calling large-language-model
-          providers (Anthropic by default; OpenAI; optionally Google
-          paid-tier) server-side through a single internal contract.
+          providers server-side through a single internal contract.
+          OpenAI is the only provider serving live traffic today; the
+          Claude and Gemini tiers are disabled in production and receive
+          no data.
           Customers never reach a model provider directly; provider
           API credentials are held platform-side only and are never
           exposed in browsers, logs, or source control.
@@ -48,8 +50,10 @@ const sections: LegalSection[] = [
       <>
         <ul>
           <li>
-            <strong>In transit</strong> — TLS on every public endpoint;
-            HSTS enforced on the marketing site and the agent dashboard.
+            <strong>In transit</strong> — TLS on every public endpoint.
+            HSTS is enforced on the marketing site
+            (<code>max-age</code> two years, includeSubDomains, preload);
+            it is not yet set on the agent dashboard.
           </li>
           <li>
             <strong>At rest</strong> — provided by the hosting database
@@ -173,9 +177,11 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Personal-data breaches are notified to affected Customers
-        without undue delay and in any event within 72 hours of
-        confirmation, per GDPR Articles 33–34 and the{" "}
-        <a href="/dpa">DPA</a>. A formal written incident-response
+        without undue delay and in any event within forty-eight hours of
+        becoming aware, per the <a href="/dpa">DPA §9</a>. That window is
+        deliberately tighter than the seventy-two hours GDPR Article 33
+        then allows the Customer, as controller, to notify its own
+        supervisory authority. A formal written incident-response
         runbook is in development and will be referenced here once it
         ships; we do not claim one is in force today.
       </p>
