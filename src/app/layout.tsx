@@ -30,7 +30,24 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const TITLE_DEFAULT = `${BRAND.name} — ${BRAND.tagline}`;
+/**
+ * Two titles, deliberately different.
+ *
+ * TITLE_HOME is the homepage <title> — what Google prints and what a
+ * browser tab shows. The tagline version ran to 76 characters, so
+ * "Answer every inbound." was cut off in results, and the words that
+ * survived were brand poetry rather than anything anyone searches for.
+ * This one is 58, leads with the three things we sell, and ends on the
+ * brand like the `%s — Flowstack` template every other page uses.
+ *
+ * TITLE_SOCIAL keeps the canonical tagline for OG and Twitter cards,
+ * where there is no 60-character guillotine and the line is doing brand
+ * work next to the OG image that renders the same three beats. The
+ * tagline itself (BRAND.tagline, SHARED.md §3.4) is untouched and still
+ * drives OG, JSON-LD, the manifest and llms.txt.
+ */
+const TITLE_HOME = "Website chat, cold outreach and live reporting — Flowstack";
+const TITLE_SOCIAL = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
   "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat is free to start.";
 
@@ -46,7 +63,7 @@ export const metadata: Metadata = {
   title: {
     // Per-page metadata can pass a string to use the template, or a
     // string-with-the-brand-already-attached to override entirely.
-    default: TITLE_DEFAULT,
+    default: TITLE_HOME,
     template: `%s — ${BRAND.name}`,
   },
   description: DESCRIPTION,
@@ -86,7 +103,7 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     locale: BRAND.locale,
     url: SITE_URL,
-    title: TITLE_DEFAULT,
+    title: TITLE_SOCIAL,
     description: DESCRIPTION,
     // The image referenced here is supplied by `src/app/opengraph-image.tsx`
     // — Next generates the route and the metadata entry automatically.
@@ -95,7 +112,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: BRAND.twitter,
     creator: BRAND.twitter,
-    title: TITLE_DEFAULT,
+    title: TITLE_SOCIAL,
     description: DESCRIPTION,
   },
   // Verification placeholders — populate when the search-console
