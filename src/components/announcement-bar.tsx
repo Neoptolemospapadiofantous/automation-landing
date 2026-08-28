@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { registerUrl } from "@/lib/dashboard";
 
 /**
  * Status announcement bar — a static "we're open" notice plus the primary
@@ -57,18 +55,6 @@ export function AnnouncementBar() {
           </span>
         </div>
 
-        {/* CTA — full inversion on hover, idle arrow nudge. Hidden on
-            phones: the nav directly below carries the same CTA, and a
-            second full-width yellow row doubled the sticky header. */}
-        <Link
-          href={registerUrl()}
-          className="group hover:bg-bg hover:text-ink hidden items-center justify-center gap-3 px-5 py-3 font-mono font-bold transition-colors sm:inline-flex"
-        >
-          <span>Start free</span>
-          <span aria-hidden className="ann-arrow inline-block">
-            →
-          </span>
-        </Link>
       </div>
     </div>
   );
