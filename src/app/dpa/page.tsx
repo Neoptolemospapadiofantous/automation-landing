@@ -51,10 +51,11 @@ const sections: LegalSection[] = [
           <strong>Subject matter</strong> — provision of the Flowstack
           AI-agent platform to Controller. The Platform operates its
           own conversational runtime that calls large-language-model
-          providers (Anthropic by default; OpenAI; optionally Google
-          paid-tier) server-side through a single internal contract;
-          model providers act as sub-processors and never interact
-          with end-users directly.
+          providers server-side through a single internal contract;
+          model providers act as sub-processors and never interact with
+          end-users directly. OpenAI is the only provider serving live
+          traffic today — see <a href="#section-7">§7</a> for the full
+          list and the status of each.
         </li>
         <li>
           <strong>Nature and purpose</strong> — hosting, processing and
@@ -141,23 +142,17 @@ const sections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>Anthropic, PBC (United States)</strong> — LLM
-            inference (Claude tier). Conversation content. DPA on file.
-            Transfer mechanism:{" "}
-            <Tbc note="verify SCCs vs DPF status at publication" />.
+            <strong>DigitalOcean, LLC</strong> — application and
+            database hosting, Amsterdam (AMS3), Netherlands. All
+            Customer Data at rest. Processed inside the EEA; no
+            transfer mechanism required.
           </li>
           <li>
             <strong>OpenAI, LLC (United States)</strong> — LLM
-            inference (ChatGPT tier) and knowledge-base embeddings.
-            Conversation content and knowledge-base text. DPA on file.
+            inference and knowledge-base embeddings. Conversation
+            content and knowledge-base text. This is the only model
+            provider currently serving live traffic. DPA on file.
             Transfer mechanism:{" "}
-            <Tbc note="verify SCCs vs DPF status at publication" />.
-          </li>
-          <li>
-            <strong>Google LLC (United States)</strong> — LLM inference
-            (Gemini tier, optional). Paid tier only — the free tier
-            trains on data and is contractually excluded. Conversation
-            content. Transfer mechanism:{" "}
             <Tbc note="verify SCCs vs DPF status at publication" />.
           </li>
           <li>
@@ -166,36 +161,48 @@ const sections: LegalSection[] = [
             identity; no conversation data. SCCs under Stripe DPA.
           </li>
           <li>
-            <strong>Pusher Ltd (United Kingdom / United States)</strong>{" "}
-            — real-time WebSocket delivery for the dashboard UI. Lead
-            identifiers and message snippets in broadcast payloads. EU
-            cluster available on request. Transfer mechanism:{" "}
-            <Tbc note="UK adequacy decision + SCCs as applicable" />.
+            <strong>Resend (Plus Five Five, Inc., United States)</strong>{" "}
+            — transactional email, primary. Email addresses and
+            notification content. Transfer mechanism:{" "}
+            <Tbc note="verify SCCs vs DPF status at publication" />.
           </li>
           <li>
             <strong>Amazon Web Services, Inc.</strong> — transactional
-            email (SES). Email addresses and notification content.{" "}
-            <Tbc note="confirm SES region" />.
+            email (SES), failover only, region eu-central-1 (Frankfurt,
+            Germany). Email addresses and notification content.
+            Processed inside the EEA.
+          </li>
+          <li>
+            <strong>Anthropic, PBC (United States)</strong> and{" "}
+            <strong>Google LLC (United States)</strong> — LLM inference,
+            <em>not currently engaged</em>. The Claude and Gemini tiers
+            are disabled in production and no Customer Data reaches
+            either provider. They are listed so that re-enabling a tier
+            is a sub-processor change you have already been notified of,
+            not a silent one. Transfer mechanism on re-engagement:{" "}
+            <Tbc note="verify SCCs vs DPF status at publication" />.
           </li>
           <li>
             <strong>Typesense (optional, currently off)</strong> —
             knowledge-base search. Message text only when enabled.
             Database fallback in use today.
           </li>
-          <li>
-            <strong>Hosting / infrastructure</strong> —{" "}
-            <Tbc note="confirm provider + region before publication" />.
-          </li>
         </ul>
         <p>
-          The marketing site (flowstack.com) additionally uses Google
+          Real-time delivery to the dashboard runs on self-hosted
+          Laravel Reverb on the infrastructure above — there is no
+          third-party WebSocket provider, and no Customer Data leaves
+          that boundary for it.
+        </p>
+        <p>
+          The marketing site (flowstack.run) additionally uses Google
           Analytics 4 (Google Ireland Limited) under explicit visitor
           consent; this is outside Customer Data and is documented in
           the <a href="/privacy">Privacy Policy §4</a>.
         </p>
         <p>
           Processor will give Controller at least{" "}
-          <Tbc note="N days, e.g. 30" /> notice of any addition or
+          thirty days notice of any addition or
           replacement, during which Controller may object on reasonable
           data-protection grounds. Processor flows down the
           data-protection obligations in this DPA to every
@@ -226,7 +233,7 @@ const sections: LegalSection[] = [
       <p>
         Processor will notify Controller without undue delay and in any
         event within{" "}
-        <Tbc note="N hours, e.g. 48" /> of becoming aware of a
+        forty-eight hours of becoming aware of a
         personal-data breach affecting Controller&apos;s personal data,
         with the information required by GDPR Art. 33(3) as soon as
         available. The parties will cooperate in good faith to
@@ -282,7 +289,7 @@ const sections: LegalSection[] = [
         On termination of the underlying subscription, Processor will,
         at Controller&apos;s choice, return or delete all personal data
         within{" "}
-        <Tbc note="N days, e.g. 30" /> and confirm in writing, except
+        thirty days and confirm in writing, except
         where retention is required by applicable law. Backups
         containing personal data are deleted on rotation per the
         retention schedule on the{" "}

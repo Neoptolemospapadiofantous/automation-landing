@@ -78,12 +78,15 @@ const sections: LegalSection[] = [
           </li>
           <li>
             We may change the price for a future billing period with at
-            least <Tbc note="N days, e.g. 30" /> notice by email.
+            least thirty days’ notice by email.
           </li>
           <li>
             Custom build fees are quoted on the order form and invoiced
             on the schedule set there. Late payment interest accrues at{" "}
-            <Tbc note="rate, e.g. statutory" />.
+            the statutory rate for commercial
+            transactions under Cyprus Law 73(I)/2012, which implements EU
+            Directive 2011/7/EU (the European Central Bank reference rate
+            plus eight percentage points).
           </li>
         </ul>
       </>
@@ -171,8 +174,8 @@ const sections: LegalSection[] = [
         We aim for high availability but do not currently offer a
         contractual SLA on the self-serve plans. For custom build
         engagements and enterprise terms, availability targets and
-        remedies are set in the order form.{" "}
-        <Tbc note="confirm whether a public uptime page or SLA exists" />
+        remedies are set in the order form. We do not publish a status
+        page today.
       </p>
     ),
   },
@@ -223,7 +226,7 @@ const sections: LegalSection[] = [
         To the maximum extent permitted by law, each party&apos;s total
         aggregate liability arising under or in connection with these
         Terms is capped at the fees paid by Customer in the{" "}
-        <Tbc note="12 months, typical" /> preceding the event giving
+        twelve months preceding the event giving
         rise to liability. Neither party is liable for indirect or
         consequential losses, loss of profits, revenue, goodwill or
         anticipated savings. Nothing limits liability that cannot be
@@ -263,7 +266,7 @@ const sections: LegalSection[] = [
           </li>
           <li>
             We may terminate for material breach not cured within{" "}
-            <Tbc note="N days, e.g. 30" /> of written notice, or
+            thirty days of written notice, or
             immediately for severe acceptable-use violations.
           </li>
           <li>
@@ -296,7 +299,7 @@ const sections: LegalSection[] = [
       <p>
         We may update these Terms from time to time. Material changes
         are notified by email at least{" "}
-        <Tbc note="N days, e.g. 30" /> before they take effect.
+        thirty days before they take effect.
         Continued use after that date constitutes acceptance.
       </p>
     ),

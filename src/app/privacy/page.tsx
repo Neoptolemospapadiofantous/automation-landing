@@ -74,8 +74,7 @@ const sections: LegalSection[] = [
           </li>
           <li>
             <strong>Billing data</strong> — processed by our payment
-            provider (<Tbc note="Stripe / other" />
-            ); we receive the minimum needed to issue invoices and
+            provider (Stripe); we receive the minimum needed to issue invoices and
             reconcile payments.
           </li>
         </ul>
@@ -124,8 +123,9 @@ const sections: LegalSection[] = [
           not sell personal data, and we do not use your data or your
           visitors&apos; conversations to train AI models — our model
           providers are bound by their commercial terms not to train on
-          API data (Google&apos;s free tier is contractually excluded
-          for that reason; we use the paid tier only).
+          API data. Where a provider offers a free tier that does train
+          on submitted data, that tier is contractually excluded and
+          never used.
         </p>
       </>
     ),
@@ -144,19 +144,20 @@ const sections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            <strong>LLM inference</strong> — Anthropic (United States)
-            for the default Claude tier; OpenAI (United States) for the
-            ChatGPT tier and for knowledge-base embeddings; Google
-            (United States) for the optional Gemini tier (paid only —
-            the free tier trains on data and is contractually
-            excluded). Model providers process chat content; we never
-            send our visitors&apos; identifiers beyond what the chat
-            content itself contains.
+            <strong>LLM inference</strong> — OpenAI (United States),
+            for chat replies and knowledge-base embeddings. This is the
+            only model provider serving live traffic; the Claude and
+            Gemini tiers are disabled in production and receive no data
+            (<a href="/dpa">DPA §7</a> lists them so that re-enabling one
+            is a change you have been notified of). Model providers
+            process chat content; we never send our visitors&apos;
+            identifiers beyond what the chat content itself contains.
           </li>
           <li>
-            <strong>Real-time UI events</strong> — Pusher (United
-            Kingdom / United States) for the dashboard&apos;s live
-            updates. EU cluster available.
+            <strong>Real-time UI events</strong> — handled by
+            self-hosted Laravel Reverb on our own infrastructure. No
+            third-party WebSocket provider is involved and no data
+            leaves that boundary for it.
           </li>
           <li>
             <strong>Payments</strong> — Stripe (United States / Ireland).
@@ -164,8 +165,9 @@ const sections: LegalSection[] = [
             card numbers.
           </li>
           <li>
-            <strong>Transactional email</strong> — Amazon Web Services
-            SES <Tbc note="confirm SES region in use" />.
+            <strong>Transactional email</strong> — Resend (primary) with
+            Amazon Web Services SES as failover, region eu-central-1
+            (Frankfurt, Germany).
           </li>
           <li>
             <strong>Search (optional)</strong> — Typesense for
@@ -173,8 +175,9 @@ const sections: LegalSection[] = [
             in use.
           </li>
           <li>
-            <strong>Hosting / infrastructure</strong>{" "}
-            <Tbc note="provider, region — confirm before publication" />.
+            <strong>Hosting / infrastructure</strong> — DigitalOcean,
+            Amsterdam (AMS3), Netherlands. Application, database and
+            uploaded files all sit inside the EEA.
           </li>
           <li>
             <strong>Website analytics</strong> — Google Analytics 4
@@ -200,7 +203,7 @@ const sections: LegalSection[] = [
           (SCCs, 2021/914) together with a Transfer Impact Assessment
           per EDPB Recommendations 01/2020, and any necessary
           supplementary measures.{" "}
-          <Tbc note="verify per-provider SCC vs DPF status at publication — Anthropic, OpenAI, Google, Stripe, Pusher, AWS" />
+          <Tbc note="verify SCC vs DPF status at publication — OpenAI, Stripe, Resend" />
         </p>
       </>
     ),
@@ -214,22 +217,22 @@ const sections: LegalSection[] = [
           <li>
             <strong>Account data</strong> — for the duration of your
             subscription and{" "}
-            <Tbc note="N years" /> thereafter, for billing,
+            seven years thereafter, for billing,
             audit and dispute purposes.
           </li>
           <li>
             <strong>Inquiry data</strong> from the audit form —{" "}
-            <Tbc note="N months, e.g. 12" /> from last contact, then
+            twelve months from last contact, then
             deleted unless you become a customer.
           </li>
           <li>
             <strong>Customer content</strong> — retained per the
             instructions you set in the platform; deleted within{" "}
-            <Tbc note="N days, e.g. 30" /> of subscription termination.
+            thirty days of subscription termination.
           </li>
           <li>
             <strong>Server logs</strong> —{" "}
-            <Tbc note="N days, e.g. 30" />, longer where needed for
+            thirty days, longer where needed for
             security investigations.
           </li>
         </ul>
@@ -412,7 +415,7 @@ const sections: LegalSection[] = [
       <p>
         We will update this policy as the product evolves. Material
         changes will be notified by email to active customers at least{" "}
-        <Tbc note="N days, e.g. 30" /> before they take effect. The
+        thirty days before they take effect. The
         Effective date at the top of this page indicates the most
         recent version.
       </p>

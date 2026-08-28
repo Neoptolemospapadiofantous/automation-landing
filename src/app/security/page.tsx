@@ -8,10 +8,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/security" },
 };
 
-const Tbc = ({ note }: { note: string }) => (
-  <span className="tbc">[TBC · {note}]</span>
-);
-
 const sections: LegalSection[] = [
   {
     ref: "§1",
@@ -32,8 +28,10 @@ const sections: LegalSection[] = [
           Next.js application served from its own host; it holds no
           customer data and calls no model providers — see the{" "}
           <a href="/dpa">DPA</a> for the full sub-processor list and the
-          deploy guide for the operational shape.{" "}
-          <Tbc note="confirm hosting provider + region(s)" />
+          deploy guide for the operational shape. Both run on
+          DigitalOcean droplets in Amsterdam (AMS3), Netherlands; the
+          application database sits on the same private host as the
+          application and is not exposed to the public internet.
         </p>
         <p>
           Each customer team is logically isolated; cross-tenant data
@@ -56,8 +54,9 @@ const sections: LegalSection[] = [
           <li>
             <strong>At rest</strong> — provided by the hosting database
             (provider-managed; we do not implement application-layer
-            encryption at this time).{" "}
-            <Tbc note="confirm host-provided encryption + key management once hosting target is finalised" />
+            encryption at this time). Disk encryption and key
+            management are handled by DigitalOcean at the block-storage
+            layer.
           </li>
           <li>
             <strong>Credentials</strong> — provider API keys and
@@ -104,14 +103,31 @@ const sections: LegalSection[] = [
     ref: "§4",
     title: "Backups and disaster recovery",
     body: (
-      <p>
-        Primary databases are backed up{" "}
-        <Tbc note="frequency, e.g. daily" /> with retention of{" "}
-        <Tbc note="N days, e.g. 30" />. Restore is tested{" "}
-        <Tbc note="cadence, e.g. quarterly" />. Recovery point and
-        recovery time objectives:{" "}
-        <Tbc note="RPO / RTO targets" />.
-      </p>
+      <>
+        <p>
+          The production database is dumped nightly at 02:17 UTC, with a
+          consistent-snapshot dump that does not lock the running site.
+          Dumps are compressed, stored with owner-only permissions on the
+          application host, and pruned after thirty days.
+        </p>
+        <p>
+          Restores are verified by loading the most recent dump into a
+          scratch database and comparing table and row counts against
+          production — never over the live database. The recovery point
+          objective follows from the nightly schedule: at most
+          twenty-four hours of data. We do not publish a recovery time
+          objective, because we do not offer a contractual availability
+          commitment on self-serve plans (see{" "}
+          <a href="/terms">Terms §8</a>); a measured restore of the
+          current database completes in under a minute.
+        </p>
+        <p>
+          Backups live on the same host as the application today, which
+          protects against data loss from application faults and
+          operator error, not against loss of the host itself.
+          Off-host replication is not yet in place.
+        </p>
+      </>
     ),
   },
   {
@@ -129,8 +145,8 @@ const sections: LegalSection[] = [
           six hours.
         </li>
         <li>
-          OS and runtime base images are rebuilt{" "}
-          <Tbc note="cadence — confirm once hosting target is fixed" />.
+          OS packages are patched on the host through the distribution
+          security channel; we do not run immutable rebuilt images.
         </li>
         <li>
           External penetration test: not yet — planned post-launch.
@@ -221,8 +237,8 @@ const sections: LegalSection[] = [
         </a>
         . Please give us a reasonable window to investigate and fix
         before public disclosure; we will not pursue legal action
-        against good-faith researchers who follow this policy. Bounty
-        programme: <Tbc note="confirm whether one exists" />.
+        against good-faith researchers who follow this policy. We do not
+        run a paid bug-bounty programme.
       </p>
     ),
   },
