@@ -56,7 +56,9 @@ const sections: LegalSection[] = [
             (provider-managed; we do not implement application-layer
             encryption at this time). Disk encryption and key
             management are handled by DigitalOcean at the block-storage
-            layer.
+            layer. Database backups are the exception: those are
+            encrypted by us, with a key the server does not hold (see
+            §4).
           </li>
           <li>
             <strong>Credentials</strong> — provider API keys and
@@ -122,10 +124,21 @@ const sections: LegalSection[] = [
           current database completes in under a minute.
         </p>
         <p>
-          Backups live on the same host as the application today, which
-          protects against data loss from application faults and
-          operator error, not against loss of the host itself.
-          Off-host replication is not yet in place.
+          Every dump is encrypted before it touches disk, to a public key
+          whose private half is held off the server. The application host
+          can write new backups but cannot read any of them, including
+          its own — so a compromise of the server does not hand over its
+          backup history.
+        </p>
+        <p>
+          Encrypted dumps are replicated nightly to separate
+          infrastructure under our control, inside the EEA, and kept
+          there for ninety days against thirty on the server. The copy is
+          <em>pulled</em> by the destination rather than pushed by the
+          server, so the server holds no credential that could be used to
+          reach in and delete the off-host history. Each pull is verified
+          by decrypting the newest archive and confirming it is a
+          readable dump.
         </p>
       </>
     ),
