@@ -46,7 +46,7 @@ export const siteMap = {
     note: "// talk to us",
     items: [
       {
-        href: "https://www.linkedin.com/in/neoptolemos-papadiofantous",
+        href: "https://www.linkedin.com/company/flowstack-run",
         label: "LinkedIn",
         desc: "What we are shipping, in public.",
       },

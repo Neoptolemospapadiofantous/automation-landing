@@ -54,7 +54,7 @@ export function HomepageJsonLd() {
         url: SITE_URL,
         logo: `${SITE_URL}/icon`,
         sameAs: [
-          "https://www.linkedin.com/in/neoptolemos-papadiofantous",
+          "https://www.linkedin.com/company/flowstack-run",
         ],
         founder: {
           "@type": "Person",
