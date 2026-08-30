@@ -70,10 +70,13 @@ const sections: LegalSection[] = [
           </li>
           <li>
             <strong>Credentials</strong> — provider API keys and
-            secrets are stored server-side only in the platform&apos;s
-            environment, never embedded in client-side code, log output,
-            source control, or transmitted to the browser. Customer
-            passwords are hashed with bcrypt.
+            secrets are stored server-side only: ours in the
+            platform&apos;s environment, and any key a customer connects
+            encrypted in the database, checked with the provider before
+            it is saved and shown afterwards only by its last four
+            characters. None are embedded in client-side code, log
+            output, source control, or transmitted to the browser.
+            Customer passwords are hashed with bcrypt.
           </li>
         </ul>
       </>
