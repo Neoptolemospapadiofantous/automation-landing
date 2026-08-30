@@ -32,9 +32,12 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
           What we build for you.
         </h2>
 
-        <p className="text-ink-dim mt-5 max-w-[54ch] leading-[1.6]">
-          The chat you can start today. Everything else, we build around your
-          stack.
+        <p className="text-ink-dim mt-5 max-w-[58ch] leading-[1.6]">
+          <span className="text-ink font-semibold">
+            None of these are part of the monthly plans.
+          </span>{" "}
+          The plans are the chat. Everything below is work we do for you,
+          scoped to your own tools and quoted before it starts.
         </p>
 
         {/* Hairline grid — one cell per service. Two columns from sm, so the

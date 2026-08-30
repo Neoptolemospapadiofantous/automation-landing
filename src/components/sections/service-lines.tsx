@@ -23,18 +23,21 @@ import Link from "next/link";
 const lines = [
   {
     name: "Chat",
+    how: "You set it up · from €0",
     desc: "Answers your website visitors, day and night.",
     href: "/pricing",
     cue: "See the plans",
   },
   {
     name: "Outreach",
+    how: "We run it for you · quoted",
     desc: "We find companies that fit you and email them in your voice.",
     href: "/outreach",
     cue: "How outreach works",
   },
   {
     name: "What works",
+    how: "We build it for you · quoted",
     desc: "Your numbers in one dashboard, plus tests that say what to change.",
     href: "/what-works",
     cue: "How the loop works",
@@ -49,7 +52,7 @@ export function ServiceLines() {
           <div>
             <span className="bp-ref">what we sell</span>
             <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-              Three services. One page each.
+              Three services. One you can start yourself.
             </h2>
           </div>
           <p className="bp-annot normal-case">Start with any one of them.</p>
@@ -65,6 +68,9 @@ export function ServiceLines() {
               <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
                 <span className="bp-dot shrink-0" aria-hidden />
                 {l.name}
+              </span>
+              <span className="bp-annot normal-case text-violet">
+                {l.how}
               </span>
               <p className="text-ink-dim max-w-[34ch] leading-[1.55]">
                 {l.desc}
