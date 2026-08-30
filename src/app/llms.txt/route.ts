@@ -34,7 +34,7 @@ const body = `# ${BRAND.name}
 - Free — €0/mo: 1 agent, any role, 250 conversation credits/month, no card required, no expiry.
 - Starter — €9/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
 - Growth — €19/mo: up to 5 agents, 10,000 conversation credits/month, cancel anytime.
-- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work.
+- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. Operator can also connect its own OpenAI or Anthropic API key: chat then runs on the customer's provider account, spends no credits, and is capped at 25,000 messages/month instead. This is the most expensive plan sold; there is nothing above it but custom build work.
 - Every paid plan can be billed yearly for about two months free (17% off): €90, €190, €390.
 - Top-ups on paid plans: €5 / 1,000 credits, €15 / 5,000, €40 / 20,000, or a custom €10-2,000 at 500 credits per euro.
 - Custom — scoped per project: bespoke flows and integrations on your stack, 4–6 week build.

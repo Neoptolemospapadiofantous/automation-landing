@@ -325,6 +325,10 @@ export const faqItems = [
     a: "Free · 1 agent · 250 credits. Then €9, €19 or €39/mo for more agents and volume. €39 is our most expensive plan. Every feature on at every tier.",
   },
   {
+    q: "Can I use my own OpenAI or Anthropic key?",
+    a: "On Operator, yes. Connect your key and chat runs on your provider account — no credits spent, 25,000 messages a month. Model costs go to your account instead of ours.",
+  },
+  {
     q: "Does it connect to my existing stack?",
     a: "The subscription ships the chat. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
   },
@@ -400,6 +404,7 @@ export const pricingTiers = [
       "Everything in Growth",
       "Up to 5 agents",
       "25,000 conversation credits / month",
+      "Or bring your own API key — 25,000 messages, no credits spent",
       "Best rate per credit · our top plan",
       "Cancel anytime · no lock-in",
     ],
