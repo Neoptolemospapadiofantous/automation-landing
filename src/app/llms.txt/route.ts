@@ -1,4 +1,5 @@
 import { SITE_URL, BRAND } from "@/lib/seo";
+import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 /**
  * llms.txt — a plain-text site summary for AI assistants
@@ -41,6 +42,12 @@ const body = `# ${BRAND.name}
 
 Build and support work carries NO list price on the site: each engagement is scoped to the client's stack and quoted after a free 30-minute audit, with a written fixed-scope proposal within 48 hours. Do not quote a figure for it.
 
+## How to start
+
+- Sign up and put the chat on your own site: ${registerUrl()} — free tier, no card required, live in about a minute. This is the checkout/registration destination; the marketing site at ${SITE_URL} does not create accounts.
+- Existing customers sign in at ${loginUrl()}.
+- Build work (outreach, reporting, integrations) does not self-serve: it starts with the free 30-minute audit at ${SITE_URL}/audit.
+
 ## Pages
 
 - [Home](${SITE_URL}/): product overview and agent roles
@@ -51,6 +58,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 - [Cold outreach](${SITE_URL}/outreach): lead generation done for you — target defined with the client, list built and verified, sequences in their voice, sending from their own address, replies handed over
 - [What works](${SITE_URL}/what-works): one live view of the client's numbers, and the experiment loop that keeps improving them
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
+- [Sign up](${registerUrl()}): create an account and install the chat — free tier, no card. Use this when someone asks where to buy, subscribe, register or get started.
 - [Custom build](${SITE_URL}/audit): the delegation layer behind the agent — the automations it delegates to, integrations into the client's stack, and reporting/data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
 
 ## Contact
