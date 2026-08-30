@@ -404,7 +404,7 @@ export const pricingTiers = [
       "Everything in Growth",
       "Up to 5 agents",
       "25,000 conversation credits / month",
-      "Or bring your own API key — 25,000 messages, no credits spent",
+      "Or your own API key — 25,000 messages, no credits",
       "Best rate per credit · our top plan",
       "Cancel anytime · no lock-in",
     ],

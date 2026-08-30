@@ -114,7 +114,7 @@ export default function PricingPage() {
                     {tier.tagline}
                   </p>
 
-                  <ul className="mt-7 space-y-3.5">
+                  <ul className="mb-8 mt-7 space-y-3.5">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <span
@@ -132,7 +132,7 @@ export default function PricingPage() {
                     href={tier.cta.href}
                     className={ctaClass({
                       variant: tier.featured ? "primary" : "ghost",
-                      className: "mt-8 w-full lg:px-3 lg:text-[12px] xl:px-6 xl:text-[13px]",
+                      className: "mt-auto w-full lg:px-3 lg:text-[12px] xl:px-6 xl:text-[13px]",
                     })}
                   >
                     {tier.cta.label}
