@@ -53,9 +53,12 @@ const sections: LegalSection[] = [
           own conversational runtime that calls large-language-model
           providers server-side through a single internal contract;
           model providers act as sub-processors and never interact with
-          end-users directly. OpenAI is the only provider serving live
-          traffic today — see <a href="#section-7">§7</a> for the full
-          list and the status of each.
+          end-users directly. OpenAI is the only provider Processor sends
+          Customer Data to on its own account. Where Controller connects
+          its own provider key, that Controller&apos;s chat runs on the
+          provider Controller chose instead — see{" "}
+          <a href="#section-7">§7</a> for the full list, the status of
+          each, and what a customer-supplied key changes.
         </li>
         <li>
           <strong>Nature and purpose</strong> — hosting, processing and
@@ -175,11 +178,14 @@ const sections: LegalSection[] = [
           <li>
             <strong>Anthropic, PBC (United States)</strong> and{" "}
             <strong>Google LLC (United States)</strong> — LLM inference,
-            <em>not currently engaged</em>. The Claude and Gemini tiers
-            are disabled in production and no Customer Data reaches
-            either provider. They are listed so that re-enabling a tier
-            is a sub-processor change you have already been notified of,
-            not a silent one. Transfer mechanism on re-engagement:{" "}
+            <em>not engaged by Processor</em>. Neither the Claude nor the
+            Gemini tier is enabled on Processor&apos;s own provider
+            accounts, and no Customer Data reaches either provider on
+            Processor&apos;s account. They stay listed so that enabling a
+            tier is a sub-processor change Controller has already been
+            notified of, not a silent one. Note this is separate from a
+            customer-supplied key, which is covered below.
+            Transfer mechanism if engaged:{" "}
             <Tbc note="verify SCCs vs DPF status at publication" />.
           </li>
           <li>
@@ -188,6 +194,21 @@ const sections: LegalSection[] = [
             Database fallback in use today.
           </li>
         </ul>
+        <p>
+          <strong>Customer-supplied provider keys.</strong> On the
+          Operator plan Controller may connect its own OpenAI or
+          Anthropic API key. Where it does, that Controller&apos;s chat
+          runs on Controller&apos;s own account with that provider, under
+          Controller&apos;s own contract with them, and Processor
+          transmits Customer Data to that provider solely on
+          Controller&apos;s instruction. In that arrangement the provider
+          is Controller&apos;s own processor rather than a sub-processor
+          of Processor, and Controller is responsible for its terms, its
+          transfer mechanism and any data-processing agreement with it.
+          Processor stores the key encrypted, uses it only to serve
+          Controller&apos;s own conversations, and stops using it when
+          Controller disconnects it.
+        </p>
         <p>
           Real-time delivery to the dashboard runs on self-hosted
           Laravel Reverb on the infrastructure above — there is no
@@ -316,8 +337,8 @@ export default function DPAPage() {
     <LegalDoc
       title="Data Processing Agreement"
       intent="GDPR Article 28 Data Processing Agreement between Flowstack (Processor) and the Customer (Controller). Annex I (subject matter) and Annex II (security measures) are filled in by the relevant sections of this document."
-      effective="2026-06-08"
-      reviewed="2026-06-08"
+      effective="2026-08-30"
+      reviewed="2026-08-30"
       sections={sections}
     />
   );

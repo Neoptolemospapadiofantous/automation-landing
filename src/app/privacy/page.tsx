@@ -125,7 +125,9 @@ const sections: LegalSection[] = [
           providers are bound by their commercial terms not to train on
           API data. Where a provider offers a free tier that does train
           on submitted data, that tier is contractually excluded and
-          never used.
+          never used. Where a customer connects its own provider key, the
+          terms that apply are the ones on that customer&apos;s own
+          account with the provider.
         </p>
       </>
     ),
@@ -146,12 +148,16 @@ const sections: LegalSection[] = [
           <li>
             <strong>LLM inference</strong> — OpenAI (United States),
             for chat replies and knowledge-base embeddings. This is the
-            only model provider serving live traffic; the Claude and
-            Gemini tiers are disabled in production and receive no data
-            (<a href="/dpa">DPA §7</a> lists them so that re-enabling one
-            is a change you have been notified of). Model providers
-            process chat content; we never send our visitors&apos;
-            identifiers beyond what the chat content itself contains.
+            only model provider we send data to on our own account; the
+            Claude and Gemini tiers are not enabled on our accounts
+            (<a href="/dpa">DPA §7</a> lists them so that enabling one is
+            a change you have been notified of). On the Operator plan a
+            customer can connect its own OpenAI or Anthropic key, and
+            that customer&apos;s chat then runs on their provider account
+            under their own contract with that provider — see{" "}
+            <a href="/dpa">DPA §7</a>. Model providers process chat
+            content; we never send our visitors&apos; identifiers beyond
+            what the chat content itself contains.
           </li>
           <li>
             <strong>Real-time UI events</strong> — handled by
@@ -428,8 +434,8 @@ export default function PrivacyPage() {
     <LegalDoc
       title="Privacy Policy"
       intent="How Flowstack collects, uses, shares, retains and protects personal data — written so a procurement team can audit it and a customer can understand it."
-      effective="2026-06-08"
-      reviewed="2026-06-08"
+      effective="2026-08-30"
+      reviewed="2026-08-30"
       sections={sections}
     />
   );

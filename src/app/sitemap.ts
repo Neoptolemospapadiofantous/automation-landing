@@ -14,7 +14,8 @@ import { rolePages } from "@/lib/content";
  */
 const LAST_MOD = "2026-08-27"; // copy simplified sitewide; homepage gained the TL;DR + index bands
 const ROLES_LAST_MOD = "2026-08-27"; // role copy simplified, TL;DR band added
-const LEGAL_LAST_MOD = "2026-07-08"; // in force; the footer/nav tweaks since are not content changes
+const LEGAL_LAST_MOD = "2026-07-08"; // terms — unchanged since it came into force
+const LEGAL_BYOK_LAST_MOD = "2026-08-30"; // privacy/security/dpa: model-provider claims scoped to our own accounts
 const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -55,9 +56,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...["privacy", "terms", "security", "dpa"].map((slug) => ({
+    ...[
+      ["privacy", LEGAL_BYOK_LAST_MOD],
+      ["terms", LEGAL_LAST_MOD],
+      ["security", LEGAL_BYOK_LAST_MOD],
+      ["dpa", LEGAL_BYOK_LAST_MOD],
+    ].map(([slug, lastMod]) => ({
       url: `${SITE_URL}/${slug}`,
-      lastModified: LEGAL_LAST_MOD,
+      lastModified: lastMod,
       changeFrequency: "yearly" as const,
       priority: 0.3,
     })),

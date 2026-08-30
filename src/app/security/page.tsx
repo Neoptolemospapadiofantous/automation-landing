@@ -18,12 +18,16 @@ const sections: LegalSection[] = [
           The agent platform is a Laravel application that operates its
           own conversational runtime, calling large-language-model
           providers server-side through a single internal contract.
-          OpenAI is the only provider serving live traffic today; the
-          Claude and Gemini tiers are disabled in production and receive
-          no data.
-          Customers never reach a model provider directly; provider
-          API credentials are held platform-side only and are never
-          exposed in browsers, logs, or source control.
+          OpenAI is the only provider we send data to on our own
+          account, and the Claude and Gemini tiers are not enabled on our
+          accounts. On the Operator plan a customer may connect its own
+          OpenAI or Anthropic key, in which case that customer&apos;s
+          chat runs on their provider account instead — see{" "}
+          <a href="/dpa">DPA §7</a>. Customers never reach a model
+          provider directly; provider API credentials — ours, and any a
+          customer connects — are held platform-side only, encrypted at
+          rest, and are never exposed in browsers, logs, or source
+          control.
         </p>
         <p>
           The marketing site (flowstack.run) is a statically prerendered
@@ -268,8 +272,8 @@ export default function SecurityPage() {
     <LegalDoc
       title="Security"
       intent="How we protect the platform, your data, and your customers' data — both the controls already in place and the ones still being formalised."
-      effective="2026-06-08"
-      reviewed="2026-06-08"
+      effective="2026-08-30"
+      reviewed="2026-08-30"
       sections={sections}
     />
   );
