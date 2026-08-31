@@ -16,11 +16,14 @@ const body = `# ${BRAND.name}
 
 > ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (free to start, paid plans €9-€39/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
 
-## Three service lines
+## What Flowstack does, end to end
 
-- Chat — answers every inbound on the client's site, qualifies it, captures the lead. Subscription, free to start, paid plans €9-€39/mo.
-- Outreach — Flowstack finds the companies the client wants as customers, writes to them in the client's voice, and hands over the replies. The client approves every word. Quoted per engagement.
-- What works — the client's numbers pulled into one live view, plus the experiment loop that keeps testing what they send and retiring what loses. Quoted per engagement.
+Flowstack is a studio, not a single product. It builds the thing, puts a chat on it, automates the work behind it, and reports on the result — a client can take one part or hand over the lot under one quote.
+
+- Build — websites, dashboards and internal tools, built to order. Quoted per engagement.
+- Answer — a chat on the client's site, trained on their own knowledge base: it answers questions, qualifies visitors and captures leads. This is the only self-serve part: a subscription, free to start, paid plans €9-€39/mo.
+- Automate — email automation (follow-ups, reminders, replies), cold outreach, booking, invoices, inbox triage, and connecting the client's existing tools. Quoted per engagement.
+- Measure — business intelligence and analytics: the client's numbers pulled out of scattered tools into one live dashboard, plus the experiment loop that keeps testing what they send and retiring what loses. Quoted per engagement.
 
 ## What it is
 

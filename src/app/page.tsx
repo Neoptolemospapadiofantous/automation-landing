@@ -30,11 +30,11 @@ import { HomepageJsonLd } from "@/components/jsonld";
 const TLDR = [
   {
     k: "What we do",
-    v: "Chat that answers your website, cold outreach that finds you customers, and one dashboard of your numbers.",
+    v: "We build your website or dashboard, put a chat on it that answers from your own knowledge, automate the email and busywork behind it, and land your numbers in one live view.",
   },
   {
     k: "What it costs",
-    v: "The chat is free to start, then €9 to €39 a month. Anything we build is quoted first, for a fixed price.",
+    v: "The chat is free to start, then €9 to €39 a month. Everything we build for you is quoted first, at a fixed price.",
   },
   {
     k: "How to start",

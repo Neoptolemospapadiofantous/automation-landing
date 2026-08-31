@@ -1,44 +1,52 @@
 import Link from "next/link";
 
 /**
- * The three service lines — the block that makes the shape of the
+ * What we do, in four verbs — the block that makes the shape of the
  * business legible in about eight seconds.
  *
- * It used to render as three unlabelled cells straight after the ticker,
- * with no heading above them, and it did not read as a section at all: a
- * visitor could scroll past the only place the site says "we do cold
- * outreach, and it has a page" without registering it. Hence the heading,
- * and cues that name the destination instead of saying "see how it
- * works" twice.
+ * It was three cells named after products (Chat / Outreach / What works)
+ * until the catalogue grew to twelve. That framing then actively misled:
+ * the site announced "three services" and listed twelve underneath, and
+ * a visitor who needed a website or an internal dashboard found nothing
+ * at the top that spoke to them. Verbs cover the whole studio without
+ * having to grow a cell every time a service is added — a new build lands
+ * in the catalogue under a verb that already exists.
+ *
+ * Each cell states its BUY PATH before the price question is asked. Only
+ * the chat is self-serve; the rest are quoted, and saying so here is what
+ * stops "quoted" reading as evasion further down.
  *
  * Deliberately carries no sheet number: like the ticker and the proof
  * band it is an interstitial, and the numbered set (S/01 hero … S/09
  * commit) is tracked by SheetRail, which would have to renumber seven
  * printed refs to make room here.
- *
- * Only the chat carries a price: it is a subscription and already has
- * one. The other two say what the next page contains rather than
- * pretending to a number that is quoted per stack.
  */
 const lines = [
   {
-    name: "Chat",
+    name: "Build",
+    how: "We build it · quoted",
+    desc: "The website, the dashboard, or the internal tool you keep meaning to get made.",
+    href: "/audit",
+    cue: "Book the audit",
+  },
+  {
+    name: "Answer",
     how: "You set it up · from €0",
-    desc: "Answers your website visitors, day and night.",
+    desc: "Chat on your site, trained on your own knowledge. It answers, qualifies, and hands you the leads.",
     href: "/pricing",
     cue: "See the plans",
   },
   {
-    name: "Outreach",
+    name: "Automate",
     how: "We run it for you · quoted",
-    desc: "We find companies that fit you and email them in your voice.",
+    desc: "Email, follow-ups, cold outreach, invoices, inbox — the work that repeats.",
     href: "/outreach",
     cue: "How outreach works",
   },
   {
-    name: "What works",
+    name: "Measure",
     how: "We build it for you · quoted",
-    desc: "Your numbers in one dashboard, plus tests that say what to change.",
+    desc: "Your numbers out of scattered tools into one live dashboard, and the tests that move them.",
     href: "/what-works",
     cue: "How the loop works",
   },
@@ -50,15 +58,17 @@ export function ServiceLines() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>
-            <span className="bp-ref">what we sell</span>
+            <span className="bp-ref">what we do</span>
             <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-              Three services. One you can start yourself.
+              Four things, end to end. One team.
             </h2>
           </div>
-          <p className="bp-annot normal-case">Start with any one of them.</p>
+          <p className="bp-annot normal-case">
+            Take one, or hand us the lot.
+          </p>
         </div>
 
-        <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line md:grid-cols-3">
+        <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line sm:grid-cols-2 lg:grid-cols-4">
           {lines.map((l) => (
             <Link
               key={l.name}

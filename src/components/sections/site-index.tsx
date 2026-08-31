@@ -80,7 +80,7 @@ export function SiteIndex() {
 
         <div className="mt-10 grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-2">
           <IndexList
-            heading="What we sell"
+            heading="Services"
             note={siteMap.services.note}
             items={siteMap.services.items}
           />
