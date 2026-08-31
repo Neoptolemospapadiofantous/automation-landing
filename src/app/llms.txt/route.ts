@@ -28,7 +28,8 @@ const body = `# ${BRAND.name}
 - Pre-built agents for four roles: lead qualification, sales, customer support, onboarding — each trained on the customer's own knowledge base.
 - Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
-- Build work, scoped and quoted after a free audit: agent go-live, cold outreach, one live view, booking, invoices and documents, connecting the client's tools, inbox triage, and ongoing care. Fixed price agreed before work starts; the client keeps the code.
+- Build work, scoped and quoted after a free audit: agent go-live, website build, cold outreach, one live view, booking, invoices and documents, connecting the client's tools, inbox triage, email automation (follow-ups, reminders and replies that send themselves), other bespoke automations on request, and ongoing care. Fixed price agreed before work starts; the client keeps the code.
+- The whole stack can be taken end to end — Flowstack builds the website, runs the chat on it, automates the back office, and lands the numbers in one dashboard. One team, one quote, after the same free audit.
 
 ## Pricing (EUR, VAT not included)
 

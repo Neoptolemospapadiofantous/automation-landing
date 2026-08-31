@@ -50,7 +50,8 @@ export function CustomBuild() {
               <span className="text-ink-dim">We build what runs behind it.</span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              We automate the work behind it, on your own tools. The same
+              We automate the work behind it, on your own tools — and if
+              you need the website itself, we build that too. The same
               setup we run our own company on.
             </p>
 

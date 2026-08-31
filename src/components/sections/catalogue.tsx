@@ -41,12 +41,13 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
         </p>
 
         {/* Hairline grid — one cell per service. Two columns from sm, so the
-            eight read as a menu rather than a wall. */}
+            twelve read as a menu rather than a wall. */}
         <div className="border-border-line mt-10 grid grid-cols-1 gap-px border bg-border-line sm:grid-cols-2">
           {buildCatalogue.map((item) => {
-            /* Two of the eight have a page of their own so far; the rest
-               explain themselves here and end at the audit like everything
-               else. `in` keeps this type-safe against the const tuple. */
+            /* Three of the twelve link out — the two biggest builds have
+               pages, and the end-to-end cell goes to the audit. The rest
+               explain themselves here. `in` keeps this type-safe against
+               the const tuple. */
             const href = "href" in item ? item.href : null;
 
             const inner = (

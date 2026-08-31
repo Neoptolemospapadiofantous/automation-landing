@@ -284,6 +284,10 @@ export const buildCatalogue = [
     desc: "We load your knowledge, tune the voice, and install it on your site.",
   },
   {
+    name: "Website build",
+    desc: "No site, or an old one? We build it, with the chat on it from day one.",
+  },
+  {
     name: "Cold outreach",
     href: "/outreach",
     desc: "Your own address, a checked list, emails written in your voice.",
@@ -291,7 +295,7 @@ export const buildCatalogue = [
   {
     name: "One live view",
     href: "/what-works",
-    desc: "The numbers you rebuild by hand, pulled into one dashboard.",
+    desc: "The numbers you rebuild by hand, delegated to one live dashboard.",
   },
   {
     name: "Booking",
@@ -310,8 +314,21 @@ export const buildCatalogue = [
     desc: "Incoming mail sorted, labelled and routed automatically.",
   },
   {
+    name: "Email automation",
+    desc: "Follow-ups, reminders and replies that send themselves, in your voice.",
+  },
+  {
     name: "Ongoing care",
     desc: "We watch what we built and fix it before you notice.",
+  },
+  {
+    name: "Something else",
+    desc: "Done by hand, every week, forever? Ask. Most of it automates.",
+  },
+  {
+    name: "Everything, end to end",
+    href: "/audit",
+    desc: "Website, chat, automations, outreach, one dashboard. One team, one quote.",
   },
 ] as const;
 
@@ -334,7 +351,7 @@ export const faqItems = [
   },
   {
     q: "When do I need a custom build?",
-    a: "When you need integrations, data pipelines, or your own UI. The subscription covers the standard 80% — we build the rest.",
+    a: "When you need a website, integrations, data pipelines, or your own UI. The subscription covers the standard 80% — we build the rest.",
   },
   {
     q: "Are we locked in?",
