@@ -24,7 +24,7 @@ import { ctaClass } from "@/components/ui/button";
  * clinics, firms and hotels, and the plain sentence outsells the acronym.
  */
 export const metadata: Metadata = {
-  title: "What works",
+  title: "Business dashboards & analytics",
   description:
     "Business intelligence and analytics as a service: your numbers in one live view, plus the experiments that change them — keep what wins, retire what doesn't.",
   alternates: { canonical: "/what-works" },

@@ -20,7 +20,7 @@ import { ctaClass } from "@/components/ui/button";
  * control a customer keeps IS the reassurance.
  */
 export const metadata: Metadata = {
-  title: "Cold outreach",
+  title: "Lead generation & cold email service",
   description:
     "Lead generation, done for you: we find the companies you want as customers, write to them in your voice, and hand you the replies. You approve every word.",
   alternates: { canonical: "/outreach" },

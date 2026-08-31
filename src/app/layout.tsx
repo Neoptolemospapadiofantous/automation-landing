@@ -46,7 +46,7 @@ const jetbrainsMono = JetBrains_Mono({
  * tagline itself (BRAND.tagline, SHARED.md §3.4) is untouched and still
  * drives OG, JSON-LD, the manifest and llms.txt.
  */
-const TITLE_HOME = "Website chat, cold outreach and live reporting — Flowstack";
+const TITLE_HOME = "Websites, chat, automation & dashboards — Flowstack";
 const TITLE_SOCIAL = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
   "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat is free to start.";
@@ -72,14 +72,15 @@ export const metadata: Metadata = {
   creator: BRAND.legalName,
   publisher: BRAND.legalName,
   keywords: [
-    "lead qualification",
-    "after-hours leads",
-    "customer support automation",
-    "onboarding automation",
-    "workflow automation",
-    "data pipelines",
-    "data aggregation",
     "website chat widget",
+    "lead generation service",
+    "cold email outreach",
+    "email automation",
+    "business dashboard",
+    "business intelligence",
+    "website design Limassol",
+    "workflow automation Cyprus",
+    "customer support automation",
     "automation studio",
     "Flowstack",
   ],

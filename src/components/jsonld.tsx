@@ -53,6 +53,18 @@ export function HomepageJsonLd() {
         alternateName: BRAND.name,
         url: SITE_URL,
         logo: `${SITE_URL}/icon`,
+        legalName: "Flowstack Studio Ltd",
+        // Cyprus companies-register id — same identity line as the legal
+        // pages and the sales sheets.
+        identifier: "HE 466488",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Agiou Andreou 332",
+          postalCode: "3035",
+          addressLocality: "Limassol",
+          addressCountry: "CY",
+        },
+        areaServed: ["CY", "EU"],
         sameAs: [
           "https://www.linkedin.com/company/flowstack-run",
         ],
