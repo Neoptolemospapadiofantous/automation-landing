@@ -31,13 +31,12 @@ const sections: LegalSection[] = [
           <a href="/dpa">Data Processing Agreement</a>.
         </p>
         <p>
-          Registered office:{" "}
-          <Tbc note="legal name, registration number, address — Limassol, Cyprus" />.
-          Contact for privacy matters:{" "}
+          Registered office: Flowstack Studio Ltd, registration number
+          HE 466488, Agiou Andreou 332, 3035 Limassol, Cyprus. Contact
+          for privacy matters:{" "}
           <a href="mailto:privacy@flowstack.run">
             privacy@flowstack.run
-          </a>{" "}
-          <Tbc note="confirm address" />.
+          </a>.
         </p>
       </>
     ),

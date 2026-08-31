@@ -8,10 +8,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
 };
 
-const Tbc = ({ note }: { note: string }) => (
-  <span className="tbc">[TBC · {note}]</span>
-);
-
 const sections: LegalSection[] = [
   {
     ref: "§1",
@@ -312,9 +308,8 @@ const sections: LegalSection[] = [
         Questions about these Terms:{" "}
         <a href="mailto:legal@flowstack.run">
           legal@flowstack.run
-        </a>{" "}
-        <Tbc note="confirm address" />. Postal address:{" "}
-        <Tbc note="registered office" />.
+        </a>. Postal address: Flowstack Studio Ltd, HE 466488, Agiou
+        Andreou 332, 3035 Limassol, Cyprus.
       </p>
     ),
   },
@@ -326,7 +321,7 @@ export default function TermsPage() {
       title="Terms of Service"
       intent="The contract between Flowstack and customers of the agent platform and the custom build studio."
       effective="2026-06-08"
-      reviewed="2026-06-08"
+      reviewed="2026-08-31"
       sections={sections}
     />
   );
