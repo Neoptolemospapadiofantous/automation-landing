@@ -43,7 +43,7 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
         {/* Hairline grid — one cell per service. Two columns from sm, so the
             twelve read as a menu rather than a wall. */}
         <div className="border-border-line mt-10 grid grid-cols-1 gap-px border bg-border-line sm:grid-cols-2">
-          {buildCatalogue.map((item) => {
+          {buildCatalogue.map((item, i) => {
             /* Three of the twelve link out — the two biggest builds have
                pages, and the end-to-end cell goes to the audit. The rest
                explain themselves here. `in` keeps this type-safe against
@@ -53,7 +53,11 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
             const inner = (
               <>
                 <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
-                  <span className="bp-dot shrink-0" aria-hidden />
+                  {/* Drawing-set ref, like P-01/ST-01 elsewhere — the menu
+                      reads as numbered, ordered, deliberate. */}
+                  <span className="bp-ref text-ink-mute shrink-0">
+                    {`B-${String(i + 1).padStart(2, "0")}`}
+                  </span>
                   {item.name}
                   {href && (
                     <span

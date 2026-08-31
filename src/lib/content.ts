@@ -275,7 +275,9 @@ export const siteMapRoles = {
  * priced document is the services sheet, delivered with the proposal —
  * it stays a sales artefact and never becomes a web page.
  *
- * Names track that sheet exactly, because a customer sees both.
+ * Names AND ORDER track that sheet exactly, because a customer sees
+ * both: chat setup → web presence → getting customers → running the
+ * office → wiring → the dashboard capstone → care → the wrap.
  * Source: master-vm-system/docs/SERVICES_EN.html.
  */
 export const buildCatalogue = [
@@ -293,9 +295,8 @@ export const buildCatalogue = [
     desc: "Your own address, a checked list, emails written in your voice.",
   },
   {
-    name: "One live view",
-    href: "/what-works",
-    desc: "The numbers you rebuild by hand, delegated to one live dashboard.",
+    name: "Email automation",
+    desc: "Follow-ups, reminders and replies that send themselves, in your voice.",
   },
   {
     name: "Booking",
@@ -306,16 +307,17 @@ export const buildCatalogue = [
     desc: "Invoices made, sent and chased. The follow-up runs itself.",
   },
   {
-    name: "Connect your tools",
-    desc: "Your CRM, sheets and inbox stop needing the same thing typed twice.",
-  },
-  {
     name: "Inbox triage",
     desc: "Incoming mail sorted, labelled and routed automatically.",
   },
   {
-    name: "Email automation",
-    desc: "Follow-ups, reminders and replies that send themselves, in your voice.",
+    name: "Connect your tools",
+    desc: "Your CRM, sheets and inbox stop needing the same thing typed twice.",
+  },
+  {
+    name: "One live view",
+    href: "/what-works",
+    desc: "The numbers you rebuild by hand, delegated to one live dashboard.",
   },
   {
     name: "Ongoing care",
