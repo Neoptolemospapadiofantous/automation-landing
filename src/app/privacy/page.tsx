@@ -434,7 +434,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       intent="How Flowstack collects, uses, shares, retains and protects personal data — written so a procurement team can audit it and a customer can understand it."
       effective="2026-08-30"
-      reviewed="2026-08-30"
+      reviewed="2026-08-31"
       sections={sections}
     />
   );
