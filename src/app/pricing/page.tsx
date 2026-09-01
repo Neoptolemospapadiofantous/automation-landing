@@ -108,6 +108,22 @@ export default function PricingPage() {
                     {tier.cadence}
                   </p>
 
+                  {/* The yearly deal, struck honestly: the crossed-out
+                      figure is 12x the monthly rate — a price genuinely
+                      charged when you pay monthly, not an invented "was". */}
+                  {"deal" in tier && (
+                    <p className="mt-2 text-[13px]">
+                      <s className="text-ink-mute">{tier.deal.strike}</s>{" "}
+                      <span className="text-ink font-semibold">
+                        {tier.deal.annual}
+                      </span>{" "}
+                      <span className="text-ink-dim">billed yearly</span>{" "}
+                      <span className="bg-signal inline-block px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap text-black uppercase">
+                        2 months free
+                      </span>
+                    </p>
+                  )}
+
                   <div className="bp-dim mt-5 w-full" aria-hidden />
 
                   <p className="text-ink-dim mt-5 text-[15px] leading-[1.5] lg:text-[13px]">

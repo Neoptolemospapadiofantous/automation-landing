@@ -383,6 +383,7 @@ export const pricingTiers = [
   },
   {
     name: "Starter",
+    deal: { strike: "€108", annual: "€90" },
     price: "€9/mo",
     cadence: "1 agent · cancel anytime",
     tint: "cyan",
@@ -399,6 +400,7 @@ export const pricingTiers = [
   },
   {
     name: "Growth",
+    deal: { strike: "€228", annual: "€190" },
     price: "€19/mo",
     cadence: "up to 5 agents · cancel anytime",
     tint: "violet",
@@ -415,6 +417,7 @@ export const pricingTiers = [
   },
   {
     name: "Operator",
+    deal: { strike: "€468", annual: "€390" },
     price: "€39/mo",
     cadence: "up to 5 agents · cancel anytime",
     tint: "violet",

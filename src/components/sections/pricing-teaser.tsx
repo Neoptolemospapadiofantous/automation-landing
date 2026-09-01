@@ -51,6 +51,16 @@ export function PricingTeaser() {
                 )}
               </div>
               <p className="text-ink-mute mt-1 text-[12px]">{tier.cadence}</p>
+              {"deal" in tier && (
+                <p className="mt-1.5 text-[12px]">
+                  <s className="text-ink-mute">{tier.deal.strike}</s>{" "}
+                  <span className="text-ink font-semibold">{tier.deal.annual}</span>{" "}
+                  <span className="text-ink-dim">/yr</span>{" "}
+                  <span className="bg-signal inline-block px-1 py-px font-mono text-[9px] font-semibold tracking-[0.06em] whitespace-nowrap text-black uppercase">
+                    2 mo free
+                  </span>
+                </p>
+              )}
               <ul className="mb-7 mt-5 space-y-2.5">
                 {tier.features.slice(0, 4).map((f) => (
                   <li key={f} className="text-ink-dim flex items-start gap-3 text-[13px]">
