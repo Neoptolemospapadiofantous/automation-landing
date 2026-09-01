@@ -25,6 +25,11 @@ export const siteMap = {
         desc: "What the chat costs. Free, then €9 to €39 a month.",
       },
       {
+        href: "/website-build",
+        label: "Website build",
+        desc: "A fast site with the chat on it from day one. English or Greek.",
+      },
+      {
         href: "/outreach",
         label: "Cold outreach",
         desc: "We find companies that fit you and email them in your voice.",
@@ -287,6 +292,7 @@ export const buildCatalogue = [
   },
   {
     name: "Website build",
+    href: "/website-build",
     desc: "No site, or an old one? We build it, with the chat on it from day one.",
   },
   {

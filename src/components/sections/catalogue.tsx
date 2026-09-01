@@ -44,8 +44,8 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
             twelve read as a menu rather than a wall. */}
         <div className="border-border-line mt-10 grid grid-cols-1 gap-px border bg-border-line sm:grid-cols-2">
           {buildCatalogue.map((item, i) => {
-            /* Three of the twelve link out — the two biggest builds have
-               pages, and the end-to-end cell goes to the audit. The rest
+            /* Four of the twelve link out — the three builds with pages of
+               their own, and the end-to-end cell going to the audit. The rest
                explain themselves here. `in` keeps this type-safe against
                the const tuple. */
             const href = "href" in item ? item.href : null;

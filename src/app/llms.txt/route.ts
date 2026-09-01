@@ -59,6 +59,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 - [Sales agent](${SITE_URL}/roles/sales): walks visitors through the offer, answers pricing questions, books qualified demos
 - [Customer support agent](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
+- [Website build](${SITE_URL}/website-build): fast, simple small-business websites in Limassol and across Cyprus, English or Greek, with the chat installed and answering from day one. Quoted after the free audit.
 - [Cold outreach](${SITE_URL}/outreach): lead generation done for you — target defined with the client, list built and verified, sequences in their voice, sending from their own address, replies handed over
 - [What works](${SITE_URL}/what-works): one live view of the client's numbers, and the experiment loop that keeps improving them
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
