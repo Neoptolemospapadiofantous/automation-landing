@@ -23,7 +23,10 @@ export const metadata: Metadata = {
   title: "Lead generation & cold email service",
   description:
     "Lead generation, done for you: we find the companies you want as customers, write to them in your voice, and hand you the replies. You approve every word.",
-  alternates: { canonical: "/outreach" },
+  alternates: {
+    canonical: "/outreach",
+    languages: { en: "/outreach", el: "/el/outreach", "x-default": "/outreach" },
+  },
   openGraph: {
     title: "Cold outreach — Flowstack",
     url: "/outreach",

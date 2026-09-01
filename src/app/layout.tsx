@@ -87,6 +87,8 @@ export const metadata: Metadata = {
   category: "technology",
   alternates: {
     canonical: "/",
+    // Greek twin at /el — hreflang pairs declared on both sides.
+    languages: { en: "/", el: "/el", "x-default": "/" },
   },
   robots: {
     index: true,

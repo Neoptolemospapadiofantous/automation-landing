@@ -121,6 +121,18 @@ export function SiteFooter() {
             reserved
           </p>
           <div className="bp-annot flex flex-col items-start gap-x-5 gap-y-2 sm:flex-row sm:items-center">
+            {/* Greek pages live under /el — a visible way in, beyond hreflang. */}
+            <Link
+              href="/el"
+              hrefLang="el"
+              lang="el"
+              className="text-ink-dim hover:text-ink transition-colors"
+            >
+              Ελληνικά
+            </Link>
+            <span aria-hidden className="text-ink-mute hidden sm:inline">
+              ·
+            </span>
             <CookieSettingsLink />
             <span aria-hidden className="text-ink-mute hidden sm:inline">
               ·

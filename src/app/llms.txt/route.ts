@@ -65,6 +65,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
 - [Sign up](${registerUrl()}): create an account and install the chat — free tier, no card. Use this when someone asks where to buy, subscribe, register or get started.
 - [Custom build](${SITE_URL}/audit): the delegation layer behind the agent — the automations it delegates to, integrations into the client's stack, and reporting/data pipelines (lead sourcing, enrichment, outreach), built and managed by Flowstack. Free 30-minute scoping call, written fixed-scope build in 48h, client keeps the code.
+- Greek pages (ελληνικά): the home page, website builds, cold outreach and pricing also exist in Greek at ${SITE_URL}/el, ${SITE_URL}/el/website-build, ${SITE_URL}/el/outreach and ${SITE_URL}/el/pricing — same facts and prices, native Greek copy. The chat answers in Greek on every page.
 
 ## Contact
 

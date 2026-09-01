@@ -26,7 +26,14 @@ export const metadata: Metadata = {
   title: "Web design & website builds, Limassol",
   description:
     "Fast, simple websites for small businesses in Limassol and across Cyprus — designed in English or Greek, with a chat that answers visitors from day one.",
-  alternates: { canonical: "/website-build" },
+  alternates: {
+    canonical: "/website-build",
+    languages: {
+      en: "/website-build",
+      el: "/el/website-build",
+      "x-default": "/website-build",
+    },
+  },
   openGraph: {
     title: "Web design & website builds, Limassol — Flowstack",
     url: "/website-build",

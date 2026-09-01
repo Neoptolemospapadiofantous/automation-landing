@@ -17,6 +17,14 @@ const ROLES_LAST_MOD = "2026-08-27"; // role copy simplified, TL;DR band added
 const LEGAL_LAST_MOD = "2026-08-31"; // terms/privacy: registered office + HE number filled in
 const LEGAL_BYOK_LAST_MOD = "2026-08-30"; // security/dpa: model-provider claims scoped to our own accounts
 const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
+const EL_LAST_MOD = "2026-09-01"; // Greek twins of the four money pages went live
+
+/** hreflang pair for a page with a Greek twin — mirrors the pages' own
+ *  metadata.alternates.languages so the sitemap and the <link> tags can
+ *  never disagree. */
+const pair = (en: string, el: string) => ({
+  languages: { en: `${SITE_URL}${en}`, el: `${SITE_URL}${el}` },
+});
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -25,12 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_MOD,
       changeFrequency: "weekly",
       priority: 1.0,
+      alternates: pair("/", "/el"),
     },
     {
       url: `${SITE_URL}/pricing`,
       lastModified: LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: pair("/pricing", "/el/pricing"),
     },
     {
       url: `${SITE_URL}/what-works`,
@@ -43,12 +53,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-09-01",
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: pair("/website-build", "/el/website-build"),
     },
     {
       url: `${SITE_URL}/outreach`,
       lastModified: SERVICES_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: pair("/outreach", "/el/outreach"),
+    },
+    {
+      url: `${SITE_URL}/el`,
+      lastModified: EL_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: pair("/", "/el"),
+    },
+    {
+      url: `${SITE_URL}/el/website-build`,
+      lastModified: EL_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: pair("/website-build", "/el/website-build"),
+    },
+    {
+      url: `${SITE_URL}/el/outreach`,
+      lastModified: EL_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: pair("/outreach", "/el/outreach"),
+    },
+    {
+      url: `${SITE_URL}/el/pricing`,
+      lastModified: EL_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: pair("/pricing", "/el/pricing"),
     },
     {
       url: `${SITE_URL}/audit`,

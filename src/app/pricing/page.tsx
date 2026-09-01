@@ -14,7 +14,10 @@ export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Start free with one agent. Paid plans are €9 to €39 a month, and €39 is our most expensive. Anything we build is quoted per project. No lock-in, ever.",
-  alternates: { canonical: "/pricing" },
+  alternates: {
+    canonical: "/pricing",
+    languages: { en: "/pricing", el: "/el/pricing", "x-default": "/pricing" },
+  },
   openGraph: {
     title: "Pricing — Flowstack",
     url: "/pricing",
