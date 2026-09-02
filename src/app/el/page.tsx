@@ -72,10 +72,8 @@ const verbs = [
     name: "Μετραμε",
     how: "Το φτιάχνουμε για εσάς · με προσφορά",
     desc: "Οι αριθμοί σας, από σκόρπια εργαλεία σε ένα ζωντανό dashboard — και τα πειράματα που τους ανεβάζουν.",
-    href: "/what-works",
-    // No Greek twin yet, so say so rather than dropping a Greek reader
-    // onto an English page with no warning.
-    cue: "Πώς δουλεύει ο κύκλος · EN",
+    href: "/el/what-works",
+    cue: "Πώς δουλεύει ο κύκλος",
   },
 ] as const;
 
@@ -117,7 +115,7 @@ const catalogue = [
   },
   {
     name: "Μία ζωντανή εικόνα",
-    href: "/what-works",
+    href: "/el/what-works",
     desc: "Οι αριθμοί που φτιάχνετε με το χέρι, σε ένα ζωντανό dashboard.",
   },
   {

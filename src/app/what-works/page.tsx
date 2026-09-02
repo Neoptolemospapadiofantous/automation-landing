@@ -27,7 +27,14 @@ export const metadata: Metadata = {
   title: "Business dashboards & analytics",
   description:
     "Business intelligence and analytics as a service: your numbers in one live view, plus the experiments that change them — keep what wins, retire what doesn't.",
-  alternates: { canonical: "/what-works" },
+  alternates: {
+    canonical: "/what-works",
+    languages: {
+      en: "/what-works",
+      el: "/el/what-works",
+      "x-default": "/what-works",
+    },
+  },
   openGraph: {
     title: "What works — Flowstack",
     url: "/what-works",
