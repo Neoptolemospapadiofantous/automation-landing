@@ -37,6 +37,13 @@ export const metadata: Metadata = {
     description:
       "Γρήγορες, απλές ιστοσελίδες με chat που απαντά από την πρώτη μέρα. Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα.",
   },
+  // The root layout's Twitter card is English; without this a Greek
+  // page shares in the wrong language on X while OG is already Greek.
+  twitter: {
+    title: "Κατασκευή ιστοσελίδας στη Λεμεσό — Flowstack",
+    description:
+      "Γρήγορες, απλές ιστοσελίδες με chat που απαντά από την πρώτη μέρα. Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα.",
+  },
 };
 
 const steps = [

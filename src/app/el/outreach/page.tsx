@@ -28,6 +28,13 @@ export const metadata: Metadata = {
     description:
       "Βρίσκουμε τις επιχειρήσεις που σας ταιριάζουν, τους γράφουμε στη φωνή σας, και σας παραδίδουμε τις απαντήσεις.",
   },
+  // The root layout's Twitter card is English; without this a Greek
+  // page shares in the wrong language on X while OG is already Greek.
+  twitter: {
+    title: "Εύρεση πελατών με cold email — Flowstack",
+    description:
+      "Βρίσκουμε τις επιχειρήσεις που σας ταιριάζουν, τους γράφουμε στη φωνή σας, και σας παραδίδουμε τις απαντήσεις.",
+  },
 };
 
 const steps = [

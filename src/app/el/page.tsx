@@ -37,6 +37,13 @@ export const metadata: Metadata = {
     description:
       "Studio στη Λεμεσό: ιστοσελίδες, chat εκπαιδευμένο στη γνώση σας, αυτοματισμοί και ζωντανά dashboards. Το chat ξεκινά δωρεάν.",
   },
+  // The root layout's Twitter card is English; without this a Greek
+  // page shares in the wrong language on X while OG is already Greek.
+  twitter: {
+    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & dashboards",
+    description:
+      "Studio στη Λεμεσό: ιστοσελίδες, chat εκπαιδευμένο στη γνώση σας, αυτοματισμοί και ζωντανά dashboards. Το chat ξεκινά δωρεάν.",
+  },
 };
 
 const verbs = [

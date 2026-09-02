@@ -38,6 +38,13 @@ export const metadata: Metadata = {
     description:
       "Ξεκινήστε δωρεάν με έναν agent. Πλάνα από €9/μήνα. Κατασκευές με προσφορά ανά έργο.",
   },
+  // The root layout's Twitter card is English; without this a Greek
+  // page shares in the wrong language on X while OG is already Greek.
+  twitter: {
+    title: "Τιμές — Flowstack",
+    description:
+      "Ξεκινήστε δωρεάν με έναν agent. Πλάνα από €9/μήνα. Κατασκευές με προσφορά ανά έργο.",
+  },
 };
 
 const tiers = [
