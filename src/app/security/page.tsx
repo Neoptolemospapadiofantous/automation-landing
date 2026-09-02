@@ -19,9 +19,10 @@ const sections: LegalSection[] = [
           own conversational runtime, calling large-language-model
           providers server-side through a single internal contract.
           OpenAI is the only provider we send data to on our own
-          account, and the Claude and Gemini tiers are not enabled on our
-          accounts. On the Operator plan a customer may connect its own
-          OpenAI or Anthropic key, in which case that customer&apos;s
+          account, and the Claude and Gemini tiers are not sold on our
+          accounts at all — they run only on a key the customer connects.
+          From the Growth plan up a customer may connect its own OpenAI,
+          Anthropic or Google key, in which case that customer&apos;s
           chat runs on their provider account instead — see{" "}
           <a href="/dpa">DPA §7</a>. Customers never reach a model
           provider directly; provider API credentials — ours, and any a
@@ -276,7 +277,7 @@ export default function SecurityPage() {
       title="Security"
       intent="How we protect the platform, your data, and your customers' data — both the controls already in place and the ones still being formalised."
       effective="2026-08-30"
-      reviewed="2026-08-30"
+      reviewed="2026-09-02"
       sections={sections}
     />
   );

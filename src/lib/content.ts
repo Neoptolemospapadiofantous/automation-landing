@@ -350,8 +350,8 @@ export const faqItems = [
     a: "Free · 1 agent · 250 credits. Then €9, €19 or €39/mo for more agents and volume. €39 is our most expensive plan. Every feature on at every tier.",
   },
   {
-    q: "Can I use my own OpenAI or Anthropic key?",
-    a: "On Operator, yes. Connect your key and chat runs on your provider account — no credits spent, 25,000 messages a month. Model costs go to your account instead of ours.",
+    q: "Can I use my own OpenAI, Anthropic or Google key?",
+    a: "From Growth up, yes. Every plan includes Flowstack Core, our fast default engine, on credits. The premium models run only on a key you connect — no credits spent, 10,000 messages a month on Growth, 25,000 on Operator.",
   },
   {
     q: "Does it connect to my existing stack?",
@@ -415,6 +415,7 @@ export const pricingTiers = [
       "Everything in Starter",
       "Up to 5 agents",
       "10,000 conversation credits / month",
+      "Or your own API key — 10,000 messages, no credits",
       "Top-up credits anytime",
       "Cancel anytime · no lock-in",
     ],

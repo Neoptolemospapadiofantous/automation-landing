@@ -147,11 +147,13 @@ const sections: LegalSection[] = [
           <li>
             <strong>LLM inference</strong> — OpenAI (United States),
             for chat replies and knowledge-base embeddings. This is the
-            only model provider we send data to on our own account; the
-            Claude and Gemini tiers are not enabled on our accounts
-            (<a href="/dpa">DPA §7</a> lists them so that enabling one is
-            a change you have been notified of). On the Operator plan a
-            customer can connect its own OpenAI or Anthropic key, and
+            only model provider we send data to on our own account. The
+            Claude and Gemini tiers are not sold on our accounts at all:
+            they run only on a key the customer connects
+            (<a href="/dpa">DPA §7</a> still lists those providers so
+            that enabling one on our own account would be a change you
+            have been notified of). From the Growth plan up, a customer
+            can connect its own OpenAI, Anthropic or Google key, and
             that customer&apos;s chat then runs on their provider account
             under their own contract with that provider — see{" "}
             <a href="/dpa">DPA §7</a>. Model providers process chat
@@ -434,7 +436,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       intent="How Flowstack collects, uses, shares, retains and protects personal data — written so a procurement team can audit it and a customer can understand it."
       effective="2026-08-30"
-      reviewed="2026-08-31"
+      reviewed="2026-09-02"
       sections={sections}
     />
   );
