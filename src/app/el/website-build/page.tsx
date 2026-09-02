@@ -85,7 +85,7 @@ export default function WebsiteBuildElPage() {
         }
         lead="Ιστοσελίδες για μικρές επιχειρήσεις στη Λεμεσό και σε όλη την Κύπρο. Στα Ελληνικά, στα Αγγλικά, ή και στα δύο."
         ctas={[
-          { href: "/audit", label: "Κλείστε το δωρεάν ραντεβού →", variant: "primary" },
+          { href: "/el/audit", label: "Κλείστε το δωρεάν ραντεβού →", variant: "primary" },
         ]}
       />
 
@@ -181,7 +181,7 @@ export default function WebsiteBuildElPage() {
               </span>
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/audit" className={ctaClass()}>
+              <Link href="/el/audit" className={ctaClass()}>
                 Κλείστε το ραντεβού →
               </Link>
               <Link

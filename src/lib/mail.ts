@@ -36,6 +36,8 @@ export type AuditSubmission = {
   email: string;
   company: string;
   leak: string;
+  /** Which language the form was filled in — the reply should match. */
+  lang?: "en" | "el";
 };
 
 export type SendResult =
@@ -70,8 +72,12 @@ export async function sendAuditEmail(
   const from = process.env.SMTP_FROM ?? process.env.SMTP_USER!;
   const company = data.company || "(no company given)";
 
+  const greek = data.lang === "el";
+
   const text = [
-    `New audit-form submission from flowstack.run/audit`,
+    greek
+      ? `New audit-form submission from flowstack.run/el/audit — REPLY IN GREEK`
+      : `New audit-form submission from flowstack.run/audit`,
     ``,
     `Name:    ${data.name}`,
     `Email:   ${data.email}`,
@@ -91,7 +97,7 @@ export async function sendAuditEmail(
       from: `"Flowstack audit form" <${from}>`,
       to,
       replyTo: `"${data.name}" <${data.email}>`,
-      subject: `Audit request — ${data.name}${data.company ? ` (${data.company})` : ""}`,
+      subject: `Audit request${greek ? " (EL)" : ""} — ${data.name}${data.company ? ` (${data.company})` : ""}`,
       text,
     });
     return { ok: true };

@@ -14,7 +14,87 @@ import { ctaClass } from "@/components/ui/button";
 
 const initial: AuditFormState = { ok: false };
 
-export function AuditForm() {
+/* One form, two label sets. The validation, the action and the consent
+   gate are shared on purpose — a duplicated Greek form would drift from
+   this one the first time a field changes. */
+export type AuditFormCopy = Omit<typeof EN_COPY, "lang" | "bullets"> & {
+  lang: "en" | "el";
+  bullets: readonly string[];
+};
+
+const EN_COPY = {
+  lang: "en" as "en" | "el",
+  eyebrow: "Free — 30 min — no pitch",
+  headingA: "Book the call.",
+  headingB: "Keep the scope",
+  headingC: " either way.",
+  turnaround: "≤ 48H TURNAROUND",
+  lead: "Tell us what to take off your plate. A written, fixed-scope proposal comes back within 48 hours.",
+  bullets: [
+    "Written scope document — yours to keep",
+    "Live walkthrough of the build (no slides)",
+    "No retainer. No NDA gating. No upsell.",
+  ],
+  formTitle: "Tell us what to build.",
+  allRequired: "// all fields required unless noted",
+  name: { label: "Your name", placeholder: "Jane Doe" },
+  email: { label: "Work email", placeholder: "jane@company.com" },
+  company: {
+    label: "Company & role",
+    placeholder: "e.g. Acme Corp — Director of Operations",
+  },
+  leak: {
+    label: "What does the off-the-shelf agent not do? (the more specific, the better)",
+    placeholder:
+      "We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and notify the assigned rep when deal value > $X.",
+  },
+  consentBefore:
+    "I agree that Flowstack may store the details above to reply to this inquiry and scope the engagement, per the",
+  privacyLabel: "Privacy Policy",
+  consentAfter: ". We'll delete the record if you don't become a customer.",
+  sending: "Sending…",
+  sent: "Sent — we'll be in touch",
+  submit: "Send the brief",
+  noNewsletter: "No newsletter — just the scope.",
+};
+
+export const AUDIT_FORM_EL: AuditFormCopy = {
+  lang: "el",
+  eyebrow: "Δωρεάν — 30 λεπτά — χωρίς πίεση",
+  headingA: "Κλείστε το ραντεβού.",
+  headingB: "Κρατάτε την προσφορά",
+  headingC: " ό,τι κι αν γίνει.",
+  turnaround: "ΑΠΑΝΤΗΣΗ ≤ 48Ω",
+  lead: "Πείτε μας τι θέλετε να φύγει από τα χέρια σας. Μια γραπτή προσφορά με σταθερό αντικείμενο έρχεται μέσα σε 48 ώρες.",
+  bullets: [
+    "Γραπτή προσφορά — δική σας, ό,τι κι αν αποφασίσετε",
+    "Ζωντανή παρουσίαση του τι θα φτιαχτεί (χωρίς διαφάνειες)",
+    "Χωρίς πάγιο. Χωρίς NDA για να μιλήσουμε. Χωρίς πιέσεις.",
+  ],
+  formTitle: "Πείτε μας τι θέλετε να φτιάξουμε.",
+  allRequired: "// όλα τα πεδία είναι απαραίτητα",
+  name: { label: "Το όνομά σας", placeholder: "Μαρία Παπαδοπούλου" },
+  email: { label: "Email εργασίας", placeholder: "maria@etaireia.com.cy" },
+  company: {
+    label: "Επιχείρηση & ρόλος",
+    placeholder: "π.χ. Καφεκοπτεία Λεμεσού — Διεύθυνση",
+  },
+  leak: {
+    label: "Τι σας δυσκολεύει σήμερα; (όσο πιο συγκεκριμένα, τόσο καλύτερα)",
+    placeholder:
+      "Θέλουμε τα leads από το site να μπαίνουν στο CRM μας, να ειδοποιείται ο πωλητής της περιοχής, και τα τιμολόγια να φεύγουν χωρίς να τα γράφει κάποιος.",
+  },
+  consentBefore:
+    "Συμφωνώ να κρατήσει η Flowstack τα παραπάνω στοιχεία για να απαντήσει σε αυτό το αίτημα και να ορίσει το έργο, σύμφωνα με την",
+  privacyLabel: "Πολιτική Απορρήτου",
+  consentAfter: ". Διαγράφουμε την εγγραφή αν δεν γίνετε πελάτης.",
+  sending: "Αποστολή…",
+  sent: "Στάλθηκε — θα επικοινωνήσουμε",
+  submit: "Στείλτε το",
+  noNewsletter: "Χωρίς newsletter — μόνο η προσφορά.",
+};
+
+export function AuditForm({ copy = EN_COPY }: { copy?: AuditFormCopy }) {
   const [state, action, pending] = useActionState(submitAudit, initial);
 
   return (
@@ -32,11 +112,12 @@ export function AuditForm() {
 
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <Eyebrow tint="success">Free — 30 min — no pitch</Eyebrow>
+            <Eyebrow tint="success">{copy.eyebrow}</Eyebrow>
             <h2 className="mt-6 text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl">
-              Book the call.
+              {copy.headingA}
               <br />
-              <span className="text-gradient">Keep the scope</span> either way.
+              <span className="text-gradient">{copy.headingB}</span>
+              {copy.headingC}
             </h2>
 
             {/* dimension line under the headline */}
@@ -46,21 +127,16 @@ export function AuditForm() {
             >
               <span className="bp-dim flex-1" />
               <span className="bp-annot whitespace-nowrap">
-                ≤ 48H TURNAROUND
+                {copy.turnaround}
               </span>
             </div>
 
             <p className="text-ink-dim mt-6 max-w-[48ch] text-lg leading-[1.65]">
-              Tell us what to take off your plate. A written, fixed-scope
-              proposal comes back within 48 hours.
+              {copy.lead}
             </p>
 
             <ul className="mt-10 space-y-4">
-              {[
-                "Written scope document — yours to keep",
-                "Live walkthrough of the build (no slides)",
-                "No retainer. No NDA gating. No upsell.",
-              ].map((line) => (
+              {copy.bullets.map((line) => (
                 <li key={line} className="flex items-center gap-3">
                   <span className="bp-dot mt-px shrink-0" aria-hidden />
                   <span className="text-ink text-[15px] font-medium">
@@ -72,6 +148,8 @@ export function AuditForm() {
           </div>
 
           <form action={action} className="flow-edge glass-strong relative p-7 sm:p-9">
+            {/* The action returns its messages in this language. */}
+            <input type="hidden" name="lang" value={copy.lang} />
             {/* title-block strip */}
             <div className="border-border-line -mx-7 -mt-7 mb-7 grid grid-cols-2 border-b sm:-mx-9 sm:-mt-9 sm:mb-9 sm:grid-cols-3">
               {[
@@ -94,26 +172,30 @@ export function AuditForm() {
             </div>
 
             <h3 className="text-ink text-[22px] font-semibold tracking-[-0.02em]">
-              Tell us what to build.
+              {copy.formTitle}
             </h3>
             <p className="bp-annot mt-2">
-              {"// all fields required unless noted"}
+              {copy.allRequired}
             </p>
 
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <Field name="name" label="Your name" placeholder="Jane Doe" />
+              <Field
+                name="name"
+                label={copy.name.label}
+                placeholder={copy.name.placeholder}
+              />
               <Field
                 name="email"
                 type="email"
-                label="Work email"
-                placeholder="jane@company.com"
+                label={copy.email.label}
+                placeholder={copy.email.placeholder}
               />
             </div>
             <div className="mt-5">
               <Field
                 name="company"
-                label="Company & role"
-                placeholder="e.g. Acme Corp — Director of Operations"
+                label={copy.company.label}
+                placeholder={copy.company.placeholder}
               />
             </div>
             <div className="mt-5">
@@ -121,14 +203,14 @@ export function AuditForm() {
                 htmlFor="leak"
                 className="text-ink-mute font-mono text-[11px] tracking-[0.18em] uppercase"
               >
-                What does the off-the-shelf agent not do? (the more specific, the better)
+                {copy.leak.label}
               </Label>
               <Textarea
                 id="leak"
                 name="leak"
                 required
                 rows={4}
-                placeholder="We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and notify the assigned rep when deal value > $X."
+                placeholder={copy.leak.placeholder}
                 className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[13px]"
               />
             </div>
@@ -148,17 +230,15 @@ export function AuditForm() {
                   className="border-border-hi bg-bg accent-ink mt-0.5 h-4 w-4 shrink-0 cursor-pointer appearance-none border checked:bg-ink"
                 />
                 <span>
-                  I agree that Flowstack may store the details above to
-                  reply to this inquiry and scope the engagement, per
-                  the{" "}
+                  {copy.consentBefore}{" "}
                   <Link
                     href="/privacy"
+                    hrefLang="en"
                     className="text-ink inline-block py-1 underline-offset-4 hover:underline"
                   >
-                    Privacy Policy
+                    {copy.privacyLabel}
                   </Link>
-                  . We&apos;ll delete the record if you don&apos;t
-                  become a customer.
+                  {copy.consentAfter}
                 </span>
               </label>
             </div>
@@ -168,11 +248,7 @@ export function AuditForm() {
               disabled={pending}
               className={ctaClass({ className: "mt-5 h-13 w-full rounded-none transition disabled:cursor-not-allowed disabled:opacity-70" })}
             >
-              {pending
-                ? "Sending…"
-                : state.ok
-                  ? "Sent — we'll be in touch"
-                  : "Send the brief"}
+              {pending ? copy.sending : state.ok ? copy.sent : copy.submit}
             </button>
 
             {state.message && (
@@ -205,7 +281,7 @@ export function AuditForm() {
             )}
 
             <p className="text-ink-mute mt-5 text-center font-mono text-[11px] tracking-[0.06em]">
-              No newsletter — just the scope.
+              {copy.noNewsletter}
             </p>
           </form>
         </div>

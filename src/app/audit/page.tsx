@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   title: "Custom builds — free 30-minute audit",
   description:
     "Thirty minutes and you'll have a number. Every build is scoped here first: a free audit, then a written fixed-scope proposal in 48 hours. Yours to keep.",
-  alternates: { canonical: "/audit" },
+  alternates: {
+    canonical: "/audit",
+    languages: { en: "/audit", el: "/el/audit", "x-default": "/audit" },
+  },
   openGraph: {
     title: "Custom build — Flowstack",
     url: "/audit",

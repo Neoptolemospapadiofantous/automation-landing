@@ -240,7 +240,7 @@ export default function PricingElPage() {
                   </ul>
 
                   <Link
-                    href={tier.name === "Custom" ? "/audit" : registerUrl()}
+                    href={tier.name === "Custom" ? "/el/audit" : registerUrl()}
                     className={ctaClass({
                       variant: tier.featured ? "primary" : "ghost",
                       className:
@@ -292,7 +292,7 @@ export default function PricingElPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-wrap items-center gap-4 border-t pt-8">
-            <Link href="/audit" className={ctaClass()}>
+            <Link href="/el/audit" className={ctaClass()}>
               Κλείστε το δωρεάν ραντεβού →
             </Link>
             <Link

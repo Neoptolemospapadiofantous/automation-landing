@@ -101,7 +101,7 @@ export default function WhatWorksElPage() {
         lead="Βάζουμε τους αριθμούς σας σε ένα dashboard, και μετά τρέχουμε τα τεστ που τους αλλάζουν."
         ctas={[
           {
-            href: "/audit",
+            href: "/el/audit",
             label: "Κλείστε το δωρεάν ραντεβού →",
             variant: "primary",
           },
@@ -194,7 +194,7 @@ export default function WhatWorksElPage() {
               </span>
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/audit" className={ctaClass()}>
+              <Link href="/el/audit" className={ctaClass()}>
                 Κλείστε το ραντεβού →
               </Link>
               <Link

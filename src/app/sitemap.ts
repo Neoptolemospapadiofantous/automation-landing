@@ -18,7 +18,7 @@ const LEGAL_LAST_MOD = "2026-08-31"; // terms: registered office + HE number fil
 const LEGAL_BYOK_LAST_MOD = "2026-09-02"; // security/dpa/privacy: BYOK from Growth up, Google added, premium engines customer-key only
 const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
 const EL_LAST_MOD = "2026-09-01"; // Greek twins of the four money pages went live
-const EL_WHAT_WORKS_LAST_MOD = "2026-09-02"; // the fifth Greek page: /el/what-works
+const EL_WHAT_WORKS_LAST_MOD = "2026-09-02"; // the fifth and sixth Greek pages: /el/what-works, /el/audit
 
 /** hreflang pair for a page with a Greek twin — mirrors the pages' own
  *  metadata.alternates.languages so the sitemap and the <link> tags can
@@ -100,10 +100,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: pair("/what-works", "/el/what-works"),
     },
     {
+      url: `${SITE_URL}/el/audit`,
+      lastModified: EL_WHAT_WORKS_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: pair("/audit", "/el/audit"),
+    },
+    {
       url: `${SITE_URL}/audit`,
       lastModified: LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.8,
+      alternates: pair("/audit", "/el/audit"),
     },
     ...rolePages.map((r) => ({
       url: `${SITE_URL}/roles/${r.slug}`,

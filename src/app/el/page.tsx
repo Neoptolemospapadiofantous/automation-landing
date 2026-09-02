@@ -128,7 +128,7 @@ const catalogue = [
   },
   {
     name: "Όλα, από άκρη σε άκρη",
-    href: "/audit",
+    href: "/el/audit",
     desc: "Ιστοσελίδα, chat, αυτοματισμοί, outreach, ένα dashboard. Μία ομάδα, μία προσφορά.",
   },
 ] as const;
@@ -149,7 +149,7 @@ export default function HomeElPage() {
         }
         lead="Ιστοσελίδες, chat εκπαιδευμένο στη δική σας γνώση, αυτοματισμοί και dashboards — για επιχειρήσεις στη Λεμεσό και σε όλη την Κύπρο."
         ctas={[
-          { href: "/audit", label: "Κλείστε το δωρεάν ραντεβού →", variant: "primary" },
+          { href: "/el/audit", label: "Κλείστε το δωρεάν ραντεβού →", variant: "primary" },
           { href: "/el/pricing", label: "Δείτε τις τιμές", variant: "secondary" },
         ]}
       />
@@ -191,7 +191,7 @@ export default function HomeElPage() {
               <Link
                 key={l.name}
                 href={l.href}
-                hrefLang={l.href.startsWith("/el") ? "el" : "en"}
+                hrefLang="el"
                 className="bg-bg lift-hover group flex flex-col gap-3 px-6 py-8"
               >
                 <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
@@ -252,7 +252,7 @@ export default function HomeElPage() {
                   {"href" in item ? (
                     <Link
                       href={item.href}
-                      hrefLang={item.href.startsWith("/el") ? "el" : "en"}
+                      hrefLang="el"
                       className="lift-hover group flex h-full flex-col px-6 py-7"
                     >
                       {inner}
@@ -289,7 +289,7 @@ export default function HomeElPage() {
               </span>
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/audit" className={ctaClass()}>
+              <Link href="/el/audit" className={ctaClass()}>
                 Κλείστε το δωρεάν ραντεβού →
               </Link>
               <Link
