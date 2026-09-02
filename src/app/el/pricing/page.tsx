@@ -10,8 +10,11 @@ import { ctaClass } from "@/components/ui/button";
  *
  * Tier NUMBERS mirror src/lib/content.ts pricingTiers exactly (Free €0 /
  * Starter €9 / Growth €19 / Operator €39 / Custom quoted, annual deals
- * €90/€190/€390 = 2 months free). Only the words are translated — if a
- * price changes there, it changes here in the same commit.
+ * €90/€190/€390 = 2 months free), and so do the ENTITLEMENT bullets —
+ * including the own-key line on Growth and Operator. Only the words are
+ * translated — if a price or an entitlement changes there, it changes here
+ * in the same commit. The engine paragraph below the grid carries what the
+ * English page says in its FAQ, which this page does not have.
  *
  * VAT label: pricing-display.ts vatLabel() is English-only; «χωρίς ΦΠΑ»
  * below is its Greek rendering of treatment="exclusive"/rate=null. If
@@ -66,7 +69,7 @@ const tiers = [
       "Ανέβασμα γνώσης + απομαγνητοφωνήσεις",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
-    cta: "Δοκιμάστε το με €9",
+    cta: "Δοκιμάστε με €9",
     featured: false,
   },
   {
@@ -79,10 +82,11 @@ const tiers = [
       "Όλα όσα έχει το Starter",
       "Έως 5 agents",
       "10.000 πιστώσεις συνομιλίας / μήνα",
+      "Ή το δικό σας API key — 10.000 μηνύματα, χωρίς πιστώσεις",
       "Έξτρα πιστώσεις όποτε χρειαστεί",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
-    cta: "Επιλέξτε το Growth",
+    cta: "Επιλέξτε Growth",
     featured: true,
   },
   {
@@ -99,7 +103,7 @@ const tiers = [
       "Η καλύτερη τιμή ανά πίστωση · το κορυφαίο μας πλάνο",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
-    cta: "Επιλέξτε το Operator",
+    cta: "Επιλέξτε Operator",
     featured: false,
   },
   {
@@ -114,7 +118,7 @@ const tiers = [
       "Εκπαιδευμένο στη γνώση και τη φωνή σας",
       "Εγχειρίδια + παράδοση · προαιρετική συντήρηση",
     ],
-    cta: "Κλείστε το ραντεβού",
+    cta: "Κλείστε ραντεβού",
     featured: false,
   },
 ] as const;
@@ -233,7 +237,13 @@ export default function PricingElPage() {
                     className={ctaClass({
                       variant: tier.featured ? "primary" : "ghost",
                       className:
-                        "mt-auto w-full lg:px-3 lg:text-[12px] xl:px-6 xl:text-[13px]",
+                        // Greek labels run ~10% longer than the English ones, so the
+                        // EN lg step (px-3/12px) still wraps "Επιλέξτε Operator"
+                        // in the 1024-1279 band, and the EN xl step wraps it at
+                        // 1280 too. Each step is one notch tighter than the
+                        // English page and the shared recipe returns at 2xl,
+                        // where there is finally room for it.
+                        "mt-auto w-full lg:px-2 lg:text-[11px] xl:px-3 xl:text-[12px] 2xl:px-6 2xl:text-[13px]",
                     })}
                   >
                     {tier.cta}
@@ -253,6 +263,14 @@ export default function PricingElPage() {
             για τον αρχικό χαιρετισμό, για επισκέπτη που επιστρέφει σε παλιά
             συνομιλία, για τις έτοιμες απαντήσεις στις συχνές ερωτήσεις, ούτε
             για συνομιλίες που αναλαμβάνει άνθρωπος της ομάδας σας.
+          </p>
+
+          <p className="text-ink-dim mx-auto mt-3 max-w-[62ch] text-center text-[14px] leading-[1.6]">
+            Κάθε πλάνο περιλαμβάνει το Flowstack Core, τη γρήγορη προεπιλεγμένη
+            μηχανή, με χρέωση σε πιστώσεις. Τα προηγμένα μοντέλα — Claude,
+            GPT-5, Gemini — δεν πωλούνται με πιστώσεις: από το Growth και πάνω
+            συνδέετε το δικό σας API key (OpenAI, Anthropic ή Google) και
+            εκείνες οι απαντήσεις δεν χρεώνονται σε πιστώσεις.
           </p>
 
           <p className="bp-annot mt-8 text-center">
