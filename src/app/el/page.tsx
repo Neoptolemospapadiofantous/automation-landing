@@ -73,7 +73,9 @@ const verbs = [
     how: "Το φτιάχνουμε για εσάς · με προσφορά",
     desc: "Οι αριθμοί σας, από σκόρπια εργαλεία σε ένα ζωντανό dashboard — και τα πειράματα που τους ανεβάζουν.",
     href: "/what-works",
-    cue: "Πώς δουλεύει ο κύκλος",
+    // No Greek twin yet, so say so rather than dropping a Greek reader
+    // onto an English page with no warning.
+    cue: "Πώς δουλεύει ο κύκλος · EN",
   },
 ] as const;
 
@@ -191,6 +193,7 @@ export default function HomeElPage() {
               <Link
                 key={l.name}
                 href={l.href}
+                hrefLang={l.href.startsWith("/el") ? "el" : "en"}
                 className="bg-bg lift-hover group flex flex-col gap-3 px-6 py-8"
               >
                 <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
@@ -251,6 +254,7 @@ export default function HomeElPage() {
                   {"href" in item ? (
                     <Link
                       href={item.href}
+                      hrefLang={item.href.startsWith("/el") ? "el" : "en"}
                       className="lift-hover group flex h-full flex-col px-6 py-7"
                     >
                       {inner}
