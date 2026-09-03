@@ -104,7 +104,10 @@ export function PricingTeaser() {
         </div>
         <p className="bp-annot mt-5 text-center normal-case">
           {"All prices EUR · final total at checkout · "}
-          <Link href="/pricing" className="text-draw hover:text-violet underline-offset-4 hover:underline">
+          <Link
+            href="/pricing"
+            className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
+          >
             full pricing &amp; FAQ →
           </Link>
         </p>

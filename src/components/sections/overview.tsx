@@ -67,7 +67,7 @@ export function Overview() {
           {"Don't see your role? "}
           <Link
             href="/audit"
-            className="text-draw hover:text-violet underline-offset-4 hover:underline"
+            className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
           >
             Book a custom build →
           </Link>

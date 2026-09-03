@@ -61,7 +61,10 @@ export function CustomBuild() {
             <ul className="bp-annot mt-6 grid gap-2.5 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                <Link href="/outreach" className="underline underline-offset-4">
+                <Link
+                  href="/outreach"
+                  className="inline-block py-1.5 underline underline-offset-4"
+                >
                   Cold outreach
                 </Link>
               </li>
@@ -69,7 +72,7 @@ export function CustomBuild() {
                 <span className="bp-dot mt-1 shrink-0" aria-hidden />
                 <Link
                   href="/what-works"
-                  className="underline underline-offset-4"
+                  className="inline-block py-1.5 underline underline-offset-4"
                 >
                   One live view
                 </Link>
