@@ -126,7 +126,7 @@ export function SiteFooter() {
               href="/el"
               hrefLang="el"
               lang="el"
-              className="text-ink-dim hover:text-ink transition-colors"
+              className="text-ink-dim hover:text-ink inline-block py-1.5 transition-colors"
             >
               Ελληνικά
             </Link>
@@ -139,7 +139,7 @@ export function SiteFooter() {
             </span>
             <a
               href="mailto:privacy@flowstack.run"
-              className="text-ink-dim hover:text-ink transition-colors"
+              className="text-ink-dim hover:text-ink inline-block py-1.5 transition-colors"
             >
               privacy@flowstack.run
             </a>

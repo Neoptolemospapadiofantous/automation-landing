@@ -211,7 +211,7 @@ export function AuditForm({ copy = EN_COPY }: { copy?: AuditFormCopy }) {
                 required
                 rows={4}
                 placeholder={copy.leak.placeholder}
-                className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[13px]"
+                className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 rounded-none font-mono text-[16px] sm:text-[13px]"
               />
             </div>
 
@@ -290,6 +290,9 @@ export function AuditForm({ copy = EN_COPY }: { copy?: AuditFormCopy }) {
   );
 }
 
+/* 16px on phones is not a style choice: iOS Safari zooms the whole page in
+   when a focused input is under 16px, and the visitor has to pinch back out
+   mid-form. The 13px drawing-office look returns at sm and up. */
 function Field({
   name,
   label,
@@ -315,7 +318,7 @@ function Field({
         type={type}
         required
         placeholder={placeholder}
-        className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 h-11 rounded-none font-mono text-[13px]"
+        className="bg-bg-elev/85 border-border-line text-ink placeholder:text-ink-mute focus-visible:ring-ring/60 focus-visible:border-violet mt-2 h-11 rounded-none font-mono text-[16px] sm:text-[13px]"
       />
     </div>
   );

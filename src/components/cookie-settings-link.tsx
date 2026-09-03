@@ -15,7 +15,7 @@ export function CookieSettingsLink() {
     <button
       type="button"
       onClick={reopenConsent}
-      className="text-ink-dim hover:text-ink cursor-pointer font-mono text-[12px] tracking-[0.04em] transition-colors underline-offset-4 hover:underline"
+      className="text-ink-dim hover:text-ink cursor-pointer py-1.5 font-mono text-[12px] tracking-[0.04em] underline-offset-4 transition-colors hover:underline"
     >
       Cookie settings
     </button>
