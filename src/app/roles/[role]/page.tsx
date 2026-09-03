@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
@@ -36,6 +37,7 @@ export async function generateMetadata({
     description: r.metaDescription,
     alternates: { canonical: `/roles/${r.slug}` },
     openGraph: {
+    images: OG_IMAGES,
       title: r.metaTitle,
       url: `/roles/${r.slug}`,
       description: r.metaDescription,

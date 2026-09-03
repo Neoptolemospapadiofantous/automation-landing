@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/seo";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
 import { AuditForm } from "@/components/sections/audit-form";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     languages: { en: "/audit", el: "/el/audit", "x-default": "/audit" },
   },
   openGraph: {
+    images: OG_IMAGES,
     title: "Custom build — Flowstack",
     url: "/audit",
     description:

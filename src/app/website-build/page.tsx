@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: OG_IMAGES,
     title: "Web design & website builds, Limassol — Flowstack",
     url: "/website-build",
     description:

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EL_OG_IMAGES } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: EL_OG_IMAGES,
     title: "Τι δουλεύει — Flowstack",
     url: "/el/what-works",
     description:
@@ -46,6 +48,7 @@ export const metadata: Metadata = {
   // The root layout's Twitter card is English; without this a Greek
   // page shares in the wrong language on X while OG is already Greek.
   twitter: {
+    images: EL_OG_IMAGES,
     title: "Τι δουλεύει — Flowstack",
     description:
       "Μία ζωντανή εικόνα των αριθμών σας, και ο κύκλος που τους βελτιώνει. Δωρεάν 30λεπτο ραντεβού, γραπτή προσφορά σε 48 ώρες.",

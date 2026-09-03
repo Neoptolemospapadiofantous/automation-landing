@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     languages: { en: "/pricing", el: "/el/pricing", "x-default": "/pricing" },
   },
   openGraph: {
+    images: OG_IMAGES,
     title: "Pricing — Flowstack",
     url: "/pricing",
     description:
