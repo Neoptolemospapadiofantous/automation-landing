@@ -22,7 +22,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Ιστοσελίδες, chat, αυτοματισμοί & dashboards",
   description:
-    "Κατασκευάζουμε την ιστοσελίδα ή το dashboard σας, βάζουμε chat που απαντά από τη δική σας γνώση, αυτοματοποιούμε email και γραφειοκρατία, και βλέπετε τους αριθμούς σας ζωντανά.",
+    "Κατασκευή ιστοσελίδας ή dashboard, chat που απαντά από τη γνώση σας, αυτοματισμοί για email και γραφειοκρατία — και οι αριθμοί σας σε μία ζωντανή εικόνα.",
   alternates: {
     canonical: "/el",
     languages: {
