@@ -30,17 +30,18 @@ export function Hero() {
           </span>
 
           <h1 className="hero-headline-parallax mt-7 text-[42px] leading-[1.02] font-bold tracking-[-0.045em] sm:text-[58px] lg:text-[72px]">
-            <span className="block">Automate the busywork.</span>
-            <span className="text-ink-dim block">Aggregate the data.</span>
+            <span className="block">Starting a business,</span>
+            <span className="text-ink-dim block">or updating an old one?</span>
             <span className="block">
-              <span className="text-gradient">Answer every inbound.</span>
+              <span className="text-gradient">We build the whole thing.</span>
             </span>
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            We build it, answer it, automate it, and show you the numbers.{" "}
+            Website, a chat that answers from your own knowledge, the
+            automations behind it, and your numbers in one live view.{" "}
             <span className="text-ink font-semibold">
-              One team, end to end.
+              One team, one quote — end to end.
             </span>
           </p>
 

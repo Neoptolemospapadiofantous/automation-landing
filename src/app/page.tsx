@@ -17,12 +17,19 @@ import { HomepageJsonLd } from "@/components/jsonld";
 /**
  * Homepage — a numbered drawing set (S/01–S/09), tracked by the fixed
  * SheetRail on very wide screens. Tight client-legible narrative:
- * what we do (hero) → the summary in three lines (TL;DR) → the three
- * service lines → why believe us (proof, unnumbered — like the
+ * what we do (hero) → the summary in three lines (TL;DR) → the four
+ * service verbs → why believe us (proof, unnumbered — like the
  * ticker, it is an interstitial rather than part of the argument) →
  * the pains (problems) → how it runs (pipeline) →
- * the product (roles) → the ops layer (custom build) → what we build →
- * pricing → every page on the site (index) → commit.
+ * the end-to-end build (custom build) → what we build (catalogue) →
+ * the chat product (roles) → pricing → the index → commit.
+ *
+ * ORDER CHANGE 2026-09-05 (founder): the site promotes the FULL
+ * end-to-end build — website + chat + back office + numbers — to
+ * businesses starting out or updating an aged setup. The build story
+ * (S/04 custom, S/05 catalogue) therefore comes BEFORE the chat
+ * product (S/06 roles); the chat stays the self-serve door, not the
+ * headline act.
  *
  * (The audit-trail log and by-hand comparison sections were cut
  * 2026-07-17, the live-readouts strip 2026-08-01 — see git history.)
@@ -33,12 +40,12 @@ const TLDR = [
     v: "We build your website or dashboard, put a chat on it that answers from your own knowledge, automate the email and busywork behind it, and land your numbers in one live view.",
   },
   {
-    k: "What it costs",
-    v: "The chat is free to start, then €9 to €39 a month. Everything we build for you is quoted first, at a fixed price.",
+    k: "Who it's for",
+    v: "Businesses just starting out, and businesses whose site and systems have fallen behind. Take one piece, or hand us the whole thing under one quote.",
   },
   {
     k: "How to start",
-    v: "Add the chat to your site in about a minute, or book a free 30-minute call.",
+    v: "Book the free 30-minute call — you leave with a written fixed price in 48 hours. Or try the chat on your own site first, free.",
   },
 ] as const;
 
@@ -54,9 +61,9 @@ export default function Home() {
       <Proof />
       <Problems />
       <Pipeline />
-      <Overview />
       <CustomBuild />
-      <Catalogue sheetRef="S/06 / what we build" />
+      <Catalogue sheetRef="S/05 / what we build" />
+      <Overview />
       <PricingTeaser />
       <SiteIndex />
       <FinalCTA />

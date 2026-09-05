@@ -19,7 +19,7 @@ export function Overview() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-ink flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
           <div>
-            <span className="bp-ref text-violet">S/04 / agent roles</span>
+            <span className="bp-ref text-violet">S/06 / agent roles</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               Pick the first job you hand off.
             </h2>

@@ -14,7 +14,7 @@ import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} is business intelligence delegation: it fixes a team's back office. A chat agent on the site answers every inbound (free to start, paid plans €9-€39/mo); behind it, custom automations and data pipelines run the busywork and land the numbers in one live view.
+> ${BRAND.tagline} ${BRAND.name} builds the whole online side of a business, end to end — the website, a chat trained on the client's own knowledge, the back-office automations behind it, and the numbers in one live dashboard — for businesses just starting out and for ones whose site and systems have fallen behind. The chat is the self-serve part (free to start, paid plans €9-€39/mo); everything else is built to order under one quote. The category is business intelligence delegation.
 
 ## What Flowstack does, end to end
 

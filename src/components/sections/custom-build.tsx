@@ -43,16 +43,19 @@ export function CustomBuild() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-[60ch]">
-            <span className="bp-ref text-violet">S/05 / the delegation layer</span>
+            <span className="bp-ref text-violet">S/04 / the delegation layer</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-4xl lg:text-[44px] lg:leading-[1.06]">
-              The chat is the front door.
+              One build, end to end.
               <br />
-              <span className="text-ink-dim">We build what runs behind it.</span>
+              <span className="text-ink-dim">
+                Website, chat, back office, numbers.
+              </span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              We automate the work behind it, on your own tools — and if
-              you need the website itself, we build that too. The same
-              setup we run our own company on.
+              Starting from nothing? We build the whole thing. Already
+              running? We rebuild what has aged and wire in what is
+              missing — on your own tools. The same setup we run our own
+              company on.
             </p>
 
             {/* Two of these now have pages; the rest are named in full in
