@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: pair("/outreach", "/el/outreach"),
     },
     {
+      url: `${SITE_URL}/email-automation`,
+      lastModified: "2026-09-05",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/el`,
       lastModified: EL_LAST_MOD,
       changeFrequency: "monthly",

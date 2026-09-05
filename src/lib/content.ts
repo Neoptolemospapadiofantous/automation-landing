@@ -35,6 +35,11 @@ export const siteMap = {
         desc: "We find companies that fit you and email them in your voice.",
       },
       {
+        href: "/email-automation",
+        label: "Email automation",
+        desc: "Follow-ups, reminders and invoice chasers that send themselves.",
+      },
+      {
         href: "/what-works",
         label: "What works",
         desc: "Your numbers in one dashboard, and the tests behind them.",
@@ -302,6 +307,7 @@ export const buildCatalogue = [
   },
   {
     name: "Email automation",
+    href: "/email-automation",
     desc: "Follow-ups, reminders and replies that send themselves, in your voice.",
   },
   {

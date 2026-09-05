@@ -62,6 +62,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 - [Onboarding agent](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
 - [Website build](${SITE_URL}/website-build): fast, simple small-business websites in Limassol and across Cyprus, English or Greek, with the chat installed and answering from day one. Quoted after the free audit.
 - [Cold outreach](${SITE_URL}/outreach): lead generation done for you — target defined with the client, list built and verified, sequences in their voice, sending from their own address, replies handed over
+- [Email automation](${SITE_URL}/email-automation): the mail a business already owes people — follow-ups, reminders, review requests, invoice chasers — sent automatically from the client's own address, in their voice. Existing contacts only, never a cold list (that is cold outreach, above). Quoted after the free audit.
 - [What works](${SITE_URL}/what-works): one live view of the client's numbers, and the experiment loop that keeps improving them
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
 - [Sign up](${registerUrl()}): create an account and install the chat — free tier, no card. Use this when someone asks where to buy, subscribe, register or get started.
