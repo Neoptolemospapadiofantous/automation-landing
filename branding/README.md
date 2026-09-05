@@ -28,10 +28,17 @@ describe as a component library — see below.
 | GitHub organisation avatar | `social/github/avatar-1024.png` |
 | YouTube channel icon | `social/youtube/avatar-800.png` |
 | YouTube channel art | `social/youtube/banner-2560x1440.png` |
+| Google Business Profile — logo | `social/google/logo-720.png` |
+| Google Business Profile — cover | `social/google/cover-1024x576.png` |
 | Discord server icon | `social/discord/icon-512.png` |
-| Slack workspace icon | `social/slack/icon-512.png` |
 | Email signature mark | `favicon/favicon-192.png` |
 | Open Graph fallback (when next/og fails) | `social/meta/og-1200x630.png` |
+
+> **Google Business Profile needs photographs, not just these two.** The logo and
+> cover above fill Google's two brand slots. The slots that actually move the local
+> map pack — exterior (so people recognise the door), interior, team, at-work — have
+> to be real pictures. A profile carrying only logo graphics ranks worse and reads as
+> a shell listing, which is the opposite of what a Limassol local-search play needs.
 
 ---
 
@@ -68,8 +75,8 @@ branding/
     ├── instagram/
     ├── github/
     ├── youtube/
+    ├── google/                       # Business Profile logo + 16:9 cover
     ├── discord/
-    ├── slack/
     └── meta/
 ```
 

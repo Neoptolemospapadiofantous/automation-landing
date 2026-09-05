@@ -101,15 +101,19 @@ echo "YouTube..."
 render "$SRC/mark-square-white-on-black.svg" 800 "social/youtube/avatar-800.png"; say "social/youtube/avatar-800.png"
 render_exact "$SRC/banner-youtube.svg" 2560 1440 "social/youtube/banner-2560x1440.png"; say "social/youtube/banner-2560x1440.png  (safe area 1546×423)"
 
-# ── 9. Discord ────────────────────────────────────────────────────────────────
+# ── 9. Google Business Profile ────────────────────────────────────────────────
+# Google's two brand slots. Everything ELSE it asks for (exterior, interior, team,
+# at-work) must be real photographs — a profile of logo graphics ranks worse in the
+# map pack and reads as a shell listing. These cover the logo and cover only.
+echo
+echo "Google Business Profile..."
+render "$SRC/mark-square-white-on-black.svg" 720 "social/google/logo-720.png"; say "social/google/logo-720.png  (square; Google min 250)"
+render_exact "$SRC/banner-youtube.svg" 1024 576 "social/google/cover-1024x576.png"; say "social/google/cover-1024x576.png  (16:9; reuses the YouTube master, whose tighter safe area sits inside Google's crop)"
+
+# ── 10. Discord ────────────────────────────────────────────────────────────────
 echo
 echo "Discord..."
 render "$SRC/mark-square-white-on-black.svg" 512 "social/discord/icon-512.png"; say "social/discord/icon-512.png"
-
-# ── 10. Slack ─────────────────────────────────────────────────────────────────
-echo
-echo "Slack..."
-render "$SRC/mark-square-white-on-black.svg" 512 "social/slack/icon-512.png"; say "social/slack/icon-512.png"
 
 # ── 11. Meta / OG image static fallback ───────────────────────────────────────
 echo
