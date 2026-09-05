@@ -360,6 +360,10 @@ export const faqItems = [
     a: "From Growth up, yes. Every plan includes Flowstack Core, our fast default engine, on credits. The premium models run only on a key you connect — no credits spent, 10,000 messages a month on Growth, 25,000 on Operator.",
   },
   {
+    q: "Does Operator really include a free website?",
+    a: "Yes. Go annual on Operator (€390/yr) and we design and build your website — the brochure-style build, up to about six pages, with the chat installed from day one. A shop or portal is still its own quoted build. Scoped on the same free 30-minute call.",
+  },
+  {
     q: "Does it connect to my existing stack?",
     a: "The subscription ships the chat. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
   },
@@ -437,6 +441,7 @@ export const pricingTiers = [
     tagline: "For teams running several agents every day.",
     features: [
       "Everything in Growth",
+      "Free website build with the annual plan",
       "Up to 5 agents",
       "25,000 conversation credits / month",
       "Or your own API key — 25,000 messages, no credits",

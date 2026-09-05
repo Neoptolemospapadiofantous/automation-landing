@@ -97,7 +97,7 @@ export default function WebsiteBuildPage() {
           },
           {
             k: "What it costs",
-            v: "Quoted after a free 30-minute call. Fixed price before we start, and you own everything.",
+            v: "Quoted after a free 30-minute call — or free with the annual Operator chat plan. Fixed price before we start, and you own everything.",
           },
         ]}
       />
@@ -184,6 +184,16 @@ export default function WebsiteBuildPage() {
               <span className="text-ink font-semibold">
                 Fixed price before we start, and you keep the code.
               </span>
+            </p>
+            <p className="bp-annot normal-case">
+              On the{" "}
+              <Link
+                href="/pricing"
+                className="text-ink inline-block py-1.5 underline underline-offset-4"
+              >
+                annual Operator plan
+              </Link>
+              , this build is included — free.
             </p>
             <Link href="/audit" className={ctaClass()}>
               Book the audit →

@@ -39,7 +39,7 @@ Flowstack is a studio, not a single product. It builds the thing, puts a chat on
 - Free — €0/mo: 1 agent, any role, 250 conversation credits/month, no card required, no expiry.
 - Starter — €9/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
 - Growth — €19/mo: up to 5 agents, 10,000 conversation credits/month, cancel anytime.
-- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work.
+- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work. The ANNUAL Operator plan (€390/yr) additionally includes a free website build — the brochure-style build described at ${SITE_URL}/website-build, up to about six pages with the chat installed; a shop or portal is still quoted as its own build.
 - Engines: every plan includes Flowstack Core, the fast default engine, billed in credits (about 1 credit a message). The premium models — Claude, GPT-5 and Gemini — are not sold on credits at all: from Growth up the customer connects their own OpenAI, Anthropic or Google API key, those replies cost no credits, and the plan's monthly message allowance applies instead (10,000 on Growth, 25,000 on Operator, uncapped on Custom). Past the allowance chat keeps working and falls back to credits.
 - Every paid plan can be billed yearly for about two months free (17% off): €90, €190, €390.
 - Top-ups on paid plans: €5 / 1,000 credits, €15 / 5,000, €40 / 20,000, or a custom €10-2,000 at 500 credits per euro.

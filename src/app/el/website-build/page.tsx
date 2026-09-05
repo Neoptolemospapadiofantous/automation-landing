@@ -104,7 +104,7 @@ export default function WebsiteBuildElPage() {
           },
           {
             k: "Τι κοστίζει",
-            v: "Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα. Σταθερή τιμή πριν ξεκινήσουμε — και όλα σας ανήκουν.",
+            v: "Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα — ή δωρεάν με το ετήσιο πλάνο Operator του chat. Σταθερή τιμή πριν ξεκινήσουμε — και όλα σας ανήκουν.",
           },
         ]}
       />
@@ -182,6 +182,17 @@ export default function WebsiteBuildElPage() {
               <span className="text-ink font-semibold">
                 Σταθερή τιμή πριν ξεκινήσουμε — και ο κώδικας δικός σας.
               </span>
+            </p>
+            <p className="bp-annot normal-case">
+              Με το{" "}
+              <Link
+                href="/el/pricing"
+                hrefLang="el"
+                className="text-ink inline-block py-1.5 underline underline-offset-4"
+              >
+                ετήσιο πλάνο Operator
+              </Link>{" "}
+              η κατασκευή περιλαμβάνεται — δωρεάν.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" className={ctaClass()}>
