@@ -35,7 +35,14 @@ export async function generateMetadata({
   return {
     title: r.metaTitle,
     description: r.metaDescription,
-    alternates: { canonical: `/roles/${r.slug}` },
+    alternates: {
+      canonical: `/roles/${r.slug}`,
+      languages: {
+        en: `/roles/${r.slug}`,
+        el: `/el/roles/${r.slug}`,
+        "x-default": `/roles/${r.slug}`,
+      },
+    },
     openGraph: {
     images: OG_IMAGES,
       title: r.metaTitle,
@@ -220,7 +227,7 @@ export default async function RolePage({
                   {"// need it wired into your CRM or internal tools? "}
                   <Link
                     href="/audit"
-                    className="text-draw hover:text-violet underline-offset-4 hover:underline"
+                    className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
                   >
                     book a custom build →
                   </Link>

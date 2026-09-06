@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     "Follow-ups, reminders and invoice chasers that send themselves — from your own address, in your voice. For small businesses in Cyprus. Quoted after a free call.",
   alternates: {
     canonical: "/email-automation",
+    languages: {
+      en: "/email-automation",
+      el: "/el/email-automation",
+      "x-default": "/email-automation",
+    },
   },
   openGraph: {
     images: OG_IMAGES,

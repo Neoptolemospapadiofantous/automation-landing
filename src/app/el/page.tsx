@@ -98,6 +98,7 @@ const catalogue = [
   },
   {
     name: "Αυτοματοποίηση email",
+    href: "/el/email-automation",
     desc: "Follow-up, υπενθυμίσεις και απαντήσεις που στέλνονται μόνες τους, στη φωνή σας.",
   },
   {
