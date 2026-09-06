@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { siteMap, siteMapRoles } from "@/lib/content";
+import { siteMap, siteMapApp } from "@/lib/content";
 import { loginUrl } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 
@@ -94,7 +94,7 @@ export function MobileMenu() {
             id="mobile-nav-panel"
             className="border-border-hi bg-bg-elev absolute left-0 right-0 top-full z-50 flex max-h-[calc(100vh-var(--nav-h,64px))] flex-col overflow-y-auto overscroll-contain border border-t-0 px-4 py-2 shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
           >
-            {[siteMap.services, siteMapRoles].map((g) => (
+            {[siteMap.studio, siteMapApp].map((g) => (
               <div key={g.heading} className="py-1">
                 <span className="text-ink-mute mt-2 block font-mono text-[10px] tracking-[0.22em] uppercase">
                   {g.heading}
