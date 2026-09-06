@@ -25,7 +25,10 @@ export const metadata: Metadata = {
   title: "Customer acquisition, done for you — Cyprus",
   description:
     "The Studio: we find where your business loses customers, then answer every enquiry, fill the calendar and watch it run. Starts with a free one-page Leak Report.",
-  alternates: { canonical: "/studio" },
+  alternates: {
+    canonical: "/studio",
+    languages: { en: "/studio", el: "/el/studio", "x-default": "/studio" },
+  },
   openGraph: {
     images: OG_IMAGES,
     title: "Customer acquisition, done for you — Flowstack Studio",
@@ -86,6 +89,17 @@ const packages = [
     ],
     who: "The same businesses once the first package has proved itself, and any firm whose next client is an email away.",
   },
+] as const;
+
+/* Why us — the edge in four lines. The stack, not a feature: nobody on the
+   comparison list builds the list, mails it, answers the WhatsApp, books
+   the calendar and reads the numbers monthly. We do, and we run it on
+   ourselves. */
+const edge = [
+  "We run everything we sell on our own company first — it is how we found you.",
+  "The whole loop, not a widget: chat, outreach, booking, one dashboard.",
+  "Something changes every month because of the numbers. Software alone cannot promise that.",
+  "Greek and English, on Cyprus time. The 23:40 enquiry gets answered at 23:40.",
 ] as const;
 
 export default function StudioPage() {
@@ -198,6 +212,25 @@ export default function StudioPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Why us — the AQ-03 edge. */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1280px] px-6">
+          <div className="border-border-line mb-6 flex flex-col gap-3 border-t pt-10">
+            <span className="bp-ref text-violet">why us</span>
+            <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
+              Everyone else sells software. We run it.
+            </h2>
+          </div>
+          <ul className="text-ink-dim flex max-w-[70ch] flex-col gap-3 leading-[1.6]">
+            {edge.map((line) => (
+              <li key={line} className="border-border-line border-l-2 pl-4">
+                {line}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

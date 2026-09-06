@@ -20,7 +20,8 @@ const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
 const EL_LAST_MOD = "2026-09-01"; // Greek twins of the four money pages went live
 const EL_WHAT_WORKS_LAST_MOD = "2026-09-02"; // the fifth and sixth Greek pages: /el/what-works, /el/audit
 const EL_ROLES_LAST_MOD = "2026-09-05"; // /el/email-automation + the four Greek role pages
-const TWO_LINES_LAST_MOD = "2026-09-06"; // /studio + /suite: the App and the Studio as two lines (EN only for now — no hreflang pair)
+const TWO_LINES_LAST_MOD = "2026-09-06"; // /studio + /suite: the App and the Studio as two lines
+const EL_TWO_LINES_LAST_MOD = "2026-09-06"; // their Greek twins, same day
 
 /** hreflang pair for a page with a Greek twin — mirrors the pages' own
  *  metadata.alternates.languages so the sitemap and the <link> tags can
@@ -57,12 +58,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: TWO_LINES_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: pair("/studio", "/el/studio"),
     },
     {
       url: `${SITE_URL}/suite`,
       lastModified: TWO_LINES_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.8,
+      alternates: pair("/suite", "/el/suite"),
+    },
+    {
+      url: `${SITE_URL}/el/studio`,
+      lastModified: EL_TWO_LINES_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: pair("/studio", "/el/studio"),
+    },
+    {
+      url: `${SITE_URL}/el/suite`,
+      lastModified: EL_TWO_LINES_LAST_MOD,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: pair("/suite", "/el/suite"),
     },
     {
       url: `${SITE_URL}/website-build`,

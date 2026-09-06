@@ -23,7 +23,10 @@ export const metadata: Metadata = {
   title: "What the Flowstack app does, module by module",
   description:
     "Website chat, knowledge base, lead capture, live takeover, analytics and your own engine key — live today. Booking, WhatsApp, inbox and email automation — not yet, request them.",
-  alternates: { canonical: "/suite" },
+  alternates: {
+    canonical: "/suite",
+    languages: { en: "/suite", el: "/el/suite", "x-default": "/suite" },
+  },
   openGraph: {
     images: OG_IMAGES,
     title: "What the Flowstack app does, module by module",
