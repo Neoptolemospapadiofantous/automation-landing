@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { siteMap, siteMapRoles } from "@/lib/content";
+import { siteMap, siteMapApp } from "@/lib/content";
 import { CookieSettingsLink } from "./cookie-settings-link";
 
 /**
@@ -16,18 +16,7 @@ import { CookieSettingsLink } from "./cookie-settings-link";
  * — one is what you buy, the other is which job the chat does — so they get
  * their own headings.
  */
-const cols = [
-  siteMap.services,
-  siteMapRoles,
-  {
-    heading: siteMap.company.heading,
-    items: [
-      ...siteMap.company.items,
-      { href: "/audit", label: "Book the audit", desc: "" },
-    ],
-  },
-  siteMap.legal,
-];
+const cols = [siteMap.studio, siteMapApp, siteMap.company, siteMap.legal];
 
 const titleBlock = [
   { k: "Project", v: "Flowstack" },

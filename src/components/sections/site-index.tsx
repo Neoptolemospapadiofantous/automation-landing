@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteMap, siteMapRoles, type SiteLink } from "@/lib/content";
+import { siteMap, siteMapApp, type SiteLink } from "@/lib/content";
 
 /**
  * S/08 — the sheet index: every page on this site, in one place, each
@@ -80,14 +80,14 @@ export function SiteIndex() {
 
         <div className="mt-10 grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-2">
           <IndexList
-            heading="Services"
-            note={siteMap.services.note}
-            items={siteMap.services.items}
+            heading={siteMap.studio.heading}
+            note={siteMap.studio.note}
+            items={siteMap.studio.items}
           />
           <IndexList
-            heading={siteMapRoles.heading}
-            note={siteMapRoles.note}
-            items={siteMapRoles.items}
+            heading={siteMapApp.heading}
+            note={siteMapApp.note}
+            items={siteMapApp.items}
           />
         </div>
       </div>

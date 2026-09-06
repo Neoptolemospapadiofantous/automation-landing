@@ -15,19 +15,17 @@ import { registerUrl } from "./dashboard";
 export type SiteLink = { href: string; label: string; desc: string };
 
 export const siteMap = {
-  services: {
-    heading: "Services",
-    note: "// what we sell",
+  /* THE STUDIO — the done-for-you line. One of the two groups the header,
+     mobile menu, footer and homepage index all read (founder, 2026-09-06:
+     regroup the header to the two lines, keep every page). */
+  studio: {
+    heading: "The Studio",
+    note: "// done for you, in Cyprus",
     items: [
       {
-        href: "/pricing",
-        label: "Chat plans",
-        desc: "What the chat costs. Free, then €9 to €39 a month.",
-      },
-      {
-        href: "/suite",
-        label: "The app",
-        desc: "What the chat does today, module by module — and what it doesn't yet.",
+        href: "/studio",
+        label: "The Studio",
+        desc: "Done for you, in Cyprus. Starts with the free Leak Report.",
       },
       {
         href: "/website-build",
@@ -50,9 +48,9 @@ export const siteMap = {
         desc: "Your numbers in one dashboard, and the tests behind them.",
       },
       {
-        href: "/studio",
-        label: "The Studio",
-        desc: "Done for you, in Cyprus. Starts with the free Leak Report.",
+        href: "/audit",
+        label: "Custom build",
+        desc: "Free 30-minute call, written price in 48 hours.",
       },
     ] satisfies SiteLink[],
   },
@@ -274,10 +272,25 @@ export const roleLinks: SiteLink[] = rolePages.map((r) => ({
   desc: r.desc,
 }));
 
-export const siteMapRoles = {
-  heading: "The chat, by job",
-  note: "// same product, four jobs",
-  items: roleLinks,
+/* THE APP — the self-serve line: plans, the module page, then the chat's
+   four jobs (derived from rolePages, so a new role still reaches every
+   surface with no second edit). */
+export const siteMapApp = {
+  heading: "The app",
+  note: "// the chat you run yourself",
+  items: [
+    {
+      href: "/pricing",
+      label: "Chat plans",
+      desc: "What the chat costs. Free, then €9 to €39 a month.",
+    },
+    {
+      href: "/suite",
+      label: "Module by module",
+      desc: "What the chat does today — and what it doesn't yet.",
+    },
+    ...roleLinks,
+  ] satisfies SiteLink[],
 };
 
 /**

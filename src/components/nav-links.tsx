@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav, siteMap, siteMapRoles } from "@/lib/content";
+import { nav, siteMap, siteMapApp } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 /**
@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
  * returns to the trigger, and every link inside is also in the footer, so
  * nothing here is the only route to a page.
  */
-const GROUPS = [siteMap.services, siteMapRoles] as const;
+const GROUPS = [siteMap.studio, siteMapApp] as const;
 
 export function NavLinks() {
   const pathname = usePathname();
