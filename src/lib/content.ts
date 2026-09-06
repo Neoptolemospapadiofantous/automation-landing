@@ -25,6 +25,11 @@ export const siteMap = {
         desc: "What the chat costs. Free, then €9 to €39 a month.",
       },
       {
+        href: "/suite",
+        label: "The app",
+        desc: "What the chat does today, module by module — and what it doesn't yet.",
+      },
+      {
         href: "/website-build",
         label: "Website build",
         desc: "A fast site with the chat on it from day one. English or Greek.",
@@ -45,9 +50,9 @@ export const siteMap = {
         desc: "Your numbers in one dashboard, and the tests behind them.",
       },
       {
-        href: "/audit",
-        label: "Custom build",
-        desc: "Free 30-minute call, written price in 48 hours.",
+        href: "/studio",
+        label: "The Studio",
+        desc: "Done for you, in Cyprus. Starts with the free Leak Report.",
       },
     ] satisfies SiteLink[],
   },
@@ -94,7 +99,7 @@ export const nav = {
   /** Flat items to the right of the panel trigger. */
   links: [
     { href: "/what-works", label: "What works" },
-    { href: "/audit", label: "Custom build" },
+    { href: "/studio", label: "The Studio" },
     { href: "/pricing", label: "Pricing" },
   ],
 };
