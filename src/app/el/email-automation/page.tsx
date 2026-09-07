@@ -68,7 +68,7 @@ const steps = [
   {
     ref: "EM-04",
     title: "Το βλέπετε να τρέχει",
-    body: "Κάθε αποστολή καταγράφεται. Παγώνετε όποια σειρά θέλετε, και οι απαντήσεις έρχονται στο δικό σας inbox, όπως πάντα.",
+    body: "Κάθε αποστολή καταγράφεται. Οι απαντήσεις έρχονται στο δικό σας inbox, όπως πάντα.",
   },
 ] as const;
 
@@ -86,7 +86,7 @@ export default function EmailAutomationElPage() {
             </span>
           </>
         }
-        lead="Follow-up, υπενθυμίσεις, αιτήματα για κριτικές και όχληση τιμολογίων — από τη δική σας διεύθυνση, στη φωνή σας. Για μικρές επιχειρήσεις στη Λεμεσό και σε όλη την Κύπρο."
+        lead="Follow-up, υπενθυμίσεις και όχληση τιμολογίων — από τη δική σας διεύθυνση, στη φωνή σας. Λεμεσός και όλη η Κύπρος."
         ctas={[
           { href: "/el/audit", label: "Κλείστε το ραντεβού →", variant: "primary" },
         ]}
@@ -196,12 +196,6 @@ export default function EmailAutomationElPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα.{" "}
-              <span className="text-ink font-semibold">
-                Σταθερή τιμή πριν ξεκινήσουμε — και κάθε πρότυπο σας ανήκει.
-              </span>
-            </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" hrefLang="el" className={ctaClass()}>
                 Κλείστε το ραντεβού →

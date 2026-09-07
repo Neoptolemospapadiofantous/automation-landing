@@ -48,7 +48,7 @@ const steps = [
   {
     ref: "WB-01",
     title: "You tell us what it's for",
-    body: "Half an hour: what you sell, who it's for, and the language — English, Greek, or both. Bring your old site or nothing at all.",
+    body: "Half an hour: what you sell, who it's for, and the language — English, Greek, or both.",
   },
   {
     ref: "WB-02",
@@ -58,7 +58,7 @@ const steps = [
   {
     ref: "WB-03",
     title: "We build it and switch on the chat",
-    body: "Fast, mobile-ready, on your own domain. The chat goes on with it — trained on your own knowledge, answering from day one.",
+    body: "Fast, mobile-ready, on your own domain — with the chat on it from day one.",
   },
   {
     ref: "WB-04",
@@ -81,7 +81,7 @@ export default function WebsiteBuildPage() {
             </span>
           </>
         }
-        lead="Websites for small businesses in Limassol and across Cyprus. In English, Greek, or both."
+        lead="For small businesses in Limassol and across Cyprus. English, Greek, or both."
         ctas={[{ href: "/audit", label: "Book the audit →", variant: "primary" }]}
       />
 
@@ -166,7 +166,7 @@ export default function WebsiteBuildPage() {
               qualifies visitors, and hands you the leads.{" "}
               <Link
                 href="/pricing"
-                className="text-ink underline underline-offset-4"
+                className="text-ink inline-block py-1.5 underline underline-offset-4"
               >
                 See how the chat works
               </Link>
@@ -179,12 +179,6 @@ export default function WebsiteBuildPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Quoted after a free 30-minute call.{" "}
-              <span className="text-ink font-semibold">
-                Fixed price before we start, and you keep the code.
-              </span>
-            </p>
             <p className="bp-annot normal-case">
               On the{" "}
               <Link

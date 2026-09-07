@@ -189,13 +189,6 @@ export default function WhatWorksElPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Προσαρμοσμένο στα δικά σας εργαλεία, με προσφορά μετά το
-              δωρεάν ραντεβού.{" "}
-              <span className="text-ink font-semibold">
-                Σταθερή τιμή, και ο κώδικας μένει δικός σας.
-              </span>
-            </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" className={ctaClass()}>
                 Κλείστε το ραντεβού →

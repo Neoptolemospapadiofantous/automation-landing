@@ -38,8 +38,7 @@ export function Hero() {
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            Website, a chat that answers from your own knowledge, the
-            automations behind it, and your numbers in one live view.{" "}
+            Website, chat, back office, numbers.{" "}
             <span className="text-ink font-semibold">
               One team, one quote — end to end.
             </span>

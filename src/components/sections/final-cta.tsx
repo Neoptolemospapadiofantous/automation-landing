@@ -6,7 +6,7 @@ import { ctaClass } from "@/components/ui/button";
 export function FinalCTA() {
   const title = "Hand it off.";
   const subtitle =
-    "Book a free call and we'll say what you can hand over. Or add the chat now — it takes about a minute.";
+    "A free call, or add the chat now — about a minute.";
   const primary = { href: registerUrl(), label: "Start free →" };
   const secondary = { href: "/audit", label: "Talk about custom" };
 
@@ -17,7 +17,7 @@ export function FinalCTA() {
         <div className="depth-rise relative px-2 py-10 sm:py-14">
           <div className="relative flex flex-col items-center text-center">
             {/* sheet reference */}
-            <span className="bp-ref">S/09 / commit</span>
+            <span className="bp-ref">S/08 / commit</span>
 
             <h2 className="mt-6 max-w-[14ch] text-[56px] leading-[0.98] font-bold tracking-[-0.05em] text-balance sm:text-[80px] lg:text-[104px]">
               <span className="text-gradient">{title}</span>

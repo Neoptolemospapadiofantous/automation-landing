@@ -168,7 +168,7 @@ export default function OutreachPage() {
               run on our own outreach —{" "}
               <Link
                 href="/what-works"
-                className="text-ink underline underline-offset-4"
+                className="text-ink inline-block py-1.5 underline underline-offset-4"
               >
                 you can read how it works
               </Link>
@@ -181,12 +181,6 @@ export default function OutreachPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Scoped to your market, quoted after a free audit.{" "}
-              <span className="text-ink font-semibold">
-                Fixed price before we start.
-              </span>
-            </p>
             <Link href="/audit" className={ctaClass()}>
               Book the audit →
             </Link>

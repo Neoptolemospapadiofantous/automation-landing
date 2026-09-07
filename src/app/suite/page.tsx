@@ -97,7 +97,7 @@ export default function SuitePage() {
             <span className="text-gradient">module by module.</span>
           </>
         }
-        lead="The chat you run yourself. Free to start, live in about a minute, €9 to €39 a month after that. Here is what is in it today, and what is not yet."
+        lead="The chat you run yourself. Free to start, €9 to €39 a month after. What is in it today, and what is not."
         ctas={[
           { href: registerUrl(), label: "Start free →", variant: "primary" },
           { href: "/pricing", label: "See the plans", variant: "secondary" },
