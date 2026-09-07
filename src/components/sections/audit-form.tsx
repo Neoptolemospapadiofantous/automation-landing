@@ -234,7 +234,7 @@ export function AuditForm({ copy = EN_COPY }: { copy?: AuditFormCopy }) {
                   <Link
                     href="/privacy"
                     hrefLang="en"
-                    className="text-ink inline-block py-1 underline-offset-4 hover:underline"
+                    className="text-ink inline-block py-1.5 underline-offset-4 hover:underline"
                   >
                     {copy.privacyLabel}
                   </Link>
