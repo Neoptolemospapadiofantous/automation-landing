@@ -113,7 +113,7 @@ export default function StudioPage() {
             <span className="text-gradient">done for you.</span>
           </>
         }
-        lead="We find where your business is losing customers, fix it, and watch it run. For businesses in Limassol and across Cyprus, in Greek or English. It starts with a free one-page report."
+        lead="We find where you lose customers, fix it, and watch it run. Limassol and all Cyprus, Greek or English."
         ctas={[{ href: "/audit", label: "Free Leak Report →", variant: "primary" }]}
       />
 
@@ -121,7 +121,7 @@ export default function StudioPage() {
         rows={[
           {
             k: "What it is",
-            v: "The done-for-you side of Flowstack. We build it, install it and keep watching it — you never open a settings page.",
+            v: "We build it, install it and keep watching it. You never open a settings page.",
           },
           {
             k: "What it isn't",
@@ -155,10 +155,6 @@ export default function StudioPage() {
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
               Start with the Leak Report.
             </h2>
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              One page on where you are losing customers this month. Free,
-              nothing installed, and yours to keep either way.
-            </p>
           </div>
           <ol className="grid grid-cols-1 gap-px border bg-border-line border-border-line sm:grid-cols-2">
             {leak.map((s) => (
@@ -184,11 +180,6 @@ export default function StudioPage() {
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
               Two packages. You buy the promise, not the parts.
             </h2>
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Each is a fixed set-up we know how to run. Add-ons — a website,
-              invoices, inbox triage, connecting your tools — come after,
-              never instead.
-            </p>
           </div>
           <div className="grid grid-cols-1 gap-px border bg-border-line border-border-line lg:grid-cols-2">
             {packages.map((p) => (
@@ -264,12 +255,6 @@ export default function StudioPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Quoted after the free Leak Report.{" "}
-              <span className="text-ink font-semibold">
-                Fixed price before we start, and you keep everything we build.
-              </span>
-            </p>
             <Link href="/audit" className={ctaClass()}>
               Free Leak Report →
             </Link>

@@ -367,31 +367,31 @@ export const buildCatalogue = [
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. The chat answers your website. Behind it, we automate your repetitive work and pull your numbers into one view.",
+    a: "No. The chat is the front door. Behind it we automate the busywork and put your numbers in one view.",
   },
   {
     q: "What do the plans cost?",
-    a: "Free · 1 agent · 250 credits. Then €9, €19 or €39/mo for more agents and volume. €39 is our most expensive plan. Every feature on at every tier.",
+    a: "Free for one agent. Then €9, €19 or €39 a month. €39 is the top plan. Every feature on at every tier.",
   },
   {
     q: "Can I use my own OpenAI, Anthropic or Google key?",
-    a: "From Growth up, yes. Every plan includes Flowstack Core, our fast default engine, on credits. The premium models run only on a key you connect — no credits spent, 10,000 messages a month on Growth, 25,000 on Operator.",
+    a: "From Growth up, yes. Premium models run only on your own key — no credits, 10,000 messages a month on Growth, 25,000 on Operator. Every plan includes Flowstack Core on credits.",
   },
   {
     q: "Does Operator really include a free website?",
-    a: "Yes. Go annual on Operator (€390/yr) and we design and build your website — the brochure-style build, up to about six pages, with the chat installed from day one. A shop or portal is still its own quoted build. Scoped on the same free 30-minute call.",
+    a: "Yes — on the annual plan (€390/yr). The brochure-style site, up to about six pages, chat installed. A shop or portal is its own quoted build.",
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "The subscription ships the chat. Wiring into your CRM, helpdesk or internal APIs is the custom build — fixed scope, you keep the code.",
+    a: "The subscription is the chat. Wiring into your CRM or tools is a custom build — fixed scope, you keep the code.",
   },
   {
     q: "When do I need a custom build?",
-    a: "When you need a website, integrations, data pipelines, or your own UI. The subscription covers the standard 80% — we build the rest.",
+    a: "For a website, integrations, data pipelines or your own UI. The subscription covers the standard 80%.",
   },
   {
     q: "Are we locked in?",
-    a: "No. Cancel anytime, no minimums, no exit fees. Custom builds: you keep the code.",
+    a: "No. Cancel anytime, no minimums, no exit fees. You keep the code."
   },
 ] as const;
 

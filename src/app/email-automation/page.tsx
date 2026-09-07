@@ -62,7 +62,7 @@ const steps = [
   {
     ref: "EM-04",
     title: "You watch it run",
-    body: "Every send is logged. Pause any sequence whenever you like, and replies land in your own inbox, same as always.",
+    body: "Every send is logged. Replies land in your own inbox, as always.",
   },
 ] as const;
 
@@ -78,7 +78,7 @@ export default function EmailAutomationPage() {
             <span className="text-gradient">sent on time, every time.</span>
           </>
         }
-        lead="Follow-ups, reminders, review asks and invoice chasers — from your own address, in your voice. For small businesses in Limassol and across Cyprus."
+        lead="Follow-ups, reminders and invoice chasers — from your own address, in your voice. Limassol and all Cyprus."
         ctas={[{ href: "/audit", label: "Book the audit →", variant: "primary" }]}
       />
 
@@ -185,12 +185,6 @@ export default function EmailAutomationPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Quoted after a free 30-minute call.{" "}
-              <span className="text-ink font-semibold">
-                Fixed price before we start, and you own every template.
-              </span>
-            </p>
             <Link href="/audit" className={ctaClass()}>
               Book the audit →
             </Link>

@@ -108,7 +108,7 @@ export default async function RolePage({
           { k: "What it does", v: r.desc },
           {
             k: "Where it lives",
-            v: "On your website, or on a chat page you can link to. Set up in about a minute.",
+            v: "On your site, or a chat page you link to. About a minute to set up.",
           },
           {
             k: "What it costs",
@@ -219,15 +219,13 @@ export default async function RolePage({
                   Free to start. Cancel anytime.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  Free covers one agent. Starter is €9 a month for 2,500
-                  conversation credits, Operator €39 for five agents and
-                  25,000. Cancel any month.
+                  €0 for one agent. €9 to €39 for more.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// need it wired into your CRM or internal tools? "}
                   <Link
                     href="/audit"
-                    className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
+                    className="text-draw hover:text-violet inline-block py-2 underline-offset-4 hover:underline"
                   >
                     book a custom build →
                   </Link>

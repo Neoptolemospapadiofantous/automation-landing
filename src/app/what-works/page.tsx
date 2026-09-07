@@ -184,12 +184,6 @@ export default function WhatWorksPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Scoped to your stack, quoted after a free 30-minute audit.{" "}
-              <span className="text-ink font-semibold">
-                Fixed price, and you keep the code.
-              </span>
-            </p>
             <Link href="/audit" className={ctaClass()}>
               Book the audit →
             </Link>

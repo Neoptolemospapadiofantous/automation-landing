@@ -252,7 +252,7 @@ export default async function RoleElPage({
           { k: "Τι κάνει", v: r.desc },
           {
             k: "Πού ζει",
-            v: "Στο site σας, ή σε μια σελίδα chat που στέλνετε με link. Στήνεται σε περίπου ένα λεπτό.",
+            v: "Στο site σας, ή σε σελίδα chat με link. Ένα λεπτό στήσιμο.",
           },
           {
             k: "Τι κοστίζει",
@@ -362,16 +362,14 @@ export default async function RoleElPage({
                   Δωρεάν για αρχή. Ακύρωση όποτε θέλετε.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  Το Free καλύπτει έναν agent. Το Starter κοστίζει €9 τον μήνα
-                  για 2.500 πιστώσεις συνομιλίας, το Operator €39 για πέντε
-                  agents και 25.000. Ακυρώνετε όποιον μήνα θέλετε.
+                  €0 για έναν agent. €9 έως €39 για περισσότερους.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// το θέλετε συνδεδεμένο με CRM ή εσωτερικά εργαλεία; "}
                   <Link
                     href="/el/audit"
                     hrefLang="el"
-                    className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
+                    className="text-draw hover:text-violet inline-block py-2 underline-offset-4 hover:underline"
                   >
                     κλείστε custom κατασκευή →
                   </Link>

@@ -107,7 +107,7 @@ export default function SuiteElPage() {
             <span className="text-gradient">λειτουργία προς λειτουργία.</span>
           </>
         }
-        lead="Το chat που τρέχετε μόνοι σας. Δωρεάν για αρχή, ζωντανό σε περίπου ένα λεπτό, €9 έως €39 τον μήνα μετά. Τι έχει σήμερα, και τι όχι ακόμη."
+        lead="Το chat που τρέχετε μόνοι σας. Δωρεάν για αρχή, €9 έως €39 τον μήνα μετά. Τι έχει σήμερα, και τι όχι."
         ctas={[
           { href: registerUrl(), label: "Ξεκινήστε δωρεάν →", variant: "primary" },
           { href: "/el/pricing", label: "Δείτε τα πλάνα", variant: "secondary" },

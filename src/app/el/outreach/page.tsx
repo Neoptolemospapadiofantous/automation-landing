@@ -160,13 +160,6 @@ export default function OutreachElPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Προσαρμοσμένο στην αγορά σας, με προσφορά μετά το δωρεάν
-              ραντεβού.{" "}
-              <span className="text-ink font-semibold">
-                Σταθερή τιμή πριν ξεκινήσουμε.
-              </span>
-            </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" className={ctaClass()}>
                 Κλείστε το ραντεβού →

@@ -43,18 +43,8 @@ export function Proof() {
 
           <div className="mt-7 flex flex-col gap-5">
             <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              Every email and post we send is assigned by a live experiment,
-              and judged on what came back.
-            </p>
-
-            <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              The evidence said our video posts reached half as many people.{" "}
-              <span className="text-ink font-semibold">We retired video.</span>
-            </p>
-
-            <p className="text-ink-dim max-w-[62ch] leading-[1.6]">
-              A bug inflated our own reply rate. We found it and revised the
-              number down — twice.{" "}
+              Our own experiments retired our video posts and revised our reply
+              rate down — twice.{" "}
               <span className="text-ink font-semibold">
                 That is the standard we hold your numbers to.
               </span>

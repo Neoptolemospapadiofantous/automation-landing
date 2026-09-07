@@ -62,7 +62,7 @@ export function PricingTeaser() {
                 </p>
               )}
               <ul className="mb-7 mt-5 space-y-2.5">
-                {tier.features.slice(0, 4).map((f) => (
+                {tier.features.slice(0, 3).map((f) => (
                   <li key={f} className="text-ink-dim flex items-start gap-3 text-[13px]">
                     <span aria-hidden className="bp-dot mt-1.5 shrink-0" />
                     {f}

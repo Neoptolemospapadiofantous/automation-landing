@@ -34,10 +34,9 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
 
         <p className="text-ink-dim mt-5 max-w-[58ch] leading-[1.6]">
           <span className="text-ink font-semibold">
-            None of these are part of the monthly plans.
+            Not part of the plans.
           </span>{" "}
-          The plans are the chat. Everything below is work we do for you,
-          scoped to your own tools and quoted before it starts.
+          Built for you, on your tools, quoted before it starts.
         </p>
 
         {/* Hairline grid — one cell per service. Two columns from sm, so the

@@ -52,10 +52,8 @@ export function CustomBuild() {
               </span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              Starting from nothing? We build the whole thing. Already
-              running? We rebuild what has aged and wire in what is
-              missing — on your own tools. The same setup we run our own
-              company on.
+              From nothing, or from what has aged — on your own tools. The
+              same setup we run our own company on.
             </p>
 
             {/* Two of these now have pages; the rest are named in full in

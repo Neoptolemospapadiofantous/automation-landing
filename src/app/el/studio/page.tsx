@@ -119,7 +119,7 @@ export default function StudioElPage() {
             <span className="text-gradient">όλα από εμάς.</span>
           </>
         }
-        lead="Βρίσκουμε πού χάνει πελάτες η επιχείρησή σας, το διορθώνουμε, και το παρακολουθούμε να τρέχει. Στη Λεμεσό και σε όλη την Κύπρο. Ξεκινά με μία δωρεάν αναφορά μίας σελίδας."
+        lead="Βρίσκουμε πού χάνετε πελάτες, το διορθώνουμε, και το παρακολουθούμε. Λεμεσός και όλη η Κύπρος, ελληνικά ή αγγλικά."
         ctas={[
           {
             href: "/el/audit",
@@ -133,7 +133,7 @@ export default function StudioElPage() {
         rows={[
           {
             k: "Τι είναι",
-            v: "Η πλευρά του Flowstack που την κάνουμε εμείς: το στήνουμε, το εγκαθιστούμε και το παρακολουθούμε — δεν ανοίγετε ποτέ σελίδα ρυθμίσεων.",
+            v: "Το στήνουμε, το εγκαθιστούμε και το παρακολουθούμε. Δεν ανοίγετε ποτέ σελίδα ρυθμίσεων.",
           },
           {
             k: "Τι δεν είναι",
@@ -167,10 +167,6 @@ export default function StudioElPage() {
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
               Ξεκινήστε με την Αναφορά Διαρροής.
             </h2>
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Μία σελίδα για το πού χάνετε πελάτες αυτόν τον μήνα. Δωρεάν,
-              χωρίς καμία εγκατάσταση, και δική σας ό,τι κι αν αποφασίσετε.
-            </p>
           </div>
           <ol className="grid grid-cols-1 gap-px border bg-border-line border-border-line sm:grid-cols-2">
             {leak.map((s) => (
@@ -196,11 +192,6 @@ export default function StudioElPage() {
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
               Δύο πακέτα. Αγοράζετε το αποτέλεσμα, όχι τα κομμάτια.
             </h2>
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Το καθένα είναι ένα στήσιμο που ξέρουμε να τρέχουμε. Πρόσθετα —
-              ιστοσελίδα, τιμολόγια, ταξινόμηση εισερχομένων — έρχονται μετά,
-              ποτέ αντί.
-            </p>
           </div>
           <div className="grid grid-cols-1 gap-px border bg-border-line border-border-line lg:grid-cols-2">
             {packages.map((p) => (
@@ -279,12 +270,6 @@ export default function StudioElPage() {
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
-            <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-              Προσφορά μετά τη δωρεάν Αναφορά Διαρροής.{" "}
-              <span className="text-ink font-semibold">
-                Σταθερή τιμή πριν ξεκινήσουμε — και ό,τι χτίζουμε σας ανήκει.
-              </span>
-            </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" hrefLang="el" className={ctaClass()}>
                 Δωρεάν Αναφορά Διαρροής →
