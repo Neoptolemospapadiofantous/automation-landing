@@ -123,7 +123,7 @@ export default function StudioElPage() {
         ctas={[
           {
             href: "/el/audit",
-            label: "Πάρτε τη δωρεάν Αναφορά Διαρροής →",
+            label: "Δωρεάν Αναφορά Διαρροής →",
             variant: "primary",
           },
         ]}
@@ -287,7 +287,7 @@ export default function StudioElPage() {
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/el/audit" hrefLang="el" className={ctaClass()}>
-                Πάρτε τη δωρεάν Αναφορά Διαρροής →
+                Δωρεάν Αναφορά Διαρροής →
               </Link>
               <Link
                 href="/studio"
