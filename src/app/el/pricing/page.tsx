@@ -305,7 +305,7 @@ export default function PricingElPage() {
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-wrap items-center gap-4 border-t pt-8">
             <Link href="/el/audit" className={ctaClass()}>
-              Κλείστε το δωρεάν ραντεβού →
+              Δωρεάν ραντεβού →
             </Link>
             <Link
               href="/pricing"

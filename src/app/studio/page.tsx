@@ -114,7 +114,7 @@ export default function StudioPage() {
           </>
         }
         lead="We find where your business is losing customers, fix it, and watch it run. For businesses in Limassol and across Cyprus, in Greek or English. It starts with a free one-page report."
-        ctas={[{ href: "/audit", label: "Get the free Leak Report →", variant: "primary" }]}
+        ctas={[{ href: "/audit", label: "Free Leak Report →", variant: "primary" }]}
       />
 
       <Tldr
@@ -271,7 +271,7 @@ export default function StudioPage() {
               </span>
             </p>
             <Link href="/audit" className={ctaClass()}>
-              Get the free Leak Report →
+              Free Leak Report →
             </Link>
           </div>
         </div>
