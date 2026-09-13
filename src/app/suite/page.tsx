@@ -22,7 +22,7 @@ import { dashboardUrl, registerUrl } from "@/lib/dashboard";
 export const metadata: Metadata = {
   title: "What the Flowstack app does, module by module",
   description:
-    "Website chat, knowledge base, lead capture, live takeover, analytics and your own engine key — live today. Booking, WhatsApp, inbox and email automation — not yet, request them.",
+    "Website chat, knowledge base, lead capture, live takeover, analytics, webhooks and your own engine key — live today. Booking, WhatsApp, inbox and email automation — not yet, request them.",
   alternates: {
     canonical: "/suite",
     languages: { en: "/suite", el: "/el/suite", "x-default": "/suite" },
@@ -60,6 +60,10 @@ const live = [
   {
     name: "Your own engine key",
     body: "From Growth up, run premium engines on your own OpenAI, Anthropic or Google key — no credits spent.",
+  },
+  {
+    name: "Webhooks",
+    body: "From Starter up, each new lead and handoff request is pushed to Zapier, Make, Google Sheets or your CRM as it happens — signed with your own secret. No public API.",
   },
 ] as const;
 
@@ -108,7 +112,7 @@ export default function SuitePage() {
         rows={[
           {
             k: "Live today",
-            v: "Website chat, knowledge base, lead capture and scoring, live takeover, analytics, your own engine key.",
+            v: "Website chat, knowledge base, lead capture and scoring, live takeover, analytics, webhooks, your own engine key.",
           },
           {
             k: "Not yet",

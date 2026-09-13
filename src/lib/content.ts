@@ -383,7 +383,7 @@ export const faqItems = [
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "The subscription is the chat. Wiring into your CRM or tools is a custom build — fixed scope, you keep the code.",
+    a: "Paid plans push each new lead and handoff request to Zapier, Make, Google Sheets or your CRM by webhook, as it happens. Deeper wiring is a custom build — fixed scope, you keep the code.",
   },
   {
     q: "When do I need a custom build?",

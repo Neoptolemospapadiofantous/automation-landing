@@ -19,7 +19,7 @@ import { dashboardUrl, registerUrl } from "@/lib/dashboard";
 export const metadata: Metadata = {
   title: "Τι κάνει το Flowstack app, λειτουργία προς λειτουργία",
   description:
-    "Chat, βάση γνώσης, καταγραφή leads, live ανάληψη, αναλυτικά — ζωντανά σήμερα. Κρατήσεις, WhatsApp, email — όχι ακόμη· τα ζητάτε από το dashboard σας.",
+    "Chat, βάση γνώσης, καταγραφή leads, live ανάληψη, αναλυτικά, webhooks — ζωντανά σήμερα. Κρατήσεις, WhatsApp, email — όχι ακόμη· τα ζητάτε από το dashboard σας.",
   alternates: {
     canonical: "/el/suite",
     languages: {
@@ -70,6 +70,10 @@ const live = [
     name: "Το δικό σας κλειδί μηχανής",
     body: "Από το Growth και πάνω, τα προηγμένα μοντέλα τρέχουν στο δικό σας κλειδί OpenAI, Anthropic ή Google — χωρίς πιστώσεις.",
   },
+  {
+    name: "Webhooks",
+    body: "Από το Starter και πάνω, κάθε νέο lead και κάθε αίτημα για άνθρωπο στέλνεται αμέσως στο Zapier, το Make, τα Google Sheets ή το CRM σας — υπογεγραμμένο με το δικό σας μυστικό. Χωρίς δημόσιο API.",
+  },
 ] as const;
 
 const coming = [
@@ -118,7 +122,7 @@ export default function SuiteElPage() {
         rows={[
           {
             k: "Ζωντανά σήμερα",
-            v: "Chat ιστοσελίδας, βάση γνώσης, καταγραφή και βαθμολόγηση leads, live ανάληψη, αναλυτικά, το δικό σας κλειδί μηχανής.",
+            v: "Chat ιστοσελίδας, βάση γνώσης, καταγραφή και βαθμολόγηση leads, live ανάληψη, αναλυτικά, webhooks, το δικό σας κλειδί μηχανής.",
           },
           {
             k: "Όχι ακόμη",

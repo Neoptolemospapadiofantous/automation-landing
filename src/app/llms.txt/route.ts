@@ -33,6 +33,7 @@ Two lines, kept separate on purpose. The APP is the self-serve chat — sold at 
 - Pre-built agents for four roles: lead qualification, sales, customer support, onboarding — each trained on the customer's own knowledge base.
 - Deploys as an embeddable website widget, plus a hosted chat page you can link to.
 - Every conversation is captured with full transcripts and lead routing in a real-time dashboard.
+- Webhooks (paid plans, Settings → Webhooks in the dashboard): each new lead, handoff request and ended conversation is POSTed to the customer's own URL — Zapier, Make, Google Sheets, a CRM — as a signed JSON event (HMAC-SHA256, secret shown once), retried if the endpoint is down. There is no public API or SDK; the webhook is the integration surface, and two-way wiring stays custom build work.
 - Build work, scoped and quoted after a free audit: agent go-live, website build, cold outreach, email automation (follow-ups, reminders and replies that send themselves), booking, invoices and documents, inbox triage, connecting the client's tools, one live view, other bespoke automations on request, and ongoing care. Fixed price agreed before work starts; the client keeps the code.
 - The whole stack can be taken end to end — Flowstack builds the website, runs the chat on it, automates the back office, and lands the numbers in one dashboard. One team, one quote, after the same free audit.
 
