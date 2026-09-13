@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav, siteMap, siteMapApp } from "@/lib/content";
+import { byCategory, nav, siteMap, siteMapApp } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 /**
@@ -96,40 +96,60 @@ export function NavLinks() {
         {open && (
           <div
             id="nav-services-panel"
-            className="border-border-hi bg-bg absolute top-[calc(100%+14px)] left-0 z-50 grid w-[600px] grid-cols-2 gap-px border shadow-[8px_8px_0_var(--ink)]"
+            /* Wider than the old flat list so most descriptions hold one
+               line, and capped with a scroll so a short laptop window can
+               still reach the last category. */
+            className="border-border-hi bg-bg absolute top-[calc(100%+14px)] left-0 z-50 grid max-h-[calc(100vh-7rem)] w-[680px] grid-cols-2 gap-px overflow-y-auto border shadow-[8px_8px_0_var(--ink)]"
           >
             {GROUPS.map((g) => (
               <div key={g.heading} className="bg-bg p-5">
-                <div className="border-border-line mb-3 border-b pb-2">
+                <div className="border-border-line mb-2 border-b pb-2">
                   <span className="text-ink font-mono text-[10px] tracking-[0.22em] whitespace-nowrap uppercase">
                     {g.heading}
                   </span>
                 </div>
-                <ul className="flex flex-col">
-                  {g.items.map((it) => {
-                    const active = pathname === it.href;
-                    return (
-                      <li key={it.href}>
-                        <Link
-                          href={it.href}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "hover:bg-bg-elev group -mx-2 flex flex-col gap-0.5 px-2 py-2 transition-colors",
-                            active && "bg-bg-elev",
-                          )}
-                        >
-                          <span className="text-ink flex items-center gap-2 text-[14px] font-semibold tracking-[-0.01em]">
-                            <span className="bp-dot shrink-0" aria-hidden />
-                            {it.label}
-                          </span>
-                          <span className="text-ink-dim pl-[14px] text-[12px] leading-[1.45]">
-                            {it.desc}
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                {/* The line's offer in one sentence. A menu of twelve
+                    links says what pages exist; this says what you get. */}
+                <p className="text-ink-dim mb-4 text-[12px] leading-[1.5]">
+                  {g.pitch}
+                </p>
+                {byCategory(g.items).map((bucket) => (
+                  <div key={bucket.cat} className="mb-3 last:mb-0">
+                    {/* Deliberately NOT .bp-ref: that class paints the
+                        signal yellow, and seven gold labels in one panel
+                        spends the one accent the brand allows. */}
+                    {bucket.cat && (
+                      <span className="text-ink-mute mb-1 block font-mono text-[9px] tracking-[0.22em] uppercase">
+                        {bucket.cat}
+                      </span>
+                    )}
+                    <ul className="flex flex-col">
+                      {bucket.items.map((it) => {
+                        const active = pathname === it.href;
+                        return (
+                          <li key={it.href}>
+                            <Link
+                              href={it.href}
+                              aria-current={active ? "page" : undefined}
+                              className={cn(
+                                "hover:bg-bg-elev group -mx-2 flex flex-col gap-0.5 px-2 py-1.5 transition-colors",
+                                active && "bg-bg-elev",
+                              )}
+                            >
+                              <span className="text-ink flex items-center gap-2 text-[14px] font-semibold tracking-[-0.01em]">
+                                <span className="bp-dot shrink-0" aria-hidden />
+                                {it.label}
+                              </span>
+                              <span className="text-ink-dim pl-[14px] text-[12px] leading-[1.45]">
+                                {it.desc}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
               </div>
             ))}
           </div>

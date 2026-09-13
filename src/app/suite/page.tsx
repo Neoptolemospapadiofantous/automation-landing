@@ -67,26 +67,39 @@ const live = [
   },
 ] as const;
 
+/* `studio` names the page where the SAME job is sold as done-for-you work
+   today. Four of these five were being advertised as services on the
+   homepage while this page called them "not yet available" — true of both,
+   but a visitor met the two claims two clicks apart and could only read it
+   as a contradiction. Saying who does it resolves it without either surface
+   having to lie. WhatsApp deliberately carries NO link: the Studio does not
+   do it either, and inventing a service to tidy up a layout is how a site
+   starts advertising work it cannot deliver. */
 const coming = [
   {
     name: "Booking & appointments",
     body: "The chat checks your calendar, books the slot, sends the confirmation and the reminder.",
+    studio: { href: "/email-automation", label: "Automations" },
   },
   {
     name: "WhatsApp channel",
     body: "The same agent on your WhatsApp Business number, transcript on the same board.",
+    studio: null,
   },
   {
     name: "Inbox & portal enquiries",
     body: "Enquiries arriving by email — booking portals, listing sites, your contact form — routed to the agent.",
+    studio: { href: "/email-automation", label: "Automations" },
   },
   {
     name: "Email automation",
     body: "Follow-ups, reminders and reactivation to people who already know you, from your own address.",
+    studio: { href: "/email-automation", label: "Automations" },
   },
   {
     name: "One live view",
     body: "Your numbers from the tools they are scattered across, in one dashboard that refreshes itself.",
+    studio: { href: "/what-works", label: "Live reports" },
   },
 ] as const;
 
@@ -188,6 +201,18 @@ export default function SuitePage() {
                   <span className="bp-ref shrink-0">coming</span>
                 </div>
                 <p className="text-ink-dim max-w-[40ch] leading-[1.6]">{m.body}</p>
+                {m.studio && (
+                  <p className="text-ink-mute mt-auto pt-1 text-[13px] leading-[1.5]">
+                    Not in the app yet — the Studio does this for you today:{" "}
+                    <Link
+                      href={m.studio.href}
+                      className="text-ink underline underline-offset-4"
+                    >
+                      {m.studio.label}
+                    </Link>
+                    .
+                  </p>
+                )}
               </li>
             ))}
           </ul>

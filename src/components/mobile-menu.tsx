@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { siteMap, siteMapApp } from "@/lib/content";
+import { byCategory, siteMap, siteMapApp } from "@/lib/content";
 import { loginUrl } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 
@@ -96,26 +96,40 @@ export function MobileMenu() {
           >
             {[siteMap.studio, siteMapApp].map((g) => (
               <div key={g.heading} className="py-1">
-                <span className="text-ink-mute mt-2 block font-mono text-[10px] tracking-[0.22em] uppercase">
+                <span className="text-ink mt-2 block font-mono text-[10px] tracking-[0.22em] uppercase">
                   {g.heading}
                 </span>
-                {g.items.map((it) => {
-                  const active = pathname === it.href;
-                  return (
-                    <Link
-                      key={it.href}
-                      href={it.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "border-border-line/60 flex items-center gap-2 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
-                        active ? "text-ink" : "text-ink-dim hover:text-ink",
-                      )}
-                    >
-                      <span className="bp-dot shrink-0" aria-hidden />
-                      {it.label}
-                    </Link>
-                  );
-                })}
+                {/* The same one-line offer the desktop panel carries —
+                    a phone menu that only lists labels says even less. */}
+                <p className="text-ink-dim mt-1 mb-1 text-[12px] leading-[1.45]">
+                  {g.pitch}
+                </p>
+                {byCategory(g.items).map((bucket) => (
+                  <div key={bucket.cat}>
+                    {bucket.cat && (
+                      <span className="text-ink-mute mt-3 block font-mono text-[9px] tracking-[0.22em] uppercase">
+                        {bucket.cat}
+                      </span>
+                    )}
+                    {bucket.items.map((it) => {
+                      const active = pathname === it.href;
+                      return (
+                        <Link
+                          key={it.href}
+                          href={it.href}
+                          aria-current={active ? "page" : undefined}
+                          className={cn(
+                            "border-border-line/60 flex items-center gap-2 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
+                            active ? "text-ink" : "text-ink-dim hover:text-ink",
+                          )}
+                        >
+                          <span className="bp-dot shrink-0" aria-hidden />
+                          {it.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             ))}
             <Link

@@ -7,22 +7,22 @@ import { SectionWatermark } from "@/components/section-watermark";
  */
 const PROBLEMS = [
   {
-    ref: "P-01 / repetition",
-    title: "Busywork by hand",
-    body: "The same report, rebuilt by hand every Monday.",
+    ref: "P-01 / latency",
+    title: "Enquiries left waiting",
+    body: "The 11pm question gets no answer, so they book someone else.",
+    cost: "cost: customers who already chose you",
+  },
+  {
+    ref: "P-02 / supply",
+    title: "No steady flow of leads",
+    body: "Referrals dry up, and nobody is reaching out to new customers.",
+    cost: "cost: a quiet month you can't plan for",
+  },
+  {
+    ref: "P-03 / repetition",
+    title: "Follow-up by hand",
+    body: "Reminders, invoices and the CRM, pushed by a person every week.",
     cost: "cost: hours, every week, forever",
-  },
-  {
-    ref: "P-02 / fragmentation",
-    title: "Data in silos",
-    body: "CRM, spreadsheet and inbox all disagree.",
-    cost: "cost: decisions made half-blind",
-  },
-  {
-    ref: "P-03 / latency",
-    title: "Leads left waiting",
-    body: "The 11pm buying question opens a competitor's site.",
-    cost: "cost: revenue that never arrives",
   },
 ] as const;
 
@@ -35,7 +35,7 @@ export function Problems() {
           <div>
             <span className="bp-ref text-violet">S/02</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Three ways a week disappears.
+              Where customers and hours go missing.
             </h2>
           </div>
         </div>

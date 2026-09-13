@@ -1,54 +1,56 @@
 import Link from "next/link";
 
 /**
- * What we do, in four verbs — the block that makes the shape of the
- * business legible in about eight seconds.
+ * What we sell, in four — the block that makes the offer legible in
+ * about eight seconds (founder, 2026-09-13: a website, a chat and voice
+ * system, automations in their CRM, lead generation).
  *
- * It was three cells named after products (Chat / Outreach / What works)
- * until the catalogue grew to twelve. That framing then actively misled:
- * the site announced "three services" and listed twelve underneath, and
- * a visitor who needed a website or an internal dashboard found nothing
- * at the top that spoke to them. Verbs cover the whole studio without
- * having to grow a cell every time a service is added — a new build lands
- * in the catalogue under a verb that already exists.
+ * It was four VERBS (Build / Answer / Automate / Measure) from 2026-08-31.
+ * Verbs described the studio well and the purchase badly: a buyer reads
+ * "Measure" and still does not know what they get. These are the four
+ * things on the invoice, named as the invoice names them.
+ *
+ * This block sells the OUTCOME and the buy path; the catalogue further
+ * down lists what each one includes. Same four names, different
+ * sentences — say each fact once.
  *
  * Each cell states its BUY PATH before the price question is asked. Only
- * the chat is self-serve; the rest are quoted, and saying so here is what
- * stops "quoted" reading as evasion further down.
+ * the website chat is self-serve; voice, automations and lead generation
+ * are built to order. Saying so here is what stops "quoted" reading as
+ * evasion further down.
  *
  * Deliberately carries no sheet number: like the ticker and the proof
- * band it is an interstitial, and the numbered set (S/01 hero … S/09
- * commit) is tracked by SheetRail, which would have to renumber seven
- * printed refs to make room here.
+ * band it is an interstitial, and the numbered set is tracked by
+ * SheetRail.
  */
 const lines = [
   {
-    name: "Build",
+    name: "Website",
     how: "We build it · quoted",
-    desc: "The website, the dashboard, or the internal tool you keep meaning to get made.",
-    href: "/audit",
-    cue: "Book the audit",
+    desc: "A site that looks right, loads fast and turns visitors into enquiries.",
+    href: "/website-build",
+    cue: "Website builds",
   },
   {
-    name: "Answer",
-    how: "You set it up · from €0",
-    desc: "Chat on your site, trained on your own knowledge. It answers, qualifies, and hands you the leads.",
+    name: "Chat & voice assistant",
+    how: "Chat free · voice quoted",
+    desc: "No enquiry goes unanswered — day or night, on your site or your phone.",
     href: "/pricing",
     cue: "See the plans",
   },
   {
-    name: "Automate",
-    how: "We run it for you · quoted",
-    desc: "Email, follow-ups, cold outreach, invoices, inbox — the work that repeats.",
-    href: "/outreach",
-    cue: "How outreach works",
+    name: "Automations",
+    how: "We build it · quoted",
+    desc: "Your CRM, follow-ups and invoices stop needing a person to push them.",
+    href: "/email-automation",
+    cue: "How automations work",
   },
   {
-    name: "Measure",
-    how: "We build it for you · quoted",
-    desc: "Your numbers out of scattered tools into one live dashboard, and the tests that move them.",
-    href: "/what-works",
-    cue: "How the loop works",
+    name: "Lead generation",
+    how: "We run it · quoted",
+    desc: "New customers found for you, and every enquiry called back in a minute.",
+    href: "/outreach",
+    cue: "How lead generation works",
   },
 ] as const;
 
@@ -58,13 +60,13 @@ export function ServiceLines() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
           <div>
-            <span className="bp-ref">what we do</span>
+            <span className="bp-ref">what we sell</span>
             <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-              Four things, end to end. One team.
+              Four things. One team.
             </h2>
           </div>
           <p className="bp-annot normal-case">
-            Take one, or hand us the lot.
+            Take one, or all four.
           </p>
         </div>
 

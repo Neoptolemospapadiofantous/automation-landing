@@ -76,26 +76,35 @@ const live = [
   },
 ] as const;
 
+/* `studio` ονομάζει τη σελίδα όπου την ίδια δουλειά την κάνουμε εμείς
+   για εσάς σήμερα — τέσσερα από τα πέντε διαφημίζονταν ως υπηρεσίες ενώ
+   εδώ έγραφαν «δεν είναι ακόμη διαθέσιμο». Το WhatsApp δεν παίρνει
+   σύνδεσμο: δεν το κάνει ούτε το Studio. */
 const coming = [
   {
     name: "Κρατήσεις & ραντεβού",
     body: "Το chat κοιτάζει το ημερολόγιό σας, κλείνει τη θέση, στέλνει επιβεβαίωση και υπενθύμιση.",
+    studio: { href: "/el/email-automation", label: "Αυτοματισμοί" },
   },
   {
     name: "Κανάλι WhatsApp",
     body: "Ο ίδιος agent στο WhatsApp Business νούμερό σας, απομαγνητοφώνηση στον ίδιο πίνακα.",
+    studio: null,
   },
   {
     name: "Μηνύματα από inbox & portals",
     body: "Ερωτήματα που φτάνουν με email — booking portals, καταχωρίσεις, η φόρμα σας — δρομολογημένα στον agent.",
+    studio: { href: "/el/email-automation", label: "Αυτοματισμοί" },
   },
   {
     name: "Αυτοματοποίηση email",
     body: "Follow-up, υπενθυμίσεις και επανενεργοποίηση σε όσους σας ξέρουν ήδη, από τη δική σας διεύθυνση.",
+    studio: { href: "/el/email-automation", label: "Αυτοματισμοί" },
   },
   {
     name: "Μία ζωντανή εικόνα",
     body: "Οι αριθμοί σας από τα εργαλεία που είναι σκορπισμένοι, σε ένα dashboard που ανανεώνεται μόνο του.",
+    studio: { href: "/el/what-works", label: "Αριθμοί" },
   },
 ] as const;
 
@@ -200,6 +209,19 @@ export default function SuiteElPage() {
                   <span className="bp-ref shrink-0">έρχεται</span>
                 </div>
                 <p className="text-ink-dim max-w-[40ch] leading-[1.6]">{m.body}</p>
+                {m.studio && (
+                  <p className="text-ink-mute mt-auto pt-1 text-[13px] leading-[1.5]">
+                    Όχι ακόμη στο app — το Studio το κάνει για εσάς σήμερα:{" "}
+                    <Link
+                      href={m.studio.href}
+                      hrefLang="el"
+                      className="text-ink underline underline-offset-4"
+                    >
+                      {m.studio.label}
+                    </Link>
+                    .
+                  </p>
+                )}
               </li>
             ))}
           </ul>

@@ -46,10 +46,10 @@ const jetbrainsMono = JetBrains_Mono({
  * tagline itself (BRAND.tagline, SHARED.md §3.4) is untouched and still
  * drives OG, JSON-LD, the manifest and llms.txt.
  */
-const TITLE_HOME = "Websites, chat, automation & dashboards — Flowstack";
+const TITLE_HOME = "Websites, chat, automation & lead generation — Flowstack";
 const TITLE_SOCIAL = `${BRAND.name} — ${BRAND.tagline}`;
 const DESCRIPTION =
-  "We set up systems that answer your website, send your follow-ups, and put your numbers in one live view — so you stop doing it by hand. Chat is free to start.";
+  "We build your website, answer every enquiry by chat or phone, automate your CRM follow-ups and bring you new customers. One team, one fixed price.";
 
 // Next 16 requires viewport/themeColor as a separate export, not
 // inside `metadata`. Keeps mobile browser chrome on the paper sheet.

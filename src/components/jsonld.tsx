@@ -105,7 +105,7 @@ export function HomepageJsonLd() {
         applicationSubCategory: "Business Automation Platform",
         operatingSystem: "Web",
         description:
-          "Automations, integrations and data pipelines scoped per project — repetitive work run automatically, data aggregated into one live view — with a chat agent answering every website visitor from the company's own knowledge base around the clock.",
+          "Websites, a chat and voice assistant that answers every enquiry from the company's own knowledge, automations wired into the client's CRM with live reports, and lead generation by cold email — built and run by one team.",
         url: SITE_URL,
         publisher: { "@id": `${SITE_URL}/#org` },
         offers,

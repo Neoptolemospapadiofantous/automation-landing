@@ -65,9 +65,10 @@ const packages = [
   {
     name: "Never Miss an Enquiry",
     promise:
-      "Every enquiry — site, WhatsApp, email — answered in under a minute, in the visitor's language, and booked.",
+      "Every enquiry — site, phone, WhatsApp, email — answered in under a minute, in the caller's language, and booked.",
     includes: [
       "The chat on your site, live from day one, trained on your material",
+      "A phone assistant that picks up your line, answers and books — built for you",
       "WhatsApp and inbox enquiries routed to the same agent",
       "Booking into your calendar, with confirmation and reminder",
       "Instant answers for the twenty questions you get every day",
@@ -83,6 +84,7 @@ const packages = [
     includes: [
       "Everything in Never Miss an Enquiry",
       "Cold outreach on your own sending domain: list built and verified, sequences in your voice",
+      "An instant call-back and SMS follow-up to everyone who enquires",
       "Email automation to people who already know you: follow-ups, reminders, reactivation",
       "One live view — your numbers in one dashboard, refreshed by itself",
       "Managed — a monthly report on what came in and what it produced, and the changes made because of it",
@@ -173,7 +175,7 @@ export default function StudioPage() {
       </section>
 
       {/* Two packages, named by the outcome. No prices. */}
-      <section className="relative pb-16">
+      <section id="packages" className="relative scroll-mt-24 pb-16">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line mb-8 flex flex-col gap-3 border-t pt-10">
             <span className="bp-ref text-violet">then, one of two</span>

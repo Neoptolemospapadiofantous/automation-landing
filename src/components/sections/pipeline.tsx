@@ -1,30 +1,32 @@
 import { SectionWatermark } from "@/components/section-watermark";
 
 /**
- * The end-to-end story as four stations on one transmission line.
- * ST-01 names the two real deploy channels (§3.4: Website widget +
- * Hosted chat page) so the channels claim stays on the homepage.
+ * The end-to-end story as four stations on one transmission line —
+ * one station per thing we sell, in the order a customer meets them.
+ * ST-02 names the two real deploy channels (§3.4: Website widget +
+ * Hosted chat page) so the channels claim stays on the homepage; the
+ * phone assistant is named separately because it is built to order.
  */
 const STAGES = [
   {
-    ref: "ST-01 / intake",
-    title: "Chat answers the front door",
-    body: "Website widget or hosted chat page, answering from your own knowledge.",
+    ref: "ST-01 / find",
+    title: "New leads come in",
+    body: "Cold email to companies that fit you, from your own address.",
   },
   {
-    ref: "ST-02 / automate",
-    title: "Busywork runs itself",
-    body: "Follow-ups, syncs, workflows — on your stack.",
+    ref: "ST-02 / answer",
+    title: "Every enquiry answered",
+    body: "Chat on your site or hosted page, and a phone assistant we build for you.",
   },
   {
-    ref: "ST-03 / aggregate",
-    title: "Numbers in one place",
-    body: "Scattered tools, one source of truth.",
+    ref: "ST-03 / follow up",
+    title: "Follow-up runs itself",
+    body: "Call-back, SMS, CRM updated, reminders and invoices sent.",
   },
   {
-    ref: "ST-04 / display",
-    title: "One live view",
-    body: "The Monday report, already built.",
+    ref: "ST-04 / report",
+    title: "You see the result",
+    body: "One live report, already built.",
   },
 ] as const;
 
@@ -37,7 +39,7 @@ export function Pipeline() {
           <div>
             <span className="bp-ref text-violet">S/03</span>
             <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Delegate once. It runs end to end.
+              From first contact to paid invoice.
             </h2>
           </div>
         </div>

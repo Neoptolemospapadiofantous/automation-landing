@@ -15,7 +15,7 @@ import { ctaClass } from "@/components/ui/button";
  */
 const proof = [
   { v: "48h", l: "audit → written fixed scope", mark: true },
-  { v: "24/7", l: "your ops keep running", mark: false },
+  { v: "24/7", l: "every enquiry answered", mark: false },
   { v: "60s", l: "to add the chat · free to start", mark: false },
 ] as const;
 
@@ -26,21 +26,21 @@ export function Hero() {
         <div className="max-w-[820px]">
           <span className="bp-ref inline-flex items-center gap-2.5">
             <span className="bp-dot" aria-hidden />
-            FIG. 00 — business intelligence delegation
+            FIG. 00 — website · chat & voice · automations · leads
           </span>
 
           <h1 className="hero-headline-parallax mt-7 text-[42px] leading-[1.02] font-bold tracking-[-0.045em] sm:text-[58px] lg:text-[72px]">
-            <span className="block">Starting a business,</span>
-            <span className="text-ink-dim block">or updating an old one?</span>
+            <span className="block">We build your website,</span>
+            <span className="text-ink-dim block">answer every enquiry,</span>
             <span className="block">
-              <span className="text-gradient">We build the whole thing.</span>
+              <span className="text-gradient">and bring you customers.</span>
             </span>
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            Website, chat, back office, numbers.{" "}
-            <span className="text-ink font-semibold">
-              One team, one quote — end to end.
+            For businesses starting out, or updating an old setup.{" "}
+            <span className="text-ink font-semibold sm:whitespace-nowrap">
+              One team. One fixed price.
             </span>
           </p>
 

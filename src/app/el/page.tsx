@@ -80,60 +80,45 @@ const verbs = [
   },
 ] as const;
 
-/* Names + order mirror buildCatalogue (content.ts) / SERVICES_EL.html. */
+/* Names + order mirror buildCatalogue (content.ts). FIVE, not twelve —
+   the same cut as the English homepage (founder, 2026-09-08); `covers`
+   carries what each cell absorbed, so the offer is unchanged in Greek
+   too. SERVICES_EL.html still lists the twelve and is the drifted copy. */
 const catalogue = [
   {
-    name: "Έναρξη λειτουργίας agent",
-    desc: "Φορτώνουμε τη γνώση σας, ρυθμίζουμε τη φωνή, και το εγκαθιστούμε στο site σας.",
-  },
-  {
-    name: "Κατασκευή ιστοσελίδας",
+    name: "Ιστοσελίδα",
     href: "/el/website-build",
     desc: "Χωρίς site, ή με παλιό; Το φτιάχνουμε — με το chat πάνω του από την πρώτη μέρα.",
+    covers:
+      "Νέα κατασκευή ή ανανέωση · Ελληνικά ή Αγγλικά · ο κώδικας είναι δικός σας",
   },
   {
-    name: "Cold outreach",
-    href: "/el/outreach",
-    desc: "Η δική σας διεύθυνση, ελεγμένη λίστα, email γραμμένα στη φωνή σας.",
+    name: "Chat",
+    href: "/el/suite",
+    desc: "Φορτώνουμε τη γνώση σας, ρυθμίζουμε τη φωνή και το εγκαθιστούμε στο site σας.",
+    covers:
+      "Απαντά · αξιολογεί · καταγράφει το lead · σας το παραδίδει",
   },
   {
-    name: "Αυτοματοποίηση email",
+    name: "Αυτοματισμοί",
     href: "/el/email-automation",
-    desc: "Follow-up, υπενθυμίσεις και απαντήσεις που στέλνονται μόνες τους, στη φωνή σας.",
+    desc: "Η δουλειά που τρέχει μόνη της, από τη δική σας διεύθυνση και στα δικά σας εργαλεία.",
+    covers:
+      "Follow-up · υπενθυμίσεις · τιμολόγια · ραντεβού · εισερχόμενα · σύνδεση εργαλείων",
   },
   {
-    name: "Ραντεβού & κρατήσεις",
-    desc: "Κράτηση, επιβεβαίωση και υπενθύμιση. Χωρίς κυνήγι στο τηλέφωνο.",
+    name: "Outreach",
+    href: "/el/outreach",
+    desc: "Βρίσκουμε εταιρείες που σας ταιριάζουν και τους στέλνουμε email στη φωνή σας.",
+    covers:
+      "Η δική σας διεύθυνση · ελεγμένη λίστα · οι απαντήσεις έρχονται σε εσάς",
   },
   {
-    name: "Τιμολόγια & έγγραφα",
-    desc: "Τιμολόγια που εκδίδονται, στέλνονται και κυνηγιούνται. Το follow-up τρέχει μόνο του.",
-  },
-  {
-    name: "Ταξινόμηση εισερχομένων",
-    desc: "Τα εισερχόμενα ταξινομούνται και δρομολογούνται αυτόματα.",
-  },
-  {
-    name: "Σύνδεση των εργαλείων σας",
-    desc: "CRM, φύλλα και inbox σταματούν να θέλουν το ίδιο πράγμα δύο φορές.",
-  },
-  {
-    name: "Μία ζωντανή εικόνα",
+    name: "Αριθμοί",
     href: "/el/what-works",
     desc: "Οι αριθμοί που φτιάχνετε με το χέρι, σε ένα ζωντανό dashboard.",
-  },
-  {
-    name: "Συνεχής φροντίδα",
-    desc: "Προσέχουμε ό,τι φτιάξαμε και το διορθώνουμε πριν το προσέξετε.",
-  },
-  {
-    name: "Κάτι άλλο",
-    desc: "Γίνεται με το χέρι, κάθε εβδομάδα, για πάντα; Ρωτήστε μας. Τα περισσότερα αυτοματοποιούνται.",
-  },
-  {
-    name: "Όλα, από άκρη σε άκρη",
-    href: "/el/audit",
-    desc: "Ιστοσελίδα, chat, αυτοματισμοί, outreach, ένα dashboard. Μία ομάδα, μία προσφορά.",
+    covers:
+      "Όλα τα εργαλεία σε μία εικόνα · τα τεστ από πίσω · σύνοψη κάθε Δευτέρα",
   },
 ] as const;
 
@@ -249,10 +234,19 @@ export default function HomeElPage() {
                   <p className="text-ink-dim mt-2 max-w-[52ch] leading-[1.55]">
                     {item.desc}
                   </p>
+                  {/* Ό,τι απορρόφησε το κελί όταν η λίστα έγινε πέντε. */}
+                  <p className="text-ink-mute mt-1.5 font-mono text-[11px] leading-[1.5]">
+                    {item.covers}
+                  </p>
                 </>
               );
+              const spans =
+                i === catalogue.length - 1 && catalogue.length % 2 === 1;
               return (
-                <li key={item.name} className="bg-bg">
+                <li
+                  key={item.name}
+                  className={`bg-bg${spans ? " sm:col-span-2" : ""}`}
+                >
                   {"href" in item ? (
                     <Link
                       href={item.href}

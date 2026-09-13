@@ -43,49 +43,40 @@ export function CustomBuild() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-[60ch]">
-            <span className="bp-ref text-violet">S/04 / the delegation layer</span>
+            <span className="bp-ref text-violet">S/04 / end to end</span>
             <h2 className="text-ink mt-4 text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-4xl lg:text-[44px] lg:leading-[1.06]">
-              One build, end to end.
+              One team, end to end.
               <br />
               <span className="text-ink-dim">
-                Website, chat, back office, numbers.
+                Website, chat &amp; voice, automations, leads.
               </span>
             </h2>
             <p className="text-ink-dim mt-5 max-w-[52ch] leading-[1.6]">
-              From nothing, or from what has aged — on your own tools. The
-              same setup we run our own company on.
+              Starting from nothing, or replacing what has aged — built on
+              your own tools. The same setup we run our own company on.
             </p>
 
-            {/* Two of these now have pages; the rest are named in full in
-                the catalogue directly below, so this list points rather
-                than repeats. */}
+            {/* Pointers, not a second list: the catalogue below names what
+                each service includes. /what-works lives here since reports
+                folded into Automations (2026-09-13) — it keeps an internal
+                link without taking a slot in the header. */}
             <ul className="bp-annot mt-6 grid gap-2.5 sm:grid-cols-2">
-              <li className="flex items-start gap-2">
-                <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                <Link
-                  href="/outreach"
-                  className="inline-block py-1.5 underline underline-offset-4"
-                >
-                  Cold outreach
-                </Link>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                <Link
-                  href="/what-works"
-                  className="inline-block py-1.5 underline underline-offset-4"
-                >
-                  One live view
-                </Link>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Your tools, wired together
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="bp-dot mt-1 shrink-0" aria-hidden />
-                Booking, invoices, inbox triage
-              </li>
+              {[
+                { href: "/website-build", label: "Website builds" },
+                { href: "/outreach", label: "Lead generation" },
+                { href: "/email-automation", label: "CRM automations" },
+                { href: "/what-works", label: "Live reports" },
+              ].map((l) => (
+                <li key={l.href} className="flex items-start gap-2">
+                  <span className="bp-dot mt-1 shrink-0" aria-hidden />
+                  <Link
+                    href={l.href}
+                    className="inline-block py-1.5 underline underline-offset-4"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

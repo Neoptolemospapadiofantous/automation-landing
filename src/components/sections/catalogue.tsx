@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SectionWatermark } from "@/components/section-watermark";
 import { ctaClass } from "@/components/ui/button";
 import { buildCatalogue } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
 /**
  * "What we build for you" — the service catalogue.
@@ -39,15 +40,17 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
           Built for you, on your tools, quoted before it starts.
         </p>
 
-        {/* Hairline grid — one cell per service. Two columns from sm, so the
-            twelve read as a menu rather than a wall. */}
-        <div className="border-border-line mt-10 grid grid-cols-1 gap-px border bg-border-line sm:grid-cols-2">
+        {/* Hairline grid — one cell per service. Two columns from sm; an odd
+            last cell spans the row, so the count reads as deliberate rather
+            than as a gap where a cell fell out. */}
+        <div className="border-border-line bg-border-line mt-10 grid grid-cols-1 gap-px border sm:grid-cols-2">
           {buildCatalogue.map((item, i) => {
-            /* Four of the twelve link out — the three builds with pages of
-               their own, and the end-to-end cell going to the audit. The rest
-               explain themselves here. `in` keeps this type-safe against
-               the const tuple. */
+            /* Every service has a page of its own — that was the point of
+               cutting the list down. `in` keeps this type-safe against the
+               const tuple. */
             const href = "href" in item ? item.href : null;
+            const spans =
+              i === buildCatalogue.length - 1 && buildCatalogue.length % 2 === 1;
 
             const inner = (
               <>
@@ -70,6 +73,12 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
                 <p className="text-ink-dim text-[14px] leading-[1.55]">
                   {item.desc}
                 </p>
+                {/* What the cell absorbed when the list was cut down. This is
+                    the line that keeps "fewer services" from meaning "less
+                    offer". */}
+                <p className="text-ink-mute mt-0.5 font-mono text-[11px] leading-[1.5]">
+                  {item.covers}
+                </p>
               </>
             );
 
@@ -77,14 +86,20 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
               <Link
                 key={item.name}
                 href={href}
-                className="bg-bg lift-hover group flex flex-col gap-2 px-5 py-6"
+                className={cn(
+                  "bg-bg lift-hover group flex flex-col gap-2 px-5 py-6",
+                  spans && "sm:col-span-2",
+                )}
               >
                 {inner}
               </Link>
             ) : (
               <div
                 key={item.name}
-                className="bg-bg lift-hover flex flex-col gap-2 px-5 py-6"
+                className={cn(
+                  "bg-bg lift-hover flex flex-col gap-2 px-5 py-6",
+                  spans && "sm:col-span-2",
+                )}
               >
                 {inner}
               </div>
@@ -96,11 +111,16 @@ export function Catalogue({ sheetRef }: { sheetRef?: string }) {
             button belong together, and the bottom-right corner is where the
             chat widget floats — a CTA parked there competes with it. */}
         <div className="mt-10 flex flex-col items-start gap-5">
-          <p className="text-ink-dim max-w-[52ch] leading-[1.6]">
-            Scoped and quoted after a free 30-minute audit.{" "}
+          {/* Carries what used to be three separate cells — ongoing care,
+              "something else", and the end-to-end wrap. They were a term, an
+              invitation and a wrap, never services. */}
+          <p className="text-ink-dim max-w-[56ch] leading-[1.6]">
+            Take one, or all of them end to end — one team, one quote.{" "}
             <span className="text-ink font-semibold">
-              Fixed price, and you keep the code.
-            </span>
+              Fixed price after a free 30-minute audit, and you keep the code.
+            </span>{" "}
+            We keep watching what we built, and if the work you repeat every
+            week isn&apos;t listed, ask.
           </p>
           <Link href="/audit" className={ctaClass()}>
             Book the audit →

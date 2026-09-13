@@ -1,6 +1,42 @@
 import { registerUrl } from "./dashboard";
 
 /**
+ * `cat` sorts a link under a category heading inside its group — how you
+ * get in ("Start here") versus what you can buy ("What we build"), and on the
+ * app side what it does / what it's for / what it costs. Surfaces that
+ * want the structure (header panel, mobile menu) render the headings; the
+ * footer flattens them, because a footer column is an index and does not
+ * need the argument.
+ */
+export type SiteLink = {
+  href: string;
+  label: string;
+  desc: string;
+  cat?: string;
+};
+
+/**
+ * Items in source order, bucketed under their `cat` heading. One
+ * implementation, so the header panel and the mobile menu can never
+ * disagree about the shape of a group — the two-copies drift this grid
+ * has been bitten by before. An item with no `cat` forms its own
+ * unlabelled bucket, which is what keeps the Company and Legal groups
+ * rendering exactly as they do today.
+ */
+export function byCategory(
+  items: readonly SiteLink[],
+): { cat: string; items: SiteLink[] }[] {
+  const out: { cat: string; items: SiteLink[] }[] = [];
+  for (const item of items) {
+    const cat = item.cat ?? "";
+    const last = out[out.length - 1];
+    if (last && last.cat === cat) last.items.push(item);
+    else out.push({ cat, items: [item] });
+  }
+  return out;
+}
+
+/**
  * THE SITE MAP — one source for the header dropdown, the mobile menu, the
  * footer columns and the homepage index band.
  *
@@ -12,8 +48,6 @@ import { registerUrl } from "./dashboard";
  * `roles` is derived from rolePages further down, so a new role never has to
  * be registered in a second list.
  */
-export type SiteLink = { href: string; label: string; desc: string };
-
 export const siteMap = {
   /* THE STUDIO — the done-for-you line. One of the two groups the header,
      mobile menu, footer and homepage index all read (founder, 2026-09-06:
@@ -21,36 +55,50 @@ export const siteMap = {
   studio: {
     heading: "The Studio",
     note: "// done for you, in Cyprus",
+    pitch:
+      "You hand it over. We build it, run it and report on it \u2014 one team, one quote.",
+    /* Labels are the four service names from `buildCatalogue`, verbatim.
+       The header used to run its own vocabulary ("Website build", "Cold
+       outreach", "What works") beside the catalogue's, which is half of
+       why the offer read as a long list of unrelated things. /what-works
+       is deliberately NOT here since 2026-09-13 — reports are part of
+       Automations; the page is linked from the homepage end-to-end band. */
     items: [
       {
         href: "/studio",
         label: "The Studio",
         desc: "Done for you, in Cyprus. Starts with the free Leak Report.",
-      },
-      {
-        href: "/website-build",
-        label: "Website build",
-        desc: "A fast site with the chat on it from day one. English or Greek.",
-      },
-      {
-        href: "/outreach",
-        label: "Cold outreach",
-        desc: "We find companies that fit you and email them in your voice.",
-      },
-      {
-        href: "/email-automation",
-        label: "Email automation",
-        desc: "Follow-ups, reminders and invoice chasers that send themselves.",
-      },
-      {
-        href: "/what-works",
-        label: "What works",
-        desc: "Your numbers in one dashboard, and the tests behind them.",
+        cat: "Start here",
       },
       {
         href: "/audit",
         label: "Custom build",
         desc: "Free 30-minute call, written price in 48 hours.",
+        cat: "Start here",
+      },
+      {
+        href: "/website-build",
+        label: "Website",
+        desc: "Built or rebuilt, with the chat on it from day one.",
+        cat: "What we build",
+      },
+      {
+        href: "/studio#packages",
+        label: "Chat & voice assistant",
+        desc: "Answers every enquiry on your site and phone, and books it.",
+        cat: "What we build",
+      },
+      {
+        href: "/email-automation",
+        label: "Automations",
+        desc: "Your CRM, follow-ups, invoices and reports, running themselves.",
+        cat: "What we build",
+      },
+      {
+        href: "/outreach",
+        label: "Lead generation",
+        desc: "Cold email, instant call-back and SMS follow-up.",
+        cat: "What we build",
       },
     ] satisfies SiteLink[],
   },
@@ -96,7 +144,7 @@ export const nav = {
   menuLabel: "Services",
   /** Flat items to the right of the panel trigger. */
   links: [
-    { href: "/what-works", label: "What works" },
+    { href: "/outreach", label: "Lead generation" },
     { href: "/studio", label: "The Studio" },
     { href: "/pricing", label: "Pricing" },
   ],
@@ -270,6 +318,7 @@ export const roleLinks: SiteLink[] = rolePages.map((r) => ({
   href: `/roles/${r.slug}`,
   label: r.name,
   desc: r.desc,
+  cat: "What it's for",
 }));
 
 /* THE APP — the self-serve line: plans, the module page, then the chat's
@@ -278,18 +327,25 @@ export const roleLinks: SiteLink[] = rolePages.map((r) => ({
 export const siteMapApp = {
   heading: "The app",
   note: "// the chat you run yourself",
+  /* The offer in one line, and every clause of it is live today per
+     /suite: it answers from the customer's own material, it captures and
+     scores, the board is real, and Free is one agent. Nothing that is
+     still "not yet available" may be implied here. */
+  pitch: "You run it. Answers from your own material, captures and scores the lead, hands you the board — free for one agent.",
   items: [
-    {
-      href: "/pricing",
-      label: "Chat plans",
-      desc: "What the chat costs. Free, then €9 to €39 a month.",
-    },
     {
       href: "/suite",
       label: "Module by module",
-      desc: "What the chat does today — and what it doesn't yet.",
+      desc: "Six things live today, five not yet — and where to ask for them.",
+      cat: "What it does",
     },
     ...roleLinks,
+    {
+      href: "/pricing",
+      label: "Chat plans",
+      desc: "Free for one agent, then €9 to €39 a month. Cancel any month.",
+      cat: "What it costs",
+    },
   ] satisfies SiteLink[],
 };
 
@@ -303,64 +359,51 @@ export const siteMapApp = {
  * priced document is the services sheet, delivered with the proposal —
  * it stays a sales artefact and never becomes a web page.
  *
- * Names AND ORDER track that sheet exactly, because a customer sees
- * both: chat setup → web presence → getting customers → running the
- * office → wiring → the dashboard capstone → care → the wrap.
- * Source: master-vm-system/docs/SERVICES_EN.html.
+ * FOUR SERVICES (founder, 2026-09-13: "a website, a website chat/voice
+ * system, automations if needed in their CRM, and lead generation").
+ * Cut from twelve to five on 09-08, then to four: the dashboard service
+ * ("Numbers") folds into Automations as live reports, and /what-works
+ * stays live for its search traffic, linked from the end-to-end band.
+ * `covers` is what keeps "fewer services" from meaning "less offer", so
+ * do not drop it when editing a cell.
+ *
+ * ⚠ VOICE AND SMS ARE BUILD WORK, NOT PRODUCT. The app ships website
+ * chat and the hosted chat page only (§3.4 channels). The phone
+ * assistant, instant call-back and SMS follow-up are sold here as things
+ * the Studio builds for a client — never describe them as part of a plan.
+ * Call-back and SMS go to people who ENQUIRED; cold SMS and cold
+ * automated calls are not offered (EU consent + AI Act disclosure).
+ *
+ * ⚠ The priced sheets (master-vm-system/docs/SERVICES_EN|EL.html) still
+ * carry the twelve-row table and are now the drifted copy — they need
+ * re-cutting to these five when next rendered.
  */
 export const buildCatalogue = [
   {
-    name: "Agent go-live",
-    desc: "We load your knowledge, tune the voice, and install it on your site.",
-  },
-  {
-    name: "Website build",
+    name: "Website",
     href: "/website-build",
-    desc: "No site, or an old one? We build it, with the chat on it from day one.",
+    desc: "A fast site in English or Greek, with the chat installed from day one.",
+    covers: "New site or a rebuild \u00b7 built for phones \u00b7 you own the code",
   },
   {
-    name: "Cold outreach",
-    href: "/outreach",
-    desc: "Your own address, a checked list, emails written in your voice.",
+    name: "Chat & voice assistant",
+    href: "/studio#packages",
+    desc: "Trained on your business. Answers on your site and your phone, books appointments, and hands you the lead.",
+    covers: "Website chat \u00b7 phone assistant \u00b7 booking \u00b7 handover to your team",
   },
   {
-    name: "Email automation",
+    name: "Automations",
     href: "/email-automation",
-    desc: "Follow-ups, reminders and replies that send themselves, in your voice.",
+    desc: "Connected to your CRM, so follow-ups, reminders and invoices go out without anyone pressing send.",
+    covers:
+      "CRM sync \u00b7 email follow-ups \u00b7 invoice chasers \u00b7 inbox triage \u00b7 live reports",
   },
   {
-    name: "Booking",
-    desc: "Booking, confirmation and reminders. No phone tag.",
-  },
-  {
-    name: "Invoices & documents",
-    desc: "Invoices made, sent and chased. The follow-up runs itself.",
-  },
-  {
-    name: "Inbox triage",
-    desc: "Incoming mail sorted, labelled and routed automatically.",
-  },
-  {
-    name: "Connect your tools",
-    desc: "Your CRM, sheets and inbox stop needing the same thing typed twice.",
-  },
-  {
-    name: "One live view",
-    href: "/what-works",
-    desc: "The numbers you rebuild by hand, delegated to one live dashboard.",
-  },
-  {
-    name: "Ongoing care",
-    desc: "We watch what we built and fix it before you notice.",
-  },
-  {
-    name: "Something else",
-    desc: "Done by hand, every week, forever? Ask. Most of it automates.",
-  },
-  {
-    name: "Everything, end to end",
-    href: "/audit",
-    desc: "Website, chat, automations, outreach, one dashboard. One team, one quote.",
+    name: "Lead generation",
+    href: "/outreach",
+    desc: "Cold email to companies that fit you, plus an instant call-back and SMS to everyone who enquires.",
+    covers:
+      "Checked lists \u00b7 your own sending address \u00b7 instant call-back \u00b7 replies to you",
   },
 ] as const;
 
