@@ -16,10 +16,15 @@ export function PricingTeaser() {
           <div>
             <span className="bp-ref text-violet">S/07</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Start free. Pay when it works.
+              The chat: start free, pay when it works.
             </h2>
           </div>
-          <span className="bp-annot hidden normal-case sm:block">No lock-in, ever</span>
+          {/* Says outright that these are the chat's prices — directly under
+              "four things we sell", a €9 card otherwise reads as the price
+              of a website. */}
+          <span className="bp-annot hidden normal-case sm:block">
+            Everything else: fixed price after a free call
+          </span>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
@@ -90,7 +95,7 @@ export function PricingTeaser() {
             ["GDPR", "DPA in force"],
             ["EU AI Act", "transparent by design"],
             ["No lock-in", "cancel anytime"],
-            ["Custom builds", "you keep the code"],
+            ["Built for you", "you keep the code"],
           ].map(([k, v]) => (
             <div key={k} className="bg-bg px-4 py-3.5">
               <span className="text-ink block font-mono text-[11px] font-bold tracking-[0.14em] uppercase">

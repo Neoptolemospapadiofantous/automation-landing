@@ -2,13 +2,14 @@ import Link from "next/link";
 import { registerUrl } from "@/lib/dashboard";
 import { SectionWatermark } from "@/components/section-watermark";
 import { ctaClass } from "@/components/ui/button";
+import { FREE_CALL } from "@/lib/content";
 
 export function FinalCTA() {
   const title = "Hand it off.";
   const subtitle =
     "A free call, or add the chat now — about a minute.";
   const primary = { href: registerUrl(), label: "Start free →" };
-  const secondary = { href: "/audit", label: "Talk about custom" };
+  const secondary = { href: FREE_CALL.href, label: FREE_CALL.label };
 
   return (
     <section id="commit" className="relative isolate overflow-hidden py-24">
@@ -38,7 +39,8 @@ export function FinalCTA() {
                 href={secondary.href}
                 className={ctaClass({ variant: "ghost" })}
               >
-                {secondary.label}
+                <span className="sm:hidden">{FREE_CALL.short}</span>
+                <span className="hidden sm:inline">{secondary.label}</span>
               </Link>
             </div>
           </div>
@@ -46,7 +48,7 @@ export function FinalCTA() {
           {/* title-block strip: bordered mono key/value cells */}
           <div className="border-border-line mx-auto mt-16 grid max-w-[900px] grid-cols-2 border font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
-              <span className="text-ink-mute">Starter</span>
+              <span className="text-ink-mute">Chat</span>
               <span className="text-draw">FREE TO START · CANCEL ANYTIME</span>
             </div>
             <div className="flex flex-col gap-1 border-b border-border-line px-4 py-3 sm:border-b-0 sm:border-r">
@@ -54,8 +56,8 @@ export function FinalCTA() {
               <span className="text-draw">~60 SECONDS</span>
             </div>
             <div className="flex flex-col gap-1 border-r border-border-line px-4 py-3">
-              <span className="text-ink-mute">Custom build</span>
-              <span className="text-draw">BY SCOPE</span>
+              <span className="text-ink-mute">Built for you</span>
+              <span className="text-draw">FIXED PRICE</span>
             </div>
             <div className="flex flex-col gap-1 px-4 py-3">
               <span className="text-ink-mute">Lock-in</span>

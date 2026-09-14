@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { agentRoles } from "@/lib/content";
+import { agentRoles, FREE_CALL } from "@/lib/content";
 import { SectionWatermark } from "@/components/section-watermark";
 
 /**
@@ -15,29 +15,29 @@ export function Overview() {
       id="agents"
       className="relative isolate overflow-hidden py-24 sm:py-28"
     >
-      <SectionWatermark text="ROLE" />
+      <SectionWatermark text="ASK" />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-ink flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
           <div>
-            <span className="bp-ref text-violet">S/06 / agent roles</span>
+            <span className="bp-ref text-violet">S/06 / what the chat can do</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Pick the first job you hand off.
+              What the chat &amp; voice assistant can do.
             </h2>
           </div>
-          <span className="bp-annot hidden normal-case sm:block">Four roles · live in 60 seconds</span>
+          <span className="bp-annot hidden normal-case sm:block">Chat live in about a minute</span>
         </div>
 
         <span className="flow-underline" aria-hidden />
 
         <ul>
-          {agentRoles.map((r) => (
+          {agentRoles.map((r, i) => (
             <li key={r.ref}>
               <Link
                 href={`/roles/${r.slug}`}
                 className="group border-border-line hover:bg-bg-elev/60 grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b py-7 transition-colors sm:gap-8"
               >
                 <span className="bp-ref text-ink-mute group-hover:text-violet w-14 shrink-0 transition-colors sm:w-20">
-                  {r.ref}
+                  {`U-${String(i + 1).padStart(2, "0")}`}
                 </span>
                 <div>
                   <div className="flex items-center gap-3">
@@ -64,12 +64,12 @@ export function Overview() {
         </ul>
 
         <p className="bp-annot mt-6 normal-case">
-          {"Don't see your role? "}
+          {"Need something else? "}
           <Link
-            href="/audit"
+            href={FREE_CALL.href}
             className="text-draw hover:text-violet inline-block py-1.5 underline-offset-4 hover:underline"
           >
-            Book a custom build →
+            {FREE_CALL.label} →
           </Link>
         </p>
       </div>

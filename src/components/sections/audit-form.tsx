@@ -29,10 +29,10 @@ const EN_COPY = {
   headingB: "Keep the scope",
   headingC: " either way.",
   turnaround: "≤ 48H TURNAROUND",
-  lead: "Tell us what to take off your plate. A written, fixed-scope proposal comes back within 48 hours.",
+  lead: "Tell us what you need. A written fixed price comes back within 48 hours.",
   bullets: [
-    "Written scope document — yours to keep",
-    "Live walkthrough of the build (no slides)",
+    "A written fixed price — yours to keep",
+    "Where you're losing customers, shown on the call",
     "No retainer. No NDA gating. No upsell.",
   ],
   formTitle: "Tell us what to build.",
@@ -44,9 +44,9 @@ const EN_COPY = {
     placeholder: "e.g. Acme Corp — Director of Operations",
   },
   leak: {
-    label: "What does the off-the-shelf agent not do? (the more specific, the better)",
+    label: "What do you need? (the more specific, the better)",
     placeholder:
-      "We need the agent to push qualified leads into our internal CRM (custom REST API), tag by territory, and notify the assigned rep when deal value > $X.",
+      "We miss enquiries after 6pm, and our follow-ups depend on one person remembering.",
   },
   consentBefore:
     "I agree that Flowstack may store the details above to reply to this inquiry and scope the engagement, per the",
@@ -65,10 +65,10 @@ export const AUDIT_FORM_EL: AuditFormCopy = {
   headingB: "Κρατάτε την προσφορά",
   headingC: " ό,τι κι αν γίνει.",
   turnaround: "ΑΠΑΝΤΗΣΗ ≤ 48Ω",
-  lead: "Πείτε μας τι θέλετε να φύγει από τα χέρια σας. Μια γραπτή προσφορά με σταθερό αντικείμενο έρχεται μέσα σε 48 ώρες.",
+  lead: "Πείτε μας τι χρειάζεστε. Γραπτή σταθερή τιμή έρχεται μέσα σε 48 ώρες.",
   bullets: [
-    "Γραπτή προσφορά — δική σας, ό,τι κι αν αποφασίσετε",
-    "Ζωντανή παρουσίαση του τι θα φτιαχτεί (χωρίς διαφάνειες)",
+    "Γραπτή σταθερή τιμή — δική σας, ό,τι κι αν αποφασίσετε",
+    "Πού χάνετε πελάτες, στο ίδιο το ραντεβού",
     "Χωρίς πάγιο. Χωρίς NDA για να μιλήσουμε. Χωρίς πιέσεις.",
   ],
   formTitle: "Πείτε μας τι θέλετε να φτιάξουμε.",
@@ -80,9 +80,9 @@ export const AUDIT_FORM_EL: AuditFormCopy = {
     placeholder: "π.χ. Καφεκοπτεία Λεμεσού — Διεύθυνση",
   },
   leak: {
-    label: "Τι σας δυσκολεύει σήμερα; (όσο πιο συγκεκριμένα, τόσο καλύτερα)",
+    label: "Τι χρειάζεστε; (όσο πιο συγκεκριμένα, τόσο καλύτερα)",
     placeholder:
-      "Θέλουμε τα leads από το site να μπαίνουν στο CRM μας, να ειδοποιείται ο πωλητής της περιοχής, και τα τιμολόγια να φεύγουν χωρίς να τα γράφει κάποιος.",
+      "Χάνουμε μηνύματα μετά τις 6, και τα follow-up εξαρτώνται από το αν θα τα θυμηθεί κάποιος.",
   },
   consentBefore:
     "Συμφωνώ να κρατήσει η Flowstack τα παραπάνω στοιχεία για να απαντήσει σε αυτό το αίτημα και να ορίσει το έργο, σύμφωνα με την",
@@ -106,7 +106,7 @@ export function AuditForm({ copy = EN_COPY }: { copy?: AuditFormCopy }) {
       />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="text-ink-mute mb-10 flex items-center justify-between font-mono text-[11px] tracking-[0.22em] uppercase">
-          <span className="bp-ref">SHEET 04 / CUSTOM-BUILD INTAKE</span>
+          <span className="bp-ref">SHEET 04 / FREE CALL INTAKE</span>
           <span aria-hidden>FIG. 4 — SCOPE REQUEST</span>
         </div>
 

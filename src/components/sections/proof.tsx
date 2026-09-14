@@ -24,7 +24,17 @@ import { SectionWatermark } from "@/components/section-watermark";
  *
  * Every claim here traces to a dated entry in the ecosystem ledger
  * (SHARED.md §5, 2026-08-08) so it can be substantiated if a client asks.
+ *
+ * Also carries the "why us" edge (moved from /studio, 2026-09-13, when the
+ * Studio name left public copy). Only the two lines the heading does not
+ * already say are here — "we run it on ourselves first" IS the heading,
+ * and repeating it as a bullet would say one fact twice.
  */
+const edge = [
+  "The whole job, not a widget: website, chat and voice, automations, new customers.",
+  "Greek and English, on Cyprus time. The 23:40 enquiry gets answered at 23:40.",
+] as const;
+
 export function Proof() {
   return (
     <section
@@ -49,6 +59,14 @@ export function Proof() {
                 That is the standard we hold your numbers to.
               </span>
             </p>
+            <ul className="text-ink-dim flex max-w-[62ch] flex-col gap-2.5 leading-[1.6]">
+              {edge.map((line) => (
+                <li key={line} className="flex items-start gap-2.5">
+                  <span className="bp-dot mt-2 shrink-0" aria-hidden />
+                  {line}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

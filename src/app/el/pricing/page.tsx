@@ -4,6 +4,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
 import { registerUrl } from "@/lib/dashboard";
+import { Catalogue, CATALOGUE_EL } from "@/components/sections/catalogue";
+import { buildCatalogueEl } from "@/lib/content";
 import { ctaClass } from "@/components/ui/button";
 
 /**
@@ -24,7 +26,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Τιμές — chat από €0 τον μήνα",
   description:
-    "Ξεκινήστε δωρεάν με έναν agent. Τα συνδρομητικά πλάνα κοστίζουν €9 έως €39 τον μήνα. Ό,τι κατασκευάζουμε τιμολογείται με προσφορά ανά έργο. Χωρίς δεσμεύσεις.",
+    "Δύο τρόποι: το φτιάχνουμε εμείς με σταθερή τιμή μετά από δωρεάν ραντεβού, ή τρέχετε μόνοι σας το chat — δωρεάν για αρχή, μετά €9 έως €39 τον μήνα.",
   alternates: {
     canonical: "/el/pricing",
     languages: {
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     title: "Τιμές — Flowstack",
     url: "/el/pricing",
     description:
-      "Ξεκινήστε δωρεάν με έναν agent. Πλάνα από €9/μήνα. Κατασκευές με προσφορά ανά έργο.",
+      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €0.",
   },
   // The root layout's Twitter card is English; without this a Greek
   // page shares in the wrong language on X while OG is already Greek.
@@ -46,21 +48,24 @@ export const metadata: Metadata = {
     images: EL_OG_IMAGES,
     title: "Τιμές — Flowstack",
     description:
-      "Ξεκινήστε δωρεάν με έναν agent. Πλάνα από €9/μήνα. Κατασκευές με προσφορά ανά έργο.",
+      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €0.",
   },
 };
 
+/* Chat plans in CUSTOMER UNITS — the same chats ranges as the English
+   pricingTiers, from the same rate (a short chat ≈ 5–8 credits). Numbers and
+   entitlements must change here in the same commit as content.ts. */
 const tiers = [
   {
     name: "Free",
     price: "€0/μήνα",
-    cadence: "1 agent · χωρίς κάρτα",
+    cadence: "1 βοηθός chat · χωρίς κάρτα",
     tagline: "Βάλτε το στο site σας και δείτε το να απαντά.",
     features: [
-      "1 agent, όποιος ρόλος θέλετε",
-      "250 πιστώσεις συνομιλίας / μήνα",
-      "Ανέβασμα γνώσης + απομαγνητοφωνήσεις",
-      "Πίνακας leads σε πραγματικό χρόνο",
+      "1 βοηθός chat",
+      "Περίπου 30–50 συνομιλίες τον μήνα",
+      "Απαντά από τα δικά σας κείμενα",
+      "Κάθε lead στον πίνακά σας",
       "Χωρίς κάρτα, χωρίς λήξη",
     ],
     cta: "Ξεκινήστε δωρεάν",
@@ -70,13 +75,13 @@ const tiers = [
     name: "Starter",
     price: "€9/μήνα",
     deal: { strike: "€108", annual: "€90" },
-    cadence: "1 agent · ακύρωση όποτε θέλετε",
-    tagline: "Ένας agent, ζωντανός σε ένα λεπτό. Όλα ενεργά.",
+    cadence: "1 βοηθός chat · ακύρωση όποτε θέλετε",
+    tagline: "Ένας βοηθός chat, ζωντανός σε ένα λεπτό.",
     features: [
-      "1 agent, όποιος ρόλος θέλετε",
-      "2.500 πιστώσεις συνομιλίας / μήνα",
-      "Έξτρα πιστώσεις όποτε χρειαστεί",
-      "Ανέβασμα γνώσης + απομαγνητοφωνήσεις",
+      "1 βοηθός chat",
+      "Περίπου 300–500 συνομιλίες τον μήνα",
+      "Τα leads στο CRM σας ή στα Google Sheets",
+      "Απαντά από τα δικά σας κείμενα",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
     cta: "Δοκιμάστε με €9",
@@ -86,14 +91,13 @@ const tiers = [
     name: "Growth",
     price: "€19/μήνα",
     deal: { strike: "€228", annual: "€190" },
-    cadence: "έως 5 agents · ακύρωση όποτε θέλετε",
+    cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
     tagline: "Για site με πραγματική κίνηση.",
     features: [
       "Όλα όσα έχει το Starter",
-      "Έως 5 agents",
-      "10.000 πιστώσεις συνομιλίας / μήνα",
-      "Ή το δικό σας API key — 10.000 μηνύματα, χωρίς πιστώσεις",
-      "Έξτρα πιστώσεις όποτε χρειαστεί",
+      "Έως 5 βοηθοί chat",
+      "Περίπου 1.250–2.000 συνομιλίες τον μήνα",
+      "Το δικό σας κλειδί AI (για προχωρημένους)",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
     cta: "Επιλέξτε Growth",
@@ -103,15 +107,13 @@ const tiers = [
     name: "Operator",
     price: "€39/μήνα",
     deal: { strike: "€468", annual: "€390" },
-    cadence: "έως 5 agents · ακύρωση όποτε θέλετε",
-    tagline: "Για ομάδες με πολλούς agents κάθε μέρα.",
+    cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
+    tagline: "Για chat που δουλεύει πολύ κάθε μέρα.",
     features: [
       "Όλα όσα έχει το Growth",
       "Δωρεάν κατασκευή ιστοσελίδας με το ετήσιο πλάνο",
-      "Έως 5 agents",
-      "25.000 πιστώσεις συνομιλίας / μήνα",
-      "Ή το δικό σας API key — 25.000 μηνύματα, χωρίς πιστώσεις",
-      "Η καλύτερη τιμή ανά πίστωση · το κορυφαίο μας πλάνο",
+      "Περίπου 3.000–5.000 συνομιλίες τον μήνα",
+      "Η καλύτερη τιμή ανά συνομιλία · το κορυφαίο μας πλάνο",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
     cta: "Επιλέξτε Operator",
@@ -120,14 +122,13 @@ const tiers = [
   {
     name: "Custom",
     price: "Ας τα πούμε",
-    cadence: "με προσφορά · παράδοση σε 4–6 εβδομάδες",
-    tagline: "Όταν το έτοιμο chat δεν αρκεί.",
+    cadence: "σταθερή τιμή μετά από δωρεάν ραντεβού",
+    tagline: "Όταν χρειάζεστε κάτι παραπάνω από το chat.",
     features: [
-      "Ροές φτιαγμένες για τα δικά σας συστήματα",
-      "Συνδέσεις με CRM, τηλεφωνία, εσωτερικά εργαλεία",
-      "Δικό σας μοντέλο, δικό σας περιβάλλον",
-      "Εκπαιδευμένο στη γνώση και τη φωνή σας",
-      "Εγχειρίδια + παράδοση · προαιρετική συντήρηση",
+      "Φωνητικός βοηθός, επανάκληση και SMS",
+      "Σύνδεση με το CRM και τα εργαλεία σας",
+      "Δικό σας μοντέλο AI ή περιβάλλον",
+      "Παράδοση, και προαιρετική φροντίδα μετά",
     ],
     cta: "Κλείστε ραντεβού",
     featured: false,
@@ -142,22 +143,21 @@ export default function PricingElPage() {
         eyebrowTint="violet"
         title={
           <>
-            Ξεκινήστε δωρεάν. Πληρώστε όταν δουλέψει.{" "}
-            <span className="text-gradient">Custom όταν το χρειαστείτε.</span>
+            Δύο τρόποι να αγοράσετε.{" "}
+            <span className="text-gradient">Το φτιάχνουμε εμείς, ή το κάνετε μόνοι σας.</span>
           </>
         }
-        lead="Το chat έχει τιμοκατάλογο. Ό,τι κατασκευάζουμε τιμολογείται με προσφορά για τη δική σας περίπτωση."
       />
 
       <Tldr
         rows={[
           {
-            k: "Το chat",
-            v: "Δωρεάν για έναν agent. €9, €19 ή €39 τον μήνα για περισσότερους agents και περισσότερες συνομιλίες.",
+            k: "Φτιαγμένο για εσάς",
+            v: "Χωρίς τιμοκατάλογο. Σταθερή τιμή μετά από δωρεάν ραντεβού 30 λεπτών.",
           },
           {
-            k: "Ό,τι κατασκευάζουμε",
-            v: "Χωρίς τιμοκατάλογο. Προσφορά μετά από ένα δωρεάν 30λεπτο τηλεφώνημα — και η τιμή είναι σταθερή.",
+            k: "Μόνοι σας",
+            v: "Το chat είναι δωρεάν για έναν βοηθό, μετά €9, €19 ή €39 τον μήνα.",
           },
           {
             k: "Δεσμεύσεις",
@@ -166,8 +166,23 @@ export default function PricingElPage() {
         ]}
       />
 
+      {/* Built for you FIRST, as on /pricing — a €9 chat plan under the hero
+          read like the price of a website. */}
+      <Catalogue items={buildCatalogueEl} copy={CATALOGUE_EL} />
+
       <section className="relative pb-12">
         <div className="mx-auto max-w-[1280px] px-6">
+          <div className="border-ink mb-10 flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
+            <div>
+              <span className="bp-ref text-violet">μόνοι σας</span>
+              <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                Πλάνα chat. Ξεκινήστε δωρεάν.
+              </h2>
+            </div>
+            <span className="bp-annot hidden normal-case sm:block">
+              Ακύρωση όποιον μήνα θέλετε
+            </span>
+          </div>
           <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-5">
             {tiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
@@ -195,9 +210,9 @@ export default function PricingElPage() {
                   )}
 
                   <span className="bp-ref text-ink-mute">{ref}</span>
-                  <h2 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
+                  <h3 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
                     {tier.name}
-                  </h2>
+                  </h3>
 
                   <div className="mt-5 flex items-baseline gap-2">
                     <span className="text-ink text-4xl font-semibold tracking-[-0.03em] lg:text-3xl">
@@ -264,20 +279,19 @@ export default function PricingElPage() {
             })}
           </div>
 
+          {/* How the chats ranges are counted — credits named only here, in
+              the small print, as on the English page. */}
           <p className="text-ink-dim mx-auto mt-8 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            Μια σύντομη συνομιλία χρησιμοποιεί 5–8 πιστώσεις — το Starter
-            καλύπτει περίπου{" "}
-            <span className="text-ink font-semibold">
-              300–500 συνομιλίες τον μήνα
-            </span>
-            , το Operator δεκαπλάσιες. Χαιρετισμοί, έτοιμες απαντήσεις και
-            συνομιλίες που αναλαμβάνει άνθρωπος δεν χρεώνονται.
+            Πώς μετράμε: μια σύντομη συνομιλία χρησιμοποιεί 5–8 πιστώσεις, και οι
+            αριθμοί παραπάνω βασίζονται σε αυτό. Δεν χρεώνονται ο χαιρετισμός,
+            ένας επισκέπτης που επιστρέφει σε παλιά συνομιλία, οι έτοιμες
+            απαντήσεις, και όσες συνομιλίες αναλαμβάνει η ομάδα σας.
           </p>
 
-          <p className="text-ink-dim mx-auto mt-3 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            Κάθε πλάνο έχει το Flowstack Core σε πιστώσεις. Τα προηγμένα
-            μοντέλα (Claude, GPT-5, Gemini) τρέχουν από το Growth και πάνω στο
-            δικό σας API key, χωρίς πιστώσεις.
+          <p className="text-ink-mute mx-auto mt-3 max-w-[62ch] text-center text-[13px] leading-[1.6]">
+            Χρειάζεστε περισσότερα; Έξτρα πιστώσεις από €5. Από το Growth και
+            πάνω μπορείτε να βάλετε το δικό σας κλειδί AI — εκείνες οι απαντήσεις
+            δεν χρησιμοποιούν πιστώσεις.
           </p>
 
           <p className="text-ink-dim mx-auto mt-3 max-w-[62ch] text-center text-[14px] leading-[1.6]">

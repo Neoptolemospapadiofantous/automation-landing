@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ProductWindow } from "./product-window";
 import { registerUrl } from "@/lib/dashboard";
 import { ctaClass } from "@/components/ui/button";
+import { FREE_CALL } from "@/lib/content";
 
 /**
  * Hero — "ink on paper" (2026-08 redesign): huge ink headline with the
@@ -14,7 +15,7 @@ import { ctaClass } from "@/components/ui/button";
  * back.
  */
 const proof = [
-  { v: "48h", l: "audit → written fixed scope", mark: true },
+  { v: "48h", l: "free call → written fixed price", mark: true },
   { v: "24/7", l: "every enquiry answered", mark: false },
   { v: "60s", l: "to add the chat · free to start", mark: false },
 ] as const;
@@ -46,10 +47,11 @@ export function Hero() {
 
           <div className="mt-9 flex flex-col items-start gap-3.5 sm:flex-row sm:items-center">
             <Link
-              href="/audit"
+              href={FREE_CALL.href}
               className={ctaClass()}
             >
-              Book the free audit →
+              <span className="sm:hidden">{FREE_CALL.short} →</span>
+              <span className="hidden sm:inline">{FREE_CALL.label} →</span>
             </Link>
             <Link
               href={registerUrl()}

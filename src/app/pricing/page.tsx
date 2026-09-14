@@ -14,7 +14,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Start free with one agent. Paid plans are €9 to €39 a month, and €39 is our most expensive. Anything we build is quoted per project. No lock-in, ever.",
+    "Two ways to buy: we build it for you at a fixed price after a free call, or you run the chat yourself — free to start, then €9 to €39 a month.",
   alternates: {
     canonical: "/pricing",
     languages: { en: "/pricing", el: "/el/pricing", "x-default": "/pricing" },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Pricing — Flowstack",
     url: "/pricing",
     description:
-      "Start free with one agent. Paid plans from €9/mo. Custom builds scoped per project.",
+      "Built for you at a fixed price after a free call, or the chat yourself from €0.",
   },
 };
 
@@ -37,22 +37,21 @@ export default function PricingPage() {
         eyebrowTint="violet"
         title={
           <>
-            Start free. Pay when it works.{" "}
-            <span className="text-gradient">Custom when you need it.</span>
+            Two ways to buy.{" "}
+            <span className="text-gradient">Built for you, or do it yourself.</span>
           </>
         }
-        lead="The chat has a price list. Everything we build is quoted for your setup."
       />
 
       <Tldr
         rows={[
           {
-            k: "The chat",
-            v: "Free for one agent. €9, €19 or €39 a month for more agents and more chats.",
+            k: "Built for you",
+            v: "No list price. A fixed price after a free 30-minute call.",
           },
           {
-            k: "Anything we build",
-            v: "No list price. We quote it after a free 30-minute call, and the price is fixed.",
+            k: "Do it yourself",
+            v: "The chat is free for one assistant, then €9, €19 or €39 a month.",
           },
           {
             k: "Lock-in",
@@ -61,11 +60,27 @@ export default function PricingPage() {
         ]}
       />
 
+      {/* Built for you FIRST (plan 2026-09-13). With the price list on top, a
+          €9 chat plan read like the price of a website. The four services are
+          fixed-price after a free call; the grid below is the chat only. */}
+      <Catalogue />
+
       {/* Pricing tiers — hairline-bordered cards in the editorial mono
           language. Featured tier gets a white top accent + corner ticks
           (the ring-violet emphasis no longer reads in mono). */}
       <section className="relative pb-12">
         <div className="mx-auto max-w-[1280px] px-6">
+          <div className="border-ink mb-10 flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
+            <div>
+              <span className="bp-ref text-violet">do it yourself</span>
+              <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                Chat plans. Start free.
+              </h2>
+            </div>
+            <span className="bp-annot hidden normal-case sm:block">
+              Cancel any month
+            </span>
+          </div>
           <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-5">
             {pricingTiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
@@ -93,9 +108,9 @@ export default function PricingPage() {
                   )}
 
                   <span className="bp-ref text-ink-mute">{ref}</span>
-                  <h2 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
+                  <h3 className="text-ink mt-2 font-mono text-[13px] uppercase tracking-[0.22em]">
                     {tier.name}
-                  </h2>
+                  </h3>
 
                   <div className="mt-5 flex items-baseline gap-2">
                     <span className="text-ink text-4xl font-semibold tracking-[-0.03em] lg:text-3xl">
@@ -163,16 +178,18 @@ export default function PricingPage() {
             })}
           </div>
 
-          {/* What a credit actually buys. "2,500 conversation credits" is a
-              unit with no exchange rate until you say this — the numbers and
-              the never-charged list come from the services sheet. */}
+          {/* How the chats ranges are counted — credits are the billing unit
+              in the app, so they are named here, in the small print, and
+              nowhere in a headline or a plan bullet. */}
           <p className="text-ink-dim mx-auto mt-8 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            A short chat uses 5–8 credits. So Starter covers roughly{" "}
-            <span className="text-ink font-semibold">300–500 chats a month</span>,
-            and Operator about ten times that. You are not charged for the opening
-            hello, a visitor coming back to an old chat, the instant answers we
-            set up for your common questions, or any chat one of your team takes
-            over.
+            How we count chats: a short chat uses 5–8 conversation credits, and
+            the numbers above assume that. You are not charged for the opening
+            hello, a visitor coming back to an old chat, instant answers to your
+            common questions, or any chat your team takes over.
+          </p>
+          <p className="text-ink-mute mx-auto mt-3 max-w-[62ch] text-center text-[13px] leading-[1.6]">
+            Need more? Top up anytime from €5. From Growth up you can bring your
+            own AI key, and those replies don&apos;t use credits.
           </p>
 
           <p className="bp-annot mt-8 text-center">
@@ -188,11 +205,6 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
-
-      {/* The subscription is the only thing with a price. Everything we build
-          is scoped after the audit — but a visitor still has to be able to
-          learn it exists, which is what this repeats from the homepage. */}
-      <Catalogue />
 
       <section className="relative pt-12">
         <div className="mx-auto max-w-[1280px] px-6">

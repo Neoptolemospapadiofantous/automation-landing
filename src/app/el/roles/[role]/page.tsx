@@ -76,7 +76,7 @@ const EL_ROLES: ElRole[] = [
     name: "Πωλήσεις",
     wm: "SALES",
     desc: "Απαντά ερωτήσεις τιμών επιτόπου. Κλείνει το demo.",
-    metaTitle: "Αυτόματος agent πωλήσεων για το site σας",
+    metaTitle: "Βοηθός chat πωλήσεων για το site σας",
     metaDescription:
       "Ξεναγεί τους επισκέπτες στην προσφορά σας, απαντά ερωτήσεις τιμών, και κλείνει ραντεβού στο ημερολόγιό σας. Δωρεάν για αρχή, πλάνα από €9 τον μήνα.",
     h1: "Οι περισσότεροι επισκέπτες με ερώτηση αγοράς",
@@ -234,7 +234,7 @@ export default async function RoleElPage({
   return (
     <div lang="el">
       <PageHero
-        eyebrow={`${r.ref} / Ρόλος agent`}
+        eyebrow={`${r.ref} / Τι κάνει το chat`}
         title={
           <>
             {r.h1} <span className="text-gradient">{r.h1Accent}</span>
@@ -256,7 +256,7 @@ export default async function RoleElPage({
           },
           {
             k: "Τι κοστίζει",
-            v: "Δωρεάν για έναν agent, μετά €9 έως €39 τον μήνα. Ακυρώνετε όποιον μήνα θέλετε.",
+            v: "Δωρεάν για έναν βοηθό chat, μετά €9 έως €39 τον μήνα. Ακυρώνετε όποιον μήνα θέλετε.",
           },
         ]}
       />
@@ -267,7 +267,7 @@ export default async function RoleElPage({
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-              Τι κάνει αυτός ο agent
+              Τι κάνει
             </h2>
             <span className="bp-annot hidden sm:block">
               {`// ${r.ref.toLowerCase()} · σε κάθε πλάνο`}
@@ -362,7 +362,7 @@ export default async function RoleElPage({
                   Δωρεάν για αρχή. Ακύρωση όποτε θέλετε.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  €0 για έναν agent. €9 έως €39 για περισσότερους.
+                  €0 για έναν βοηθό chat. €9 έως €39 για περισσότερους.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// το θέλετε συνδεδεμένο με CRM ή εσωτερικά εργαλεία; "}
@@ -371,7 +371,7 @@ export default async function RoleElPage({
                     hrefLang="el"
                     className="text-draw hover:text-violet inline-block py-2 underline-offset-4 hover:underline"
                   >
-                    κλείστε custom κατασκευή →
+                    κλείστε δωρεάν ραντεβού →
                   </Link>
                 </p>
               </div>
@@ -396,7 +396,7 @@ export default async function RoleElPage({
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line border-b pb-4">
-            <span className="bp-ref">Οι άλλοι ρόλοι στο φύλλο</span>
+            <span className="bp-ref">Τι άλλο κάνει το chat</span>
           </div>
           <ul>
             {others.map((o) => (

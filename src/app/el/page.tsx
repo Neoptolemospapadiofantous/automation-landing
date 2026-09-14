@@ -3,151 +3,73 @@ import { EL_OG_IMAGES } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
-import { SectionWatermark } from "@/components/section-watermark";
+import { Catalogue, CATALOGUE_EL } from "@/components/sections/catalogue";
 import { ctaClass } from "@/components/ui/button";
+import { registerUrl } from "@/lib/dashboard";
+import { buildCatalogueEl, FREE_CALL_EL, servicesEl } from "@/lib/content";
 
 /**
  * /el — the Greek homepage.
  *
- * A condensed twin of the English one: hero → TL;DR → the four verbs →
- * the twelve-service catalogue → pricing line → commit. The animated
- * EN sections (Hero, Ticker, Proof, Pipeline…) carry hardwired English
- * copy, so this page states the same argument in Greek with the shared
- * primitives (PageHero, Tldr) and the same grid language.
- *
- * Catalogue names AND ORDER mirror buildCatalogue / SERVICES_EL.html —
- * the Greek names come from the Greek sales sheet, so a prospect who
- * got the PDF and a prospect who found the page read the same words.
- * Unpriced throughout, same as everywhere.
+ * A condensed twin of the English one: hero → TL;DR → the four services →
+ * the catalogue → pricing line. The animated EN sections carry hardwired
+ * English copy, so this page states the same argument in Greek with the
+ * shared primitives. Since 2026-09-13 the four services and the catalogue
+ * read `servicesEl` — the same data the Greek service pages use — so the
+ * Greek homepage can no longer drift to a different menu (it had five cells
+ * and four verbs while English had four services). Unpriced throughout.
  */
+const DESCRIPTION =
+  "Φτιάχνουμε την ιστοσελίδα σας, απαντάμε σε κάθε μήνυμα με chat ή τηλέφωνο, αυτοματοποιούμε τα follow-up και σας φέρνουμε πελάτες.";
+
 export const metadata: Metadata = {
-  title: "Ιστοσελίδες, chat, αυτοματισμοί & dashboards",
-  description:
-    "Κατασκευή ιστοσελίδας ή dashboard, chat που απαντά από τη γνώση σας, αυτοματισμοί για email και γραφειοκρατία — και οι αριθμοί σας σε μία ζωντανή εικόνα.",
+  title: "Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/el",
-    languages: {
-      en: "/",
-      el: "/el",
-      "x-default": "/",
-    },
+    languages: { en: "/", el: "/el", "x-default": "/" },
   },
   openGraph: {
     images: EL_OG_IMAGES,
-    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & dashboards",
+    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
     url: "/el",
-    description:
-      "Studio στη Λεμεσό: ιστοσελίδες, chat εκπαιδευμένο στη γνώση σας, αυτοματισμοί και ζωντανά dashboards. Το chat ξεκινά δωρεάν.",
+    description: DESCRIPTION,
   },
-  // The root layout's Twitter card is English; without this a Greek
-  // page shares in the wrong language on X while OG is already Greek.
   twitter: {
     images: EL_OG_IMAGES,
-    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & dashboards",
-    description:
-      "Studio στη Λεμεσό: ιστοσελίδες, chat εκπαιδευμένο στη γνώση σας, αυτοματισμοί και ζωντανά dashboards. Το chat ξεκινά δωρεάν.",
+    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
+    description: DESCRIPTION,
   },
 };
-
-const verbs = [
-  {
-    name: "Χτιζουμε",
-    how: "Το φτιάχνουμε εμείς · με προσφορά",
-    desc: "Την ιστοσελίδα, το dashboard, ή το εσωτερικό εργαλείο που όλο λέτε να φτιάξετε.",
-    href: "/el/website-build",
-    cue: "Κατασκευή ιστοσελίδας",
-  },
-  {
-    name: "Απανταμε",
-    how: "Το στήνετε μόνοι σας · από €0",
-    desc: "Chat στο site σας, εκπαιδευμένο στη δική σας γνώση. Απαντά, αξιολογεί, και σας παραδίδει τα leads.",
-    href: "/el/pricing",
-    cue: "Δείτε τα πλάνα",
-  },
-  {
-    name: "Αυτοματοποιουμε",
-    how: "Το τρέχουμε για εσάς · με προσφορά",
-    desc: "Email, follow-up, cold outreach, τιμολόγια, εισερχόμενα — η δουλειά που επαναλαμβάνεται.",
-    href: "/el/outreach",
-    cue: "Πώς δουλεύει το outreach",
-  },
-  {
-    name: "Μετραμε",
-    how: "Το φτιάχνουμε για εσάς · με προσφορά",
-    desc: "Οι αριθμοί σας, από σκόρπια εργαλεία σε ένα ζωντανό dashboard — και τα πειράματα που τους ανεβάζουν.",
-    href: "/el/what-works",
-    cue: "Πώς δουλεύει ο κύκλος",
-  },
-] as const;
-
-/* Names + order mirror buildCatalogue (content.ts). FIVE, not twelve —
-   the same cut as the English homepage (founder, 2026-09-08); `covers`
-   carries what each cell absorbed, so the offer is unchanged in Greek
-   too. SERVICES_EL.html still lists the twelve and is the drifted copy. */
-const catalogue = [
-  {
-    name: "Ιστοσελίδα",
-    href: "/el/website-build",
-    desc: "Χωρίς site, ή με παλιό; Το φτιάχνουμε — με το chat πάνω του από την πρώτη μέρα.",
-    covers:
-      "Νέα κατασκευή ή ανανέωση · Ελληνικά ή Αγγλικά · ο κώδικας είναι δικός σας",
-  },
-  {
-    name: "Chat",
-    href: "/el/suite",
-    desc: "Φορτώνουμε τη γνώση σας, ρυθμίζουμε τη φωνή και το εγκαθιστούμε στο site σας.",
-    covers:
-      "Απαντά · αξιολογεί · καταγράφει το lead · σας το παραδίδει",
-  },
-  {
-    name: "Αυτοματισμοί",
-    href: "/el/email-automation",
-    desc: "Η δουλειά που τρέχει μόνη της, από τη δική σας διεύθυνση και στα δικά σας εργαλεία.",
-    covers:
-      "Follow-up · υπενθυμίσεις · τιμολόγια · ραντεβού · εισερχόμενα · σύνδεση εργαλείων",
-  },
-  {
-    name: "Outreach",
-    href: "/el/outreach",
-    desc: "Βρίσκουμε εταιρείες που σας ταιριάζουν και τους στέλνουμε email στη φωνή σας.",
-    covers:
-      "Η δική σας διεύθυνση · ελεγμένη λίστα · οι απαντήσεις έρχονται σε εσάς",
-  },
-  {
-    name: "Αριθμοί",
-    href: "/el/what-works",
-    desc: "Οι αριθμοί που φτιάχνετε με το χέρι, σε ένα ζωντανό dashboard.",
-    covers:
-      "Όλα τα εργαλεία σε μία εικόνα · τα τεστ από πίσω · σύνοψη κάθε Δευτέρα",
-  },
-] as const;
 
 export default function HomeElPage() {
   return (
     <div lang="el">
       <PageHero
-        eyebrow="Flowstack Studio · Λεμεσός"
+        eyebrow="Flowstack · Λεμεσός"
         eyebrowTint="violet"
         title={
           <>
-            Ανοίγετε επιχείρηση — ή έχετε μία που θέλει ανανέωση;{" "}
-            <span className="text-gradient">
-              Το χτίζουμε όλο, από άκρη σε άκρη.
-            </span>
+            Φτιάχνουμε την ιστοσελίδα σας, απαντάμε σε κάθε μήνυμα,{" "}
+            <span className="text-gradient">και σας φέρνουμε πελάτες.</span>
           </>
         }
-        lead="Ιστοσελίδα, chat, back office, αριθμοί. Μία ομάδα, μία προσφορά — Λεμεσός και όλη η Κύπρος."
+        lead="Για επιχειρήσεις που ξεκινούν ή ανανεώνονται. Μία ομάδα. Μία σταθερή τιμή."
         ctas={[
-          { href: "/el/audit", label: "Κλείστε το δωρεάν ραντεβού →", variant: "primary" },
-          { href: "/el/pricing", label: "Δείτε τις τιμές", variant: "secondary" },
+          {
+            href: FREE_CALL_EL.href,
+            label: `${FREE_CALL_EL.label} →`,
+            short: `${FREE_CALL_EL.short} →`,
+          },
+          { href: registerUrl(), label: "Δοκιμάστε το chat δωρεάν", variant: "secondary" },
         ]}
       />
 
       <Tldr
         rows={[
           {
-            k: "Τι κάνουμε",
-            v: "Η ιστοσελίδα ή το dashboard σας, chat που απαντά από τη γνώση σας, η γραφειοκρατία αυτοματοποιημένη, οι αριθμοί σας σε μία ζωντανή εικόνα.",
+            k: "Τι πουλάμε",
+            v: "Ιστοσελίδα, βοηθό chat και τηλεφώνου που απαντά σε κάθε μήνυμα, αυτοματισμούς στο CRM σας και εύρεση πελατών — τα φτιάχνουμε εμείς.",
           },
           {
             k: "Για ποιους",
@@ -155,44 +77,41 @@ export default function HomeElPage() {
           },
           {
             k: "Πώς ξεκινάτε",
-            v: "Δωρεάν 30λεπτο ραντεβού, μετά γραπτή σταθερή τιμή σε 48 ώρες. Ή δοκιμάστε πρώτα το chat, δωρεάν.",
+            v: "Δωρεάν ραντεβού 30 λεπτών, μετά γραπτή σταθερή τιμή σε 48 ώρες. Ή δοκιμάστε πρώτα το chat, δωρεάν.",
           },
         ]}
       />
 
-      {/* The four verbs — same cells as ServiceLines, in Greek. */}
+      {/* The four services — same cells as the English ServiceLines, read
+          from servicesEl. */}
       <section className="relative pt-4">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
             <div>
-              <span className="bp-ref">τι κάνουμε</span>
+              <span className="bp-ref">τι πουλάμε</span>
               <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-                Τέσσερα πράγματα, από άκρη σε άκρη. Μία ομάδα.
+                Τέσσερα πράγματα. Μία ομάδα.
               </h2>
             </div>
-            <p className="bp-annot normal-case">
-              Πάρτε ένα, ή δώστε μας τα όλα.
-            </p>
+            <p className="bp-annot normal-case">Πάρτε ένα, ή και τα τέσσερα.</p>
           </div>
 
-          <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line sm:grid-cols-2 lg:grid-cols-4">
-            {verbs.map((l) => (
+          <div className="border-border-line bg-border-line mt-px grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">
+            {servicesEl.map((sv) => (
               <Link
-                key={l.name}
-                href={l.href}
+                key={sv.slug}
+                href={sv.href}
                 hrefLang="el"
                 className="bg-bg lift-hover group flex flex-col gap-3 px-6 py-8"
               >
                 <span className="text-ink flex items-center gap-2.5 font-mono text-[12px] tracking-[0.12em] uppercase">
                   <span className="bp-dot shrink-0" aria-hidden />
-                  {l.name}
+                  {sv.name}
                 </span>
-                <span className="bp-annot normal-case text-violet">{l.how}</span>
-                <p className="text-ink-dim max-w-[34ch] leading-[1.55]">
-                  {l.desc}
-                </p>
-                <span className="bp-annot normal-case mt-auto flex items-center gap-2 pt-2">
-                  {l.cue}
+                <span className="bp-annot text-violet normal-case">{sv.buyPath}</span>
+                <p className="text-ink-dim max-w-[34ch] leading-[1.55]">{sv.outcome}</p>
+                <span className="bp-annot mt-auto flex items-center gap-2 pt-2 normal-case">
+                  Τι παίρνετε
                   <span
                     aria-hidden
                     className="text-violet transition-transform group-hover:translate-x-0.5"
@@ -206,99 +125,31 @@ export default function HomeElPage() {
         </div>
       </section>
 
-      {/* The twelve services — B-01..B-12, mirroring the priced sheet. */}
-      <section className="relative isolate overflow-hidden pt-16 pb-16">
-        <SectionWatermark text="MENU" />
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
-            <div>
-              <span className="bp-ref">τι κατασκευάζουμε</span>
-              <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-                Ό,τι κάνετε με το χέρι, το αυτοματοποιούμε.
-              </h2>
-            </div>
-            <p className="bp-annot normal-case">
-              Με προσφορά μετά το δωρεάν ραντεβού — ποτέ τιμοκατάλογος.
-            </p>
-          </div>
+      <Catalogue items={buildCatalogueEl} copy={CATALOGUE_EL} />
 
-          <ul className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line sm:grid-cols-2">
-            {catalogue.map((item, i) => {
-              const ref = `B-${String(i + 1).padStart(2, "0")}`;
-              const inner = (
-                <>
-                  <span className="bp-ref text-ink-mute">{ref}</span>
-                  <h3 className="text-ink mt-2 text-lg font-semibold tracking-[-0.02em]">
-                    {item.name}
-                  </h3>
-                  <p className="text-ink-dim mt-2 max-w-[52ch] leading-[1.55]">
-                    {item.desc}
-                  </p>
-                  {/* Ό,τι απορρόφησε το κελί όταν η λίστα έγινε πέντε. */}
-                  <p className="text-ink-mute mt-1.5 font-mono text-[11px] leading-[1.5]">
-                    {item.covers}
-                  </p>
-                </>
-              );
-              const spans =
-                i === catalogue.length - 1 && catalogue.length % 2 === 1;
-              return (
-                <li
-                  key={item.name}
-                  className={`bg-bg${spans ? " sm:col-span-2" : ""}`}
-                >
-                  {"href" in item ? (
-                    <Link
-                      href={item.href}
-                      hrefLang="el"
-                      className="lift-hover group flex h-full flex-col px-6 py-7"
-                    >
-                      {inner}
-                      <span className="bp-annot normal-case mt-auto flex items-center gap-2 pt-3">
-                        Περισσότερα
-                        <span
-                          aria-hidden
-                          className="text-violet transition-transform group-hover:translate-x-0.5"
-                        >
-                          →
-                        </span>
-                      </span>
-                    </Link>
-                  ) : (
-                    <div className="flex h-full flex-col px-6 py-7">{inner}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
-
-      {/* Pricing line + commit. */}
+      {/* Pricing line — the chat's price list; everything built is in the
+          catalogue's closing line, so it is not repeated here. */}
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
             <p className="text-ink-dim max-w-[56ch] leading-[1.6]">
-              Το chat ξεκινά δωρεάν — €9 έως €39 τον μήνα όταν μεγαλώσετε.
-              Οι κατασκευές τιμολογούνται με προσφορά, με σταθερή τιμή πριν
-              ξεκινήσουμε.{" "}
+              Το chat ξεκινά δωρεάν — €9 έως €39 τον μήνα όταν μεγαλώσετε.{" "}
               <span className="text-ink font-semibold">
-                Χωρίς δεσμεύσεις, και ο κώδικας δικός σας.
+                Χωρίς δεσμεύσεις, ακύρωση όποιον μήνα θέλετε.
               </span>
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/el/audit" className={ctaClass()}>
-                Κλείστε το δωρεάν ραντεβού →
-              </Link>
               <Link
                 href="/el/pricing"
+                hrefLang="el"
                 className={ctaClass({ variant: "ghost" })}
               >
                 Δείτε τις τιμές
               </Link>
               <Link
                 href="/"
-                className="bp-annot normal-case inline-block py-1.5 underline underline-offset-4"
+                hrefLang="en"
+                className="bp-annot inline-block py-1.5 normal-case underline underline-offset-4"
               >
                 Read this page in English
               </Link>

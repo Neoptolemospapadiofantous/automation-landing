@@ -19,6 +19,25 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
 
+  // Service pages renamed to the service names (plan 2026-09-13). Permanent
+  // (308) so rankings and every external link — the chat's knowledge base,
+  // the dashboard, sales sheets — carry over. /studio's job (customer
+  // acquisition) lives on /lead-generation; /suite's honest live-vs-not-yet
+  // list lives on /chat-assistant. /what-works, /audit and /roles/* stay.
+  async redirects() {
+    const moves: [string, string][] = [
+      ["/website-build", "/website"],
+      ["/email-automation", "/automations"],
+      ["/outreach", "/lead-generation"],
+      ["/suite", "/chat-assistant"],
+      ["/studio", "/lead-generation"],
+    ];
+    return moves.flatMap(([from, to]) => [
+      { source: from, destination: to, permanent: true },
+      { source: `/el${from}`, destination: `/el${to}`, permanent: true },
+    ]);
+  },
+
   // Baseline security headers on every response. A full CSP is
   // deliberately absent for now — the inline GA consent-default script
   // and gtag.js would need nonces/allowlists; frame-ancestors is the

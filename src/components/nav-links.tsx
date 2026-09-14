@@ -3,24 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { byCategory, nav, siteMap, siteMapApp } from "@/lib/content";
+import { FREE_CALL, nav, siteMap } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 /**
  * Desktop nav.
  *
- * The bar itself is width-bound — four items is the documented ceiling at
- * `lg` — but the site has ten pages worth reaching, and until now the four
- * role pages were footer-only. So the bar keeps the three highest-intent
- * destinations and everything else lives in one structured panel, laid out
- * the same way as the homepage index band and the footer.
+ * The bar is width-bound, so the four services sit in one panel and the
+ * bar keeps a single flat link (Pricing). The panel is a plain list of what
+ * we sell — no line names, no categories (2026-09-13: every surface names
+ * the same four services in the same order, read from `services`).
  *
  * Opens on click (not hover): hover menus are unusable by keyboard and
  * hostile on touch-capable laptops. Escape and click-away close it, focus
  * returns to the trigger, and every link inside is also in the footer, so
  * nothing here is the only route to a page.
  */
-const GROUPS = [siteMap.studio, siteMapApp] as const;
+const pathOf = (href: string) => href.split("#")[0];
 
 export function NavLinks() {
   const pathname = usePathname();
@@ -54,8 +53,9 @@ export function NavLinks() {
     };
   }, [open]);
 
+  const items = siteMap.services.items;
   // The panel owns a page when that page is one of its links.
-  const inPanel = GROUPS.some((g) => g.items.some((i) => i.href === pathname));
+  const inPanel = items.some((i) => pathOf(i.href) === pathname);
 
   return (
     <nav
@@ -96,62 +96,47 @@ export function NavLinks() {
         {open && (
           <div
             id="nav-services-panel"
-            /* Wider than the old flat list so most descriptions hold one
-               line, and capped with a scroll so a short laptop window can
-               still reach the last category. */
-            className="border-border-hi bg-bg absolute top-[calc(100%+14px)] left-0 z-50 grid max-h-[calc(100vh-7rem)] w-[680px] grid-cols-2 gap-px overflow-y-auto border shadow-[8px_8px_0_var(--ink)]"
+            className="border-border-hi bg-bg absolute top-[calc(100%+14px)] left-0 z-50 w-[420px] border p-5 shadow-[8px_8px_0_var(--ink)]"
           >
-            {GROUPS.map((g) => (
-              <div key={g.heading} className="bg-bg p-5">
-                <div className="border-border-line mb-2 border-b pb-2">
-                  <span className="text-ink font-mono text-[10px] tracking-[0.22em] whitespace-nowrap uppercase">
-                    {g.heading}
-                  </span>
-                </div>
-                {/* The line's offer in one sentence. A menu of twelve
-                    links says what pages exist; this says what you get. */}
-                <p className="text-ink-dim mb-4 text-[12px] leading-[1.5]">
-                  {g.pitch}
-                </p>
-                {byCategory(g.items).map((bucket) => (
-                  <div key={bucket.cat} className="mb-3 last:mb-0">
-                    {/* Deliberately NOT .bp-ref: that class paints the
-                        signal yellow, and seven gold labels in one panel
-                        spends the one accent the brand allows. */}
-                    {bucket.cat && (
-                      <span className="text-ink-mute mb-1 block font-mono text-[9px] tracking-[0.22em] uppercase">
-                        {bucket.cat}
+            <div className="border-border-line mb-2 border-b pb-2">
+              <span className="text-ink font-mono text-[10px] tracking-[0.22em] uppercase">
+                {siteMap.services.heading}
+              </span>
+            </div>
+            <ul className="flex flex-col">
+              {items.map((it) => {
+                const active = pathOf(it.href) === pathname;
+                return (
+                  <li key={it.href}>
+                    <Link
+                      href={it.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "hover:bg-bg-elev -mx-2 flex flex-col gap-0.5 px-2 py-2 transition-colors",
+                        active && "bg-bg-elev",
+                      )}
+                    >
+                      <span className="text-ink flex items-center gap-2 text-[14px] font-semibold tracking-[-0.01em]">
+                        <span className="bp-dot shrink-0" aria-hidden />
+                        {it.label}
                       </span>
-                    )}
-                    <ul className="flex flex-col">
-                      {bucket.items.map((it) => {
-                        const active = pathname === it.href;
-                        return (
-                          <li key={it.href}>
-                            <Link
-                              href={it.href}
-                              aria-current={active ? "page" : undefined}
-                              className={cn(
-                                "hover:bg-bg-elev group -mx-2 flex flex-col gap-0.5 px-2 py-1.5 transition-colors",
-                                active && "bg-bg-elev",
-                              )}
-                            >
-                              <span className="text-ink flex items-center gap-2 text-[14px] font-semibold tracking-[-0.01em]">
-                                <span className="bp-dot shrink-0" aria-hidden />
-                                {it.label}
-                              </span>
-                              <span className="text-ink-dim pl-[14px] text-[12px] leading-[1.45]">
-                                {it.desc}
-                              </span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ))}
+                      <span className="text-ink-dim pl-[14px] text-[12px] leading-[1.45]">
+                        {it.desc}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <Link
+              href={FREE_CALL.href}
+              className="border-border-line text-ink mt-3 flex items-center justify-between border-t pt-3 font-mono text-[11px] tracking-[0.14em] uppercase"
+            >
+              {FREE_CALL.label}
+              <span aria-hidden className="text-violet">
+                →
+              </span>
+            </Link>
           </div>
         )}
       </div>

@@ -3,7 +3,24 @@ import { Eyebrow } from "./eyebrow";
 import type { Tint } from "@/lib/content";
 import { ctaClass } from "@/components/ui/button";
 
-type CTA = { href: string; label: string; variant?: "primary" | "secondary" };
+type CTA = {
+  href: string;
+  label: string;
+  /** Shown below `sm` instead of `label` — for labels that wrap a
+   *  full-width button at 320px (the 09-07 lesson). */
+  short?: string;
+  variant?: "primary" | "secondary";
+};
+
+function ctaText(c: CTA) {
+  if (!c.short) return c.label;
+  return (
+    <>
+      <span className="sm:hidden">{c.short}</span>
+      <span className="hidden sm:inline">{c.label}</span>
+    </>
+  );
+}
 
 export function PageHero({
   eyebrow,
@@ -60,7 +77,7 @@ export function PageHero({
                     href={c.href}
                     className={ctaClass()}
                   >
-                    {c.label}
+                    {ctaText(c)}
                   </Link>
                 ) : (
                   <Link
@@ -68,7 +85,7 @@ export function PageHero({
                     href={c.href}
                     className={ctaClass({ variant: "ghost" })}
                   >
-                    {c.label}
+                    {ctaText(c)}
                   </Link>
                 ),
               )}

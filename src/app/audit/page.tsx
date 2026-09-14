@@ -5,19 +5,19 @@ import { Tldr } from "@/components/tldr";
 import { AuditForm } from "@/components/sections/audit-form";
 
 export const metadata: Metadata = {
-  title: "Custom builds — free 30-minute audit",
+  title: "Free 30-minute call — fixed price in 48 hours",
   description:
-    "Thirty minutes and you'll have a number. Every build is scoped here first: a free audit, then a written fixed-scope proposal in 48 hours. Yours to keep.",
+    "Thirty minutes on a call: we show you where you're losing customers, then send a written fixed price within 48 hours. Yours to keep.",
   alternates: {
     canonical: "/audit",
     languages: { en: "/audit", el: "/el/audit", "x-default": "/audit" },
   },
   openGraph: {
     images: OG_IMAGES,
-    title: "Custom build — Flowstack",
+    title: "Free 30-minute call — Flowstack",
     url: "/audit",
     description:
-      "Every build is scoped here first: a free 30-minute audit, then a written fixed-scope proposal within 48 hours. Yours to keep, whether or not you go ahead.",
+      "A free 30-minute call, then a written fixed price within 48 hours. Yours to keep, whether or not you go ahead.",
   },
 };
 
@@ -25,12 +25,12 @@ const expect = [
   {
     step: "01",
     title: "30-minute call",
-    body: "You show us the work you want off your plate. No slides on our side.",
+    body: "You show us how enquiries and work flow today. We show you where customers go missing.",
   },
   {
     step: "02",
-    title: "Written scope in 48h",
-    body: "What we would build, how long it takes, what it costs. Yours to keep.",
+    title: "Written price in 48h",
+    body: "What we would build, how long it takes, and the fixed price. Yours to keep.",
   },
   {
     step: "03",
@@ -43,7 +43,7 @@ export default function AuditPage() {
   return (
     <>
       <PageHero
-        eyebrow="Custom build"
+        eyebrow="Free 30-minute call"
         eyebrowTint="violet"
         title={
           <>
@@ -51,7 +51,7 @@ export default function AuditPage() {
             <span className="text-gradient">a number.</span>
           </>
         }
-        lead="Every build is quoted for your setup, before any work starts."
+        lead="For a website, a chat and voice assistant, automations or new customers — any of the four."
         ctas={[
           { href: "#audit", label: "Jump to the form →", variant: "primary" },
         ]}
@@ -59,7 +59,7 @@ export default function AuditPage() {
 
       <Tldr
         rows={[
-          { k: "Cost", v: "Nothing. The call and the written scope are both free." },
+          { k: "Cost", v: "Nothing. The call and the written price are both free." },
           {
             k: "Time",
             v: "Thirty minutes on a call, then a written price within 48 hours.",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { siteMap, siteMapApp } from "@/lib/content";
+import { siteMap } from "@/lib/content";
 import { CookieSettingsLink } from "./cookie-settings-link";
 
 /**
@@ -11,12 +11,12 @@ import { CookieSettingsLink } from "./cookie-settings-link";
  * a habit and broke trust on the legal column especially. If a section
  * doesn't have content yet, omit the link rather than promising it.
  *
- * The old single "Product" column mixed four services with four chat roles
- * and read as one undifferentiated list of eight. They are different things
- * — one is what you buy, the other is which job the chat does — so they get
- * their own headings.
+ * Four columns: what we sell (the four services), how to start, company,
+ * legal. The Studio/App line names and the role pages left the footer on
+ * 2026-09-13 — the role pages stay reachable from the homepage's
+ * "what the chat can do" list.
  */
-const cols = [siteMap.studio, siteMapApp, siteMap.company, siteMap.legal];
+const cols = [siteMap.services, siteMap.start, siteMap.company, siteMap.legal];
 
 const titleBlock = [
   { k: "Project", v: "Flowstack" },
@@ -66,12 +66,12 @@ export function SiteFooter() {
               <Logo />
             </Link>
             <p className="text-ink-dim mt-4 text-sm leading-[1.6]">
-              We answer your website, find you customers, and put your
-              numbers in one place. Built to order, on the tools you already
-              use.
+              We build your website, answer every enquiry, automate the
+              follow-up and bring you customers. Built to order, on the tools
+              you already use.
             </p>
             <p className="bp-annot mt-5 normal-case">
-              Pick a role · paste your knowledge · watch leads land
+              Website · chat &amp; voice · automations · lead generation
             </p>
           </div>
 

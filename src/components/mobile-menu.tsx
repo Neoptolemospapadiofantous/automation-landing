@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { byCategory, siteMap, siteMapApp } from "@/lib/content";
+import { siteMap } from "@/lib/content";
 import { loginUrl } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 
@@ -94,42 +94,30 @@ export function MobileMenu() {
             id="mobile-nav-panel"
             className="border-border-hi bg-bg-elev absolute left-0 right-0 top-full z-50 flex max-h-[calc(100vh-var(--nav-h,64px))] flex-col overflow-y-auto overscroll-contain border border-t-0 px-4 py-2 shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
           >
-            {[siteMap.studio, siteMapApp].map((g) => (
+            {/* The same two groups the footer reads: what we sell, then how to
+                start. No line names, no categories (2026-09-13). */}
+            {[siteMap.services, siteMap.start].map((g) => (
               <div key={g.heading} className="py-1">
                 <span className="text-ink mt-2 block font-mono text-[10px] tracking-[0.22em] uppercase">
                   {g.heading}
                 </span>
-                {/* The same one-line offer the desktop panel carries —
-                    a phone menu that only lists labels says even less. */}
-                <p className="text-ink-dim mt-1 mb-1 text-[12px] leading-[1.45]">
-                  {g.pitch}
-                </p>
-                {byCategory(g.items).map((bucket) => (
-                  <div key={bucket.cat}>
-                    {bucket.cat && (
-                      <span className="text-ink-mute mt-3 block font-mono text-[9px] tracking-[0.22em] uppercase">
-                        {bucket.cat}
-                      </span>
-                    )}
-                    {bucket.items.map((it) => {
-                      const active = pathname === it.href;
-                      return (
-                        <Link
-                          key={it.href}
-                          href={it.href}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "border-border-line/60 flex items-center gap-2 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
-                            active ? "text-ink" : "text-ink-dim hover:text-ink",
-                          )}
-                        >
-                          <span className="bp-dot shrink-0" aria-hidden />
-                          {it.label}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ))}
+                {g.items.map((it) => {
+                  const active = pathname === it.href.split("#")[0];
+                  return (
+                    <Link
+                      key={it.href}
+                      href={it.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "border-border-line/60 flex items-center gap-2 border-b py-3 font-mono text-[12px] tracking-[0.18em] uppercase transition-colors",
+                        active ? "text-ink" : "text-ink-dim hover:text-ink",
+                      )}
+                    >
+                      <span className="bp-dot shrink-0" aria-hidden />
+                      {it.label}
+                    </Link>
+                  );
+                })}
               </div>
             ))}
             <Link

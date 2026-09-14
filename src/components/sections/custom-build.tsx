@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SectionWatermark } from "@/components/section-watermark";
 import { ctaClass } from "@/components/ui/button";
+import { FREE_CALL } from "@/lib/content";
 
 /**
  * Upsell band on the homepage: positions the bespoke automation
@@ -62,9 +63,9 @@ export function CustomBuild() {
                 link without taking a slot in the header. */}
             <ul className="bp-annot mt-6 grid gap-2.5 sm:grid-cols-2">
               {[
-                { href: "/website-build", label: "Website builds" },
-                { href: "/outreach", label: "Lead generation" },
-                { href: "/email-automation", label: "CRM automations" },
+                { href: "/website", label: "Website builds" },
+                { href: "/lead-generation", label: "Lead generation" },
+                { href: "/automations", label: "CRM automations" },
                 { href: "/what-works", label: "Live reports" },
               ].map((l) => (
                 <li key={l.href} className="flex items-start gap-2">
@@ -82,10 +83,11 @@ export function CustomBuild() {
 
           <div className="flex flex-col items-start gap-3 lg:items-end">
             <Link
-              href="/audit"
+              href={FREE_CALL.href}
               className={ctaClass()}
             >
-              Book the audit →
+              <span className="sm:hidden">{FREE_CALL.short} →</span>
+              <span className="hidden sm:inline">{FREE_CALL.label} →</span>
             </Link>
             <span className="bp-annot normal-case">
               Free 30-minute call · written scope in 48h

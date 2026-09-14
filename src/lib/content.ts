@@ -37,6 +37,279 @@ export function byCategory(
 }
 
 /**
+ * THE ONE ENTRY STEP (founder, 2026-09-13). Every build CTA on the site
+ * says exactly this. It replaced four names for the same free call —
+ * "Book the audit", "Free Leak Report", "Talk about custom", "Custom
+ * build". What the Leak Report did (show where customers leak) is now
+ * one line of what the call covers.
+ */
+export const FREE_CALL = {
+  label: "Book a free 30-minute call",
+  /** Below `sm` only: the full label wraps a full-width button at 320px
+   *  (the 09-07 lesson). Same step, same destination, fewer words. */
+  short: "Book a free call",
+  href: "/audit",
+  what: "We show you where you're losing customers, then send a written fixed price within 48 hours. It's yours to keep.",
+} as const;
+
+export type Service = {
+  /** Target URL segment once Phase 2 renames the pages. */
+  slug: "website" | "chat-assistant" | "automations" | "lead-generation";
+  name: string;
+  /** The service page — always `/${slug}` since the 2026-09-13 rename. */
+  href: string;
+  /** What it is — one sentence, ≤15 words. Catalogue + service-page hero. */
+  oneLiner: string;
+  /** The result, in a different sentence from oneLiner (say each fact once). */
+  outcome: string;
+  /** How you buy it, shown before the price question is asked. */
+  buyPath: string;
+  /** What you get — 3–5 concrete things. */
+  get: readonly string[];
+  forWho: string;
+  cost: string;
+  time: string;
+  /** "What it isn't" / the honest line. */
+  isnt: string;
+  /** The catalogue's "what's included" line. */
+  includes: string;
+};
+
+/**
+ * WHAT WE SELL — the single source for every surface that names a service
+ * (founder, 2026-09-13; plan: every surface names the same four, in this
+ * order, with the same definition). Each service answers the same six
+ * questions: what it is · what you get · who it's for · what it costs ·
+ * how long it takes · how to start.
+ *
+ * HONESTY RULES THAT LIVE IN THIS DATA, not in the components:
+ * - The phone assistant, instant call-back and SMS are BUILT TO ORDER.
+ *   The app ships website chat + the hosted chat page only (§3.4), so
+ *   every such line says "built for you".
+ * - Call-back and SMS go to people who ENQUIRED. We do not sell cold SMS
+ *   or cold automated calls (EU consent rules + AI Act disclosure).
+ * - WhatsApp is not offered — not in the app, not built for clients.
+ * - No build prices. Timelines are the founder's typical figures
+ *   (2026-09-13): website ~2 weeks, automations + voice 2–4 weeks, first
+ *   outreach emails within 2 weeks.
+ * - Call-back + SMS sit under Chat & voice, not Lead generation: they
+ *   answer people who already enquired. Lead generation is finding and
+ *   emailing NEW customers — one job per service.
+ */
+export const services: readonly Service[] = [
+  {
+    slug: "website",
+    name: "Website",
+    href: "/website",
+    oneLiner: "A fast website for your business, in English or Greek.",
+    outcome: "A site that looks right, loads fast and turns visitors into enquiries.",
+    buyPath: "We build it · quoted",
+    get: [
+      "Design and words for up to about six pages",
+      "Built for phones first",
+      "The chat installed from day one",
+      "Your own domain, and you own the code",
+    ],
+    forWho: "Businesses with no site, or a site that no longer brings enquiries.",
+    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€390). A shop or portal is quoted separately.",
+    time: "Live in about two weeks.",
+    isnt: "A shop or booking portal. Those are quoted as their own build.",
+    includes: "New site or a rebuild · built for phones · you own the code",
+  },
+  {
+    slug: "chat-assistant",
+    name: "Chat & voice assistant",
+    href: "/chat-assistant",
+    oneLiner: "Answers every enquiry on your site, day and night, and on your phone.",
+    outcome: "Nobody who asks at 11pm waits until morning.",
+    buyPath: "Chat free · voice quoted",
+    get: [
+      "Answers from your own documents, in the visitor's language",
+      "Every lead captured, with the full conversation",
+      "New leads sent to your CRM or Google Sheets",
+      "A phone assistant that answers and books — built for you",
+      "An instant call-back and SMS to everyone who enquires — built for you",
+    ],
+    forWho: "Car rental desks, clinics, hotels and villas — anyone whose customers ask after hours.",
+    cost: "Chat: free to start, then €9–€39 a month. Phone, call-back and SMS: fixed price after a free call.",
+    time: "Chat: live in about a minute. Phone, call-back and SMS: 2–4 weeks.",
+    /* The "not yet in the do-it-yourself chat" list lives on the page as its
+       own section; this line says something different so the page states
+       each fact once. */
+    isnt: "A call centre. Anything the assistant can't answer goes to your team, with the conversation attached.",
+    includes: "Website chat · phone assistant · instant call-back · SMS follow-up",
+  },
+  {
+    slug: "automations",
+    name: "Automations",
+    href: "/automations",
+    oneLiner: "The follow-ups, reminders and invoices you send by hand, sent automatically.",
+    outcome: "Your CRM, follow-ups and invoices stop needing a person to push them.",
+    buyPath: "We build it · quoted",
+    get: [
+      "Connected to your CRM and inbox",
+      "Follow-ups and reminders in your words, from your own address",
+      "Invoice chasers",
+      "Enquiries sorted and sent to the right person",
+      "A live report of your numbers",
+    ],
+    forWho: "Firms, agencies and clinics where someone spends hours a week on the same emails.",
+    cost: "Fixed price after a free call. You own everything we build.",
+    time: "Live in 2–4 weeks.",
+    isnt: "Cold email to strangers. That's Lead generation.",
+    includes: "CRM sync · email follow-ups · invoice chasers · inbox triage · live reports",
+  },
+  {
+    slug: "lead-generation",
+    name: "Lead generation",
+    href: "/lead-generation",
+    oneLiner: "We find new customers who fit you, and email them for you.",
+    outcome: "A steady flow of new customers, found and contacted for you.",
+    buyPath: "We run it · quoted",
+    get: [
+      "A checked list of companies that fit you",
+      "Cold emails in your words, from your own address",
+      "Replies handed straight to you",
+      "A monthly report on who replied and what to try next",
+    ],
+    forWho: "Businesses that want more customers than referrals bring — here or abroad.",
+    cost: "Fixed price after a free call.",
+    time: "First emails within two weeks. Volume grows as your address builds trust.",
+    isnt: "Cold SMS or cold automated calls. We don't sell them.",
+    includes: "Checked lists · your own sending address · replies to you · monthly report",
+  },
+];
+
+/**
+ * Greek twins of FREE_CALL and `services` — same slugs, same order, same
+ * honesty rules, native Greek in the formal σας register. The EL pages and
+ * the shared ServicePage / Catalogue components read these, so the Greek
+ * site cannot drift from the English one in structure, only in words.
+ * Greek names (2026-09-13, landing session — logged in SHARED.md §3.4):
+ * Website = «Ιστοσελίδα», Chat & voice assistant = «Chat & φωνητικός
+ * βοηθός», Automations = «Αυτοματισμοί», Lead generation = «Εύρεση
+ * πελατών» (the Greek page already owns that search phrase).
+ */
+export const FREE_CALL_EL = {
+  label: "Κλείστε δωρεάν ραντεβού 30 λεπτών",
+  short: "Δωρεάν ραντεβού",
+  href: "/el/audit",
+  what: "Σας δείχνουμε πού χάνετε πελάτες και στέλνουμε γραπτή σταθερή τιμή μέσα σε 48 ώρες. Δική σας να την κρατήσετε.",
+} as const;
+
+export const servicesEl: readonly Service[] = [
+  {
+    slug: "website",
+    name: "Ιστοσελίδα",
+    href: "/el/website",
+    oneLiner: "Μια γρήγορη ιστοσελίδα για την επιχείρησή σας, στα Ελληνικά ή στα Αγγλικά.",
+    outcome: "Ένα site που δείχνει σωστό, ανοίγει γρήγορα και φέρνει μηνύματα.",
+    buyPath: "Το φτιάχνουμε · προσφορά",
+    get: [
+      "Σχεδιασμός και κείμενα για έως περίπου έξι σελίδες",
+      "Φτιαγμένο πρώτα για κινητό",
+      "Το chat εγκατεστημένο από την πρώτη μέρα",
+      "Δικό σας domain, και ο κώδικας δικός σας",
+    ],
+    forWho: "Επιχειρήσεις χωρίς site, ή με site που δεν φέρνει πια μηνύματα.",
+    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€390). E-shop ή portal με ξεχωριστή προσφορά.",
+    time: "Ζωντανό σε περίπου δύο εβδομάδες.",
+    isnt: "E-shop ή σύστημα κρατήσεων. Αυτά είναι δική τους κατασκευή, με προσφορά.",
+    includes: "Νέο site ή ανανέωση · πρώτα για κινητό · ο κώδικας δικός σας",
+  },
+  {
+    slug: "chat-assistant",
+    name: "Chat & φωνητικός βοηθός",
+    href: "/el/chat-assistant",
+    oneLiner: "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, και στο τηλέφωνο.",
+    outcome: "Όποιος ρωτά στις 23:00 δεν περιμένει ως το πρωί.",
+    buyPath: "Chat δωρεάν · φωνή: τιμή",
+    get: [
+      "Απαντήσεις από τα δικά σας κείμενα, στη γλώσσα του επισκέπτη",
+      "Κάθε lead καταγεγραμμένο, με όλη τη συζήτηση",
+      "Τα νέα leads πάνε στο CRM σας ή στα Google Sheets",
+      "Φωνητικός βοηθός που απαντά και κλείνει ραντεβού — τον στήνουμε εμείς",
+      "Άμεση επανάκληση και SMS σε όποιον στείλει μήνυμα — τα στήνουμε εμείς",
+    ],
+    forWho: "Ενοικιάσεις αυτοκινήτων, κλινικές, ξενοδοχεία και βίλες — όσοι δέχονται ερωτήσεις εκτός ωραρίου.",
+    cost: "Chat: δωρεάν για αρχή, μετά €9–€39 τον μήνα. Τηλέφωνο, επανάκληση και SMS: σταθερή τιμή μετά από δωρεάν ραντεβού.",
+    time: "Chat: ζωντανό σε περίπου ένα λεπτό. Τηλέφωνο, επανάκληση και SMS: 2–4 εβδομάδες.",
+    isnt: "Τηλεφωνικό κέντρο. Ό,τι δεν μπορεί να απαντήσει πάει στην ομάδα σας, με τη συζήτηση μαζί.",
+    includes: "Chat ιστοσελίδας · φωνητικός βοηθός · άμεση επανάκληση · SMS",
+  },
+  {
+    slug: "automations",
+    name: "Αυτοματισμοί",
+    href: "/el/automations",
+    oneLiner: "Τα follow-up, οι υπενθυμίσεις και τα τιμολόγια που στέλνετε με το χέρι, αυτόματα.",
+    outcome: "Το CRM, τα follow-up και τα τιμολόγια δεν θέλουν πια κάποιον να τα σπρώχνει.",
+    buyPath: "Το φτιάχνουμε · προσφορά",
+    get: [
+      "Σύνδεση με το CRM και το inbox σας",
+      "Follow-up και υπενθυμίσεις με τα δικά σας λόγια, από τη δική σας διεύθυνση",
+      "Όχληση τιμολογίων",
+      "Τα μηνύματα ταξινομούνται και πάνε στον σωστό άνθρωπο",
+      "Ζωντανή αναφορά με τους αριθμούς σας",
+    ],
+    forWho: "Γραφεία, εταιρείες και κλινικές όπου κάποιος ξοδεύει ώρες την εβδομάδα στα ίδια email.",
+    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Ό,τι φτιάχνουμε είναι δικό σας.",
+    time: "Ζωντανό σε 2–4 εβδομάδες.",
+    isnt: "Cold email σε αγνώστους. Αυτό είναι η Εύρεση πελατών.",
+    includes: "Σύνδεση CRM · follow-up · όχληση τιμολογίων · ταξινόμηση εισερχομένων · ζωντανές αναφορές",
+  },
+  {
+    slug: "lead-generation",
+    name: "Εύρεση πελατών",
+    href: "/el/lead-generation",
+    oneLiner: "Βρίσκουμε νέους πελάτες που σας ταιριάζουν, και τους στέλνουμε email για εσάς.",
+    outcome: "Σταθερή ροή νέων πελατών — τους βρίσκουμε και τους προσεγγίζουμε εμείς.",
+    buyPath: "Το τρέχουμε · προσφορά",
+    get: [
+      "Ελεγμένη λίστα επιχειρήσεων που σας ταιριάζουν",
+      "Cold email με τα δικά σας λόγια, από τη δική σας διεύθυνση",
+      "Οι απαντήσεις έρχονται κατευθείαν σε εσάς",
+      "Μηνιαία αναφορά: ποιος απάντησε και τι δοκιμάζουμε μετά",
+    ],
+    forWho: "Επιχειρήσεις που θέλουν περισσότερους πελάτες από όσους φέρνουν οι συστάσεις — εδώ ή στο εξωτερικό.",
+    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού.",
+    time: "Τα πρώτα email μέσα σε δύο εβδομάδες. Ο όγκος μεγαλώνει καθώς η διεύθυνσή σας κερδίζει εμπιστοσύνη.",
+    isnt: "Cold SMS ή αυτόματες κλήσεις σε αγνώστους. Δεν τα πουλάμε.",
+    includes: "Ελεγμένες λίστες · η δική σας διεύθυνση · απαντήσεις σε εσάς · μηνιαία αναφορά",
+  },
+];
+
+/** Greek service by slug — same contract as serviceBySlug. */
+export function serviceBySlugEl(slug: Service["slug"]): Service {
+  const found = servicesEl.find((sv) => sv.slug === slug);
+  if (!found) throw new Error(`Unknown Greek service slug: ${slug}`);
+  return found;
+}
+
+/* Greek catalogue view — never a hand-kept second grid. */
+export const buildCatalogueEl = servicesEl.map((sv) => ({
+  name: sv.name,
+  href: sv.href,
+  desc: sv.oneLiner,
+  covers: sv.includes,
+}));
+
+/** A service by slug. Throws rather than returning undefined: a page that
+ *  asks for a slug which is not in `services` is a build-time bug. */
+export function serviceBySlug(slug: Service["slug"]): Service {
+  const found = services.find((sv) => sv.slug === slug);
+  if (!found) throw new Error(`Unknown service slug: ${slug}`);
+  return found;
+}
+
+/* The catalogue is a VIEW of `services`, never a second list. */
+export const buildCatalogue = services.map((s) => ({
+  name: s.name,
+  href: s.href,
+  desc: s.oneLiner,
+  covers: s.includes,
+}));
+
+/**
  * THE SITE MAP — one source for the header dropdown, the mobile menu, the
  * footer columns and the homepage index band.
  *
@@ -49,56 +322,26 @@ export function byCategory(
  * be registered in a second list.
  */
 export const siteMap = {
-  /* THE STUDIO — the done-for-you line. One of the two groups the header,
-     mobile menu, footer and homepage index all read (founder, 2026-09-06:
-     regroup the header to the two lines, keep every page). */
-  studio: {
-    heading: "The Studio",
-    note: "// done for you, in Cyprus",
-    pitch:
-      "You hand it over. We build it, run it and report on it \u2014 one team, one quote.",
-    /* Labels are the four service names from `buildCatalogue`, verbatim.
-       The header used to run its own vocabulary ("Website build", "Cold
-       outreach", "What works") beside the catalogue's, which is half of
-       why the offer read as a long list of unrelated things. /what-works
-       is deliberately NOT here since 2026-09-13 — reports are part of
-       Automations; the page is linked from the homepage end-to-end band. */
+  /* WHAT WE SELL — the four services, DERIVED from `services`, so the
+     header panel, mobile menu and footer can never name them differently.
+     Replaced the Studio/App groups on 2026-09-13: those line names left
+     public copy and stay internal (dashboard, sales). */
+  services: {
+    heading: "What we sell",
+    items: services.map((sv) => ({
+      href: sv.href,
+      label: sv.name,
+      desc: sv.oneLiner,
+    })) satisfies SiteLink[],
+  },
+  start: {
+    heading: "Get started",
     items: [
+      { href: FREE_CALL.href, label: FREE_CALL.label, desc: FREE_CALL.what },
       {
-        href: "/studio",
-        label: "The Studio",
-        desc: "Done for you, in Cyprus. Starts with the free Leak Report.",
-        cat: "Start here",
-      },
-      {
-        href: "/audit",
-        label: "Custom build",
-        desc: "Free 30-minute call, written price in 48 hours.",
-        cat: "Start here",
-      },
-      {
-        href: "/website-build",
-        label: "Website",
-        desc: "Built or rebuilt, with the chat on it from day one.",
-        cat: "What we build",
-      },
-      {
-        href: "/studio#packages",
-        label: "Chat & voice assistant",
-        desc: "Answers every enquiry on your site and phone, and books it.",
-        cat: "What we build",
-      },
-      {
-        href: "/email-automation",
-        label: "Automations",
-        desc: "Your CRM, follow-ups, invoices and reports, running themselves.",
-        cat: "What we build",
-      },
-      {
-        href: "/outreach",
-        label: "Lead generation",
-        desc: "Cold email, instant call-back and SMS follow-up.",
-        cat: "What we build",
+        href: "/pricing",
+        label: "Pricing",
+        desc: "Chat plans from €0, and how building for you works.",
       },
     ] satisfies SiteLink[],
   },
@@ -143,11 +386,7 @@ export const nav = {
   /** The item that opens the structured panel. */
   menuLabel: "Services",
   /** Flat items to the right of the panel trigger. */
-  links: [
-    { href: "/outreach", label: "Lead generation" },
-    { href: "/studio", label: "The Studio" },
-    { href: "/pricing", label: "Pricing" },
-  ],
+  links: [{ href: "/pricing", label: "Pricing" }],
 };
 
 
@@ -310,46 +549,6 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 }));
 
 /**
- * The roles group of the site map — derived, so adding a role to `rolePages`
- * puts it in the header panel, the mobile menu, the footer and the homepage
- * index with no second edit.
- */
-export const roleLinks: SiteLink[] = rolePages.map((r) => ({
-  href: `/roles/${r.slug}`,
-  label: r.name,
-  desc: r.desc,
-  cat: "What it's for",
-}));
-
-/* THE APP — the self-serve line: plans, the module page, then the chat's
-   four jobs (derived from rolePages, so a new role still reaches every
-   surface with no second edit). */
-export const siteMapApp = {
-  heading: "The app",
-  note: "// the chat you run yourself",
-  /* The offer in one line, and every clause of it is live today per
-     /suite: it answers from the customer's own material, it captures and
-     scores, the board is real, and Free is one agent. Nothing that is
-     still "not yet available" may be implied here. */
-  pitch: "You run it. Answers from your own material, captures and scores the lead, hands you the board — free for one agent.",
-  items: [
-    {
-      href: "/suite",
-      label: "Module by module",
-      desc: "Six things live today, five not yet — and where to ask for them.",
-      cat: "What it does",
-    },
-    ...roleLinks,
-    {
-      href: "/pricing",
-      label: "Chat plans",
-      desc: "Free for one agent, then €9 to €39 a month. Cancel any month.",
-      cat: "What it costs",
-    },
-  ] satisfies SiteLink[],
-};
-
-/**
  * What we build for you — the service catalogue, shared by the homepage
  * band and the pricing page so the two can never drift.
  *
@@ -378,43 +577,18 @@ export const siteMapApp = {
  * carry the twelve-row table and are now the drifted copy — they need
  * re-cutting to these five when next rendered.
  */
-export const buildCatalogue = [
-  {
-    name: "Website",
-    href: "/website-build",
-    desc: "A fast site in English or Greek, with the chat installed from day one.",
-    covers: "New site or a rebuild \u00b7 built for phones \u00b7 you own the code",
-  },
-  {
-    name: "Chat & voice assistant",
-    href: "/studio#packages",
-    desc: "Trained on your business. Answers on your site and your phone, books appointments, and hands you the lead.",
-    covers: "Website chat \u00b7 phone assistant \u00b7 booking \u00b7 handover to your team",
-  },
-  {
-    name: "Automations",
-    href: "/email-automation",
-    desc: "Connected to your CRM, so follow-ups, reminders and invoices go out without anyone pressing send.",
-    covers:
-      "CRM sync \u00b7 email follow-ups \u00b7 invoice chasers \u00b7 inbox triage \u00b7 live reports",
-  },
-  {
-    name: "Lead generation",
-    href: "/outreach",
-    desc: "Cold email to companies that fit you, plus an instant call-back and SMS to everyone who enquires.",
-    covers:
-      "Checked lists \u00b7 your own sending address \u00b7 instant call-back \u00b7 replies to you",
-  },
-] as const;
+
 
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. The chat is the front door. Behind it we automate the busywork and put your numbers in one view.",
+    a: "No. We sell four things: a website, a chat and voice assistant, automations and lead generation. The chat is the only one you set up yourself.",
   },
   {
-    q: "What do the plans cost?",
-    a: "Free for one agent. Then €9, €19 or €39 a month. €39 is the top plan. Every feature on at every tier.",
+    q: "What do the chat plans cost?",
+    /* Not "every feature on at every tier" — that was false: leads to your
+       CRM start at Starter and your own AI key at Growth. */
+    a: "Free for one chat assistant. Then €9, €19 or €39 a month, and €39 is the top plan. The core chat is on every plan.",
   },
   {
     q: "Can I use my own OpenAI, Anthropic or Google key?",
@@ -426,11 +600,11 @@ export const faqItems = [
   },
   {
     q: "Does it connect to my existing stack?",
-    a: "Paid plans push each new lead and handoff request to Zapier, Make, Google Sheets or your CRM by webhook, as it happens. Deeper wiring is a custom build — fixed scope, you keep the code.",
+    a: "From Starter up, each new lead and handoff request goes by webhook to Zapier, Make, Google Sheets or your CRM as it happens. Deeper wiring is our Automations service — a fixed price, and you keep the code.",
   },
   {
-    q: "When do I need a custom build?",
-    a: "For a website, integrations, data pipelines or your own UI. The subscription covers the standard 80%.",
+    q: "When should I have it built for me?",
+    a: "When you want a website, a phone assistant, automations in your CRM, or new customers found for you. The chat plans cover the website chat on its own.",
   },
   {
     q: "Are we locked in?",
@@ -441,18 +615,27 @@ export const faqItems = [
 export type Tint = "violet" | "cyan" | "success" | "warn" | "danger";
 
 /* ---------- Pricing tiers (Pricing page) ---------- */
+/**
+ * The do-it-yourself chat plans, in CUSTOMER UNITS (plan 2026-09-13).
+ * A buyer cannot price "2,500 conversation credits"; they can price
+ * "about 300–500 chats a month". Every chats range uses the one rate the
+ * chat's own knowledge base states (docs/landing-kb/pricing.md: a short chat
+ * is about 5–8 credits), so the site and the chat can never quote two
+ * different numbers. Credits, top-ups and own-AI-key detail live in the
+ * small print under the grid and in the FAQ. Names and prices are §3.4.
+ */
 export const pricingTiers = [
   {
     name: "Free",
     price: "€0/mo",
-    cadence: "1 agent · no card required",
+    cadence: "1 chat assistant · no card required",
     tint: "cyan",
     tagline: "Put it on your own site and watch it answer.",
     features: [
-      "1 agent, any role",
-      "250 conversation credits / month",
-      "Knowledge-base upload + transcripts",
-      "Real-time leads dashboard",
+      "1 chat assistant",
+      "About 30–50 chats a month",
+      "Answers from your own documents",
+      "Every lead on your dashboard",
       "No card, no expiry",
     ],
     cta: { href: registerUrl(), label: "Start free" },
@@ -462,14 +645,14 @@ export const pricingTiers = [
     name: "Starter",
     deal: { strike: "€108", annual: "€90" },
     price: "€9/mo",
-    cadence: "1 agent · cancel anytime",
+    cadence: "1 chat assistant · cancel anytime",
     tint: "cyan",
-    tagline: "One agent, live in a minute. Every feature on.",
+    tagline: "One chat assistant, live in a minute.",
     features: [
-      "1 agent, any role",
-      "2,500 conversation credits / month",
-      "Top-up credits anytime",
-      "Knowledge-base upload + transcripts",
+      "1 chat assistant",
+      "About 300–500 chats a month",
+      "Leads sent to your CRM or Google Sheets",
+      "Answers from your own documents",
       "Cancel anytime · no lock-in",
     ],
     cta: { href: registerUrl(), label: "Try it for €9" },
@@ -479,15 +662,14 @@ export const pricingTiers = [
     name: "Growth",
     deal: { strike: "€228", annual: "€190" },
     price: "€19/mo",
-    cadence: "up to 5 agents · cancel anytime",
+    cadence: "up to 5 chat assistants · cancel anytime",
     tint: "violet",
     tagline: "For a site with real traffic.",
     features: [
       "Everything in Starter",
-      "Up to 5 agents",
-      "10,000 conversation credits / month",
-      "Or your own API key — 10,000 messages, no credits",
-      "Top-up credits anytime",
+      "Up to 5 chat assistants",
+      "About 1,250–2,000 chats a month",
+      "Bring your own AI key (advanced)",
       "Cancel anytime · no lock-in",
     ],
     cta: { href: registerUrl(), label: "Choose Growth" },
@@ -497,16 +679,14 @@ export const pricingTiers = [
     name: "Operator",
     deal: { strike: "€468", annual: "€390" },
     price: "€39/mo",
-    cadence: "up to 5 agents · cancel anytime",
+    cadence: "up to 5 chat assistants · cancel anytime",
     tint: "violet",
-    tagline: "For teams running several agents every day.",
+    tagline: "For a chat that is busy every day.",
     features: [
       "Everything in Growth",
       "Free website build with the annual plan",
-      "Up to 5 agents",
-      "25,000 conversation credits / month",
-      "Or your own API key — 25,000 messages, no credits",
-      "Best rate per credit · our top plan",
+      "About 3,000–5,000 chats a month",
+      "Best price per chat · our top plan",
       "Cancel anytime · no lock-in",
     ],
     cta: { href: registerUrl(), label: "Choose Operator" },
@@ -515,17 +695,20 @@ export const pricingTiers = [
   {
     name: "Custom",
     price: "Let's talk",
-    cadence: "scoped · 4–6 week build",
+    cadence: "fixed price after a free call",
     tint: "success",
-    tagline: "When the standard chat is not enough.",
+    tagline: "When you need more than the chat.",
     features: [
-      "Bespoke flows on your stack",
-      "Custom integrations (CRM, telephony, internal tools)",
-      "Your own LLM, your own UI",
-      "Trained on your knowledge + voice",
-      "Runbooks + handover · optional retainer",
+      "A phone assistant, call-back and SMS",
+      "Wired into your CRM and tools",
+      "Your own AI model or interface",
+      "Handover, and optional care after",
     ],
-    cta: { href: "/audit", label: "Book the audit" },
+    /* Shortest form of FREE_CALL. At 1024px a five-column card holds 15
+       characters on one line ("Choose Operator"); "Book a free call" is 16
+       and wrapped (measured 2026-09-13 — the lg band has now broken three
+       times). */
+    cta: { href: FREE_CALL.href, label: "Book a call" },
     featured: false,
   },
 ] as const;

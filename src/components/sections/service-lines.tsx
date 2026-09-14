@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { services } from "@/lib/content";
 
 /**
  * What we sell, in four — the block that makes the offer legible in
@@ -23,36 +24,12 @@ import Link from "next/link";
  * band it is an interstitial, and the numbered set is tracked by
  * SheetRail.
  */
-const lines = [
-  {
-    name: "Website",
-    how: "We build it · quoted",
-    desc: "A site that looks right, loads fast and turns visitors into enquiries.",
-    href: "/website-build",
-    cue: "Website builds",
-  },
-  {
-    name: "Chat & voice assistant",
-    how: "Chat free · voice quoted",
-    desc: "No enquiry goes unanswered — day or night, on your site or your phone.",
-    href: "/pricing",
-    cue: "See the plans",
-  },
-  {
-    name: "Automations",
-    how: "We build it · quoted",
-    desc: "Your CRM, follow-ups and invoices stop needing a person to push them.",
-    href: "/email-automation",
-    cue: "How automations work",
-  },
-  {
-    name: "Lead generation",
-    how: "We run it · quoted",
-    desc: "New customers found for you, and every enquiry called back in a minute.",
-    href: "/outreach",
-    cue: "How lead generation works",
-  },
-] as const;
+const lines = services.map((sv) => ({
+  name: sv.name,
+  how: sv.buyPath,
+  desc: sv.outcome,
+  href: sv.href,
+}));
 
 export function ServiceLines() {
   return (
@@ -88,7 +65,7 @@ export function ServiceLines() {
                 {l.desc}
               </p>
               <span className="bp-annot normal-case mt-auto flex items-center gap-2 pt-2">
-                {l.cue}
+                What you get
                 <span
                   aria-hidden
                   className="text-violet transition-transform group-hover:translate-x-0.5"
