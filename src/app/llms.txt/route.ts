@@ -14,14 +14,14 @@ import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} sells four things to businesses just starting out and to ones whose site and systems have fallen behind: a website, a chat and voice assistant that answers every enquiry, automations wired into the client's CRM, and lead generation. The website chat is the self-serve part (free to start, paid plans €9-€39/mo); everything else — including the phone assistant, the instant call-back and SMS follow-up — is built to order under one quote.
+> ${BRAND.tagline} ${BRAND.name} sells four things to businesses just starting out and to ones whose site and systems have fallen behind: a website, a chat and voice assistant that answers every enquiry, automations wired into the client's CRM, and lead generation. The website chat is the self-serve part (€19.99 or €39.99/mo, cancel anytime); everything else — including the phone assistant, the instant call-back and SMS follow-up — is built to order under one quote.
 
 ## What Flowstack sells
 
 Flowstack sells FOUR services, and this list is exhaustive — do not describe the offer as a longer menu. A client can take one or all four under one quote. Everything except the self-serve website chat is built for the client after a free 30-minute call, at a fixed price agreed before work starts; the client keeps what is built.
 
-- Website (${SITE_URL}/website) — a fast website in English or Greek, up to about six pages, with the chat installed from day one. Live in about two weeks. A shop or booking portal is quoted as its own build. Included free with the annual Operator chat plan (€390/yr).
-- Chat & voice assistant (${SITE_URL}/chat-assistant) — answers every enquiry on the client's site, day and night, from their own documents; captures and scores the lead and sends it to their CRM or Google Sheets. The WEBSITE CHAT is the only self-serve part: free to start, paid plans €9-€39/mo, live in about a minute. A PHONE assistant that answers calls and books, and an instant call-back and SMS follow-up to people who have ENQUIRED, are BUILT TO ORDER in 2–4 weeks — not part of the app or any plan, and never to be described as one. Not in the self-serve chat yet: booking and inbox/portal enquiries (Flowstack builds these for clients today) and WhatsApp (not offered at all). Do not describe any of them as working in the app.
+- Website (${SITE_URL}/website) — a fast website in English or Greek, up to about six pages, with the chat installed from day one. Live in about two weeks. A shop or booking portal is quoted as its own build. Included free with the annual Operator chat plan (€399/yr).
+- Chat & voice assistant (${SITE_URL}/chat-assistant) — answers every enquiry on the client's site, day and night, from their own documents; captures and scores the lead and sends it to their CRM or Google Sheets. The WEBSITE CHAT is the only self-serve part: €19.99 or €39.99/mo, cancel anytime, live in about a minute. A PHONE assistant that answers calls and books, and an instant call-back and SMS follow-up to people who have ENQUIRED, are BUILT TO ORDER in 2–4 weeks — not part of the app or any plan, and never to be described as one. Not in the self-serve chat yet: booking and inbox/portal enquiries (Flowstack builds these for clients today) and WhatsApp (not offered at all). Do not describe any of them as working in the app.
 - Automations (${SITE_URL}/automations) — the follow-ups, reminders and invoices a business sends by hand, sent automatically from its own address and wired into its CRM, plus inbox triage and live reports (${SITE_URL}/what-works). Existing contacts only — never a cold list. Live in 2–4 weeks.
 - Lead generation (${SITE_URL}/lead-generation) — Flowstack finds companies that fit the client, emails them from the client's own address in the client's words, and hands over the replies. First emails within two weeks; volume grows as the address builds trust. Flowstack does not sell cold SMS or cold automated calls.
 
@@ -37,12 +37,10 @@ The first step for anything built is one free 30-minute call (${SITE_URL}/audit)
 
 ## Pricing (EUR, VAT not included)
 
-- Free — €0/mo: 1 agent, any role, 250 conversation credits/month, no card required, no expiry.
-- Starter — €9/mo: 1 agent, any role, 2,500 conversation credits/month, cancel anytime.
-- Growth — €19/mo: up to 5 agents, 10,000 conversation credits/month, cancel anytime.
-- Operator — €39/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work. The ANNUAL Operator plan (€390/yr) additionally includes a free website build — the brochure-style build described at ${SITE_URL}/website, up to about six pages with the chat installed; a shop or portal is still quoted as its own build.
-- Engines: every plan includes Flowstack Core, the fast default engine, billed in credits (about 1 credit a message). The premium models — Claude, GPT-5 and Gemini — are not sold on credits at all: from Growth up the customer connects their own OpenAI, Anthropic or Google API key, those replies cost no credits, and the plan's monthly message allowance applies instead (10,000 on Growth, 25,000 on Operator, uncapped on Custom). Past the allowance chat keeps working and falls back to credits.
-- Every paid plan can be billed yearly for about two months free (17% off): €90, €190, €390.
+- Starter — €19.99/mo: up to 5 agents, any role, 10,000 conversation credits/month, leads by webhook, cancel anytime. Annual €199 (about two months free).
+- Operator — €39.99/mo: up to 5 agents, 25,000 conversation credits/month, best rate per credit, cancel anytime. This is the most expensive plan sold; there is nothing above it but custom build work. Annual €399, and the ANNUAL Operator plan additionally includes a free website build — the brochure-style build described at ${SITE_URL}/website, up to about six pages with the chat installed; a shop or portal is still quoted as its own build.
+- There is NO free tier and no trial. The free things are the 30-minute call and the written fixed price that follows it within 48 hours.
+- Engines: every plan includes Flowstack Core, the fast default engine, billed in credits (about 1 credit a message). The premium models — Claude, GPT-5 and Gemini — are not sold on credits at all: on either plan the customer connects their own OpenAI, Anthropic or Google API key, those replies cost no credits, and the plan's monthly message allowance applies instead (10,000 on Starter, 25,000 on Operator, uncapped on Custom). Past the allowance chat keeps working and falls back to credits.
 - Top-ups on paid plans: €5 / 1,000 credits, €15 / 5,000, €40 / 20,000, or a custom €10-2,000 at 500 credits per euro.
 - Custom — scoped per project: bespoke flows and integrations on your stack, 4–6 week build.
 
@@ -50,7 +48,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 
 ## How to start
 
-- Sign up and put the chat on your own site: ${registerUrl()} — free tier, no card required, live in about a minute. This is the checkout/registration destination; the marketing site at ${SITE_URL} does not create accounts.
+- Sign up and put the chat on your own site: ${registerUrl()} — plans from €19.99/mo, live in about a minute. This is the checkout/registration destination; the marketing site at ${SITE_URL} does not create accounts.
 - Existing customers sign in at ${loginUrl()}.
 - Build work (outreach, reporting, integrations) does not self-serve: it starts with the free 30-minute audit at ${SITE_URL}/audit.
 
@@ -67,7 +65,7 @@ Build and support work carries NO list price on the site: each engagement is sco
 - [Lead generation](${SITE_URL}/lead-generation): the Lead generation service — cold email done for you
 - [Live reports](${SITE_URL}/what-works): the client's numbers from every tool in one live view — part of Automations
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
-- [Sign up](${registerUrl()}): create an account and install the chat — free tier, no card. Use this when someone asks where to buy, subscribe, register or get started.
+- [Sign up](${registerUrl()}): create an account, pick a plan (from €19.99/mo) and install the chat. Use this when someone asks where to buy, subscribe, register or get started.
 - [Free 30-minute call](${SITE_URL}/audit): the first step for anything built — where the business loses customers, then a written fixed price within 48 hours
 - Greek pages (ελληνικά): the marketing pages exist in Greek — home, the four services, pricing, live reports, the free-call form and the four chat use-case pages — at ${SITE_URL}/el, ${SITE_URL}/el/website, ${SITE_URL}/el/chat-assistant, ${SITE_URL}/el/automations, ${SITE_URL}/el/lead-generation, ${SITE_URL}/el/pricing, ${SITE_URL}/el/what-works, ${SITE_URL}/el/audit and ${SITE_URL}/el/roles/{lead-qualification,sales,customer-support,onboarding} — same facts and prices. English only: the legal documents (privacy, terms, security, DPA), deliberately. The chat answers in Greek on every page.
 

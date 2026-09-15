@@ -24,7 +24,7 @@ import { dashboardUrl, registerUrl } from "@/lib/dashboard";
 export const metadata: Metadata = {
   title: "Website chat & phone assistant for businesses",
   description:
-    "Answers every enquiry on your site, day and night, captures the lead and hands it to you. Chat free to start; phone assistant, call-back and SMS built for you.",
+    "Answers every enquiry on your site, day and night, captures the lead and hands it to you. Chat from €19.99/mo; phone assistant, call-back and SMS built for you.",
   alternates: {
     canonical: "/chat-assistant",
     languages: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Website chat & phone assistant for businesses — Flowstack",
     url: "/chat-assistant",
     description:
-      "Every enquiry answered, day and night, on your site and your phone. Chat free to start.",
+      "Every enquiry answered, day and night, on your site and your phone. Chat from €19.99/mo.",
   },
 };
 
@@ -101,7 +101,7 @@ export default function ChatAssistantPage() {
         </>
       }
       ctas={[
-        { href: registerUrl(), label: "Try the chat free →" },
+        { href: registerUrl(), label: "Start the chat — €19.99/mo →" },
         {
           href: FREE_CALL.href,
           label: `${FREE_CALL.label} →`,

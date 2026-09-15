@@ -133,7 +133,7 @@ export default function HomeElPage() {
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-col items-start gap-5 border-t pt-10">
             <p className="text-ink-dim max-w-[56ch] leading-[1.6]">
-              Το chat ξεκινά δωρεάν — €9 έως €39 τον μήνα όταν μεγαλώσετε.{" "}
+              Το chat κοστίζει €19,99 ή €39,99 τον μήνα — και μεγαλώνει όταν μεγαλώσετε.{" "}
               <span className="text-ink font-semibold">
                 Χωρίς δεσμεύσεις, ακύρωση όποιον μήνα θέλετε.
               </span>

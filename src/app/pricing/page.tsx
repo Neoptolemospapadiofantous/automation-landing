@@ -14,7 +14,7 @@ import { ctaClass } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Two ways to buy: we build it for you at a fixed price after a free call, or you run the chat yourself — free to start, then €9 to €39 a month.",
+    "Two ways to buy: we build it for you at a fixed price after a free call, or you run the chat yourself — from €19.99 a month, cancel anytime.",
   alternates: {
     canonical: "/pricing",
     languages: { en: "/pricing", el: "/el/pricing", "x-default": "/pricing" },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Pricing — Flowstack",
     url: "/pricing",
     description:
-      "Built for you at a fixed price after a free call, or the chat yourself from €0.",
+      "Built for you at a fixed price after a free call, or the chat yourself from €19.99/mo.",
   },
 };
 
@@ -51,7 +51,7 @@ export default function PricingPage() {
           },
           {
             k: "Do it yourself",
-            v: "The chat is free for one assistant, then €9, €19 or €39 a month.",
+            v: "The chat is €19.99 or €39.99 a month, up to 5 assistants, cancel anytime.",
           },
           {
             k: "Lock-in",
@@ -61,7 +61,7 @@ export default function PricingPage() {
       />
 
       {/* Built for you FIRST (plan 2026-09-13). With the price list on top, a
-          €9 chat plan read like the price of a website. The four services are
+          chat plan price read like the price of a website. The four services are
           fixed-price after a free call; the grid below is the chat only. */}
       <Catalogue />
 
@@ -74,14 +74,14 @@ export default function PricingPage() {
             <div>
               <span className="bp-ref text-violet">do it yourself</span>
               <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Chat plans. Start free.
+                Chat plans.
               </h2>
             </div>
             <span className="bp-annot hidden normal-case sm:block">
               Cancel any month
             </span>
           </div>
-          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-5">
+          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-3">
             {pricingTiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
               return (

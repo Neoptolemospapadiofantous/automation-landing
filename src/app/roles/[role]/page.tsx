@@ -98,7 +98,7 @@ export default async function RolePage({
         }
         lead={r.lead}
         ctas={[
-          { href: registerUrl(), label: "Start free →" },
+          { href: registerUrl(), label: "Start the chat →" },
           { href: "/pricing", label: "See pricing", variant: "secondary" },
         ]}
       />
@@ -112,7 +112,7 @@ export default async function RolePage({
           },
           {
             k: "What it costs",
-            v: "Free for one agent, then €9 to €39 a month. Cancel any month.",
+            v: "€19.99 or €39.99 a month, up to 5 agents. Cancel any month.",
           },
         ]}
       />
@@ -219,7 +219,7 @@ export default async function RolePage({
                   Free to start. Cancel anytime.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  €0 for one agent. €9 to €39 for more.
+                  €19.99 or €39.99 a month, up to 5 agents.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// need it wired into your CRM or internal tools? "}
@@ -236,7 +236,7 @@ export default async function RolePage({
                   href={registerUrl()}
                   className={ctaClass()}
                 >
-                  Start free →
+                  Start the chat →
                 </Link>
                 <Link
                   href="/pricing"

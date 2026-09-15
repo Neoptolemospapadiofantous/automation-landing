@@ -242,7 +242,7 @@ export default async function RoleElPage({
         }
         lead={r.lead}
         ctas={[
-          { href: registerUrl(), label: "Ξεκινήστε δωρεάν →" },
+          { href: registerUrl(), label: "Ξεκινήστε το chat →" },
           { href: "/el/pricing", label: "Δείτε τις τιμές", variant: "secondary" },
         ]}
       />
@@ -256,7 +256,7 @@ export default async function RoleElPage({
           },
           {
             k: "Τι κοστίζει",
-            v: "Δωρεάν για έναν βοηθό chat, μετά €9 έως €39 τον μήνα. Ακυρώνετε όποιον μήνα θέλετε.",
+            v: "€19,99 ή €39,99 τον μήνα, έως 5 βοηθοί. Ακυρώνετε όποιον μήνα θέλετε.",
           },
         ]}
       />
@@ -359,10 +359,10 @@ export default async function RoleElPage({
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="max-w-[52ch]">
                 <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-                  Δωρεάν για αρχή. Ακύρωση όποτε θέλετε.
+                  Δύο πλάνα. Ακύρωση όποτε θέλετε.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  €0 για έναν βοηθό chat. €9 έως €39 για περισσότερους.
+                  €19,99 ή €39,99 τον μήνα, έως 5 βοηθοί chat.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// το θέλετε συνδεδεμένο με CRM ή εσωτερικά εργαλεία; "}
@@ -377,7 +377,7 @@ export default async function RoleElPage({
               </div>
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <Link href={registerUrl()} className={ctaClass()}>
-                  Ξεκινήστε δωρεάν →
+                  Ξεκινήστε το chat →
                 </Link>
                 <Link
                   href="/el/pricing"

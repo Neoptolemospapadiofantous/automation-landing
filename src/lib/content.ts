@@ -111,7 +111,7 @@ export const services: readonly Service[] = [
       "Your own domain, and you own the code",
     ],
     forWho: "Businesses with no site, or a site that no longer brings enquiries.",
-    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€390). A shop or portal is quoted separately.",
+    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€399). A shop or portal is quoted separately.",
     time: "Live in about two weeks.",
     isnt: "A shop or booking portal. Those are quoted as their own build.",
     includes: "New site or a rebuild · built for phones · you own the code",
@@ -122,7 +122,7 @@ export const services: readonly Service[] = [
     href: "/chat-assistant",
     oneLiner: "Answers every enquiry on your site, day and night, and on your phone.",
     outcome: "Nobody who asks at 11pm waits until morning.",
-    buyPath: "Chat free · voice quoted",
+    buyPath: "Chat from €19.99 · voice quoted",
     get: [
       "Answers from your own documents, in the visitor's language",
       "Every lead captured, with the full conversation",
@@ -131,7 +131,7 @@ export const services: readonly Service[] = [
       "An instant call-back and SMS to everyone who enquires — built for you",
     ],
     forWho: "Car rental desks, clinics, hotels and villas — anyone whose customers ask after hours.",
-    cost: "Chat: free to start, then €9–€39 a month. Phone, call-back and SMS: fixed price after a free call.",
+    cost: "Chat: €19.99 or €39.99 a month. Phone, call-back and SMS: fixed price after a free call.",
     time: "Chat: live in about a minute. Phone, call-back and SMS: 2–4 weeks.",
     /* The "not yet in the do-it-yourself chat" list lives on the page as its
        own section; this line says something different so the page states
@@ -212,7 +212,7 @@ export const servicesEl: readonly Service[] = [
       "Δικό σας domain, και ο κώδικας δικός σας",
     ],
     forWho: "Επιχειρήσεις χωρίς site, ή με site που δεν φέρνει πια μηνύματα.",
-    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€390). E-shop ή portal με ξεχωριστή προσφορά.",
+    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€399). E-shop ή portal με ξεχωριστή προσφορά.",
     time: "Ζωντανό σε περίπου δύο εβδομάδες.",
     isnt: "E-shop ή σύστημα κρατήσεων. Αυτά είναι δική τους κατασκευή, με προσφορά.",
     includes: "Νέο site ή ανανέωση · πρώτα για κινητό · ο κώδικας δικός σας",
@@ -223,7 +223,7 @@ export const servicesEl: readonly Service[] = [
     href: "/el/chat-assistant",
     oneLiner: "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, και στο τηλέφωνο.",
     outcome: "Όποιος ρωτά στις 23:00 δεν περιμένει ως το πρωί.",
-    buyPath: "Chat δωρεάν · φωνή: τιμή",
+    buyPath: "Chat από €19,99 · φωνή: τιμή",
     get: [
       "Απαντήσεις από τα δικά σας κείμενα, στη γλώσσα του επισκέπτη",
       "Κάθε lead καταγεγραμμένο, με όλη τη συζήτηση",
@@ -232,7 +232,7 @@ export const servicesEl: readonly Service[] = [
       "Άμεση επανάκληση και SMS σε όποιον στείλει μήνυμα — τα στήνουμε εμείς",
     ],
     forWho: "Ενοικιάσεις αυτοκινήτων, κλινικές, ξενοδοχεία και βίλες — όσοι δέχονται ερωτήσεις εκτός ωραρίου.",
-    cost: "Chat: δωρεάν για αρχή, μετά €9–€39 τον μήνα. Τηλέφωνο, επανάκληση και SMS: σταθερή τιμή μετά από δωρεάν ραντεβού.",
+    cost: "Chat: €19,99 ή €39,99 τον μήνα. Τηλέφωνο, επανάκληση και SMS: σταθερή τιμή μετά από δωρεάν ραντεβού.",
     time: "Chat: ζωντανό σε περίπου ένα λεπτό. Τηλέφωνο, επανάκληση και SMS: 2–4 εβδομάδες.",
     isnt: "Τηλεφωνικό κέντρο. Ό,τι δεν μπορεί να απαντήσει πάει στην ομάδα σας, με τη συζήτηση μαζί.",
     includes: "Chat ιστοσελίδας · φωνητικός βοηθός · άμεση επανάκληση · SMS",
@@ -341,7 +341,7 @@ export const siteMap = {
       {
         href: "/pricing",
         label: "Pricing",
-        desc: "Chat plans from €0, and how building for you works.",
+        desc: "Chat plans from €19.99, and how building for you works.",
       },
     ] satisfies SiteLink[],
   },
@@ -425,7 +425,7 @@ export const rolePages: RolePage[] = [
     desc: "Works out who is worth your time. You only get the good ones.",
     metaTitle: "Automated lead qualification for your website",
     metaDescription:
-      "Qualify every visitor before your team spends a minute on them. Transcripts, lead routing and a live dashboard. Free to start, €9/mo paid.",
+      "Qualify every visitor before your team spends a minute on them. Transcripts, lead routing and a live dashboard. From €19.99/mo, cancel anytime.",
     h1: "The lead that arrives at midnight",
     h1Accent: "shouldn't wait until morning.",
     lead: "Questions arrive at all hours. The chat sorts them and passes you the good ones.",
@@ -454,7 +454,7 @@ export const rolePages: RolePage[] = [
     desc: "Answers pricing questions on the spot. Books the demo.",
     metaTitle: "Automated sales agent for your website",
     metaDescription:
-      "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. Free to start, €9/mo paid.",
+      "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. From €19.99/mo, cancel anytime.",
     h1: "Most visitors with a buying question",
     h1Accent: "never ask it. They leave.",
     lead: "A buyer with a question won't wait. The chat answers it and books the call.",
@@ -483,7 +483,7 @@ export const rolePages: RolePage[] = [
     desc: "Answers the questions your team keeps answering.",
     metaTitle: "Automated customer support agent for your website",
     metaDescription:
-      "First-line answers from your own knowledge base, escalation only when a human is needed, every conversation captured. Free to start, €9/mo paid.",
+      "First-line answers from your own knowledge base, escalation only when a human is needed, every conversation captured. From €19.99/mo, cancel anytime.",
     h1: "First-line support that sounds like you,",
     h1Accent: "not a script.",
     lead: "The same ten questions eat your day. The chat answers them from your own docs.",
@@ -512,7 +512,7 @@ export const rolePages: RolePage[] = [
     desc: "Walks new customers through setup, routes the rest to you.",
     metaTitle: "Automated customer onboarding agent",
     metaDescription:
-      "Walk every new customer through setup, answer the recurring questions from your docs, and route the rest to your team. Free to start, €9/mo paid.",
+      "Walk every new customer through setup, answer the recurring questions from your docs, and route the rest to your team. From €19.99/mo, cancel anytime.",
     h1: "New customers sign up excited,",
     h1Accent: "then get stuck.",
     lead: "New customers get stuck right after signing up. The chat walks them through setup.",
@@ -586,17 +586,15 @@ export const faqItems = [
   },
   {
     q: "What do the chat plans cost?",
-    /* Not "every feature on at every tier" — that was false: leads to your
-       CRM start at Starter and your own AI key at Growth. */
-    a: "Free for one chat assistant. Then €9, €19 or €39 a month, and €39 is the top plan. The core chat is on every plan.",
+    a: "Two plans: €19.99 or €39.99 a month, both up to 5 chat assistants, cancel anytime. €39.99 is the top plan, and its annual version includes a free website build. No free tier — the free things are the 30-minute call and the written quote.",
   },
   {
     q: "Can I use my own OpenAI, Anthropic or Google key?",
-    a: "From Growth up, yes. Premium models run only on your own key — no credits, 10,000 messages a month on Growth, 25,000 on Operator. Every plan includes Flowstack Core on credits.",
+    a: "Yes, on either plan. Premium models run only on your own key — no credits, 10,000 messages a month on Starter, 25,000 on Operator. Every plan includes Flowstack Core on credits.",
   },
   {
     q: "Does Operator really include a free website?",
-    a: "Yes — on the annual plan (€390/yr). The brochure-style site, up to about six pages, chat installed. A shop or portal is its own quoted build.",
+    a: "Yes — on the annual plan (€399/yr). The brochure-style site, up to about six pages, chat installed. A shop or portal is its own quoted build.",
   },
   {
     q: "Does it connect to my existing stack?",
@@ -626,71 +624,39 @@ export type Tint = "violet" | "cyan" | "success" | "warn" | "danger";
  */
 export const pricingTiers = [
   {
-    name: "Free",
-    price: "€0/mo",
-    cadence: "1 chat assistant · no card required",
-    tint: "cyan",
-    tagline: "Put it on your own site and watch it answer.",
-    features: [
-      "1 chat assistant",
-      "About 30–50 chats a month",
-      "Answers from your own documents",
-      "Every lead on your dashboard",
-      "No card, no expiry",
-    ],
-    cta: { href: registerUrl(), label: "Start free" },
-    featured: false,
-  },
-  {
     name: "Starter",
-    deal: { strike: "€108", annual: "€90" },
-    price: "€9/mo",
-    cadence: "1 chat assistant · cancel anytime",
-    tint: "cyan",
-    tagline: "One chat assistant, live in a minute.",
-    features: [
-      "1 chat assistant",
-      "About 300–500 chats a month",
-      "Leads sent to your CRM or Google Sheets",
-      "Answers from your own documents",
-      "Cancel anytime · no lock-in",
-    ],
-    cta: { href: registerUrl(), label: "Try it for €9" },
-    featured: false,
-  },
-  {
-    name: "Growth",
-    deal: { strike: "€228", annual: "€190" },
-    price: "€19/mo",
+    deal: { strike: "€239.88", annual: "€199" },
+    price: "€19.99/mo",
     cadence: "up to 5 chat assistants · cancel anytime",
-    tint: "violet",
-    tagline: "For a site with real traffic.",
+    tint: "cyan",
+    tagline: "The chat on your site, live in a minute.",
     features: [
-      "Everything in Starter",
       "Up to 5 chat assistants",
       "About 1,250–2,000 chats a month",
+      "Answers from your own documents",
+      "Leads by webhook to your CRM or Google Sheets",
       "Bring your own AI key (advanced)",
       "Cancel anytime · no lock-in",
     ],
-    cta: { href: registerUrl(), label: "Choose Growth" },
-    featured: true,
+    cta: { href: registerUrl(), label: "Start with Starter" },
+    featured: false,
   },
   {
     name: "Operator",
-    deal: { strike: "€468", annual: "€390" },
-    price: "€39/mo",
+    deal: { strike: "€479.88", annual: "€399" },
+    price: "€39.99/mo",
     cadence: "up to 5 chat assistants · cancel anytime",
     tint: "violet",
     tagline: "For a chat that is busy every day.",
     features: [
-      "Everything in Growth",
+      "Everything in Starter",
       "Free website build with the annual plan",
       "About 3,000–5,000 chats a month",
       "Best price per chat · our top plan",
       "Cancel anytime · no lock-in",
     ],
     cta: { href: registerUrl(), label: "Choose Operator" },
-    featured: false,
+    featured: true,
   },
   {
     name: "Custom",
@@ -704,10 +670,6 @@ export const pricingTiers = [
       "Your own AI model or interface",
       "Handover, and optional care after",
     ],
-    /* Shortest form of FREE_CALL. At 1024px a five-column card holds 15
-       characters on one line ("Choose Operator"); "Book a free call" is 16
-       and wrapped (measured 2026-09-13 — the lg band has now broken three
-       times). */
     cta: { href: FREE_CALL.href, label: "Book a call" },
     featured: false,
   },

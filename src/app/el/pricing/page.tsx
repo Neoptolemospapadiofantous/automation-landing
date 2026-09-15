@@ -11,9 +11,9 @@ import { ctaClass } from "@/components/ui/button";
 /**
  * /el/pricing — the Greek twin of /pricing.
  *
- * Tier NUMBERS mirror src/lib/content.ts pricingTiers exactly (Free €0 /
- * Starter €9 / Growth €19 / Operator €39 / Custom quoted, annual deals
- * €90/€190/€390 = 2 months free), and so do the ENTITLEMENT bullets —
+ * Tier NUMBERS mirror src/lib/content.ts pricingTiers exactly (Starter
+ * €19,99 / Operator €39,99 / Custom quoted, annual deals €199/€399 ≈ 2
+ * months free — no free tier since 2026-09-15), and so do the bullets —
  * including the own-key line on Growth and Operator. Only the words are
  * translated — if a price or an entitlement changes there, it changes here
  * in the same commit. The engine paragraph below the grid carries what the
@@ -24,9 +24,9 @@ import { ctaClass } from "@/components/ui/button";
  * PRICING_CONFIG flips to inclusive, update this page's label too.
  */
 export const metadata: Metadata = {
-  title: "Τιμές — chat από €0 τον μήνα",
+  title: "Τιμές — chat από €19,99 τον μήνα",
   description:
-    "Δύο τρόποι: το φτιάχνουμε εμείς με σταθερή τιμή μετά από δωρεάν ραντεβού, ή τρέχετε μόνοι σας το chat — δωρεάν για αρχή, μετά €9 έως €39 τον μήνα.",
+    "Δύο τρόποι: το φτιάχνουμε εμείς με σταθερή τιμή μετά από δωρεάν ραντεβού, ή τρέχετε μόνοι σας το chat — €19,99 ή €39,99 τον μήνα, ακύρωση όποτε θέλετε.",
   alternates: {
     canonical: "/el/pricing",
     languages: {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Τιμές — Flowstack",
     url: "/el/pricing",
     description:
-      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €0.",
+      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €19,99/μήνα.",
   },
   // The root layout's Twitter card is English; without this a Greek
   // page shares in the wrong language on X while OG is already Greek.
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     images: EL_OG_IMAGES,
     title: "Τιμές — Flowstack",
     description:
-      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €0.",
+      "Φτιαγμένο για εσάς με σταθερή τιμή, ή το chat μόνοι σας από €19,99/μήνα.",
   },
 };
 
@@ -57,67 +57,37 @@ export const metadata: Metadata = {
    entitlements must change here in the same commit as content.ts. */
 const tiers = [
   {
-    name: "Free",
-    price: "€0/μήνα",
-    cadence: "1 βοηθός chat · χωρίς κάρτα",
-    tagline: "Βάλτε το στο site σας και δείτε το να απαντά.",
-    features: [
-      "1 βοηθός chat",
-      "Περίπου 30–50 συνομιλίες τον μήνα",
-      "Απαντά από τα δικά σας κείμενα",
-      "Κάθε lead στον πίνακά σας",
-      "Χωρίς κάρτα, χωρίς λήξη",
-    ],
-    cta: "Ξεκινήστε δωρεάν",
-    featured: false,
-  },
-  {
     name: "Starter",
-    price: "€9/μήνα",
-    deal: { strike: "€108", annual: "€90" },
-    cadence: "1 βοηθός chat · ακύρωση όποτε θέλετε",
-    tagline: "Ένας βοηθός chat, ζωντανός σε ένα λεπτό.",
-    features: [
-      "1 βοηθός chat",
-      "Περίπου 300–500 συνομιλίες τον μήνα",
-      "Τα leads στο CRM σας ή στα Google Sheets",
-      "Απαντά από τα δικά σας κείμενα",
-      "Ακύρωση όποτε θέλετε · καμία δέσμευση",
-    ],
-    cta: "Δοκιμάστε με €9",
-    featured: false,
-  },
-  {
-    name: "Growth",
-    price: "€19/μήνα",
-    deal: { strike: "€228", annual: "€190" },
+    price: "€19,99/μήνα",
+    deal: { strike: "€239,88", annual: "€199" },
     cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
-    tagline: "Για site με πραγματική κίνηση.",
+    tagline: "Το chat στο site σας, ζωντανό σε ένα λεπτό.",
     features: [
-      "Όλα όσα έχει το Starter",
       "Έως 5 βοηθοί chat",
       "Περίπου 1.250–2.000 συνομιλίες τον μήνα",
+      "Απαντά από τα δικά σας κείμενα",
+      "Τα leads με webhook στο CRM σας ή στα Google Sheets",
       "Το δικό σας κλειδί AI (για προχωρημένους)",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
-    cta: "Επιλέξτε Growth",
-    featured: true,
+    cta: "Ξεκινήστε με Starter",
+    featured: false,
   },
   {
     name: "Operator",
-    price: "€39/μήνα",
-    deal: { strike: "€468", annual: "€390" },
+    price: "€39,99/μήνα",
+    deal: { strike: "€479,88", annual: "€399" },
     cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
     tagline: "Για chat που δουλεύει πολύ κάθε μέρα.",
     features: [
-      "Όλα όσα έχει το Growth",
+      "Όλα όσα έχει το Starter",
       "Δωρεάν κατασκευή ιστοσελίδας με το ετήσιο πλάνο",
       "Περίπου 3.000–5.000 συνομιλίες τον μήνα",
       "Η καλύτερη τιμή ανά συνομιλία · το κορυφαίο μας πλάνο",
       "Ακύρωση όποτε θέλετε · καμία δέσμευση",
     ],
     cta: "Επιλέξτε Operator",
-    featured: false,
+    featured: true,
   },
   {
     name: "Custom",
@@ -157,7 +127,7 @@ export default function PricingElPage() {
           },
           {
             k: "Μόνοι σας",
-            v: "Το chat είναι δωρεάν για έναν βοηθό, μετά €9, €19 ή €39 τον μήνα.",
+            v: "Το chat κοστίζει €19,99 ή €39,99 τον μήνα, έως 5 βοηθοί.",
           },
           {
             k: "Δεσμεύσεις",
@@ -166,7 +136,7 @@ export default function PricingElPage() {
         ]}
       />
 
-      {/* Built for you FIRST, as on /pricing — a €9 chat plan under the hero
+      {/* Built for you FIRST, as on /pricing — a cheap chat plan under the hero
           read like the price of a website. */}
       <Catalogue items={buildCatalogueEl} copy={CATALOGUE_EL} />
 
@@ -176,14 +146,14 @@ export default function PricingElPage() {
             <div>
               <span className="bp-ref text-violet">μόνοι σας</span>
               <h2 className="text-ink mt-4 max-w-[26ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Πλάνα chat. Ξεκινήστε δωρεάν.
+                Πλάνα chat.
               </h2>
             </div>
             <span className="bp-annot hidden normal-case sm:block">
               Ακύρωση όποιον μήνα θέλετε
             </span>
           </div>
-          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-5">
+          <div className="depth-rise grid grid-cols-1 gap-0 border-t border-l border-border-line md:grid-cols-2 lg:grid-cols-3">
             {tiers.map((tier, i) => {
               const ref = `TIER-0${i + 1}`;
               return (
@@ -295,7 +265,7 @@ export default function PricingElPage() {
           </p>
 
           <p className="text-ink-dim mx-auto mt-3 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            Το ετήσιο Operator (€390/χρόνο) περιλαμβάνει δωρεάν κατασκευή
+            Το ετήσιο Operator (€399/χρόνο) περιλαμβάνει δωρεάν κατασκευή
             ιστοσελίδας — site παρουσίασης έως έξι σελίδες, με το chat. E-shop
             ή portal είναι δική του κατασκευή, με προσφορά.
           </p>

@@ -16,7 +16,7 @@ import { dashboardUrl, registerUrl } from "@/lib/dashboard";
  * The Studio/App/Suite line names are gone from this page (2026-09-13).
  */
 const DESCRIPTION =
-  "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, καταγράφει το lead και σας το παραδίδει. Chat δωρεάν για αρχή· φωνητικός βοηθός κατά παραγγελία.";
+  "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, καταγράφει το lead και σας το παραδίδει. Chat από €19,99/μήνα· φωνητικός βοηθός κατά παραγγελία.";
 
 export const metadata: Metadata = {
   title: "Chat ιστοσελίδας & φωνητικός βοηθός",
@@ -127,7 +127,7 @@ export default function ChatAssistantElPage() {
           </>
         }
         ctas={[
-          { href: registerUrl(), label: "Δοκιμάστε το chat δωρεάν →", short: "Chat δωρεάν →" },
+          { href: registerUrl(), label: "Ξεκινήστε το chat — €19,99/μήνα →", short: "Chat →" },
           {
             href: FREE_CALL_EL.href,
             label: `${FREE_CALL_EL.label} →`,
