@@ -8,10 +8,10 @@ import { join } from "node:path";
  * card instead of the English tagline sheet the root image draws.
  *
  * Same "ink on paper" template as the root card, but the headline is
- * the four-verb offer the Greek pages actually open with (ΧΤΙΖΟΥΜΕ /
- * ΑΠΑΝΤΑΜΕ / ΑΥΤΟΜΑΤΟΠΟΙΟΥΜΕ / ΜΕΤΡΑΜΕ) rather than a translation of
- * the English tagline — the tagline never appears on the Greek pages,
- * the verbs do.
+ * the four services the Greek pages sell, in site order (ΙΣΤΟΣΕΛΙΔΑ /
+ * CHAT & ΦΩΝΗΤΙΚΟΣ ΒΟΗΘΟΣ / ΑΥΤΟΜΑΤΙΣΜΟΙ / ΕΥΡΕΣΗ ΠΕΛΑΤΩΝ) — the
+ * four verbs it drew until 2026-09-15 were retired with the four-services
+ * copy (servicesEl in content.ts).
  *
  * Fonts: satori's built-in font is Latin-only, so Greek text renders
  * blank without an explicit font. The two TTFs beside this file are
@@ -25,7 +25,7 @@ import { join } from "node:path";
  * uppercase strings below are authored unaccented directly, and no
  * textTransform is applied to Greek text.
  */
-export const alt = "Flowstack — Χτίζουμε, απαντάμε, αυτοματοποιούμε, μετράμε";
+export const alt = "Flowstack — Ιστοσελίδα, chat & φωνητικός βοηθός, αυτοματισμοί, εύρεση πελατών";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -43,13 +43,13 @@ export default async function OpenGraphImage() {
     readFile(join(process.cwd(), "src/app/el/InterGreek-Medium.ttf")),
   ]);
 
-  // Site order, one verb a line; ΑΠΑΝΤΑΜΕ carries the marker swipe the
-  // way "Answer every inbound." does on the English card.
+  // Site order, one service a line; the chat line carries the marker
+  // swipe the way "Answer every inbound." does on the English card.
   const verbs = [
-    { text: "ΧΤΙΖΟΥΜΕ", color: INK },
-    { text: "ΑΠΑΝΤΑΜΕ", swipe: true },
-    { text: "ΑΥΤΟΜΑΤΟΠΟΙΟΥΜΕ", color: dimColor },
-    { text: "ΜΕΤΡΑΜΕ", color: INK },
+    { text: "ΙΣΤΟΣΕΛΙΔΑ", color: INK },
+    { text: "CHAT & ΦΩΝΗΤΙΚΟΣ ΒΟΗΘΟΣ", swipe: true },
+    { text: "ΑΥΤΟΜΑΤΙΣΜΟΙ", color: dimColor },
+    { text: "ΕΥΡΕΣΗ ΠΕΛΑΤΩΝ", color: INK },
   ];
 
   return new ImageResponse(
@@ -99,7 +99,7 @@ export default async function OpenGraphImage() {
           <span>FIG. 00 / FLOWSTACK · EL</span>
         </div>
 
-        {/* headline — the four verbs, one per line */}
+        {/* headline — the four services, one per line */}
         <div
           style={{
             display: "flex",
@@ -149,7 +149,7 @@ export default async function OpenGraphImage() {
               letterSpacing: "0.16em",
             }}
           >
-            CHAT ΣΕ 60 ΔΕΥΤΕΡΟΛΕΠΤΑ · ΔΩΡΕΑΝ ΞΕΚΙΝΗΜΑ · ΛΕΜΕΣΟΣ, ΚΥΠΡΟΣ
+            ΔΩΡΕΑΝ ΡΑΝΤΕΒΟΥ 30 ΛΕΠΤΩΝ · ΣΤΑΘΕΡΗ ΤΙΜΗ · ΛΕΜΕΣΟΣ, ΚΥΠΡΟΣ
           </div>
         </div>
 

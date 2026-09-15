@@ -20,14 +20,15 @@ import { ctaClass } from "@/components/ui/button";
  * carries a price — every build is quoted per stack, and the audit is
  * where the number comes from.
  *
- * "Business intelligence" and "analytics" appear in the metadata, where
- * people search them, and nowhere in the headlines — the buyers here are
- * clinics, firms and hotels, and the plain sentence outsells the acronym.
+ * Part of the Automations service since the four-services copy
+ * (2026-09-13); the description says so. "Analytics" stays in the title,
+ * where people search it — the buyers here are clinics, firms and hotels,
+ * and the plain sentence outsells the acronym.
  */
 export const metadata: Metadata = {
   title: "Business dashboards & analytics",
   description:
-    "Business intelligence and analytics as a service: your numbers in one live view, plus the experiments that change them — keep what wins, retire what doesn't.",
+    "Part of our Automations service: your numbers in one live view, plus the experiments that change them — keep what wins, retire what doesn't.",
   alternates: {
     canonical: "/what-works",
     languages: {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     title: "What works — Flowstack",
     url: "/what-works",
     description:
-      "One live view of your numbers, and the loop that keeps improving them. Free 30-minute audit, written fixed scope in 48 hours.",
+      "One live view of your numbers, and the loop that keeps improving them. Free 30-minute call, written fixed price in 48 hours.",
   },
 };
 

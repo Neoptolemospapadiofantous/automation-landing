@@ -12,8 +12,8 @@ import { ctaClass } from "@/components/ui/button";
  * /el/pricing — the Greek twin of /pricing.
  *
  * Tier NUMBERS mirror src/lib/content.ts pricingTiers exactly (Starter
- * €19,99 / Operator €39,99 / Custom quoted, annual deals €199/€399 ≈ 2
- * months free — no free tier since 2026-09-15), and so do the bullets —
+ * €19,99 / Operator €39,99 / Custom quoted, annual deals €191,90/€383,90 =
+ * 20% off 12× monthly — no free tier since 2026-09-15), and so do the bullets —
  * including the own-key line on Starter and Operator. Only the words are
  * translated — if a price or an entitlement changes there, it changes here
  * in the same commit. The engine paragraph below the grid carries what the
@@ -59,7 +59,7 @@ const tiers = [
   {
     name: "Starter",
     price: "€19,99/μήνα",
-    deal: { strike: "€239,88", annual: "€199" },
+    deal: { strike: "€239,88", annual: "€191,90" },
     cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
     tagline: "Το chat στο site σας, ζωντανό σε ένα λεπτό.",
     features: [
@@ -76,7 +76,7 @@ const tiers = [
   {
     name: "Operator",
     price: "€39,99/μήνα",
-    deal: { strike: "€479,88", annual: "€399" },
+    deal: { strike: "€479,88", annual: "€383,90" },
     cadence: "έως 5 βοηθοί chat · ακύρωση όποτε θέλετε",
     tagline: "Για chat που δουλεύει πολύ κάθε μέρα.",
     features: [
@@ -206,7 +206,7 @@ export default function PricingElPage() {
                       </span>{" "}
                       <span className="text-ink-dim">με ετήσια χρέωση</span>{" "}
                       <span className="bg-signal inline-block px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap text-black uppercase">
-                        2 μήνες δωρεάν
+                        20% έκπτωση
                       </span>
                     </p>
                   )}
@@ -265,7 +265,7 @@ export default function PricingElPage() {
           </p>
 
           <p className="text-ink-dim mx-auto mt-3 max-w-[62ch] text-center text-[14px] leading-[1.6]">
-            Το ετήσιο Operator (€399/χρόνο) περιλαμβάνει δωρεάν κατασκευή
+            Το ετήσιο Operator (€383,90/χρόνο) περιλαμβάνει δωρεάν κατασκευή
             ιστοσελίδας — site παρουσίασης έως έξι σελίδες, με το chat. E-shop
             ή portal είναι δική του κατασκευή, με προσφορά.
           </p>

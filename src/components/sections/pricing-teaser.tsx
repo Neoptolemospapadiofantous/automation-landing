@@ -62,7 +62,7 @@ export function PricingTeaser() {
                   <span className="text-ink font-semibold">{tier.deal.annual}</span>{" "}
                   <span className="text-ink-dim">/yr</span>{" "}
                   <span className="bg-signal inline-block px-1 py-px font-mono text-[9px] font-semibold tracking-[0.06em] whitespace-nowrap text-black uppercase">
-                    2 mo free
+                    20% off
                   </span>
                 </p>
               )}

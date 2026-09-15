@@ -111,7 +111,7 @@ export const services: readonly Service[] = [
       "Your own domain, and you own the code",
     ],
     forWho: "Businesses with no site, or a site that no longer brings enquiries.",
-    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€399). A shop or portal is quoted separately.",
+    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€383.90). A shop or portal is quoted separately.",
     time: "Live in about two weeks.",
     isnt: "A shop or booking portal. Those are quoted as their own build.",
     includes: "New site or a rebuild · built for phones · you own the code",
@@ -212,7 +212,7 @@ export const servicesEl: readonly Service[] = [
       "Δικό σας domain, και ο κώδικας δικός σας",
     ],
     forWho: "Επιχειρήσεις χωρίς site, ή με site που δεν φέρνει πια μηνύματα.",
-    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€399). E-shop ή portal με ξεχωριστή προσφορά.",
+    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€383,90). E-shop ή portal με ξεχωριστή προσφορά.",
     time: "Ζωντανό σε περίπου δύο εβδομάδες.",
     isnt: "E-shop ή σύστημα κρατήσεων. Αυτά είναι δική τους κατασκευή, με προσφορά.",
     includes: "Νέο site ή ανανέωση · πρώτα για κινητό · ο κώδικας δικός σας",
@@ -452,7 +452,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-02",
     name: "Sales",
     desc: "Answers pricing questions on the spot. Books the demo.",
-    metaTitle: "Automated sales agent for your website",
+    metaTitle: "Sales chat assistant for your website",
     metaDescription:
       "Walks visitors through your offer, answers pricing and scope questions, and books qualified demos onto your calendar. From €19.99/mo, cancel anytime.",
     h1: "Most visitors with a buying question",
@@ -481,7 +481,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-03",
     name: "Customer support",
     desc: "Answers the questions your team keeps answering.",
-    metaTitle: "Automated customer support agent for your website",
+    metaTitle: "Customer support chat assistant for your website",
     metaDescription:
       "First-line answers from your own knowledge base, escalation only when a human is needed, every conversation captured. From €19.99/mo, cancel anytime.",
     h1: "First-line support that sounds like you,",
@@ -510,7 +510,7 @@ export const rolePages: RolePage[] = [
     ref: "ROLE-04",
     name: "Onboarding",
     desc: "Walks new customers through setup, routes the rest to you.",
-    metaTitle: "Automated customer onboarding agent",
+    metaTitle: "Customer onboarding chat assistant",
     metaDescription:
       "Walk every new customer through setup, answer the recurring questions from your docs, and route the rest to your team. From €19.99/mo, cancel anytime.",
     h1: "New customers sign up excited,",
@@ -594,7 +594,7 @@ export const faqItems = [
   },
   {
     q: "Does Operator really include a free website?",
-    a: "Yes — on the annual plan (€399/yr). The brochure-style site, up to about six pages, chat installed. A shop or portal is its own quoted build.",
+    a: "Yes — on the annual plan (€383.90/yr). The brochure-style site, up to about six pages, chat installed. A shop or portal is its own quoted build.",
   },
   {
     q: "Does it connect to my existing stack?",
@@ -625,7 +625,7 @@ export type Tint = "violet" | "cyan" | "success" | "warn" | "danger";
 export const pricingTiers = [
   {
     name: "Starter",
-    deal: { strike: "€239.88", annual: "€199" },
+    deal: { strike: "€239.88", annual: "€191.90" },
     price: "€19.99/mo",
     cadence: "up to 5 chat assistants · cancel anytime",
     tint: "cyan",
@@ -643,7 +643,7 @@ export const pricingTiers = [
   },
   {
     name: "Operator",
-    deal: { strike: "€479.88", annual: "€399" },
+    deal: { strike: "€479.88", annual: "€383.90" },
     price: "€39.99/mo",
     cadence: "up to 5 chat assistants · cancel anytime",
     tint: "violet",

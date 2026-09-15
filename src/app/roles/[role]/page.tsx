@@ -112,7 +112,7 @@ export default async function RolePage({
           },
           {
             k: "What it costs",
-            v: "€19.99 or €39.99 a month, up to 5 agents. Cancel any month.",
+            v: "€19.99 or €39.99 a month, up to 5 chat assistants. Cancel any month.",
           },
         ]}
       />
@@ -124,7 +124,7 @@ export default async function RolePage({
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="border-border-line flex flex-wrap items-end justify-between gap-4 border-b pb-5">
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-              What the {r.name.toLowerCase()} agent does
+              What the {r.name.toLowerCase()} assistant does
             </h2>
             <span className="bp-annot hidden sm:block">
               {`// ${r.ref.toLowerCase()} · included at every tier`}

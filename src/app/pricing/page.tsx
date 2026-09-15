@@ -139,7 +139,7 @@ export default function PricingPage() {
                       </span>{" "}
                       <span className="text-ink-dim">billed yearly</span>{" "}
                       <span className="bg-signal inline-block px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap text-black uppercase">
-                        2 months free
+                        20% off
                       </span>
                     </p>
                   )}

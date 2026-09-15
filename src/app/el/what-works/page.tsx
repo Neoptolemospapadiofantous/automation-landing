@@ -22,14 +22,13 @@ import { ctaClass } from "@/components/ui/button";
  * are hardwired English, and an English product mock is the wrong first
  * impression on a Greek page.
  *
- * «Business intelligence» stays in the description, where people search
- * it, and out of the headlines — the buyers are clinics, firms and hotels,
- * and the plain Greek sentence outsells the acronym.
+ * Part of the Automations service since the four-services copy
+ * (2026-09-13); the description says so, as on the English page.
  */
 export const metadata: Metadata = {
   title: "Dashboard επιχείρησης και ανάλυση δεδομένων",
   description:
-    "Business intelligence για μικρές επιχειρήσεις στην Κύπρο: οι αριθμοί σας σε ένα ζωντανό dashboard, και τα πειράματα που τους αλλάζουν — κρατάμε ό,τι δουλεύει.",
+    "Μέρος των Αυτοματισμών μας: οι αριθμοί σας σε ένα ζωντανό dashboard, και τα πειράματα που τους αλλάζουν — κρατάμε ό,τι δουλεύει.",
   alternates: {
     canonical: "/el/what-works",
     languages: {
