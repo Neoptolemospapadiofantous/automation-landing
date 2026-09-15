@@ -343,7 +343,7 @@ CARDS.append(card(
   "Marker highlight, underline, badge",
   f"""<div class="ds-stack">
   <h2 style="font-size:44px;margin:0;letter-spacing:-0.03em;line-height:1.05">
-    Answer every inbound. <span class="text-gradient">Hand it off.</span>
+    We build it. <span class="text-gradient">And bring you customers.</span>
   </h2>
   <p style="font-size:15px;margin:0;max-width:52ch">
     Cold outreach that runs itself and a

@@ -37,17 +37,17 @@
     <path d="M635 75 L680 110 L635 145" stroke="#000000" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
   </g>
 
-  <!-- tagline below mark — canonical three-beat, third beat on the
-       marker-highlight swipe; block centered under the mark (center 792) -->
+  <!-- tagline below mark — the canonical tagline in its three clauses
+       (2026-09-15), the last on the marker-highlight swipe; block centered under the mark (center 792) -->
   <g font-family="sans-serif" font-weight="600" font-size="26">
-    <text x="647" y="300" fill="#000000">Automate the busywork.</text>
-    <text x="647" y="332" fill="#525252">Aggregate the data.</text>
-    <rect x="641" y="341" width="302" height="30" fill="#F5C518"/>
-    <text x="647" y="364" fill="#141412">Answer every inbound.</text>
+    <text x="636" y="300" fill="#000000">We build your website,</text>
+    <text x="636" y="332" fill="#525252">answer every enquiry,</text>
+    <rect x="630" y="341" width="323" height="30" fill="#F5C518"/>
+    <text x="636" y="364" fill="#141412">and bring you customers.</text>
   </g>
 
   <!-- baseline — short form so it clears the tagline block to its left -->
   <g font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="3" fill="#8A8A8A">
-    <text x="1544" y="370" text-anchor="end">REV C · SCALE 1:1</text>
+    <text x="1544" y="370" text-anchor="end">REV D · SCALE 1:1</text>
   </g>
 </svg>

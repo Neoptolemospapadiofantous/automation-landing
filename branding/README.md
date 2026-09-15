@@ -166,10 +166,10 @@ All three banners share the same vocabulary as the live site:
 - 160-pixel hairline grid background at ~10% opacity
 - Corner registration ticks (engineering-drawing motif)
 - Sheet ref top-left: `FIG. 00 / FLOWSTACK`
-- Wide mark + the canonical three-beat tagline, set one beat per line
-  (`Automate the busywork.` / `Aggregate the data.` / `Answer every inbound.`),
-  the third beat carrying the signal-yellow marker highlight
-- Dimension line + monospace annotation (`€99/MO · CANCEL ANYTIME`)
+- Wide mark + the canonical tagline, set one clause per line
+  (`We build your website,` / `answer every enquiry,` / `and bring you customers.`),
+  the last clause carrying the signal-yellow marker highlight (tagline since 2026-09-15)
+- Dimension line + monospace annotation (`€19.99/MO · NO LOCK-IN`)
 - Mono baseline: `FLOWSTACK / AUTOMATION  ·  SHEET 01 · REV <letter> · SCALE 1:1`
   — bump the REV letter in the master whenever a composition changes
 
