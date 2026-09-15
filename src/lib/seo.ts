@@ -50,7 +50,7 @@ export const EL_OG_IMAGES = [
 export const BRAND = {
   name: "Flowstack",
   legalName: "Flowstack Studio",
-  tagline: "Automate the busywork. Aggregate the data. Answer every inbound.",
+  tagline: "We build your website, answer every enquiry, and bring you customers.",
   twitter: "@flowstack" as const, // TBC: real handle
   locale: "en_US" as const,
   contact: {

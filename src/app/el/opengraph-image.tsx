@@ -44,7 +44,7 @@ export default async function OpenGraphImage() {
   ]);
 
   // Site order, one service a line; the chat line carries the marker
-  // swipe the way "Answer every inbound." does on the English card.
+  // swipe the way the last tagline clause does on the English card.
   const verbs = [
     { text: "ΙΣΤΟΣΕΛΙΔΑ", color: INK },
     { text: "CHAT & ΦΩΝΗΤΙΚΟΣ ΒΟΗΘΟΣ", swipe: true },

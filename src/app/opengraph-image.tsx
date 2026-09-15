@@ -6,7 +6,7 @@ import { BRAND } from "@/lib/seo";
  * gets pasted into Slack, Twitter, Discord, LinkedIn, iMessage, etc.
  * Mirrors the "ink on paper" system of the live site (2026-08
  * redesign): paper ground, ink type, hairline grid, corner
- * registration ticks, the marker-highlight swipe on the third beat.
+ * registration ticks, the marker-highlight swipe on the third line.
  *
  * Per-page OG overrides can be added by creating sibling files like
  * `src/app/pricing/opengraph-image.tsx`.
@@ -73,8 +73,8 @@ export default async function OpenGraphImage() {
           <span>FIG. 00 / FLOWSTACK</span>
         </div>
 
-        {/* headline — the three-beat tagline, one line each; third beat
-            carries the marker-highlight swipe from the live hero */}
+        {/* headline — BRAND.tagline broken into its three clauses (founder,
+            2026-09-15); the last carries the marker-highlight swipe */}
         <div
           style={{
             display: "flex",
@@ -94,7 +94,7 @@ export default async function OpenGraphImage() {
               maxWidth: 1040,
             }}
           >
-            Automate the busywork.
+            We build your website,
           </div>
           <div
             style={{
@@ -107,7 +107,7 @@ export default async function OpenGraphImage() {
               maxWidth: 1040,
             }}
           >
-            Aggregate the data.
+            answer every enquiry,
           </div>
           <div
             style={{
@@ -122,7 +122,7 @@ export default async function OpenGraphImage() {
               maxWidth: 1080,
             }}
           >
-            Answer every inbound.
+            and bring you customers.
           </div>
         </div>
 
