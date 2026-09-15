@@ -188,7 +188,7 @@ export default function PricingPage() {
             common questions, or any chat your team takes over.
           </p>
           <p className="text-ink-mute mx-auto mt-3 max-w-[62ch] text-center text-[13px] leading-[1.6]">
-            Need more? Top up anytime from €5. From Growth up you can bring your
+            Need more? Top up anytime from €5. On either plan you can bring your
             own AI key, and those replies don&apos;t use credits.
           </p>
 

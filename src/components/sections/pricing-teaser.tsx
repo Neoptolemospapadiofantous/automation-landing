@@ -16,18 +16,18 @@ export function PricingTeaser() {
           <div>
             <span className="bp-ref text-violet">S/07</span>
             <h2 className="text-ink mt-4 max-w-[24ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              The chat: start free, pay when it works.
+              The chat: from €19.99 a month.
             </h2>
           </div>
           {/* Says outright that these are the chat's prices — directly under
-              "four things we sell", a €9 card otherwise reads as the price
+              "four things we sell", a chat price otherwise reads as the price
               of a website. */}
           <span className="bp-annot hidden normal-case sm:block">
             Everything else: fixed price after a free call
           </span>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {pricingTiers.map((tier) => (
             <div
               key={tier.name}

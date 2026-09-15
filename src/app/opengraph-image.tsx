@@ -144,7 +144,7 @@ export default async function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            live in 60 seconds · free to start · cancel anytime
+            live in 60 seconds · from €19.99/mo · cancel anytime
           </div>
         </div>
 

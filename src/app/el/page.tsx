@@ -61,7 +61,7 @@ export default function HomeElPage() {
             label: `${FREE_CALL_EL.label} →`,
             short: `${FREE_CALL_EL.short} →`,
           },
-          { href: registerUrl(), label: "Δοκιμάστε το chat δωρεάν", variant: "secondary" },
+          { href: registerUrl(), label: "Ξεκινήστε το chat", variant: "secondary" },
         ]}
       />
 

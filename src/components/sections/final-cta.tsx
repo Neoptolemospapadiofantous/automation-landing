@@ -8,7 +8,7 @@ export function FinalCTA() {
   const title = "Hand it off.";
   const subtitle =
     "A free call, or add the chat now — about a minute.";
-  const primary = { href: registerUrl(), label: "Start free →" };
+  const primary = { href: registerUrl(), label: "Start the chat →" };
   const secondary = { href: FREE_CALL.href, label: FREE_CALL.label };
 
   return (
@@ -49,7 +49,7 @@ export function FinalCTA() {
           <div className="border-border-line mx-auto mt-16 grid max-w-[900px] grid-cols-2 border font-mono text-[10px] uppercase tracking-[0.18em] sm:grid-cols-4">
             <div className="flex flex-col gap-1 border-b border-r border-border-line px-4 py-3 sm:border-b-0">
               <span className="text-ink-mute">Chat</span>
-              <span className="text-draw">FREE TO START · CANCEL ANYTIME</span>
+              <span className="text-draw">FROM €19.99/MO · CANCEL ANYTIME</span>
             </div>
             <div className="flex flex-col gap-1 border-b border-border-line px-4 py-3 sm:border-b-0 sm:border-r">
               <span className="text-ink-mute">Setup</span>

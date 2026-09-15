@@ -196,8 +196,8 @@ const sections: LegalSection[] = [
           </li>
         </ul>
         <p>
-          <strong>Customer-supplied provider keys.</strong> From the
-          Growth plan up, Controller may connect its own OpenAI,
+          <strong>Customer-supplied provider keys.</strong> On any paid
+          plan, Controller may connect its own OpenAI,
           Anthropic or Google API key. Where it does, that Controller&apos;s chat
           runs on Controller&apos;s own account with that provider, under
           Controller&apos;s own contract with them, and Processor
@@ -339,7 +339,7 @@ export default function DPAPage() {
       title="Data Processing Agreement"
       intent="GDPR Article 28 Data Processing Agreement between Flowstack (Processor) and the Customer (Controller). Annex I (subject matter) and Annex II (security measures) are filled in by the relevant sections of this document."
       effective="2026-08-30"
-      reviewed="2026-09-02"
+      reviewed="2026-09-15"
       sections={sections}
     />
   );

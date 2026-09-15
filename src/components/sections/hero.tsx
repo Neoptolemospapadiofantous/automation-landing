@@ -17,7 +17,7 @@ import { FREE_CALL } from "@/lib/content";
 const proof = [
   { v: "48h", l: "free call → written fixed price", mark: true },
   { v: "24/7", l: "every enquiry answered", mark: false },
-  { v: "60s", l: "to add the chat · free to start", mark: false },
+  { v: "60s", l: "to add the chat · from €19.99/mo", mark: false },
 ] as const;
 
 export function Hero() {

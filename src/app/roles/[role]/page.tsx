@@ -216,10 +216,10 @@ export default async function RolePage({
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="max-w-[52ch]">
                 <h2 className="text-ink text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-                  Free to start. Cancel anytime.
+                  Two plans. Cancel anytime.
                 </h2>
                 <p className="text-ink-dim mt-3 font-mono text-sm leading-[1.7]">
-                  €19.99 or €39.99 a month, up to 5 agents.
+                  €19.99 or €39.99 a month, up to 5 chat assistants.
                 </p>
                 <p className="bp-annot mt-4">
                   {"// need it wired into your CRM or internal tools? "}

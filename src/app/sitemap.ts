@@ -15,7 +15,7 @@ import { rolePages } from "@/lib/content";
 const LAST_MOD = "2026-09-13"; // homepage, /pricing and /audit rewritten around the four services
 const ROLES_LAST_MOD = "2026-08-27"; // role copy simplified, TL;DR band added
 const LEGAL_LAST_MOD = "2026-08-31"; // terms: registered office + HE number filled in
-const LEGAL_BYOK_LAST_MOD = "2026-09-02"; // security/dpa/privacy: BYOK from Growth up, Google added, premium engines customer-key only
+const LEGAL_BYOK_LAST_MOD = "2026-09-15"; // security/dpa/privacy: BYOK on any paid plan (Growth retired 2026-09-15), Google added, premium engines customer-key only
 const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
 const EL_LAST_MOD = "2026-09-13"; // /el and /el/pricing rewritten around the four services
 const EL_WHAT_WORKS_LAST_MOD = "2026-09-02"; // the fifth and sixth Greek pages: /el/what-works, /el/audit

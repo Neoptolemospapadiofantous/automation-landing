@@ -14,7 +14,7 @@ import { ctaClass } from "@/components/ui/button";
  * Tier NUMBERS mirror src/lib/content.ts pricingTiers exactly (Starter
  * €19,99 / Operator €39,99 / Custom quoted, annual deals €199/€399 ≈ 2
  * months free — no free tier since 2026-09-15), and so do the bullets —
- * including the own-key line on Growth and Operator. Only the words are
+ * including the own-key line on Starter and Operator. Only the words are
  * translated — if a price or an entitlement changes there, it changes here
  * in the same commit. The engine paragraph below the grid carries what the
  * English page says in its FAQ, which this page does not have.
@@ -259,8 +259,8 @@ export default function PricingElPage() {
           </p>
 
           <p className="text-ink-mute mx-auto mt-3 max-w-[62ch] text-center text-[13px] leading-[1.6]">
-            Χρειάζεστε περισσότερα; Έξτρα πιστώσεις από €5. Από το Growth και
-            πάνω μπορείτε να βάλετε το δικό σας κλειδί AI — εκείνες οι απαντήσεις
+            Χρειάζεστε περισσότερα; Έξτρα πιστώσεις από €5. Και στα δύο πλάνα
+            μπορείτε να βάλετε το δικό σας κλειδί AI — εκείνες οι απαντήσεις
             δεν χρησιμοποιούν πιστώσεις.
           </p>
 

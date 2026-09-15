@@ -152,7 +152,7 @@ const sections: LegalSection[] = [
             they run only on a key the customer connects
             (<a href="/dpa">DPA §7</a> still lists those providers so
             that enabling one on our own account would be a change you
-            have been notified of). From the Growth plan up, a customer
+            have been notified of). On any paid plan, a customer
             can connect its own OpenAI, Anthropic or Google key, and
             that customer&apos;s chat then runs on their provider account
             under their own contract with that provider — see{" "}
@@ -436,7 +436,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       intent="How Flowstack collects, uses, shares, retains and protects personal data — written so a procurement team can audit it and a customer can understand it."
       effective="2026-08-30"
-      reviewed="2026-09-02"
+      reviewed="2026-09-15"
       sections={sections}
     />
   );
