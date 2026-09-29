@@ -209,10 +209,10 @@ export default function ChatAssistantPage() {
                   <p className="text-ink-mute mt-auto pt-1 text-[13px] leading-[1.5]">
                     We build this for you today:{" "}
                     <Link
-                      href="/automations"
+                      href="/audit"
                       className="text-ink underline underline-offset-4"
                     >
-                      Automations
+                      book a free call
                     </Link>
                     .
                   </p>

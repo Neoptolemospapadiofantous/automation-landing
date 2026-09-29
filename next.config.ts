@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   // (308) so rankings and every external link — the chat's knowledge base,
   // the dashboard, sales sheets — carry over. /studio's job (customer
   // acquisition) lives on /lead-generation; /suite's honest live-vs-not-yet
-  // list lives on /chat-assistant. /what-works, /audit and /roles/* stay.
+  // list lives on /chat-assistant. /audit and /roles/* stay.
   async redirects() {
     const moves: [string, string][] = [
       ["/website-build", "/website"],
@@ -31,6 +31,17 @@ const nextConfig: NextConfig = {
       ["/outreach", "/lead-generation"],
       ["/suite", "/chat-assistant"],
       ["/studio", "/lead-generation"],
+      // Narrowed to one offer, 2026-09-29: the chat that answers every
+      // enquiry and the wiring that files it. Website, standalone
+      // automations and lead generation are no longer sold, so their pages
+      // fold into the one that is. Permanent, so rankings and every
+      // external link — the KB, the sales sheets, old emails — land
+      // somewhere true instead of a 404.
+      ["/website", "/chat-assistant"],
+      ["/automations", "/chat-assistant"],
+      ["/lead-generation", "/chat-assistant"],
+      // Live reports were part of Automations; same reason, same day.
+      ["/what-works", "/chat-assistant"],
     ];
     return moves.flatMap(([from, to]) => [
       { source: from, destination: to, permanent: true },

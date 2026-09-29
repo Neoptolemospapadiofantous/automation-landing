@@ -23,7 +23,7 @@ export function PricingTeaser() {
               "four things we sell", a chat price otherwise reads as the price
               of a website. */}
           <span className="bp-annot hidden normal-case sm:block">
-            Everything else: fixed price after a free call
+            Wiring it into your tools: fixed price after a free call
           </span>
         </div>
 

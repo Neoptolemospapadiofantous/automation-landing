@@ -36,10 +36,10 @@ export const CATALOGUE_EN: CatalogueCopy = {
   heading: "What we build for you.",
   introStrong: "Not part of the plans.",
   introRest: "Built for you, on your tools, quoted before it starts.",
-  closingA: "Take one, or all of them end to end — one team, one quote.",
+  closingA: "One service, wired into the tools you already use — one team, one quote.",
   closingStrong: "Fixed price after a free 30-minute call, and you keep the code.",
   closingB:
-    "We keep watching what we built, and if the work you repeat every week isn't listed, ask.",
+    "We keep watching what we built after it goes live.",
   cta: { href: FREE_CALL.href, label: FREE_CALL.label, short: FREE_CALL.short },
 };
 
@@ -47,10 +47,10 @@ export const CATALOGUE_EL: CatalogueCopy = {
   heading: "Τι φτιάχνουμε για εσάς.",
   introStrong: "Δεν είναι μέρος των πλάνων.",
   introRest: "Φτιαγμένο για εσάς, στα δικά σας εργαλεία, με τιμή πριν ξεκινήσουμε.",
-  closingA: "Πάρτε ένα, ή όλα μαζί — μία ομάδα, μία προσφορά.",
+  closingA: "Μία υπηρεσία, συνδεδεμένη με τα εργαλεία που ήδη χρησιμοποιείτε — μία ομάδα, μία προσφορά.",
   closingStrong: "Σταθερή τιμή μετά από δωρεάν ραντεβού 30 λεπτών, και ο κώδικας δικός σας.",
   closingB:
-    "Προσέχουμε ό,τι φτιάξαμε, κι αν η δουλειά που επαναλαμβάνετε κάθε εβδομάδα δεν είναι εδώ, ρωτήστε μας.",
+    "Προσέχουμε ό,τι φτιάξαμε και μετά την παράδοση.",
   cta: { href: FREE_CALL_EL.href, label: FREE_CALL_EL.label, short: FREE_CALL_EL.short },
   hrefLang: "el",
 };

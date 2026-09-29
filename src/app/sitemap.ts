@@ -12,16 +12,14 @@ import { rolePages } from "@/lib/content";
  * sitemap. Date must be passed in via constant; `new Date()` would
  * make every build re-crawl everything.
  */
-const LAST_MOD = "2026-09-13"; // homepage, /pricing and /audit rewritten around the four services
+const LAST_MOD = "2026-09-29"; // homepage narrowed to ONE service (the chat + its wiring)
 const ROLES_LAST_MOD = "2026-08-27"; // role copy simplified, TL;DR band added
 const LEGAL_LAST_MOD = "2026-08-31"; // terms: registered office + HE number filled in
 const LEGAL_BYOK_LAST_MOD = "2026-09-15"; // security/dpa/privacy: BYOK on any paid plan (Growth retired 2026-09-15), Google added, premium engines customer-key only
-const SERVICES_LAST_MOD = "2026-08-27"; // copy simplified to the TL;DR pass
-const EL_LAST_MOD = "2026-09-13"; // /el and /el/pricing rewritten around the four services
-const EL_WHAT_WORKS_LAST_MOD = "2026-09-02"; // the fifth and sixth Greek pages: /el/what-works, /el/audit
+const EL_LAST_MOD = "2026-09-29"; // /el narrowed to ONE service
 const EL_ROLES_LAST_MOD = "2026-09-05"; // /el/email-automation + the four Greek role pages
 const EL_AUDIT_LAST_MOD = "2026-09-13"; // /el/audit became the free call
-const RENAMED_LAST_MOD = "2026-09-13"; // service pages renamed to the service names (/website, /chat-assistant, /automations, /lead-generation) and rewritten; /studio + /suite redirect
+const RENAMED_LAST_MOD = "2026-09-29"; // /chat-assistant is the one service page; /website, /automations, /lead-generation, /what-works, /studio, /suite redirect to it
 
 /** hreflang pair for a page with a Greek twin — mirrors the pages' own
  *  metadata.alternates.languages so the sitemap and the <link> tags can
@@ -47,13 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: pair("/pricing", "/el/pricing"),
     },
     {
-      url: `${SITE_URL}/what-works`,
-      lastModified: SERVICES_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: pair("/what-works", "/el/what-works"),
-    },
-    {
       url: `${SITE_URL}/chat-assistant`,
       lastModified: RENAMED_LAST_MOD,
       changeFrequency: "monthly",
@@ -68,34 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: pair("/chat-assistant", "/el/chat-assistant"),
     },
     {
-      url: `${SITE_URL}/website`,
-      lastModified: "2026-09-01",
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: pair("/website", "/el/website"),
-    },
-    {
-      url: `${SITE_URL}/lead-generation`,
-      lastModified: RENAMED_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: pair("/lead-generation", "/el/lead-generation"),
-    },
-    {
-      url: `${SITE_URL}/automations`,
-      lastModified: "2026-09-05",
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: pair("/automations", "/el/automations"),
-    },
-    {
-      url: `${SITE_URL}/el/automations`,
-      lastModified: RENAMED_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: pair("/automations", "/el/automations"),
-    },
-    {
       url: `${SITE_URL}/el`,
       lastModified: EL_LAST_MOD,
       changeFrequency: "monthly",
@@ -103,32 +66,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: pair("/", "/el"),
     },
     {
-      url: `${SITE_URL}/el/website`,
-      lastModified: RENAMED_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: pair("/website", "/el/website"),
-    },
-    {
-      url: `${SITE_URL}/el/lead-generation`,
-      lastModified: RENAMED_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: pair("/lead-generation", "/el/lead-generation"),
-    },
-    {
       url: `${SITE_URL}/el/pricing`,
       lastModified: EL_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: pair("/pricing", "/el/pricing"),
-    },
-    {
-      url: `${SITE_URL}/el/what-works`,
-      lastModified: EL_WHAT_WORKS_LAST_MOD,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: pair("/what-works", "/el/what-works"),
     },
     {
       url: `${SITE_URL}/el/audit`,

@@ -54,7 +54,7 @@ export const FREE_CALL = {
 
 export type Service = {
   /** Target URL segment once Phase 2 renames the pages. */
-  slug: "website" | "chat-assistant" | "automations" | "lead-generation";
+  slug: "chat-assistant";
   name: string;
   /** The service page — always `/${slug}` since the 2026-09-13 rename. */
   href: string;
@@ -98,85 +98,25 @@ export type Service = {
  */
 export const services: readonly Service[] = [
   {
-    slug: "website",
-    name: "Website",
-    href: "/website",
-    oneLiner: "A fast website for your business, in English or Greek.",
-    outcome: "A site that looks right, loads fast and turns visitors into enquiries.",
-    buyPath: "We build it · quoted",
-    get: [
-      "Design and words for up to about six pages",
-      "Built for phones first",
-      "The chat installed from day one",
-      "Your own domain, and you own the code",
-    ],
-    forWho: "Businesses with no site, or a site that no longer brings enquiries.",
-    cost: "Fixed price after a free call. Free with the yearly Operator chat plan (€383.90). A shop or portal is quoted separately.",
-    time: "Live in about two weeks.",
-    isnt: "A shop or booking portal. Those are quoted as their own build.",
-    includes: "New site or a rebuild · built for phones · you own the code",
-  },
-  {
     slug: "chat-assistant",
     name: "Chat & voice assistant",
     href: "/chat-assistant",
-    oneLiner: "Answers every enquiry on your site, day and night, and on your phone.",
-    outcome: "Nobody who asks at 11pm waits until morning.",
-    buyPath: "Chat from €19.99 · voice quoted",
+    oneLiner: "Answers every enquiry on your site, day and night, and files it where you work.",
+    outcome: "Nobody who asks at 11pm waits until morning, and nobody retypes it in the morning either.",
+    buyPath: "Chat from €19.99 · wiring quoted",
     get: [
       "Answers from your own documents, in the visitor's language",
       "Every lead captured, with the full conversation",
-      "New leads sent to your CRM or Google Sheets",
+      "Booked, filed or passed on into the calendar, sheet or CRM you already run",
       "A phone assistant that answers and books — built for you",
       "An instant call-back and SMS to everyone who enquires — built for you",
     ],
-    forWho: "Car rental desks, clinics, hotels and villas — anyone whose customers ask after hours.",
-    cost: "Chat: €19.99 or €39.99 a month. Phone, call-back and SMS: fixed price after a free call.",
-    time: "Chat: live in about a minute. Phone, call-back and SMS: 2–4 weeks.",
-    /* The "not yet in the do-it-yourself chat" list lives on the page as its
-       own section; this line says something different so the page states
-       each fact once. */
+    forWho:
+      "Car rental desks, clinics, pool and trade companies, hotels and villas — anyone whose customers ask after hours.",
+    cost: "Chat: €19.99 or €39.99 a month. Wiring it into your systems: fixed price after a free call.",
+    time: "Chat: live in about a minute. The wiring: 2–4 weeks.",
     isnt: "A call centre. Anything the assistant can't answer goes to your team, with the conversation attached.",
-    includes: "Website chat · phone assistant · instant call-back · SMS follow-up",
-  },
-  {
-    slug: "automations",
-    name: "Automations",
-    href: "/automations",
-    oneLiner: "The follow-ups, reminders and invoices you send by hand, sent automatically.",
-    outcome: "Your CRM, follow-ups and invoices stop needing a person to push them.",
-    buyPath: "We build it · quoted",
-    get: [
-      "Connected to your CRM and inbox",
-      "Follow-ups and reminders in your words, from your own address",
-      "Invoice chasers",
-      "Enquiries sorted and sent to the right person",
-      "A live report of your numbers",
-    ],
-    forWho: "Firms, agencies and clinics where someone spends hours a week on the same emails.",
-    cost: "Fixed price after a free call. You own everything we build.",
-    time: "Live in 2–4 weeks.",
-    isnt: "Cold email to strangers. That's Lead generation.",
-    includes: "CRM sync · email follow-ups · invoice chasers · inbox triage · live reports",
-  },
-  {
-    slug: "lead-generation",
-    name: "Lead generation",
-    href: "/lead-generation",
-    oneLiner: "We find new customers who fit you, and email them for you.",
-    outcome: "A steady flow of new customers, found and contacted for you.",
-    buyPath: "We run it · quoted",
-    get: [
-      "A checked list of companies that fit you",
-      "Cold emails in your words, from your own address",
-      "Replies handed straight to you",
-      "A monthly report on who replied and what to try next",
-    ],
-    forWho: "Businesses that want more customers than referrals bring — here or abroad.",
-    cost: "Fixed price after a free call.",
-    time: "First emails within two weeks. Volume grows as your address builds trust.",
-    isnt: "Cold SMS or cold automated calls. We don't sell them.",
-    includes: "Checked lists · your own sending address · replies to you · monthly report",
+    includes: "Website chat · phone assistant · call-back · wired into your systems",
   },
 ];
 
@@ -199,82 +139,27 @@ export const FREE_CALL_EL = {
 
 export const servicesEl: readonly Service[] = [
   {
-    slug: "website",
-    name: "Ιστοσελίδα",
-    href: "/el/website",
-    oneLiner: "Μια γρήγορη ιστοσελίδα για την επιχείρησή σας, στα Ελληνικά ή στα Αγγλικά.",
-    outcome: "Ένα site που δείχνει σωστό, ανοίγει γρήγορα και φέρνει μηνύματα.",
-    buyPath: "Το φτιάχνουμε · προσφορά",
-    get: [
-      "Σχεδιασμός και κείμενα για έως περίπου έξι σελίδες",
-      "Φτιαγμένο πρώτα για κινητό",
-      "Το chat εγκατεστημένο από την πρώτη μέρα",
-      "Δικό σας domain, και ο κώδικας δικός σας",
-    ],
-    forWho: "Επιχειρήσεις χωρίς site, ή με site που δεν φέρνει πια μηνύματα.",
-    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Δωρεάν με το ετήσιο πλάνο Operator (€383,90). E-shop ή portal με ξεχωριστή προσφορά.",
-    time: "Ζωντανό σε περίπου δύο εβδομάδες.",
-    isnt: "E-shop ή σύστημα κρατήσεων. Αυτά είναι δική τους κατασκευή, με προσφορά.",
-    includes: "Νέο site ή ανανέωση · πρώτα για κινητό · ο κώδικας δικός σας",
-  },
-  {
     slug: "chat-assistant",
     name: "Chat & φωνητικός βοηθός",
     href: "/el/chat-assistant",
-    oneLiner: "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, και στο τηλέφωνο.",
-    outcome: "Όποιος ρωτά στις 23:00 δεν περιμένει ως το πρωί.",
-    buyPath: "Chat από €19,99 · φωνή: τιμή",
+    oneLiner:
+      "Απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, και το καταχωρεί εκεί που δουλεύετε.",
+    outcome:
+      "Όποιος ρωτά στις 23:00 δεν περιμένει ως το πρωί — και κανείς δεν το ξαναγράφει το πρωί.",
+    buyPath: "Chat από €19,99 · η σύνδεση με προσφορά",
     get: [
       "Απαντήσεις από τα δικά σας κείμενα, στη γλώσσα του επισκέπτη",
       "Κάθε lead καταγεγραμμένο, με όλη τη συζήτηση",
-      "Τα νέα leads πάνε στο CRM σας ή στα Google Sheets",
+      "Καταχωρείται στο ημερολόγιο, στο φύλλο ή στο CRM που ήδη χρησιμοποιείτε",
       "Φωνητικός βοηθός που απαντά και κλείνει ραντεβού — τον στήνουμε εμείς",
       "Άμεση επανάκληση και SMS σε όποιον στείλει μήνυμα — τα στήνουμε εμείς",
     ],
-    forWho: "Ενοικιάσεις αυτοκινήτων, κλινικές, ξενοδοχεία και βίλες — όσοι δέχονται ερωτήσεις εκτός ωραρίου.",
-    cost: "Chat: €19,99 ή €39,99 τον μήνα. Τηλέφωνο, επανάκληση και SMS: σταθερή τιμή μετά από δωρεάν ραντεβού.",
-    time: "Chat: ζωντανό σε περίπου ένα λεπτό. Τηλέφωνο, επανάκληση και SMS: 2–4 εβδομάδες.",
+    forWho:
+      "Ενοικιάσεις αυτοκινήτων, κλινικές, συνεργεία πισίνας, ξενοδοχεία και βίλες — όσοι δέχονται ερωτήσεις εκτός ωραρίου.",
+    cost: "Chat: €19,99 ή €39,99 τον μήνα. Η σύνδεση με τα συστήματά σας: σταθερή τιμή μετά από δωρεάν ραντεβού.",
+    time: "Chat: ζωντανό σε περίπου ένα λεπτό. Η σύνδεση: 2–4 εβδομάδες.",
     isnt: "Τηλεφωνικό κέντρο. Ό,τι δεν μπορεί να απαντήσει πάει στην ομάδα σας, με τη συζήτηση μαζί.",
-    includes: "Chat ιστοσελίδας · φωνητικός βοηθός · άμεση επανάκληση · SMS",
-  },
-  {
-    slug: "automations",
-    name: "Αυτοματισμοί",
-    href: "/el/automations",
-    oneLiner: "Τα follow-up, οι υπενθυμίσεις και τα τιμολόγια που στέλνετε με το χέρι, αυτόματα.",
-    outcome: "Το CRM, τα follow-up και τα τιμολόγια δεν θέλουν πια κάποιον να τα σπρώχνει.",
-    buyPath: "Το φτιάχνουμε · προσφορά",
-    get: [
-      "Σύνδεση με το CRM και το inbox σας",
-      "Follow-up και υπενθυμίσεις με τα δικά σας λόγια, από τη δική σας διεύθυνση",
-      "Όχληση τιμολογίων",
-      "Τα μηνύματα ταξινομούνται και πάνε στον σωστό άνθρωπο",
-      "Ζωντανή αναφορά με τους αριθμούς σας",
-    ],
-    forWho: "Γραφεία, εταιρείες και κλινικές όπου κάποιος ξοδεύει ώρες την εβδομάδα στα ίδια email.",
-    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού. Ό,τι φτιάχνουμε είναι δικό σας.",
-    time: "Ζωντανό σε 2–4 εβδομάδες.",
-    isnt: "Cold email σε αγνώστους. Αυτό είναι η Εύρεση πελατών.",
-    includes: "Σύνδεση CRM · follow-up · όχληση τιμολογίων · ταξινόμηση εισερχομένων · ζωντανές αναφορές",
-  },
-  {
-    slug: "lead-generation",
-    name: "Εύρεση πελατών",
-    href: "/el/lead-generation",
-    oneLiner: "Βρίσκουμε νέους πελάτες που σας ταιριάζουν, και τους στέλνουμε email για εσάς.",
-    outcome: "Σταθερή ροή νέων πελατών — τους βρίσκουμε και τους προσεγγίζουμε εμείς.",
-    buyPath: "Το τρέχουμε · προσφορά",
-    get: [
-      "Ελεγμένη λίστα επιχειρήσεων που σας ταιριάζουν",
-      "Cold email με τα δικά σας λόγια, από τη δική σας διεύθυνση",
-      "Οι απαντήσεις έρχονται κατευθείαν σε εσάς",
-      "Μηνιαία αναφορά: ποιος απάντησε και τι δοκιμάζουμε μετά",
-    ],
-    forWho: "Επιχειρήσεις που θέλουν περισσότερους πελάτες από όσους φέρνουν οι συστάσεις — εδώ ή στο εξωτερικό.",
-    cost: "Σταθερή τιμή μετά από δωρεάν ραντεβού.",
-    time: "Τα πρώτα email μέσα σε δύο εβδομάδες. Ο όγκος μεγαλώνει καθώς η διεύθυνσή σας κερδίζει εμπιστοσύνη.",
-    isnt: "Cold SMS ή αυτόματες κλήσεις σε αγνώστους. Δεν τα πουλάμε.",
-    includes: "Ελεγμένες λίστες · η δική σας διεύθυνση · απαντήσεις σε εσάς · μηνιαία αναφορά",
+    includes: "Chat ιστοσελίδας · φωνητικός βοηθός · επανάκληση · σύνδεση με τα συστήματά σας",
   },
 ];
 
@@ -322,7 +207,7 @@ export const buildCatalogue = services.map((s) => ({
  * be registered in a second list.
  */
 export const siteMap = {
-  /* WHAT WE SELL — the four services, DERIVED from `services`, so the
+  /* WHAT WE SELL — ONE offer since 2026-09-29, DERIVED from `services`, so the
      header panel, mobile menu and footer can never name them differently.
      Replaced the Studio/App groups on 2026-09-13: those line names left
      public copy and stay internal (dashboard, sales). */
@@ -582,7 +467,7 @@ export const agentRoles = rolePages.map(({ ref, name, desc, slug }) => ({
 export const faqItems = [
   {
     q: "Is this just a chat widget?",
-    a: "No. We sell four things: a website, a chat and voice assistant, automations and lead generation. The chat is the only one you set up yourself.",
+    a: "It is the chat plus the wiring behind it: we connect it to the calendar, sheet or CRM you already use, and can add a phone assistant built to order. The chat is the part you set up yourself.",
   },
   {
     q: "What do the chat plans cost?",

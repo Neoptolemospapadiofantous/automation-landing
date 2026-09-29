@@ -8,10 +8,9 @@ import { join } from "node:path";
  * card instead of the English tagline sheet the root image draws.
  *
  * Same "ink on paper" template as the root card, but the headline is
- * the four services the Greek pages sell, in site order (ΙΣΤΟΣΕΛΙΔΑ /
- * CHAT & ΦΩΝΗΤΙΚΟΣ ΒΟΗΘΟΣ / ΑΥΤΟΜΑΤΙΣΜΟΙ / ΕΥΡΕΣΗ ΠΕΛΑΤΩΝ) — the
- * four verbs it drew until 2026-09-15 were retired with the four-services
- * copy (servicesEl in content.ts).
+ * the Greek hero line — «Κάθε μήνυμα απαντημένο. Ακόμα και στις 3 τη
+ * νύχτα.» — since the site narrowed to ONE service on 2026-09-29. It
+ * drew four verbs until 2026-09-15, then the four service names.
  *
  * Fonts: satori's built-in font is Latin-only, so Greek text renders
  * blank without an explicit font. The two TTFs beside this file are
@@ -25,7 +24,7 @@ import { join } from "node:path";
  * uppercase strings below are authored unaccented directly, and no
  * textTransform is applied to Greek text.
  */
-export const alt = "Flowstack — Ιστοσελίδα, chat & φωνητικός βοηθός, αυτοματισμοί, εύρεση πελατών";
+export const alt = "Flowstack — Κάθε μήνυμα απαντημένο. Ακόμα και στις 3 τη νύχτα.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -43,13 +42,13 @@ export default async function OpenGraphImage() {
     readFile(join(process.cwd(), "src/app/el/InterGreek-Medium.ttf")),
   ]);
 
-  // Site order, one service a line; the chat line carries the marker
+  // The hero line, one phrase a line; "answered" carries the marker
   // swipe the way the last tagline clause does on the English card.
   const verbs = [
-    { text: "ΙΣΤΟΣΕΛΙΔΑ", color: INK },
-    { text: "CHAT & ΦΩΝΗΤΙΚΟΣ ΒΟΗΘΟΣ", swipe: true },
-    { text: "ΑΥΤΟΜΑΤΙΣΜΟΙ", color: dimColor },
-    { text: "ΕΥΡΕΣΗ ΠΕΛΑΤΩΝ", color: INK },
+    { text: "ΚΑΘΕ ΜΗΝΥΜΑ", color: INK },
+    { text: "ΑΠΑΝΤΗΜΕΝΟ.", swipe: true },
+    { text: "ΑΚΟΜΑ ΚΑΙ", color: dimColor },
+    { text: "ΣΤΙΣ 3 ΤΗ ΝΥΧΤΑ.", color: dimColor },
   ];
 
   return new ImageResponse(
@@ -99,7 +98,7 @@ export default async function OpenGraphImage() {
           <span>FIG. 00 / FLOWSTACK · EL</span>
         </div>
 
-        {/* headline — the four services, one per line */}
+        {/* headline — the hero line, one phrase per line */}
         <div
           style={{
             display: "flex",

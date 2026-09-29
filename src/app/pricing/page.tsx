@@ -61,8 +61,8 @@ export default function PricingPage() {
       />
 
       {/* Built for you FIRST (plan 2026-09-13). With the price list on top, a
-          chat plan price read like the price of a website. The four services are
-          fixed-price after a free call; the grid below is the chat only. */}
+          chat plan price read like the price of a build. The wiring into a client's
+          systems is fixed-price after a free call; the grid below is the chat only. */}
       <Catalogue />
 
       {/* Pricing tiers — hairline-bordered cards in the editorial mono

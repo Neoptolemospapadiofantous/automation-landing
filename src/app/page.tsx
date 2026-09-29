@@ -16,8 +16,8 @@ import { HomepageJsonLd } from "@/components/jsonld";
 /**
  * Homepage — a numbered drawing set (S/01–S/09), tracked by the fixed
  * SheetRail on very wide screens. Tight client-legible narrative:
- * what we do (hero) → the summary in three lines (TL;DR) → the four
- * services (2026-09-13; were four verbs) → why believe us (proof, unnumbered — like the
+ * what we do (hero) → the summary in three lines (TL;DR) → the one
+ * service (2026-09-29; four services from 09-13, four verbs before) → why believe us (proof, unnumbered — like the
  * ticker, it is an interstitial rather than part of the argument) →
  * the pains (problems) → how it runs (pipeline) →
  * the end-to-end build (custom build) → what we build (catalogue) →
@@ -37,11 +37,11 @@ import { HomepageJsonLd } from "@/components/jsonld";
 const TLDR = [
   {
     k: "What we sell",
-    v: "A website, a chat and phone assistant that answers every enquiry, automations wired into your CRM, and lead generation — built for you.",
+    v: "One thing: a chat and phone assistant that answers every enquiry on your site, in Greek and English, and files it into the calendar, sheet or CRM you already run.",
   },
   {
     k: "Who it's for",
-    v: "Businesses starting out, and businesses whose site and systems have fallen behind. One piece, or the whole thing.",
+    v: "Car rental desks, clinics, pool and trade companies, hotels and villas — anyone whose customers ask outside office hours.",
   },
   {
     k: "How to start",

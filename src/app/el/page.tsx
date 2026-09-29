@@ -11,7 +11,7 @@ import { buildCatalogueEl, FREE_CALL_EL, servicesEl } from "@/lib/content";
 /**
  * /el — the Greek homepage.
  *
- * A condensed twin of the English one: hero → TL;DR → the four services →
+ * A condensed twin of the English one: hero → TL;DR → the one service →
  * the catalogue → pricing line. The animated EN sections carry hardwired
  * English copy, so this page states the same argument in Greek with the
  * shared primitives. Since 2026-09-13 the four services and the catalogue
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: EL_OG_IMAGES,
-    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
+    title: "Flowstack — κάθε μήνυμα απαντημένο, μέρα και νύχτα",
     url: "/el",
     description: DESCRIPTION,
   },
@@ -50,11 +50,11 @@ export default function HomeElPage() {
         eyebrowTint="violet"
         title={
           <>
-            Φτιάχνουμε την ιστοσελίδα σας, απαντάμε σε κάθε μήνυμα,{" "}
-            <span className="text-gradient">και σας φέρνουμε πελάτες.</span>
+            Κάθε μήνυμα απαντημένο. Ακόμα και{" "}
+            <span className="text-gradient">στις 3 τη νύχτα.</span>
           </>
         }
-        lead="Για επιχειρήσεις που ξεκινούν ή ανανεώνονται. Μία ομάδα. Μία σταθερή τιμή."
+        lead="Το τηλέφωνό σας απαντά οκτώμισι ώρες την ημέρα. Τα μηνύματα όχι. Απαντάμε τα υπόλοιπα."
         ctas={[
           {
             href: FREE_CALL_EL.href,
@@ -69,11 +69,11 @@ export default function HomeElPage() {
         rows={[
           {
             k: "Τι πουλάμε",
-            v: "Ιστοσελίδα, βοηθό chat και τηλεφώνου που απαντά σε κάθε μήνυμα, αυτοματισμούς στο CRM σας και εύρεση πελατών — τα φτιάχνουμε εμείς.",
+            v: "Ένα πράγμα: βοηθό chat και τηλεφώνου που απαντά σε κάθε μήνυμα στο site σας, στα Ελληνικά και στα Αγγλικά, και το καταχωρεί στο ημερολόγιο ή στο CRM που ήδη χρησιμοποιείτε.",
           },
           {
             k: "Για ποιους",
-            v: "Επιχειρήσεις που ξεκινούν, και επιχειρήσεις που το site και τα συστήματά τους έχουν μείνει πίσω. Ένα κομμάτι, ή όλα.",
+            v: "Ενοικιάσεις αυτοκινήτων, κλινικές, συνεργεία πισίνας, ξενοδοχεία και βίλες — όσοι δέχονται ερωτήσεις εκτός ωραρίου.",
           },
           {
             k: "Πώς ξεκινάτε",
@@ -82,7 +82,7 @@ export default function HomeElPage() {
         ]}
       />
 
-      {/* The four services — same cells as the English ServiceLines, read
+      {/* The one service — same cell as the English ServiceLines, read
           from servicesEl. */}
       <section className="relative pt-4">
         <div className="mx-auto max-w-[1280px] px-6">
@@ -90,10 +90,10 @@ export default function HomeElPage() {
             <div>
               <span className="bp-ref">τι πουλάμε</span>
               <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-                Τέσσερα πράγματα. Μία ομάδα.
+                Ένα πράγμα, σωστά φτιαγμένο.
               </h2>
             </div>
-            <p className="bp-annot normal-case">Πάρτε ένα, ή και τα τέσσερα.</p>
+            <p className="bp-annot normal-case">Το chat, και η σύνδεση πίσω του.</p>
           </div>
 
           <div className="border-border-line bg-border-line mt-px grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">

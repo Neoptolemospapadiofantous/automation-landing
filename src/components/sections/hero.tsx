@@ -27,21 +27,21 @@ export function Hero() {
         <div className="max-w-[820px]">
           <span className="bp-ref inline-flex items-center gap-2.5">
             <span className="bp-dot" aria-hidden />
-            FIG. 00 — website · chat & voice · automations · leads
+            FIG. 00 — every enquiry answered · day and night
           </span>
 
           <h1 className="hero-headline-parallax mt-7 text-[42px] leading-[1.02] font-bold tracking-[-0.045em] sm:text-[58px] lg:text-[72px]">
-            <span className="block">We build your website,</span>
-            <span className="text-ink-dim block">answer every enquiry,</span>
+            <span className="block">Every enquiry answered.</span>
+            <span className="text-ink-dim block">Even the ones</span>
             <span className="block">
-              <span className="text-gradient">and bring you customers.</span>
+              <span className="text-gradient">at 3am.</span>
             </span>
           </h1>
 
           <p className="text-ink-dim mt-7 max-w-[47ch] text-lg leading-[1.6] text-pretty sm:text-[19px]">
-            For businesses starting out, or updating an old setup.{" "}
+            Your phone is covered eight and a half hours a day. Enquiries are not.{" "}
             <span className="text-ink font-semibold sm:whitespace-nowrap">
-              One team. One fixed price.
+              We answer the rest, and file them where you work.
             </span>
           </p>
 

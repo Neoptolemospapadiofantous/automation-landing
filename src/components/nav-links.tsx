@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 /**
  * Desktop nav.
  *
- * The bar is width-bound, so the four services sit in one panel and the
+ * The bar is width-bound, so the service sits in one panel and the
  * bar keeps a single flat link (Pricing). The panel is a plain list of what
  * we sell — no line names, no categories (2026-09-13: every surface names
- * the same four services in the same order, read from `services`).
+ * the same service list, read from `services`).
  *
  * Opens on click (not hover): hover menus are unusable by keyboard and
  * hostile on touch-capable laptops. Escape and click-away close it, focus

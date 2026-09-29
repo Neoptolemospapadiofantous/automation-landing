@@ -33,14 +33,13 @@ export function SiteNav() {
             Login
           </Link>
           {/* whitespace-nowrap: the label used to wrap to 2–3 lines on
-              phones. Compact sizing below sm; under 360px the price
-              alone remains so the button never forces overflow. */}
+              phones. "Start free" until 2026-09-29 — there has been no
+              free tier since 09-15, so the label says what it does. */}
           <Link
             href={registerUrl()}
             className={ctaClass({ size: "nav", className: "relative z-50" })}
           >
-            <span className="hidden min-[360px]:inline">Start&nbsp;</span>
-            free →
+            Sign&nbsp;up →
           </Link>
           <MobileMenu />
         </div>

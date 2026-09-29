@@ -39,15 +39,15 @@ export function ServiceLines() {
           <div>
             <span className="bp-ref">what we sell</span>
             <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
-              Four things. One team.
+              One thing, done properly.
             </h2>
           </div>
           <p className="bp-annot normal-case">
-            Take one, or all four.
+            The chat, plus the wiring behind it.
           </p>
         </div>
 
-        <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line sm:grid-cols-2 lg:grid-cols-4">
+        <div className="border-border-line mt-px grid grid-cols-1 gap-px bg-border-line">
           {lines.map((l) => (
             <Link
               key={l.name}

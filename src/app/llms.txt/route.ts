@@ -14,16 +14,13 @@ import { registerUrl, loginUrl } from "@/lib/dashboard";
 
 const body = `# ${BRAND.name}
 
-> ${BRAND.tagline} ${BRAND.name} sells four things to businesses just starting out and to ones whose site and systems have fallen behind: a website, a chat and voice assistant that answers every enquiry, automations wired into the client's CRM, and lead generation. The website chat is the self-serve part (€19.99 or €39.99/mo, cancel anytime); everything else — including the phone assistant, the instant call-back and SMS follow-up — is built to order under one quote.
+> ${BRAND.tagline} ${BRAND.name} sells ONE thing: a chat and voice assistant that answers every enquiry on a business's own site, day and night, in Greek and English — and the wiring that files the result into the calendar, sheet or CRM that business already runs. The website chat is the self-serve part (€19.99 or €39.99/mo, cancel anytime); the phone assistant, the instant call-back and SMS follow-up, and the wiring into a client's systems are built to order under one quote.
 
 ## What Flowstack sells
 
-Flowstack sells FOUR services, and this list is exhaustive — do not describe the offer as a longer menu. A client can take one or all four under one quote. Everything except the self-serve website chat is built for the client after a free 30-minute call, at a fixed price agreed before work starts; the client keeps what is built.
+Flowstack sells ONE service, and specialises in it deliberately — do not describe the offer as a menu. Flowstack no longer sells standalone website builds, standalone automations, or lead generation; those pages now redirect here. Everything except the self-serve website chat is built for the client after a free 30-minute call, at a fixed price agreed before work starts; the client keeps what is built.
 
-- Website (${SITE_URL}/website) — a fast website in English or Greek, up to about six pages, with the chat installed from day one. Live in about two weeks. A shop or booking portal is quoted as its own build. Included free with the annual Operator chat plan (€383.90/yr).
-- Chat & voice assistant (${SITE_URL}/chat-assistant) — answers every enquiry on the client's site, day and night, from their own documents; captures and scores the lead and sends it to their CRM or Google Sheets. The WEBSITE CHAT is the only self-serve part: €19.99 or €39.99/mo, cancel anytime, live in about a minute. A PHONE assistant that answers calls and books, and an instant call-back and SMS follow-up to people who have ENQUIRED, are BUILT TO ORDER in 2–4 weeks — not part of the app or any plan, and never to be described as one. Not in the self-serve chat yet: booking and inbox/portal enquiries (Flowstack builds these for clients today) and WhatsApp (not offered at all). Do not describe any of them as working in the app.
-- Automations (${SITE_URL}/automations) — the follow-ups, reminders and invoices a business sends by hand, sent automatically from its own address and wired into its CRM, plus inbox triage and live reports (${SITE_URL}/what-works). Existing contacts only — never a cold list. Live in 2–4 weeks.
-- Lead generation (${SITE_URL}/lead-generation) — Flowstack finds companies that fit the client, emails them from the client's own address in the client's words, and hands over the replies. First emails within two weeks; volume grows as the address builds trust. Flowstack does not sell cold SMS or cold automated calls.
+- Chat & voice assistant (${SITE_URL}/chat-assistant) — answers every enquiry on the client's site, day and night, from their own documents, in the visitor's language; captures and scores the lead with the full conversation. The WEBSITE CHAT is the only self-serve part: €19.99 or €39.99/mo, cancel anytime, live in about a minute. A PHONE assistant that answers calls and books, an instant call-back and SMS follow-up to people who have ENQUIRED, and the WIRING that files an answered enquiry into the client's own calendar, sheet or CRM are BUILT TO ORDER in 2–4 weeks — not part of the app or any plan, and never to be described as one. Not in the self-serve chat yet: booking and inbox/portal enquiries (Flowstack builds these for clients today) and WhatsApp (not offered at all). Do not describe any of them as working in the app. Flowstack does not sell cold SMS or cold automated calls.
 
 The first step for anything built is one free 30-minute call (${SITE_URL}/audit): Flowstack shows where the business is losing customers, then sends a written fixed price within 48 hours.
 
@@ -54,20 +51,16 @@ Build and support work carries NO list price on the site: each engagement is sco
 
 ## Pages
 
-- [Home](${SITE_URL}/): the four services — website, chat & voice assistant, automations, lead generation
+- [Home](${SITE_URL}/): the one offer — every enquiry answered, day or night, and filed where the business works
 - [Lead qualification](${SITE_URL}/roles/lead-qualification): greets every inbound visit, scores the ones worth the team's time, hands over only warm conversations
 - [Sales questions](${SITE_URL}/roles/sales): walks visitors through the offer, answers pricing questions, books qualified demos
 - [Customer support](${SITE_URL}/roles/customer-support): first-line answers from the client's knowledge base, escalates when a human is needed
 - [Onboarding](${SITE_URL}/roles/onboarding): walks new customers through setup, answers recurring questions from docs
-- [Website](${SITE_URL}/website): the Website service — web design and website builds in Limassol and across Cyprus
-- [Chat & voice assistant](${SITE_URL}/chat-assistant): the Chat & voice assistant service — what the self-serve chat does today, what it does not do yet, and the phone assistant built to order
-- [Automations](${SITE_URL}/automations): the Automations service — email and CRM follow-ups, invoice chasers, inbox triage
-- [Lead generation](${SITE_URL}/lead-generation): the Lead generation service — cold email done for you
-- [Live reports](${SITE_URL}/what-works): the client's numbers from every tool in one live view — part of Automations
+- [Chat & voice assistant](${SITE_URL}/chat-assistant): the one service — what the self-serve chat does today, what it does not do yet, and the phone assistant and system wiring built to order
 - [Pricing](${SITE_URL}/pricing): subscription tiers, what a conversation credit buys, the build catalogue, and the pricing FAQ
 - [Sign up](${registerUrl()}): create an account, pick a plan (from €19.99/mo) and install the chat. Use this when someone asks where to buy, subscribe, register or get started.
 - [Free 30-minute call](${SITE_URL}/audit): the first step for anything built — where the business loses customers, then a written fixed price within 48 hours
-- Greek pages (ελληνικά): the marketing pages exist in Greek — home, the four services, pricing, live reports, the free-call form and the four chat use-case pages — at ${SITE_URL}/el, ${SITE_URL}/el/website, ${SITE_URL}/el/chat-assistant, ${SITE_URL}/el/automations, ${SITE_URL}/el/lead-generation, ${SITE_URL}/el/pricing, ${SITE_URL}/el/what-works, ${SITE_URL}/el/audit and ${SITE_URL}/el/roles/{lead-qualification,sales,customer-support,onboarding} — same facts and prices. English only: the legal documents (privacy, terms, security, DPA), deliberately. The chat answers in Greek on every page.
+- Greek pages (ελληνικά): the marketing pages exist in Greek — home, the service, pricing, the free-call form and the four chat use-case pages — at ${SITE_URL}/el, ${SITE_URL}/el/chat-assistant, ${SITE_URL}/el/pricing, ${SITE_URL}/el/audit and ${SITE_URL}/el/roles/{lead-qualification,sales,customer-support,onboarding} — same facts and prices. English only: the legal documents (privacy, terms, security, DPA), deliberately. The chat answers in Greek on every page.
 
 ## Contact
 

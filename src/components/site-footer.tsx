@@ -11,7 +11,7 @@ import { CookieSettingsLink } from "./cookie-settings-link";
  * a habit and broke trust on the legal column especially. If a section
  * doesn't have content yet, omit the link rather than promising it.
  *
- * Four columns: what we sell (the four services), how to start, company,
+ * Four columns: what we sell (one service since 2026-09-29), how to start, company,
  * legal. The Studio/App line names and the role pages left the footer on
  * 2026-09-13 — the role pages stay reachable from the homepage's
  * "what the chat can do" list.

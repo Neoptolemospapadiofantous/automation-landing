@@ -235,11 +235,11 @@ export default function ChatAssistantElPage() {
                     <p className="text-ink-mute mt-auto pt-1 text-[13px] leading-[1.5]">
                       Το φτιάχνουμε για εσάς σήμερα:{" "}
                       <Link
-                        href="/el/automations"
+                        href="/el/audit"
                         hrefLang="el"
                         className="text-ink underline underline-offset-4"
                       >
-                        Αυτοματισμοί
+                        κλείστε δωρεάν ραντεβού
                       </Link>
                       .
                     </p>
