@@ -102,7 +102,16 @@ export async function sendAuditEmail(
     });
     return { ok: true };
   } catch (err) {
+    // Delivery failed. Log the WHOLE submission, not just the error: this is a
+    // real person who filled the form, and the mail we cannot send is the only
+    // copy of what they said. Without this the enquiry is gone. (Sep 2026: the
+    // box's outbound SMTP ports 25/465/587 are blocked by the host, so every
+    // submission failed here for months and none was recoverable.)
     console.error("[mail] send failed", err);
+    console.error(
+      "[audit-submission-UNDELIVERED]",
+      JSON.stringify({ ...data, received_at: new Date().toISOString() }),
+    );
     return { ok: false, reason: "send-failed" };
   }
 }
