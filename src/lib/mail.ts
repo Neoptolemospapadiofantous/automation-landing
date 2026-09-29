@@ -53,6 +53,37 @@ export type SendResult =
  * shows the success message to the visitor in that case, so we don't
  * break dev / preview flows.
  */
+/**
+ * Write the submission where it survives, before we try to deliver it.
+ * Email is a notification; it is not a record. Every outcome goes through
+ * here so an enquiry is never held only by a mail server. Appends to
+ * AUDIT_LOG_PATH when set (point it OUTSIDE the release dir — each deploy
+ * replaces `current`), and always emits a structured line the process log
+ * keeps regardless.
+ */
+function recordSubmission(data: AuditSubmission, outcome: string): void {
+  const row = JSON.stringify({
+    ...data,
+    outcome,
+    received_at: new Date().toISOString(),
+  });
+  console.log("[audit-submission]", row);
+
+  const path = process.env.AUDIT_LOG_PATH;
+  if (!path) return;
+  try {
+    // Lazy require: this file is imported by client-adjacent code paths and
+    // node:fs must not end up in a browser bundle.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const fs = require("node:fs") as typeof import("node:fs");
+    fs.appendFileSync(path, row + "\n", { encoding: "utf8" });
+  } catch (err) {
+    // A full disk or a bad path must never cost us the submission: the
+    // console line above already has it.
+    console.error("[mail] audit log append failed", err);
+  }
+}
+
 export async function sendAuditEmail(
   data: AuditSubmission,
 ): Promise<SendResult> {
@@ -61,10 +92,7 @@ export async function sendAuditEmail(
     console.warn(
       "[mail] SMTP not configured — falling back to log-only. Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS in env to enable real delivery.",
     );
-    console.log("[audit-submission]", {
-      ...data,
-      received_at: new Date().toISOString(),
-    });
+    recordSubmission(data, "smtp-not-configured");
     return { ok: false, reason: "smtp-not-configured" };
   }
 
@@ -100,6 +128,7 @@ export async function sendAuditEmail(
       subject: `Audit request${greek ? " (EL)" : ""} — ${data.name}${data.company ? ` (${data.company})` : ""}`,
       text,
     });
+    recordSubmission(data, "delivered");
     return { ok: true };
   } catch (err) {
     // Delivery failed. Log the WHOLE submission, not just the error: this is a
@@ -108,10 +137,7 @@ export async function sendAuditEmail(
     // box's outbound SMTP ports 25/465/587 are blocked by the host, so every
     // submission failed here for months and none was recoverable.)
     console.error("[mail] send failed", err);
-    console.error(
-      "[audit-submission-UNDELIVERED]",
-      JSON.stringify({ ...data, received_at: new Date().toISOString() }),
-    );
+    recordSubmission(data, "UNDELIVERED");
     return { ok: false, reason: "send-failed" };
   }
 }
