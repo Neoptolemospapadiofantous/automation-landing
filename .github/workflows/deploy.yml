@@ -10,7 +10,7 @@
 # Manual redeploy: Actions → deploy → "Run workflow" (workflow_dispatch).
 #
 # Secrets: FORGE_SSH_KEY (ed25519 private key; its .pub lives in
-# forge@178.128.138.142:~/.ssh/authorized_keys as "gha-deploy").
+# forge@209.38.185.159:~/.ssh/authorized_keys as "gha-deploy").
 # The NEXT_PUBLIC_* values below are browser-public by definition — they ship
 # in every client bundle — so they live here in plain text; runtime-only
 # secrets stay in the box's .env, which the release symlinks as before.
@@ -33,7 +33,7 @@ env:
   NEXT_PUBLIC_SITE_URL: https://www.flowstack.run
   NEXT_PUBLIC_GA_ID: G-FL3RK7X8JV
   NEXT_PUBLIC_FLOWSTACK_AGENT_SLUG: team-1-zmdcvje9
-  BOX: forge@178.128.138.142
+  BOX: forge@209.38.185.159
   SITE_ROOT: /home/forge/flowstack.run
 
 jobs:
@@ -63,7 +63,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.FORGE_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H 178.128.138.142 >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -H 209.38.185.159 >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Ship artifact
         run: |
