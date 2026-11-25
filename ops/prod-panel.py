@@ -23,7 +23,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 PORT = 8094
 SERVER_ID = 1211646
 SITES = {"landing": 3238855, "dashboard": 3219726}
-BOX = "178.128.138.142"
+BOX = "209.38.185.159"
 SSH_KEY = os.path.expanduser("~/.ssh/id_ed25519_forge")
 FORGE_TOKEN_PATH = os.path.expanduser("~/.forge/token")
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -146,7 +146,7 @@ NEXT_PUBLIC_DASHBOARD_URL=https://[dashboard-domain]
 - **`HOSTNAME=0.0.0.0`** — bind to all interfaces so Nginx on the same box can reach it. `localhost`-only binding also works.
 - **`PORT=3000`** — must match the `proxy_pass` in Nginx (§8).
 - **`NEXT_PUBLIC_SITE_URL`** — without this every absolute URL on the site (canonical, OG image, sitemap) renders as `flowstack.example`. The single most-leveraged var on launch day.
-- **`NEXT_PUBLIC_DASHBOARD_URL`** — what visitor "Login" / "Try it for €99" buttons point at. Usually the same host as the dashboard.
+- **`NEXT_PUBLIC_DASHBOARD_URL`** — what visitor "Login" / "Sign up" buttons point at. Usually the same host as the dashboard.
 
 ---
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Tldr } from "@/components/tldr";
 import { Catalogue, CATALOGUE_EL } from "@/components/sections/catalogue";
+import { ManyAgents, MANY_AGENTS_EL } from "@/components/sections/many-agents";
 import { ctaClass } from "@/components/ui/button";
 import { registerUrl } from "@/lib/dashboard";
 import { buildCatalogueEl, FREE_CALL_EL, servicesEl } from "@/lib/content";
@@ -20,10 +21,10 @@ import { buildCatalogueEl, FREE_CALL_EL, servicesEl } from "@/lib/content";
  * and four verbs while English had four services). Unpriced throughout.
  */
 const DESCRIPTION =
-  "Φτιάχνουμε την ιστοσελίδα σας, απαντάμε σε κάθε μήνυμα με chat ή τηλέφωνο, αυτοματοποιούμε τα follow-up και σας φέρνουμε πελάτες.";
+  "Chat και τηλεφωνικός βοηθός που απαντά σε κάθε μήνυμα στο site σας, μέρα και νύχτα, στα Ελληνικά και στα Αγγλικά — και το καταχωρεί στο ημερολόγιο ή στο CRM σας.";
 
 export const metadata: Metadata = {
-  title: "Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
+  title: "Κάθε μήνυμα απαντημένο, μέρα και νύχτα",
   description: DESCRIPTION,
   alternates: {
     canonical: "/el",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     images: EL_OG_IMAGES,
-    title: "Flowstack — Ιστοσελίδες, chat, αυτοματισμοί & εύρεση πελατών",
+    title: "Flowstack — κάθε μήνυμα απαντημένο, μέρα και νύχτα",
     description: DESCRIPTION,
   },
 };
@@ -77,7 +78,7 @@ export default function HomeElPage() {
           },
           {
             k: "Πώς ξεκινάτε",
-            v: "Δωρεάν ραντεβού 30 λεπτών, μετά γραπτή σταθερή τιμή σε 48 ώρες. Ή δοκιμάστε πρώτα το chat, δωρεάν.",
+            v: "Δωρεάν ραντεβού 30 λεπτών, μετά γραπτή σταθερή τιμή σε 48 ώρες. Ή ξεκινήστε το chat μόνοι σας από €19,99 τον μήνα.",
           },
         ]}
       />
@@ -96,7 +97,7 @@ export default function HomeElPage() {
             <p className="bp-annot normal-case">Το chat, και η σύνδεση πίσω του.</p>
           </div>
 
-          <div className="border-border-line bg-border-line mt-px grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">
+          <div className="border-border-line bg-border-line mt-px grid grid-cols-1 gap-px">
             {servicesEl.map((sv) => (
               <Link
                 key={sv.slug}
@@ -124,6 +125,8 @@ export default function HomeElPage() {
           </div>
         </div>
       </section>
+
+      <ManyAgents copy={MANY_AGENTS_EL} />
 
       <Catalogue items={buildCatalogueEl} copy={CATALOGUE_EL} />
 

@@ -4,14 +4,16 @@ import { Ticker } from "@/components/sections/ticker";
 import { ServiceLines } from "@/components/sections/service-lines";
 import { Proof } from "@/components/sections/proof";
 import { Problems } from "@/components/sections/problems";
-import { Pipeline } from "@/components/sections/pipeline";
 import { Overview } from "@/components/sections/overview";
 import { CustomBuild } from "@/components/sections/custom-build";
 import { Catalogue } from "@/components/sections/catalogue";
+import { ManyAgents, MANY_AGENTS_EN } from "@/components/sections/many-agents";
 import { PricingTeaser } from "@/components/sections/pricing-teaser";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { SheetRail } from "@/components/sheet-rail";
 import { HomepageJsonLd } from "@/components/jsonld";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { EnquiryStory } from "@/components/sections/enquiry-story";
 
 /**
  * Homepage — a numbered drawing set (S/01–S/09), tracked by the fixed
@@ -45,7 +47,7 @@ const TLDR = [
   },
   {
     k: "How to start",
-    v: "A free 30-minute call, then a written fixed price in 48 hours. Or try the chat first, free.",
+    v: "A free 30-minute call, then a written fixed price in 48 hours. Or start the chat yourself from €19.99 a month.",
   },
 ] as const;
 
@@ -53,6 +55,7 @@ export default function Home() {
   return (
     <>
       <HomepageJsonLd />
+      <SmoothScroll />
       <SheetRail />
       <Hero />
       <Tldr rows={TLDR} />
@@ -60,9 +63,10 @@ export default function Home() {
       <ServiceLines />
       <Proof />
       <Problems />
-      <Pipeline />
+      <EnquiryStory />
       <CustomBuild />
-      <Catalogue sheetRef="S/05 / what we build" />
+      <ManyAgents copy={{ ...MANY_AGENTS_EN, sheetRef: "S/05 / custom · many agents" }} />
+      <Catalogue sheetRef="S/06 / what we build" />
       <Overview />
       <PricingTeaser />
       <FinalCTA />

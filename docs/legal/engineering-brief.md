@@ -193,6 +193,10 @@ collect it **before** the redirect and enforce server-side.
 
 ### TASK 5 — VAT-aware pricing display **[Consumer / Ship-now-able]**
 
+> **Status 2026-10-05: done.** Prices are EUR (Starter €19.99, Operator €39.99)
+> and every price is labelled "VAT not added" on `/pricing`, `/el/pricing` and
+> the homepage. The USD figures below describe the page as it was in June.
+
 - **Repo / files:** `automation-landing` · `src/app/pricing/page.tsx`
   (plan data + price cells), and any dashboard plan labels that show price.
 - **Do:** Two issues on the pricing page today: prices are shown in **USD

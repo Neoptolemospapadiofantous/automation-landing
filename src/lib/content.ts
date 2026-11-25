@@ -548,11 +548,11 @@ export const pricingTiers = [
     price: "Let's talk",
     cadence: "fixed price after a free call",
     tint: "success",
-    tagline: "When you need more than the chat.",
+    tagline: "When one chat is not enough.",
     features: [
+      "As many chat assistants as you need",
       "A phone assistant, call-back and SMS",
       "Wired into your CRM and tools",
-      "Your own AI model or interface",
       "Handover, and optional care after",
     ],
     cta: { href: FREE_CALL.href, label: "Book a call" },

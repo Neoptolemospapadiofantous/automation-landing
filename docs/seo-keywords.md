@@ -1,5 +1,12 @@
 # SEO Keyword Strategy — Flowstack
 
+> **Dated (2026-06-11).** The keyword research below predates two changes:
+> "AI agent" was dropped from marketing copy (2026-07-08), and since 2026-09-29
+> the site sells one service, the chat assistant at `/chat-assistant`. The
+> `/website`, `/automations`, `/lead-generation` and `/what-works` pages are
+> gone (308 to `/chat-assistant`), so any recommendation targeting them is
+> void. Role pages and the homepage targets still apply.
+
 > Where to invest content + on-page optimisation effort. Anchored to the
 > current site copy in `src/lib/content.ts`, the SEO surfaces in
 > `src/app/layout.tsx`, and the structured data in

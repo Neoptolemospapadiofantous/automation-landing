@@ -207,6 +207,36 @@
     margin-inline: -0.08em;
   }
 
+  /* Chat typing indicator (motion/product-bits). */
+  .typing-dot {
+    animation: typing-dot 1.1s ease-in-out infinite;
+  }
+  @keyframes typing-dot {
+    30% { transform: translateY(-3px); opacity: 1; }
+    0%, 60%, 100% { transform: none; opacity: 0.45; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .typing-dot { animation: none; }
+  }
+
+  /* Lenis smooth scrolling (its recommended base rules). */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   /* Yellow inset underline for a key figure (proof cells). */
   .mark-under {
     box-shadow: inset 0 -0.32em 0 var(--signal);

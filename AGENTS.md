@@ -36,6 +36,30 @@ browser never saw `DASHBOARD_API_URL`.
    PM2 runs a single instance; don't add per-process in-memory state
    that assumes one warm process.
 
+## Homepage motion (GSAP + Lenis)
+
+The homepage's depth comes from the page itself, not a 3D backdrop (a
+three.js background was tried and dropped on 2026-09-29). `Hero` and
+`EnquiryStory` place the product (chat window, messages, lead card, calendar
+card from `src/components/motion/product-bits.tsx`) on layers at different
+depths and drive them with GSAP ScrollTrigger.
+
+- **One clock.** `SmoothScroll` makes GSAP's ticker drive Lenis and calls
+  `ScrollTrigger.update` on every Lenis frame. Every scroll animation is a
+  timeline with `scrub: true`, so it is always exactly where the scroll is.
+  Don't add a second rAF loop or a separate easing for scroll-driven motion:
+  two clocks fighting is what made the old backdrop stutter.
+- **Sharp text: keep layers shallow.** Stages use a 2400px perspective and
+  layers stay within `translateZ` ≈ 180px (about 8% enlargement). A layer
+  pushed further forward is rasterised at its CSS size and then scaled up,
+  which blurs its text. Make depth with parallax travel and shadows instead.
+  Don't `scale` a stage holding text, for the same reason.
+- **Reduced motion and phones.** Both components use `gsap.matchMedia`:
+  reduced motion gets the finished composition with no pin or scroll
+  animation; phones get half the depth, and the story shows only the
+  active step so the scene stays on screen.
+- Product mocks are illustrative and say `example` in the window (rule 2).
+
 ## Environment
 
 ```bash

@@ -19,7 +19,7 @@ export function Overview() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="border-ink flex flex-wrap items-end justify-between gap-4 border-b-[1.5px] pb-5">
           <div>
-            <span className="bp-ref text-violet">S/06 / what the chat can do</span>
+            <span className="bp-ref text-violet">S/07 / what the chat can do</span>
             <h2 className="text-ink mt-4 max-w-[22ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               What the chat &amp; voice assistant can do.
             </h2>

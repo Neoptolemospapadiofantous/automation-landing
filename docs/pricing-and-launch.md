@@ -6,20 +6,43 @@
 > `automation-landing/src/lib/content.ts`. This doc is the rationale + plan
 > behind those numbers.
 
-**Updated:** 2026-06-11
-**Status:** Pricing tiers final; top-up packs **need re-pricing** (see §3)
+> **⚠ PRICING CORRECTION — current as of 2026-09-15 (the two-plan EUR
+> repricing).** Much of this doc's body still narrates the original June 2026
+> USD pricing ($99/$399) and a top-up fix that never shipped in that form.
+> The **current offer** is:
+>
+> - **Starter — €19.99/mo** (annual **€191.90/yr**, 20% off): up to 5 agents,
+>   10,000 conversation credits/mo, BYOK allowed, cancel anytime.
+> - **Operator — €39.99/mo** (annual **€383.90/yr**, 20% off): up to 5 agents,
+>   25,000 credits/mo, best €/credit; annual Operator includes a **free
+>   brochure-style website build** (~6 pages, chat installed).
+> - **Custom** — scoped 4–6 week project build, invoiced out-of-band.
+> - **No free tier, no trial.** "Free" is only the unsubscribed default state
+>   (0 credits). The free things are the 30-minute call and the written quote.
+> - **Top-up packs** (paid plans only): Small **€5**/1,000, Medium
+>   **€15**/5,000, Large **€40**/20,000 credits; landing also offers a custom
+>   top-up, €10–2,000 at 500 credits per euro.
+>
+> Authoritative source of truth: `automation_dashboard/app/Billing/Plan.php`
+> + `TopUpPack.php`; landing copy: `automation-landing/src/lib/content.ts`.
+> Sections below that describe the old USD pricing are kept **as history**
+> (framed where needed); §2 and §3 are corrected to current values.
+
+**Updated:** 2026-09-15 (repriced to Starter €19.99 / Operator €39.99 EUR; prior USD figures retained only as history)
+**Status:** Two-plan pricing live; top-up packs **repriced and shipped** (see §3)
 **Owner:** [TBC]
 
 ---
 
 ## 1. The product, in one paragraph
 
-A real-time multi-tenant SaaS where every team configures their own AI agent
+A real-time multi-tenant SaaS where every team configures their own chat assistant
 through a managed onboarding flow. Agents are powered by Flowstack's native
-runtime (Anthropic Haiku + OpenAI embeddings + Typesense vector search) or
-legacy Voiceflow (kept only for pre-migration agents). The dashboard ticks
-live across all connected screens via WebSockets (Pusher in production,
-Reverb as the self-hosted fallback), with lead-qualification, knowledge-base
+runtime (production default OpenAI GPT-5 nano; Claude and Gemini on the
+customer's own key; OpenAI text-embedding-3-small for the knowledge base;
+MySQL full-text search, Typesense optional). Voiceflow has been removed. The
+dashboard ticks live across all connected screens via WebSockets (self-hosted
+Reverb in production), with lead-qualification, knowledge-base
 upload, transcript review, and Kanban delegation built in. Customers pay
 monthly for one or more agents and a pool of conversation credits;
 custom-build engagements deliver bespoke flows, integrations, and internal
@@ -33,10 +56,10 @@ Source of truth: `automation_dashboard/app/Billing/Plan.php`.
 
 | | Starter | Operator | Custom |
 |---|---|---|---|
-| **Price** | $99/mo | $399/mo | scoped 4–6 week project |
-| **Annual** | $988/yr ($82/mo equivalent, 17% off) | $3,972/yr ($331/mo equivalent, 17% off) | — |
-| **Agents** | 1 | up to 5 | bespoke |
-| **Conversation credits / month** | 2,500 | 25,000 | negotiated |
+| **Price** | €19.99/mo | €39.99/mo | scoped 4–6 week project |
+| **Annual** | €191.90/yr (€16/mo equivalent, 20% off) | €383.90/yr (€32/mo equivalent, 20% off) + **free brochure-style website build** (~6 pages, chat installed) | — |
+| **Agents** | up to 5 | up to 5 | bespoke |
+| **Conversation credits / month** | 10,000 | 25,000 | negotiated |
 | **Top-ups** | ✅ | ✅ | n/a (project-based) |
 | **Knowledge-base upload** | ✅ | ✅ | ✅ |
 | **Real-time dashboard + transcripts** | ✅ | ✅ | ✅ |
@@ -45,69 +68,69 @@ Source of truth: `automation_dashboard/app/Billing/Plan.php`.
 | **Custom integrations (AMS, CRM, telephony)** | — | — | ✅ |
 | **Custom flows / your own LLM / your UI** | — | — | ✅ |
 | **Lock-in** | none, cancel anytime | none, cancel anytime | order-form scoped |
-| **CTA on landing** | `Try it for $99 →` | `Start with Operator` | `Book the audit` |
+| **CTA on landing** | `Start with Starter` | `Choose Operator` | `Book a call` |
 
 Notes from `Plan.php`:
 - One credit = one message in either direction (user *or* agent reply).
 - The runtime has a per-session ceiling of 100 turns (`RUNTIME_MAX_TURNS`),
   so a runaway session can't burn arbitrary credits even if a customer
   misconfigures their flow.
-- The enum cases stayed `free` / `pro` / `business` because the
+- The enum cases stay `free` / `starter` / `pro` / `business` because the
   `teams.plan` column persists the string; renaming the cases would need
-  a data migration. The display labels are Starter / Operator / Custom
-  via `label()`.
+  a data migration. The display labels are Free / Starter / Operator / Custom
+  via `label()` — `pro` IS the rung sold as "Operator". A `growth` rung
+  existed briefly (2026-08-27 repricing) and was folded into Starter on
+  2026-09-15.
 
 ---
 
-## 3. Top-up packs — **needs re-pricing**
+## 3. Top-up packs — repriced and shipped
 
 Source of truth: `automation_dashboard/app/Billing/TopUpPack.php`.
 
-### Current (broken)
+### Current (live since the 2026-08-27 repricing, unchanged 2026-09-15)
 
-| Pack | Credits | Price | Per-credit | vs Starter base | vs Operator base |
-|---|---|---|---|---|---|
-| Small | 1,000 | $10 | $0.0100 | **4× cheaper** | 60% cheaper |
-| Medium | 5,000 | $39 | $0.0078 | 5× cheaper | **2× cheaper** |
-| Large | 20,000 | $129 | $0.0065 | 6× cheaper | **2.5× cheaper** |
+| Pack | Credits | Price | Per-credit | vs Operator base |
+|---|---|---|---|---|
+| Small | 1,000 | €5 | €0.0050 | 3.1× worse |
+| Medium | 5,000 | €15 | €0.0030 | 1.9× worse |
+| Large | 20,000 | €40 | €0.0020 | 1.25× worse |
+
+The landing also offers a **custom top-up**: €10–2,000 at 500 credits per
+euro (€0.002/credit).
 
 Plan rates as reference:
-- Starter $99 / 2,500 = $0.0396 per credit
-- Operator $399 / 25,000 = $0.0160 per credit
+- Starter €19.99 / 10,000 = €0.0020 per credit
+- Operator €39.99 / 25,000 = €0.0016 per credit ← **the floor**
 
-### Why it's broken
+**Invariant (asserted by
+`tests/Unit/Billing/PricingInvariantsTest.php`, which derives the floor from
+the `config/runtime.php` tier rates):** every pack's €/credit is strictly
+worse than Operator's monthly rate. That is the upgrade-pressure mechanism
+*and* the margin floor.
 
-The TopUpPack docblock states the intended design: *"Pricing per credit is
-INTENTIONALLY worse than the Operator tier on the small pack and only matches
-Operator on the large pack."* That math was correct at the old $19 / $79
-plan prices. After the price bump to $99 / $399, the relationship inverted —
-top-ups are now massively cheaper per credit than the plans they're meant to
-support.
+### History — why the original packs were broken (June 2026, superseded)
 
-The leak: a Starter customer can keep their plan at minimum usage and buy
-all credits via Medium packs at $0.008/credit instead of the $0.040/credit
-base rate. That's a 5× margin loss on those credits and removes the
-upgrade-pressure mechanism entirely.
+The original packs ($10 / $39 / $129 for 1,000 / 5,000 / 20,000 credits) were
+calibrated against the old $19 / $79 plan prices. After the June 2026 bump to
+$99 / $399 the relationship inverted — top-ups became massively cheaper per
+credit than the plans they were meant to support (a Starter customer could
+buy Medium packs at $0.008/credit against a $0.040/credit base rate), which
+removed the upgrade-pressure mechanism entirely.
 
-### Fix — proposed new top-up pricing
+A first proposal to fix this by raising packs to $45 / $95 / $320 was **never
+shipped**. What actually shipped (2026-08-27): the runtime tier multipliers
+in `config/runtime.php` were re-aligned to real provider token rates, which
+dropped the margin floor from €0.01333/credit to €0.00156/credit, and the
+packs landed at €5 / €15 / €40 — see the `TopUpPack.php` docblock.
 
-Anchor top-ups at ~1.1–1.2× the per-credit rate of the tier they belong to,
-matching the original design intent.
+Implementation today: `priceEur()` return values in `TopUpPack.php`, Stripe
+SKUs mapped via `config/billing.stripe_price.topup_*`; the `grantTopUp()`
+flow is untouched by price changes.
 
-| Pack | Credits | Price | Per-credit | Relation |
-|---|---|---|---|---|
-| **Small** | 1,000 | **$45** | $0.0450 | 1.14× Starter base (slight relief, clear upgrade pressure) |
-| **Medium** | 5,000 | **$95** | $0.0190 | 1.19× Operator base (sized for Operator overruns) |
-| **Large** | 20,000 | **$320** | $0.0160 | matches Operator base (volume floor, parity with plan) |
-
-Implementation: change the `priceUsd()` return values in `TopUpPack.php`,
-create new Stripe SKUs at the new amounts, update
-`config/billing.stripe_price.topup_*`, then existing
-`grantTopUp()` flow is untouched.
-
-UI consequence: the Billing/Index.vue page currently shows a per-credit
-breakdown; with the new prices the "buy a pack" feels less like a deal and
-more like a buffer — which is the intent.
+UI consequence: the Billing/Index.vue page shows a per-credit breakdown;
+at current prices "buy a pack" reads as a buffer, not a deal — which is the
+intent.
 
 ---
 
@@ -117,21 +140,26 @@ more like a buffer — which is the intent.
 
 From `automation_dashboard/docs/runtime-native.md`:
 > Native cost basis: ~$0.005–0.01 per customer message
-> (Anthropic Haiku + OpenAI embeddings) → ~99% gross margin at the $99
+> (Anthropic Haiku + OpenAI embeddings) → ~99% gross margin at the €19.99
 > Starter price.
 
-So one credit on the native engine costs us about $0.0075 average.
+The true per-credit cost basis is derived from the `config/runtime.php` tier
+rates in `tests/Unit/Billing/PricingInvariantsTest.php` — that derivation
+(Operator's €0.0016/credit as the margin floor) is authoritative; the
+per-message figure above is the Haiku-tier ballpark. Provider token costs are
+USD-denominated while revenue is EUR, so treat the conversions as approximate.
 
 ### Per-customer cost at full credit utilisation
 
-| Plan | Credits/mo | LLM cost | Plan revenue | LLM gross margin |
+| Plan | Credits/mo | LLM cost (worst case, at the €0.0016/credit floor) | Plan revenue | LLM gross margin |
 |---|---|---|---|---|
-| Starter | 2,500 | $18.75 | $99 | 81% |
-| Operator | 25,000 | $187.50 | $399 | 53% |
+| Starter | 10,000 | €16.00 | €19.99 | 20% |
+| Operator | 25,000 | €40.00 | €39.99 | ~0% (priced at the floor) |
 
-These are *worst case* (customer burns every credit). Typical utilisation is
-40–60% based on usage patterns in `runtime_sessions`, so realistic margins
-are 88–95%.
+These are *worst case*: customer burns every credit, all on the most
+expensive tier mix. Typical utilisation is 40–60% based on usage patterns in
+`runtime_sessions`, and cheaper tiers dominate the mix, so realistic margins
+are far above these floors.
 
 ### Fixed monthly costs (single Forge box, native runtime)
 
@@ -148,18 +176,27 @@ are 88–95%.
 
 ### Margin math at typical customer mix (90% Starter / 9% Operator / 1% Custom)
 
+Assumptions: average revenue per customer = 0.9 × €19.99 + 0.09 × €39.99 ≈
+**€21.59**; LLM cost shown is the *worst case* (50% utilisation, all on the
+most expensive tier mix → 11,250 avg credits × 50% × €0.0016 floor ≈
+**€9/customer**); Stripe ≈ 3%; fixed from the table above.
+
 | Customers | Revenue/mo | LLM cost (50% util.) | Stripe (3%) | Fixed | Net | Margin |
 |---|---|---|---|---|---|---|
-| 5 | $625 | $50 | $19 | $40 | **$516** | 83% |
-| 20 | $2,505 | $200 | $75 | $50 | **$2,180** | 87% |
-| 50 | $6,260 | $500 | $188 | $70 | **$5,502** | 88% |
-| 100 | $12,510 | $1,000 | $375 | $80 | **$11,055** | 88% |
-| 250 | $31,275 | $2,500 | $938 | $120 | **$27,717** | 89% |
+| 5 | €108 | €45 | €3 | €40 | **€20** | 18% |
+| 20 | €432 | €180 | €13 | €50 | **€189** | 44% |
+| 50 | €1,080 | €450 | €32 | €70 | **€528** | 49% |
+| 100 | €2,159 | €900 | €65 | €80 | **€1,114** | 52% |
+| 250 | €5,398 | €2,250 | €162 | €120 | **€2,866** | 53% |
 
-The model holds: native runtime gives us ~88% sustained gross margin from
-customer 5 through customer 250, after which infrastructure step-up costs
-(bigger VPS, larger Pusher tier, possibly horizontal scaling — see
-`automation-landing/docs/deploy-forge.md` §13) shift the curve.
+The model still holds, but the shape changed with the 2026 repricing: at
+€19.99/€39.99 the worst-case margin is ~18% at customer 5 rising to ~53% at
+scale (vs ~88% at the old $99/$399 prices). Real margins sit well above
+these figures — the LLM column assumes every used credit runs on the most
+expensive tier mix at the PricingInvariantsTest floor, and infrastructure
+step-up costs (bigger VPS, larger Pusher tier, possibly horizontal scaling —
+see `automation-landing/docs/deploy-forge.md` §13) shift the curve beyond
+customer 250.
 
 Stage-2 ceiling on a single Forge box: roughly 250 customers before
 infrastructure becomes interesting. Stage 3 = Reverb self-hosted +
@@ -168,6 +205,11 @@ horizontal pub/sub.
 ---
 
 ## 5. Pricing rationale
+
+> **Historical (June 2026, $99/$399 USD era).** The prices in this section
+> were cut twice — 2026-08-27, then 2026-09-15 to the current
+> **€19.99 Starter / €39.99 Operator EUR** (see the banner). Kept for the
+> reasoning that produced the launch pricing, not for the numbers.
 
 ### Why $99 / $399 / Custom (and not the prior $19 / $79)
 
@@ -187,23 +229,31 @@ conversation to that number, even when the actual scope is half or twice.
 The prior `from $15k` was removed for this reason; the landing now uses
 `Let's talk` in the pricing card and `BY SCOPE` in the final-CTA strip.
 
-### Why no free trial
+### Why no free trial (and no free tier)
 
-Per `Plan.php` docblock: *"No free trial — product decision 2026-06-09. The
-$99 Starter tier IS the entry point; cancel anytime via the Stripe Billing
-Portal."*
+Per `Plan.php` docblock: *"There is no trial either — do not add Stripe
+Checkout `trial_period_days` to subscription sessions. The free door into
+the product is the free 30-minute call, not a plan."* The paid Starter tier
+(€19.99/mo) IS the entry point; cancel anytime via the Stripe Billing
+Portal.
 
 Implementation note: do not add `trial_period_days` to Stripe Checkout
 sessions in `StripeClient.php`. Cancel-anytime via the Billing Portal is the
 risk-reversal that replaces a trial.
 
-### Why annual is 17% off (and not more)
+### Why annual was 17% off (now 20%)
+
+> **Superseded 2026-09-15:** annual is now **20% off 12× monthly** —
+> Starter €191.90/yr, Operator €383.90/yr. `Plan::annualPriceEur()` holds
+> the real yearly charge as its own source of truth (in step with the
+> annual Stripe Prices) and `Plan::annualSavingsPct()` *derives* the 20 from
+> the two prices rather than asserting it.
 
 17% = the SaaS convention for "2 months free on annual" (10/12 ≈ 0.83).
 Higher would erode margins on annual customers without proportional
-retention upside. Lower would not move the conversion needle. Hard-coded
-in `Plan::annualSavingsPct()`; switch to reading from the Stripe price
-object if you ever want different ratios per tier.
+retention upside. Lower would not move the conversion needle. (Historical:
+this was hard-coded in `Plan::annualSavingsPct()` before the 2026-09-15
+repricing made the discount derived.)
 
 ### Why credits over flat seat pricing
 
@@ -215,6 +265,10 @@ without renegotiating a contract.
 ---
 
 ## 6. Launch plan — re-anchored to today
+
+> **Executed June–July 2026** — kept as the record of the launch plan. The
+> prices cited below were the June 2026 USD pricing ($99/$399), superseded
+> per the banner; the top-up fix it references shipped differently (§3).
 
 Today: 2026-06-11 — day 2 of the soft-launch window.
 
@@ -242,6 +296,13 @@ SEO surfaces (sitemap, canonical, OG image) all advertise
 ---
 
 ## 7. Open pricing decisions to make before launch
+
+> **Pre-launch list, resolved.** Status 2026-09-15: (1) top-up packs
+> repriced and shipped — §3; (2) no trial AND no free tier — confirmed at
+> the 2026-09-15 repricing; (3) annual shipped at 20% off
+> (€191.90/€383.90, both cycles live); (4) `Plan::maxAgents()` = 5 on both
+> paid tiers; (5)–(6) see code + the next pricing review. The original list
+> follows as written in June 2026.
 
 Concrete things that need a yes/no, ordered by urgency:
 
@@ -277,7 +338,7 @@ Concrete things that need a yes/no, ordered by urgency:
 - **Top-up price arbitrage** — if not fixed in §3, expect early adopters
   to optimise around it within weeks.
 - **Annual cohort cohort retention** — annual customers are usually
-  stickier, but the 17% discount eats margin if they churn at month 3.
+  stickier, but the 20% discount eats margin if they churn at month 3.
 - **Custom-build scope creep** — without a numeric anchor on the public
   page, every conversation starts fresh. Counsel-approved MSA + a one-page
   scoping deliverable mitigates.
@@ -289,8 +350,8 @@ Concrete things that need a yes/no, ordered by urgency:
   in pass-through LLM fees vs ~$0.50/customer on native. Migration to
   native is in progress per `runtime-native.md`; pricing assumes native
   margin. Track legacy share as a separate cohort.
-- **Stripe processing fees at low volume** — 2.9% + 30¢ on a $99 charge =
-  $3.17 (3.2%). On Annual $988 = $28.97 (2.9%). At low customer counts
+- **Stripe processing fees at low volume** — 2.9% + 30¢ on a €19.99 charge ≈
+  €0.86 (~4.3%). On Annual €191.90 ≈ €5.85 (~3.0%). At low customer counts
   this is the second-largest line after LLM cost.
 
 ---
